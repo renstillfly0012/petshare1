@@ -1,0 +1,122 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Gate;
+use App\Pet;
+use App\Appointment;
+
+
+class adoptionController extends Controller
+{
+    public function __construct()
+    {
+        $this->middleware('auth');
+      
+    }
+    public function index()
+    {
+        if (Gate::denies('isAdmin')) {
+            return redirect()->route('landing');
+        }
+        $appointments = Appointment::all();
+        return view('admin.pet.request')->with('appointments', $appointments);
+    }
+
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+       
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
+        $validator = Validator::make($request->all(),[
+            'show_user_id' => ['required', 'integer', 'max:255'],
+            'show_pet_id' => ['required', 'integer', 'max:255'],
+            'show_requested_date' => 'required',
+         ]);
+
+         $appointment = new Appointment;
+         $appointment->user_id = $request->input('show_user_id');
+         $appointment->requested_pet_id = $request->input('show_pet_id');
+         $appointment->requested_date = $request->input('show_requested_date');
+         $appointment->appointment_type = "Adoption";
+        // dd($appointment);
+         $appointment->save();
+
+         return redirect('/')->with('success', 'Appointment Saved');
+      
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $appointment = Appointment::findOrFail($id);
+        $appointment->appointment_status = 'Approved';
+        $appointment->save();
+        return redirect('/')->with('success', 'Appointment Changes Request '.$id.' was Saved');
+      
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+
+        $appointment = Appointment::findOrFail($id);
+        $appointment->appointment_status = 'Declined';
+        $appointment->save();
+
+        return redirect('/')->with('success', 'Appointment Changes Request '.$id.' was Saved');
+        
+       
+    }
+}
