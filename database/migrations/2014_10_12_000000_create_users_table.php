@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('image')->default('pspcalogo.png');
             $table->rememberToken();
             $table->timestamps();
-            $table->timestamps('deleted_at')->nullable();
+            $table->timestamp('deleted_at')->nullable();
         });
     }
 

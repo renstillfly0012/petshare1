@@ -33,6 +33,7 @@ class UserController extends Controller
 
         //  $user = User::find(1)->roles()->orderBy('name')->get();
         //  $user = User::with('roles')->get();
+        //  dd($user);
         //   dd($user->first()->name);
           
 

@@ -28,19 +28,20 @@ class UsersTableSeeder extends Seeder
             'name' => 'Admin User',
             'email' => 'admin@admin.com',
             'email_verified_at' => now(),
-            'password' => Hash::make('admin'),
+            'password' => 'admin',
+            // 'password' => Hash::make('admin'),
         ]);
 
         $foster = User::create([
             'name' => 'Foster User',
             'email' => 'foster@foster.com',
-            'password' => Hash::make('foster'),
+            'password' => 'foster',
         ]);
 
         $vet = User::create([
             'name' => 'Vet User',
             'email' => 'vet@vet.com',
-            'password' => Hash::make('vet'),
+            'password' => 'vet',
         ]);
 
         $admin->roles()->attach($adminRole);

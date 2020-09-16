@@ -9,6 +9,8 @@ class Appointment extends Model
     
     public function requests()
     {
-        return $this->belongsToMany('App\User');
+        return $this->belongsToMany('App\User', 'user_id', 'id');
     }
+
+    
 }

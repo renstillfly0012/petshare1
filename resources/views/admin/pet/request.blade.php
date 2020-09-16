@@ -69,13 +69,13 @@
                                             <img src="assets/images/pets/{{ $appointment->image }}" alt="User Image"
                                                 class="img-responsive rounded-circle" height="129" width="129">
                                         </td> --}}
-                                        <td>{{ $appointment->user_id }}</td>
+                                        <td>{{ $appointment->user->name }}</td>
                                         <td>{{ $appointment->requested_pet_id }}</td>
                                         <td>{{ $appointment->requested_date }}</td>
                                         <td>{{ $appointment->appointment_type }}</td>
                                         <td>{{ $appointment->appointment_status }}</td>
                                         <td>
-                                            <button class="btn btn-success pr-4 editbtn">Approve</button><br>
+                                            <button class="btn btn-warning pr-4 editbtn">Approve</button><br>
                                             <button class="btn btn-danger deletebtn">Decline</button>
                                         </td>
                                     </tr>

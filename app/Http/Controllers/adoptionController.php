@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Validator;
 use Gate;
 use App\Pet;
 use App\Appointment;
+use App\User;
 
 
 class adoptionController extends Controller
@@ -21,7 +22,9 @@ class adoptionController extends Controller
         if (Gate::denies('isAdmin')) {
             return redirect()->route('landing');
         }
-        $appointments = Appointment::all();
+        // $appointments = Appointment::all();
+        $appointments = Appointment::with('requests')->get();
+        dd($appointments);
         return view('admin.pet.request')->with('appointments', $appointments);
     }
 
