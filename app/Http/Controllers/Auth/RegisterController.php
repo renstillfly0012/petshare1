@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Role;
 
-
 class RegisterController extends Controller
 {
     /*
@@ -71,13 +70,14 @@ class RegisterController extends Controller
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+            'password' => $data['password'],
         ]);
 
         $role = Role::select('id')->where('name', 'foster')->first();
 
         $user->roles()->attach($role);
-
+        
+      
         return $user;
     }
 }

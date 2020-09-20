@@ -55,10 +55,10 @@
                 @else
 
                     <li class="nav-item">
-                        <a class="nav-link" id="nav-link" href="{{ route('login') }}">{{ __('About Us') }}</a>
+                        <a class="nav-link" id="nav-link" href="#">{{ __('About Us') }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="nav-link" href="{{ route('login') }}">{{ __('Contact Us') }}</a>
+                        <a class="nav-link" id="nav-link" href="#">{{ __('Contact Us') }}</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" id="nav-link" href="{{ route('adopt1') }}">{{ __('Adopt') }}</a>
@@ -68,11 +68,11 @@
                         <a class="nav-link" id="nav-link"
                             style="text-decoration: underline; 
                                                                                                                                 background-color: rgba(0, 0, 0, .1);"
-                            href="{{ route('login') }}">{{ __('Donate') }}</a>
+                            href="#">{{ __('Donate') }}</a>
                     </li>
 
 
-                    <li class="nav-item dropdown">
+                    <li class="nav-item dropdown ">
 
 
                         <a id=" navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"

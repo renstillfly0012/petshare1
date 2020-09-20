@@ -21,6 +21,16 @@
 
     @if (\Session::has('success'))
         <div class="alert alert-success">
+
+            <script>
+                toastr.success({
+                    {
+                        \
+                        Session::get('success')
+                    }
+                });
+
+            </script>
             <h3>{{ \Session::get('success') }}</h3>
         </div>
     @endif

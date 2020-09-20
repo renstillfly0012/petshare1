@@ -23,11 +23,11 @@
 
     </style>
     <div class="container-fluid">
+        <div class="col-md-4 offset-md-4" style=" margin-top:75px;">
+            <h1 class="text-center">AVAILABLE
+                PETS</h1>
+        </div>
         <div class="row">
-            <div class="col-md-4 offset-md-4" style=" margin-top:75px;">
-                <h1 class="text-center">AVAILABLE
-                    PETS</h1>
-            </div>
             <div class="d-flex" style="margin-top:52px;">
 
                 @foreach ($pets as $pet)

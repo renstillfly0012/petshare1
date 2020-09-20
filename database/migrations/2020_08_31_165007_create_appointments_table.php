@@ -15,10 +15,10 @@ class CreateAppointmentsTable extends Migration
     {
         Schema::create('appointments', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('user_id');
-            // $table->foreign('user_id')->references('id')->on('users');
-            $table->unsignedInteger('requested_pet_id')->unsigned();
-            // $table->foreign('requested_pet_id')->references('id')->on('pets');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('requested_pet_id');
+            $table->foreign('requested_pet_id')->references('id')->on('pets');
             $table->string('requested_date');
             $table->string('appointment_type');
             $table->string('appointment_status')->default('Pending');

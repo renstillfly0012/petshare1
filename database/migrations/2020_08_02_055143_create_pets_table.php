@@ -15,8 +15,8 @@ class CreatePetsTable extends Migration
     {
         Schema::create('pets', function (Blueprint $table) {
             $table->id();
-            $table->string('image')->default('pspcalogo.png');
             $table->string('name');
+            $table->string('image')->default('pspcalogo.png');
             $table->integer('age');
             $table->string('breed');
             $table->string('status')->default('Available');

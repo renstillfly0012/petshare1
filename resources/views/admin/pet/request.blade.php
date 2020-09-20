@@ -17,6 +17,15 @@
             @if (\Session::has('success'))
                 <div class="alert alert-success">
                     <b>
+                        <script>
+                            toastr.success({
+                                {
+                                    \
+                                    Session::get('success')
+                                }
+                            });
+
+                        </script>
                         <h3>{{ \Session::get('success') }}</h3>
                     </b>
                 </div>
@@ -70,7 +79,7 @@
                                                 class="img-responsive rounded-circle" height="129" width="129">
                                         </td> --}}
                                         <td>{{ $appointment->user->name }}</td>
-                                        <td>{{ $appointment->requested_pet_id }}</td>
+                                        {{-- <td>{{ $appointment->pet->first()->name }}</td> --}}
                                         <td>{{ $appointment->requested_date }}</td>
                                         <td>{{ $appointment->appointment_type }}</td>
                                         <td>{{ $appointment->appointment_status }}</td>
@@ -455,7 +464,7 @@
                     return $(this).text();
                 }).get();
 
-                var del_id = data[0];
+                var update_id = data[0];
 
 
                 Swal.fire({
@@ -473,18 +482,18 @@
 
                         var data = {
                             "token": $('input[name=_token]').val(),
-                            "id": del_id,
+                            "id": update_id,
 
 
                         };
 
                         $.ajax({
                             type: 'put',
-                            url: 'pets-requests/' + del_id,
+                            url: 'pets-requests/' + update_id,
                             // method: 'put',
                             data: data,
                             success: function(response) {
-
+                                
                             }
                         });
 
@@ -493,8 +502,7 @@
                             'The Request has been approved.',
                             'success'
                         ).then((result) => {
-
-                            location.reload();
+                            window.location.href = "/pets-requests/"+ update_id+ "/edit" ;
                         });
 
 
@@ -556,8 +564,7 @@
                             'The Request has been declined.',
                             'success'
                         ).then((result) => {
-
-                            location.reload();
+                            window.location.href = "/pets-requests/"+ del_id+ "/edit" ;
                         });
 
 

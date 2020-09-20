@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Mail\VerificationMail;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +16,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/emailV', function () {
+    return new VerificationMail;
 });
 
 // Auth::routes();
@@ -35,5 +40,6 @@ Route::get('/availablepets', 'HomeController@availablePets')->name('availpets');
 
 Route::resource('/users', 'UserController')->middleware('verified');
 Route::resource('/pets', 'petController')->middleware('verified');
+
 Route::resource('/pets-requests', 'adoptionController')->middleware('verified');
 

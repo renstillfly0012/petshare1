@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
+
 use Illuminate\Support\Facades\Validator;
 use Gate;
 use App\User;
@@ -109,7 +109,7 @@ class UserController extends Controller
  
         $user->name = $request->edit_user_name;
         $user->email = $request->edit_email;
-        $user->password = Hash::make($request->edit_password);
+        $user->password = $request->edit_password;
         if($request->hasFile('edit_image') == true){
         // $user->image = $request->edit_image->getClientOriginalName();
        
@@ -118,12 +118,13 @@ class UserController extends Controller
         $filename = time().'.USER_ID_'.$user->id.'.'.$extension;
         // $filename = $file->getClientOriginalName();
         $user->image = $filename;
+       
 
         // $data = array_merge($validated, ['image' => $filename]);
         $file->move('assets/images/', $filename);
         }
      
-
+       
         $user->save();
 
         // $user = User::update($data);

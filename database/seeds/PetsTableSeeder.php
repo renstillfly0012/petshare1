@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-
+use App\Pet;
 class PetsTableSeeder extends Seeder
 {
     /**
@@ -11,6 +11,6 @@ class PetsTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(Pet::class, 10)->create();
     }
 }

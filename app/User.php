@@ -6,6 +6,10 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Hash;
+
+
+
 
 
 
@@ -49,9 +53,14 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->belongsToMany('App\Role');
     }
 
-    public function requests()
+    public function pets()
     {
-        return $this->hasMany('App\Appointment', 'user_id', 'id');
+        return $this->hasMany('App\Pet');
+    }
+
+    public function appointments()
+    {
+        return $this->hasMany('App\Appointment');
     }
 
 
@@ -72,8 +81,10 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     public function setPasswordAttribute($password){
-        $this->attributes['password'] = bcrypt($password);
-        
+        if (Hash::needsRehash($password))
+        {
+            $this->attributes['password'] = bcrypt($password);
+        }   
     }
 
  
