@@ -27,19 +27,44 @@ Route::get('/emailV', function () {
 Auth::routes(['verify' => true]);
 
 
-Route::get('/home', 'adminController@index')->middleware('verified')->name('home');
-Route::get('/pets', 'adminController@viewPets')->middleware('verified')->name('pets');
-Route::get('/reports', 'adminController@viewReports')->middleware('verified')->name('reports');
-
-
-
-
 Route::get('/', 'HomeController@index')->name('landing');
 Route::get('/howtoadopt', 'HomeController@howToAdopt')->name('adopt1');
 Route::get('/availablepets', 'HomeController@availablePets')->name('availpets');
 
-Route::resource('/users', 'UserController')->middleware('verified');
-Route::resource('/pets', 'petController')->middleware('verified');
+Route::get('/map-maker', 'adminController@mapMaker');
 
-Route::resource('/pets-requests', 'adoptionController')->middleware('verified');
+Route::get('/map', function(){
 
+    // return $_SERVER['REMOTE_ADDR']->postal_code;
+    dd(geoip()->getLocation('121.54.32.154'));
+    $map = geoip()->getLocation('175.158.210.181');
+    dd($map);
+    return view('welcome')->with('map', $map);
+});
+
+// Route::get('/viewProfile/{user}/show', 'UserController@show')->middleware('verified')->name('viewProfile');
+// Route::get('/editProfile/{user}/edit', 'UserController@edit')->middleware('verified')->name('editProfile');
+// Route::resource('/users', 'UserController')->middleware('verified')->middleware('verified');
+// Route::resource('/pets', 'petController')->middleware('verified');
+// Route::resource('/pets-requests', 'adoptionController')->middleware('verified');
+// Route::resource('/incident', 'ReportController')->middleware('verified')->names([
+//     'index' => 'incident'
+// ]);
+
+
+Route::group(['middleware' => ['verified']], function () {
+Route::get('/viewProfile/{user}/show', 'UserController@show')->name('viewProfile');
+Route::get('/editProfile/{user}/edit', 'UserController@edit')->name('editProfile');
+
+Route::get('/home', 'adminController@index')->name('home');
+Route::get('/pets', 'adminController@viewPets')->name('pets');
+Route::get('/reports', 'adminController@viewReports')->name('reports');
+
+
+Route::resource('/users', 'UserController');
+Route::resource('/pets', 'petController');
+Route::resource('/pets-requests', 'adoptionController');
+Route::resource('/incident', 'ReportController')->names([
+    'index' => 'incident'
+]);
+});

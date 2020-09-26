@@ -26,7 +26,7 @@
         border-radius: 30px;
         box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 1), -3px -3px 6px 0px rgba(255, 255, 255, 1);
     }
-    }
+    
 
 </style>
 

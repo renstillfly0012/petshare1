@@ -10,6 +10,7 @@ use App\User;
 use App\Role;
 use App\Http\Requests\PostRequest;
 use App\Http\Requests\PostUpdateRequest;
+use View;
 
 class UserController extends Controller
 {
@@ -64,7 +65,8 @@ class UserController extends Controller
     public function store(PostRequest $request)
     {
     
-        $validated = $request->validated();   
+        $validated = $request->validated(); 
+
         $data = array_merge($validated, ['email_verified_at' => now()]);
       
         $user = User::create($data);
@@ -81,9 +83,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+
+    public function show(User $user)
     {
-        //
+        return view('admin.user.user-view')->with('user', $user);
     }
 
     /**
@@ -92,9 +95,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        return view('admin.user.user-edit')->with('user', $user);
     }
 
     /**

@@ -31,7 +31,7 @@ class adoptionController extends Controller
         if (Gate::denies('isAdmin')) {
             return redirect()->route('landing');
         }
-        $appointments = Appointment::all();
+        // $appointments = Appointment::all();
 
         $appointments = Appointment::with('user', 'pet')->get();
         

@@ -8,11 +8,6 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Hash;
 
-
-
-
-
-
 class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
@@ -56,6 +51,11 @@ class User extends Authenticatable implements MustVerifyEmail
     public function pets()
     {
         return $this->hasMany('App\Pet');
+    }
+
+    public function reports()
+    {
+        return $this->hasMany('App\Report');
     }
 
     public function appointments()

@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('image')->default('pspcalogo.png');
+            $table->string('status')->default('Deactivated');
             $table->rememberToken();
             $table->timestamps();
             $table->timestamp('deleted_at')->nullable();

@@ -22,19 +22,21 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
+            @guest
             <ul class="navbar-nav mr-auto">
 
             </ul>
 
+           
             <!-- Right Side Of Navbar -->
-            <ul class="navbar-nav ml-auto">
+            <ul class="navbar-nav">
                 <!-- Authentication Links -->
-                @guest
+               
                     <li class="nav-item">
-                        <a class="nav-link" id="nav-link" href="{{ route('login') }}">{{ __('About Us') }}</a>
+                        <a class="nav-link" id="nav-link" href="#">{{ __('About Us') }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="nav-link" href="{{ route('login') }}">{{ __('Contact Us') }}</a>
+                        <a class="nav-link" id="nav-link" href="#">{{ __('Contact Us') }}</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" id="nav-link" href="{{ route('adopt1') }}">{{ __('Adopt') }}</a>
@@ -47,21 +49,33 @@
                             <a class="nav-link" id="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                         </li>
                     @endif
+
+                    <li class="nav-item">
+                        <a class="nav-link" id="nav-link"
+                            href="{{ route('login') }}">{{ __('Report An Incident') }}</a>
+                    </li>
+
                     <li class="nav-item">
                         <a class="nav-link" id="nav-link" style="text-decoration: underline;"
                             href="{{ route('login') }}">{{ __('Donate') }}</a>
                     </li>
 
                 @else
-
-                    <li class="nav-item">
+                <ul class="navbar-nav">
+                <div class="btn-group ">
+                    {{-- <li class="nav-item">
                         <a class="nav-link" id="nav-link" href="#">{{ __('About Us') }}</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" id="nav-link" href="#">{{ __('Contact Us') }}</a>
-                    </li>
+                    </li> --}}
                     <li class="nav-item">
                         <a class="nav-link" id="nav-link" href="{{ route('adopt1') }}">{{ __('Adopt') }}</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" id="nav-link"
+                            href="{{ route('incident') }}">{{ __('Report An Incident') }}</a>
                     </li>
 
                     <li class="nav-item">
@@ -70,11 +84,10 @@
                                                                                                                                 background-color: rgba(0, 0, 0, .1);"
                             href="#">{{ __('Donate') }}</a>
                     </li>
-
-
-                    <li class="nav-item dropdown ">
-
-
+                </div>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                    <li class="nav-item dropdown">
                         <a id=" navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre style="color:#fdc370;">
                             <img src="{{ asset('assets/images/pspcalogo.png') }}" alt="" id="card_logo"
@@ -85,10 +98,10 @@
 
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="">
+                        <a class="dropdown-item" href="/viewProfile/{{Auth::user()->id}}/show">
                                 {{ __('View Profile') }}
                             </a>
-                            <a class="dropdown-item" href="">
+                            <a class="dropdown-item" href="/editProfile/{{Auth::user()->id}}/edit">
                                 {{ __('Edit Profile') }}
                             </a>
                             <a class="dropdown-item" href="{{ route('logout') }}"
@@ -102,8 +115,9 @@
                             </form>
                         </div>
                     </li>
-                @endguest
             </ul>
+                @endguest
+            
         </div>
     </div>
 </nav>

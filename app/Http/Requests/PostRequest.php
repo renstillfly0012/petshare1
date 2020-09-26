@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Validator;
 
 class PostRequest extends FormRequest
 {
@@ -11,6 +12,9 @@ class PostRequest extends FormRequest
      *
      * @return bool
      */
+
+    protected $redirectRoute ;
+
     public function authorize()
     {
         return true;
@@ -28,6 +32,20 @@ class PostRequest extends FormRequest
              'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
              'password' => ['required', 'string', 'min:8', 'confirmed'],   
         ];
+    }
+
+    public function withValidator($validator)
+    {
+        if ($validator->fails()) {
+         
+
+            // dd($validator->messages()->all()[0])->withInput();
+            // die(var_dump($validator->errors()));
+            // return back()->with('error', $validator->messages()->all())->withInput();
+            return redirect()->route('incident');
+        } else {
+            die('Passed');
+        }
     }
 
     // public function attributes(){

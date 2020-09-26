@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    {{-- <link href="{{ asset('css/googlemap.css') }}" rel="stylesheet"> --}}
 
 
 </head>
@@ -70,14 +71,13 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    {{-- <script src="{{ asset('js/googlemap.js') }}" defer></script> --}}
 
-
-
-
+ 
     @yield('user_modal_script')
     @yield('pet_modal_script')
 
-
+    @include('sweetalert::alert')
 
 
 </body>

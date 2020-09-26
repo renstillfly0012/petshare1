@@ -83,11 +83,11 @@
 
 
             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                <a href="#" class="dropdown-item">
+                <a href="/viewProfile/{{Auth::user()->id}}/show" class="dropdown-item">
                     View Profile
                 </a>
 
-                <a href="#" class="dropdown-item">
+                <a href="/viewProfile/{{Auth::user()->id}}/edit" class="dropdown-item">
                     Edit Profile
                 </a>
 

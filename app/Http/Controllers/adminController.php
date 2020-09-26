@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+// use Illuminate\Http\Request;
+use Request;
 use Gate;
 use App\User;
 use App\Pet;
 use App\Appointment;
+use App\Report;
+
 
 class adminController extends Controller
 {
@@ -56,6 +59,7 @@ class adminController extends Controller
 
             return redirect()->route('landing');
         }
+        // dd(Location::get(Request::ip()));
         $userCount = User::count();
         $petCount = Pet::count();
         $appointmentCount = Appointment::count();
@@ -77,7 +81,9 @@ class adminController extends Controller
         if (Gate::denies('isAdmin')) {
             return redirect()->route('landing');
         }
-        return view('admin.report.report');
+        $reports = Report::with('user')->get();
+        // dd($reports);
+        return view('admin.report.report')->with('reports', $reports);
     }
 
 
@@ -148,5 +154,25 @@ class adminController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function mapMaker(){
+        //     $locations = Location::all();
+        //     $map_markers = array();
+        //     foreach($locations as $key => $location){
+        //  $map_markers[] = (object)array(
+        // 'location_title' => $location->location_title,
+        // 'coords_lat' => $location->coords_lat,
+        // 'coords_lng' => $location->coords_lng,
+        // 'number' => $location->number,
+        // 'addresline1' => $location->addresline1,
+        // 'addresline2' => $location->addresline2,
+        // 'city' => $location->city,
+        // 'country' => get_country($location->country), 
+        //  );
+        // }  
+    
+    // return view('vendor.googlemap.view');
+
     }
 }

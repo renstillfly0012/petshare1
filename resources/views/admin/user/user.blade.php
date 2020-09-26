@@ -13,11 +13,11 @@
                 </div>
             @endif
 
-            @if (\Session::has('success'))
+            {{-- @if (\Session::has('success'))
                 <div class="alert alert-success">
                     <h3>{{ \Session::get('success') }}</h3>
                 </div>
-            @endif
+            @endif --}}
         </div>
         <div class="card-header">
             <h3 class="card-title">DataTable with minimal features &amp; hover style</h3>
@@ -36,7 +36,7 @@
                             <thead>
                                 <tr role="row">
                                     <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
-                                        aria-label="Browser: activate to sort column ascending">ID</th>
+                                        aria-label="Browser: activate to sort column ascending">User ID</th>
                                     <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
                                         aria-sort="ascending"
                                         aria-label="Rendering engine: activate to sort column descending">Image
@@ -72,7 +72,7 @@
 
                                         <td>{{ $user->email_verified_at == null ? 'Not yet but already sent one' : $user->email_verified_at }}
                                         </td>
-                                        <td></td>
+                                        <td>{{ $user->status }}</td>
                                         <td>
                                             <button class="btn btn-warning pr-4 editbtn">Edit</button><br>
                                             <button class="btn btn-danger deletebtn">Delete</button>
@@ -88,31 +88,29 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-12 col-md-5">
-                        <div class="dataTables_info" id="example2_info" role="status" aria-live="polite">Showing 1 to 10 of
-                            57 entries</div>
+                        <div class="dataTables_info" id="example2_info" role="status" aria-live="polite">Showing {{$users->count()}} of
+                           {{$users->count()}}</div>
                     </div>
                     <div class="col-sm-12 col-md-7">
                         <div class="dataTables_paginate paging_simple_numbers" id="example2_paginate">
                             <ul class="pagination">
-                                <li class="paginate_button puser_age-item previous disabled" id="example2_previous"><a
-                                        href="#" aria-controls="example2" data-dt-idx="0" tabindex="0"
-                                        class="puser_age-link">Previous</a>
+                                <li class="paginate_button page-item previous disabled" id="example2_previous"><a href="#"
+                                        aria-controls="example2" data-dt-idx="0" tabindex="0" class="page-link">Previous</a>
                                 </li>
                                 <li class="paginate_button page-item active"><a href="#" aria-controls="example2"
-                                        data-dt-idx="1" tabindex="0" class="puser_age-link">1</a></li>
+                                        data-dt-idx="1" tabindex="0" class="page-link">1</a></li>
                                 <li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="2"
-                                        tabindex="0" class="puser_age-link">2</a></li>
+                                        tabindex="0" class="page-link">2</a></li>
                                 <li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="3"
-                                        tabindex="0" class="puser_age-link">3</a></li>
+                                        tabindex="0" class="page-link">3</a></li>
                                 <li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="4"
-                                        tabindex="0" class="puser_age-link">4</a></li>
+                                        tabindex="0" class="page-link">4</a></li>
                                 <li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="5"
-                                        tabindex="0" class="puser_age-link">5</a></li>
+                                        tabindex="0" class="page-link">5</a></li>
                                 <li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="6"
-                                        tabindex="0" class="puser_age-link">6</a></li>
+                                        tabindex="0" class="page-link">6</a></li>
                                 <li class="paginate_button page-item next" id="example2_next"><a href="#"
-                                        aria-controls="example2" data-dt-idx="7" tabindex="0"
-                                        class="puser_age-link">Next</a>
+                                        aria-controls="example2" data-dt-idx="7" tabindex="0" class="page-link">Next</a>
                                 </li>
                             </ul>
                         </div>
