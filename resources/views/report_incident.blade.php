@@ -50,7 +50,7 @@
 
         <div class="form-group row">
             <div class="col-md-10 offset-md-1">
-                <input id="address" type="address" class="form-control @error('address') is-invalid @enderror"
+                <input id="address" type="text" class="form-control @error('address') is-invalid @enderror"
                     name="address" value="{{ old('address') }}" autocomplete="address">
 
                 @error('address')
@@ -69,11 +69,19 @@
 
 
             <div class="col-md-10 offset-md-1">
-                <input id="description" type="text" class="form-control"
-                    name="description" autocomplete="description">
+                <input id="description" type="text" class="form-control  @error('description') is-invalid @enderror"
+                    name="description" value="{{ old('description') }}" autocomplete="description">
+
+                    @error('description')
+                    <span class="invalid-feedback text-center" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+
+                    <label for="description"
+                    class="col-md-4 offset-md-4  col-form-label text-md-center">{{ __('Report Description') }}</label>
             </div>
-            <label for="description"
-                class="col-md-4 offset-md-4  col-form-label text-md-center">{{ __('Report Description') }}</label>
+           
         </div>
 
         <div class="form-group row mb-0 ">

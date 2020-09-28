@@ -12,6 +12,7 @@ use App\Http\Requests\PostRequest;
 use App\Http\Requests\PostUpdateRequest;
 use View;
 
+
 class UserController extends Controller
 {
     /**
@@ -23,12 +24,13 @@ class UserController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        // $this->middleware('auth', 'except' => []);
+        // $this->middleware('auth', ['except' => 'adminLogin']);
     }
+
     public function index()
     {
         if (Gate::denies('isAdmin')) {
-            return redirect()->route('landing');
+            return redirect()->route('landing')->with('warning', 'Authorized person can only access this');
         }
        
 
@@ -96,7 +98,8 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(User $user)
-    {
+    {   
+        
         return view('admin.user.user-edit')->with('user', $user);
     }
 
@@ -151,4 +154,6 @@ class UserController extends Controller
         $user->delete();
         return redirect('/users')->with('success', 'USER ID:'.$user->id.' has been Deleted');
     }
+
+   
 }

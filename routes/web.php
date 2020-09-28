@@ -15,17 +15,23 @@ use App\Mail\VerificationMail;
 */
 
 Route::get('/', function () {
+    dd(Request::route()->getName());
     return view('welcome');
 });
 
 Route::get('/emailV', function () {
-    return new VerificationMail;
+  
+    // return new VerificationMail;
 });
+
+Route::get('/admin/login', function(){
+    // dd(Request::route()->getName());
+    return view('auth.login');
+})->name('adminLogin');
 
 // Auth::routes();
 
 Auth::routes(['verify' => true]);
-
 
 Route::get('/', 'HomeController@index')->name('landing');
 Route::get('/howtoadopt', 'HomeController@howToAdopt')->name('adopt1');
@@ -33,14 +39,14 @@ Route::get('/availablepets', 'HomeController@availablePets')->name('availpets');
 
 Route::get('/map-maker', 'adminController@mapMaker');
 
-Route::get('/map', function(){
+// Route::get('/map', function(){
 
-    // return $_SERVER['REMOTE_ADDR']->postal_code;
-    dd(geoip()->getLocation('121.54.32.154'));
-    $map = geoip()->getLocation('175.158.210.181');
-    dd($map);
-    return view('welcome')->with('map', $map);
-});
+//     // return $_SERVER['REMOTE_ADDR']->postal_code;
+//     dd(geoip()->getLocation('121.54.32.154'));
+//     $map = geoip()->getLocation('175.158.210.181');
+//     dd($map);
+//     return view('welcome')->with('map', $map);
+// });
 
 // Route::get('/viewProfile/{user}/show', 'UserController@show')->middleware('verified')->name('viewProfile');
 // Route::get('/editProfile/{user}/edit', 'UserController@edit')->middleware('verified')->name('editProfile');
@@ -51,8 +57,9 @@ Route::get('/map', function(){
 //     'index' => 'incident'
 // ]);
 
-
 Route::group(['middleware' => ['verified']], function () {
+
+
 Route::get('/viewProfile/{user}/show', 'UserController@show')->name('viewProfile');
 Route::get('/editProfile/{user}/edit', 'UserController@edit')->name('editProfile');
 
@@ -67,4 +74,6 @@ Route::resource('/pets-requests', 'adoptionController');
 Route::resource('/incident', 'ReportController')->names([
     'index' => 'incident'
 ]);
+
+
 });

@@ -35,6 +35,7 @@ class UsersTableSeeder extends Seeder
         $foster = User::create([
             'name' => 'Foster User',
             'email' => 'foster@foster.com',
+            'email_verified_at' => now(),
             'password' => 'foster',
         ]);
 

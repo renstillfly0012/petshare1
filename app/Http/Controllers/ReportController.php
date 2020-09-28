@@ -43,8 +43,23 @@ class ReportController extends Controller
     public function store(ReportRequest $request)
     {
         $validated = $request->validated();
-        // dd($validated);
-        $report = Report::create($validated);
+         dd($validated);
+        if($request->hasFile('image') == true){
+            // $user->image = $request->edit_image->getClientOriginalName();
+           
+            $file = $request->image;
+            $extension = $file->getClientOriginalExtension();
+            $filename = time().'.USER_ID_'.$request->user_id.'.'.$extension;
+            // $filename = $file->getClientOriginalName();
+            // $request->image = $filename;
+           
+           
+            // $data = array_merge($validated, ['image' => $filename]);
+            $file->move('assets/images/reports/', $filename);
+        }
+        $data = array_merge($validated, ['image' => $filename]);
+        $report = Report::create($data);
+        // dd($report);
         return view('welcome')->with('success', 'New Data has been Saved');
     }
 
@@ -67,7 +82,16 @@ class ReportController extends Controller
      */
     public function edit(Report $report)
     {
-        //
+        $report = Report::findorfail($id);
+        $user = User::findorfail($report->user_id);
+        // dd($user->email);
+        // Mail::to($user->email)->send(new VerificationMail);
+        $report->report_status == 'Approved' ? $user->notify(new ReportApproved())
+        : $user->notify(new ReportDeclined());
+       
+        
+        return redirect('/pets-requests')->with('success', 'Appointment Changes Request '.$id.' was Saved');
+
     }
 
     /**

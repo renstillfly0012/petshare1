@@ -39,7 +39,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card" id="login_card">
-
+              
 
                     <div class="card-body">
                         <div class="text-center" style="margin-bottom: 166px;">
@@ -48,26 +48,19 @@
                         </div>
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
-
+                            
                             <div class="form-group row">
-
-
-
-
-
                                 <div class="col-md-10 offset-md-1">
-
-
 
                                     <input id="email" type="text" class="form-control @error('email') is-invalid @enderror"
                                         name="email" value="{{ old('email') }}" autocomplete="email" autofocus>
-
 
                                     @error('email')
                                     <span class="invalid-feedback text-center" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                     @enderror
+                                    
                                     <label for="email"
                                         class="col-md-4 offset-md-4  col-form-label text-md-center">{{ __('Email') }}</label>
                                 </div>

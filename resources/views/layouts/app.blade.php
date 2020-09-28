@@ -48,18 +48,27 @@
     @case('login')
     <main class="" style="background-color: #0E401E;">
     @break
+    @case('adminLogin')
+    <main class="" style="background-color: #0E401E;">
+    @break
+        @case('password.request')
+        <main class="" style="background-color: #0E401E;">
+        @break
+        @case('password.reset')
+        <main class="" style="background-color: #0E401E;">
+        @break
         @case('register')
         <main class="" style="background-color: #0E401E;">
         @break
-            @case('editProfile')
-            <main class="" style="background-color: #989898;">
-            @break
-            @case('viewProfile')
-            <main class="" style="background-color: #989898;">
-            @break
-            @case('incident')
-            <main class="" style="background-color: #989898;" >
-            @break
+                @case('editProfile')
+                <main class="" style="background-color: #989898;">
+                @break
+                @case('viewProfile')
+                <main class="" style="background-color: #989898;">
+                @break
+                @case('incident')
+                <main class="" style="background-color: #989898;" >
+                @break
     @default
     <main class="">
             
@@ -110,7 +119,7 @@ function initMap() {
   });
 }
 </script> --}}
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAreFIbOTWUhpd3UggZOUEiOZolWSigj3c&libraries=places&callback=initMap" async defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?key={{env('GOOGLE_APIKEY')}}&libraries=places&callback=initMap" async defer></script>
 
 @include('sweetalert::alert')
 

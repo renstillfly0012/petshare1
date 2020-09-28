@@ -1,4 +1,9 @@
+@if(Gate::denies('isAdmin')){
 @extends('layouts.app')
+}else{
+   @extends('layouts.admin')
+}
+@endif
 
 
 <style>
@@ -16,7 +21,7 @@
 
    <div class="card-body">
     <div class="text-center" style="margin-bottom: 22px;">
-    <a href="/"><img src="assets/images/{{Auth::user()->image}}" alt="" id="card_logo"
+    <a href="/"><img src="/assets/images/{{Auth::user()->image}}" alt="" id="card_logo"
                 height="229ppx" width="235px" class="rounded-circle img-responsive"></a>
     </div>
     <form method="POST" action="#">
@@ -27,7 +32,7 @@
 
             <div class="col-md-10 offset-md-1">
                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
-                    name="name" value="{{ $user->name }}" autocomplete="name" autofocus>
+                    name="name" value="{{ $user->name }}" autocomplete="name" autofocus disabled>
 
                 @error('name')
                 <span class="invalid-feedback text-center " role="alert">
@@ -44,7 +49,7 @@
 
             <div class="col-md-10 offset-md-1">
                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
-                    name="email" value="{{$user->email }}" autocomplete="email">
+                    name="email" value="{{$user->email }}" autocomplete="email" disabled>
 
                 @error('email')
                 <span class="invalid-feedback text-center" role="alert">
@@ -57,35 +62,6 @@
         </div>
 
 
-
-        <div class="form-group row">
-
-
-            <div class="col-md-10 offset-md-1">
-                <input id="password" type="password"
-                    class="form-control @error('password') is-invalid @enderror" name="password"
-                    autocomplete="new-password">
-
-                @error('password')
-                <span class="invalid-feedback text-center" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
-                <label for="password"
-                    class="col-md-4 offset-md-4  col-form-label text-md-center">{{ __('Password') }}</label>
-            </div>
-        </div>
-
-        <div class="form-group row">
-
-
-            <div class="col-md-10 offset-md-1">
-                <input id="password-confirm" type="password" class="form-control"
-                    name="password_confirmation" autocomplete="new-password">
-            </div>
-            <label for="password-confirm"
-                class="col-md-4 offset-md-4  col-form-label text-md-center">{{ __('Confirm Password') }}</label>
-        </div>
 
         <div class="form-group row mb-0 ">
             <div class="col-md-2 offset-md-5">

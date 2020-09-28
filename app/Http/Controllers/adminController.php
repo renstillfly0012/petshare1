@@ -56,8 +56,7 @@ class adminController extends Controller
     public function index()
     {
         if (Gate::denies('isAdmin')) {
-
-            return redirect()->route('landing');
+            return redirect()->route('landing')->with('warning', 'Authorized person can only access this');
         }
         // dd(Location::get(Request::ip()));
         $userCount = User::count();
@@ -79,7 +78,7 @@ class adminController extends Controller
     public function viewReports()
     {
         if (Gate::denies('isAdmin')) {
-            return redirect()->route('landing');
+            return redirect()->route('landing')->with('warning', 'Authorized person can only access this');;
         }
         $reports = Report::with('user')->get();
         // dd($reports);

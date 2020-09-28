@@ -29,7 +29,7 @@ class adoptionController extends Controller
     public function index()
     {
         if (Gate::denies('isAdmin')) {
-            return redirect()->route('landing');
+            return redirect()->route('landing')->with('warning', 'Authorized person can only access this');
         }
         // $appointments = Appointment::all();
 
@@ -107,7 +107,7 @@ class adoptionController extends Controller
         : $user->notify(new AppointmentDeclined());
        
         
-        return redirect('/pets-requests')->with('success', 'Appointment Changes Request '.$id.' was Saved');
+        return redirect('/reports')->with('success', 'Appointment Changes Request '.$id.' was Saved');
 
     }
 
@@ -150,5 +150,7 @@ class adoptionController extends Controller
         
        
     }
+
+
 
 }

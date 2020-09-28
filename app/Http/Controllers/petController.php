@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Gate;
 use App\Pet;
+use Illuminate\Support\Facades\Auth;
 
 class petController extends Controller
 {
@@ -22,8 +23,13 @@ class petController extends Controller
     }
     public function index()
     {
-        if (Gate::denies('isAdmin')) {
-            return redirect()->route('landing');
+        if (Auth::check()) {
+            if (Gate::denies('isAdmin')) {
+                // dd(Auth::check());
+                return redirect()->route('landing')->with('warning', 'Authorized person can only access this');
+            }
+        }else{
+            return redirect()->route('landing')->with('warning', 'Kindly login first to view this page');
         }
         $pets = Pet::all();
         return view('admin.pet.pet')->with('pets', $pets);

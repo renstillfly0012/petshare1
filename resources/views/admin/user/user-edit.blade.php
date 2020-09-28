@@ -14,7 +14,7 @@
 
    <div class="card-body">
     <div class="text-center" style="margin-bottom: 22px;">
-    <a href="/"><img src="assets/images/{{Auth::user()->name}}" alt="" id="card_logo"
+    <a href="/"><img src="/assets/images/{{Auth::user()->image}}" alt="" id="card_logo"
                 height="229ppx" width="235px" class="rounded-circle img-responsive"></a>
     </div>
     <form method="POST" action="#">

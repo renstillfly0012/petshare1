@@ -158,7 +158,7 @@ return [
         'lon' => 120.9979,
         'timezone' => 'Asia/Manila',
         'continent' => 'Unknown',
-        'default' => false,
+        'default' => true,
         'currency' => 'PHP',
     ],
 

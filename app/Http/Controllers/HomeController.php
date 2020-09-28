@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Pet;
+use Gate;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -26,7 +28,15 @@ class HomeController extends Controller
 
             public function index()
             {
-                $pets = Pet::all();
+                if(Auth::check()){
+                if(Gate::denies('isAdmin')){
+                    return view('welcome');
+                
+                  }else{
+                    return redirect('home');
+                  }
+      
+                }
                 return view('welcome');
             }
             public function howToAdopt(){

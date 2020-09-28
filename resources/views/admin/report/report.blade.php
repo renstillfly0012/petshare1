@@ -41,7 +41,7 @@
                                 <tr role="row" class="odd">
                                     <td class="sorting_1">{{$report->id}}</td>
                                     <td>{{$report->user->name}}</td>
-                                    <td><img src="assets/images/{{ $report->image }}" alt="User Image"
+                                    <td><img src="assets/images/reports/{{ $report->image }}" alt="User Image"
                                         class="img-responsive rounded-circle" height="129" width="129"></td>
                                     <td>{{$report->description}}</td>
                                     <td>{{$report->address}}</td>
@@ -103,3 +103,138 @@
         <!-- /.card-body -->
     </div>
 @endsection
+
+
+@section('pet_modal_script')
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $('.editbtn').on('click', function(e) {
+                e.preventDefault();
+
+                $tr = $(this).closest('tr');
+
+                var data = $tr.children("td").map(function() {
+                    return $(this).text();
+                }).get();
+
+                var update_id = data[0];
+
+
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    allowOutsideClick: false,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, Approve it!'
+                }).then((result) => {
+                    if (result.value) {
+
+
+                        var data = {
+                            "token": $('input[name=_token]').val(),
+                            "id": update_id,
+
+
+                        };
+
+                        $.ajax({
+                            type: 'put',
+                            url: 'pets-requests/' + update_id,
+                            // method: 'put',
+                            data: data,
+                            success: function(response) {
+                                
+                            }
+                        });
+
+                        Swal.fire(
+                            'Info',
+                            'The Request has been approved.',
+                            'success'
+                        ).then((result) => {
+                            window.location.href = "/incident/"+ update_id+ "/edit" ;
+                        });
+
+
+                    }
+                })
+            });
+        });
+
+        $(document).ready(function() {
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $('.deletebtn').on('click', function(e) {
+                e.preventDefault();
+
+                $tr = $(this).closest('tr');
+
+                var data = $tr.children("td").map(function() {
+                    return $(this).text();
+                }).get();
+
+                var del_id = data[0];
+
+
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    allowOutsideClick: false,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, decline it!'
+                }).then((result) => {
+                    if (result.value) {
+
+
+                        var data = {
+                            "token": $('input[name=_token]').val(),
+                            "id": del_id,
+                            // "appointment_status": 'decline',
+                        };
+
+                        $.ajax({
+                            type: "DELETE",
+                            url: 'pets-requests/' + del_id,
+                            data: data,
+                            success: function(response) {
+
+                            }
+                        });
+
+                        Swal.fire(
+                            'Info',
+                            'The Request has been declined.',
+                            'success'
+                        ).then((result) => {
+                            window.location.href = "/incident/"+ del_id+ "/edit" ;
+                        });
+
+
+                    }
+                })
+            });
+        });
+
+    </script>
+@endsection
+
