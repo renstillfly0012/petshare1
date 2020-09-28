@@ -43,7 +43,7 @@ class ReportController extends Controller
     public function store(ReportRequest $request)
     {
         $validated = $request->validated();
-         dd($validated);
+        //  dd($validated);
         if($request->hasFile('image') == true){
             // $user->image = $request->edit_image->getClientOriginalName();
            
@@ -60,7 +60,7 @@ class ReportController extends Controller
         $data = array_merge($validated, ['image' => $filename]);
         $report = Report::create($data);
         // dd($report);
-        return view('welcome')->with('success', 'New Data has been Saved');
+        return redirect('/')->with('success', 'Your Report has been submitted');
     }
 
     /**

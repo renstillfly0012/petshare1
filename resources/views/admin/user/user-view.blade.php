@@ -1,9 +1,5 @@
-@if(Gate::denies('isAdmin')){
+
 @extends('layouts.app')
-}else{
-   @extends('layouts.admin')
-}
-@endif
 
 
 <style>
@@ -40,7 +36,7 @@
                 </span>
                 @enderror
                 <label for="name"
-                    class="col-md-4 offset-md-4  col-form-label text-md-center">{{ __('Name') }}</label>
+            class="col-md-4 offset-md-4  col-form-label text-md-center">Name</label>
             </div>
         </div>
 

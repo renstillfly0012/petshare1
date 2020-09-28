@@ -67,7 +67,6 @@
 
         <div class="form-group row">
 
-
             <div class="col-md-10 offset-md-1">
                 <input id="description" type="text" class="form-control  @error('description') is-invalid @enderror"
                     name="description" value="{{ old('description') }}" autocomplete="description">
