@@ -46,7 +46,7 @@
                                             data-card-widget="card-refresh" data-source="/pages/widgets.html"
                                             data-source-selector="#card-refresh-content"><i
                                                 class="fas fa-sync-alt"></i></button> --}}
-                                        <img src="assets/images/pets/{{ $pet->image }}" class="rounded img-fluid" alt="">
+                                        <img src="{{ $pet->image }}" class="rounded img-fluid" alt="">
                                     </div>
                                     <!-- /.card-tools -->
                                 </div>
@@ -63,11 +63,21 @@
                         </button>
                     </div>
 
+
+
                 @endforeach
 
             </div>
 
         </div>
+        <div class="row mt-5">
+            <div class="col-sm-12 col-md-5">
+           
+            </div>
+          
+            {{ $pets->links() }}
+        </div>
+       
     </div>
 
 
@@ -221,7 +231,8 @@
 
 
                 $('#show_pet_id').val(petID);
-                $('#show_pet_image').attr("src", "assets/images/pets/" + petImg);
+                // $('#show_pet_image').attr("src", "assets/images/pets/" + petImg);
+                $('#show_pet_image').attr("src", petImg);
                 $('#show_pet_name').val(petName);
                 $('#show_pet_age').val(petAge);
                 $('#show_pet_breed').val(petBreed);

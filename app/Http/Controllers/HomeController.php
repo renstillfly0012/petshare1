@@ -44,7 +44,7 @@ class HomeController extends Controller
             }
 
             public function availablePets(){
-                $pets = Pet::all();
+                $pets = Pet::paginate(4);
                 // dd($pets);
                 
                 return view('viewallpets')->with('pets', $pets);

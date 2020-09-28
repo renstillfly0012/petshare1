@@ -65,7 +65,9 @@
                                         <td>{{ $pet->id }}</td>
 
                                         <td class="sorting_1 text-center">
-                                            <img src="assets/images/pets/{{ $pet->image }}" alt="User Image"
+                                            {{-- <img src="assets/images/pets/{{ $pet->image }}" alt="User Image"
+                                                class="rounded-circle" height="129" width="129"> --}}
+                                                <img src="{{ $pet->image }}" alt="User Image"
                                                 class="rounded-circle" height="129" width="129">
                                         </td>
                                         <td>{{ $pet->name }}</td>
