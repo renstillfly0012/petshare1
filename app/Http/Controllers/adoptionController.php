@@ -34,11 +34,12 @@ class adoptionController extends Controller
         // $appointments = Appointment::all();
 
         $appointments = Appointment::with('user', 'pet')->get();
+        $pagination = Appointment::paginate(5);
         
 
         // dd($appointments);
     
-        return view('admin.pet.request')->with('appointments', $appointments);
+        return view('admin.pet.request', compact('appointments', 'pagination'));
     }
 
 

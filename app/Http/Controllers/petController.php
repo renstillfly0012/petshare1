@@ -31,7 +31,7 @@ class petController extends Controller
         }else{
             return redirect()->route('landing')->with('warning', 'Kindly login first to view this page');
         }
-        $pets = Pet::all();
+        $pets = Pet::paginate(5);
         return view('admin.pet.pet')->with('pets', $pets);
     }
 

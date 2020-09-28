@@ -8,10 +8,10 @@ use Faker\Generator as Faker;
 $factory->define(Pet::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
-        'image' => 'pspcalogo.png',
-        'age' => 1,
-        'breed' => $faker->breed,
+        'image' => $faker->imageUrl,
+        'age' => $faker->randomDigitNot(0),
+        'breed' => $faker->word,
         'status' => 'Available',
-        'description' => $faker->description,
+        'description' => $faker->sentences(rand(2,10), true),
     ];
 });

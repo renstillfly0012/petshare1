@@ -42,7 +42,7 @@ class UserController extends Controller
 
         // $a = User::with('roles')->get();
         // dd($a->toArray());
-        $users = User::all();
+        $users = User::paginate(5);
         
         return view('admin.user.user')->with('users', $users);
         // return redirect()->route('users');
