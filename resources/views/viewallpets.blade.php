@@ -3,23 +3,7 @@
 @section('content')
 
     <style>
-        a:link,
-        a:visited {
-            text-decoration: none;
-            color: black;
-            cursor: pointer;
-        }
-
-        img {
-            object-fit: cover;
-        }
-
-        input[type="text"],
-        input[type="datetime-local"] {
-            border-radius: 30px;
-            box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 1), -3px -3px 6px 0px rgba(255, 255, 255, 1);
-            text-align: center;
-        }
+  
 
     </style>
     <div class="container-fluid">

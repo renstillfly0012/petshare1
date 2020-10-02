@@ -2,43 +2,49 @@
 
 @section('content')
 
-    <style>
+<style>
+   
+        #body{
+            /* width:400px; */
+            background: url('assets/images/landing_page.png')100%;
+            background-size: 100% 100%;
+    
+
+        }
         h3 {
+            font-size: 18px;
             color: #fdc370;
         }
 
-    </style>
-
-    @if (count($errors) > 0)
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-
-    {{-- @if (\Session::has('success'))
-        <div class="alert alert-success">
-            <h3>{{ \Session::get('success') }}</h3>
-        </div>
-    @endif --}}
-{{-- 
-    $(document).ready(function() {
-        $('.getMaps').on('click', function(e) {
-            var userLat = $(this).data('user-lat');
-            var userLon = $(this).data('user-lon');
-            alert("Page is loaded"+a);
+        @media all (max-width: 500px){
+       #body{
+            /* width:400px; */
+            background: url('assets/images/mobile_landing.png')100%;
+            background-repeat: repeat-y;
+            background-size: 100% 100%;
+                 
+        }
+        img{
+            margin: auto;
+            height:179.77px;
+            width:188.17px;
+        }
+        h3{
+        font-size: 20px;
+        }
+        #carousel_div{
+            /* height:220px;
+            width:262px; */
+        }
+     
+   }
+        
     
-        });
-        }); --}}
-    {{-- <button class="getCoords" data-user-lat="{{$map ?? ''->lat}}" data-user-lon="{{$map ?? ''->lng}}"></button> --}}
-   
+</style>
    
     <div class="box" style="height:2693px">
         <div class="container-fluid"
-            style="margin-top:5%; background-color:black; border-color:black; width: 90%; height:15%;">
+            style="margin-top:5%; background-color:black; border-color:black; width: 90%; height:15%;" id="carousel_div">
 
             <div id="carouselExampleIndicators" class="carousel slide " data-ride="carousel" style="padding-top:140px;">
                 <ol class="carousel-indicators">

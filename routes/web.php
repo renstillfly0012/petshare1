@@ -19,10 +19,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/emailV', function () {
+// Route::get('/emailV', function () {
   
-    // return new VerificationMail;
+//     // return new VerificationMail;
+// });
+
+Route::get('/donation', function (){
+    return view('donation');
 });
+
+Route::post('/create-payment', 'donationController@create')->name('create-payment');
+Route::get('/execute-payment', 'donationController@execute');
+
 
 Route::get('/admin/login', function(){
     // dd(Request::route()->getName());

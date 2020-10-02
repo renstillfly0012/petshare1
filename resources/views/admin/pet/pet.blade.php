@@ -3,23 +3,7 @@
 @section('content')
     <div class="card">
         <div>
-            @if (count($errors) > 0)
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
-
-            {{-- @if (\Session::has('success'))
-                <div class="alert alert-success">
-                    <b>
-                        <h3>{{ \Session::get('success') }}</h3>
-                    </b>
-                </div>
-            @endif --}}
+      
         </div>
         <div class="card-header">
             <h3 class="card-title">All pets and their informations</h3>

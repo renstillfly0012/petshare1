@@ -1,37 +1,6 @@
 @extends('layouts.app')
 
 <style>
-    #login_container {
-        height: 100%;
-
-
-    }
-
-    #login_card {
-        margin-top: 167px;
-        margin-left: 55px;
-        height: 650px;
-        width: 624px;
-        /* width: 100%; */
-        border-radius: 110px;
-        box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 1), -3px -3px 6px 0px rgba(255, 255, 255, 1);
-    }
-
-    #card_logo {
-        /* margin-top: 55px;
-        margin-left: 222px;
-        margin-bottom: 166px; */
-        margin: auto;
-        box-shadow: 4px 4px 18px 0px rgba(0, 0, 0, 1), -4px -4px 18px 0px rgba(255, 255, 255, 1);
-
-    }
-
-    input[type="text"],
-    input[type="password"] {
-        border-radius: 30px;
-        box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 1), -3px -3px 6px 0px rgba(255, 255, 255, 1);
-    }
-    }
 
 </style>
 @section('content')

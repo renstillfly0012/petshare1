@@ -1,12 +1,7 @@
 @extends('layouts.app')
 
 <style>
-    input[type="text"],
-    input[type="email"],
-    input[type="password"] {
-        border-radius: 30px;
-        box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 1), -3px -3px 6px 0px rgba(255, 255, 255, 1);
-    }
+
 </style>
 @section('content')
 <div style="width:1593px; height:1060px; border-radius: 40px;" class="card col-md-10 offset-md-1 mt-5">
