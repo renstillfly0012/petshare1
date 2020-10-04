@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Report;
 use App\Http\Requests\ReportRequest;
-// use Request;
+
 class ReportController extends Controller
 {
     /**
@@ -43,7 +43,7 @@ class ReportController extends Controller
     public function store(ReportRequest $request)
     {
         $validated = $request->validated();
-        //  dd($validated);
+        // dd($request->validate($rules));
         if($request->hasFile('image') == true){
             // $user->image = $request->edit_image->getClientOriginalName();
            
@@ -56,8 +56,9 @@ class ReportController extends Controller
            
             // $data = array_merge($validated, ['image' => $filename]);
             $file->move('assets/images/reports/', $filename);
+            $data = array_merge($validated, ['image' => $filename]);
+          
         }
-        $data = array_merge($validated, ['image' => $filename]);
         $report = Report::create($data);
         // dd($report);
         return redirect('/')->with('success', 'Your Report has been submitted');

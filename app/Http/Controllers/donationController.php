@@ -12,13 +12,19 @@ use PayPal\Api\Payment;
 use PayPal\Api\PaymentExecution;
 use PayPal\Api\RedirectUrls;
 use PayPal\Api\Transaction;
+use App\Donation;
+
+
+
 
 class donationController extends Controller
 {
+
+ 
+  
     
     public function create(Request $request){
-        // dd($request);
-
+      
         $apiContext = new \PayPal\Rest\ApiContext(
             new \PayPal\Auth\OAuthTokenCredential(
                 'ATAWA6JeTzh-x6i1c2vr7t4EZYTjAvTMuzuLQB5TG0dlERLTHwsGRRovTO2QtpSDCpiU7cNu3X7NXVwP',     // ClientID
@@ -49,9 +55,10 @@ class donationController extends Controller
         // $details->setShipping(1.2)
         //     ->setTax(1.3)
         //     ->setSubtotal(17.50);
+        $currency = geoip()->getLocation(\Request::ip())->currency;
 
         $amount = new Amount();
-        $amount->setCurrency("USD")
+        $amount->setCurrency($currency)
             ->setTotal($request->donation_amount);
             // ->setDetails($details);
 
@@ -61,9 +68,19 @@ class donationController extends Controller
             ->setDescription("Payment description")
             ->setInvoiceNumber(uniqid());
 
-            
+      
+        if(!$request->has('donation_name') ){
+            $name = explode(" ",$request->donation_name);
+            $sliced_name = $name[0].$name[1];
+        }else{
+            $sliced_name = 'Anonymous';
+        }
+    
+       
+        
+
         $redirectUrls = new RedirectUrls();
-        $redirectUrls->setReturnUrl('http://petshare1.test/execute-payment')
+        $redirectUrls->setReturnUrl('http://petshare1.test/execute-payment/'.$request->donation_amount.'/'.$sliced_name)
         ->setCancelUrl('http://petshare1.test/cancel');
             
         $payment = new Payment();
@@ -81,8 +98,12 @@ class donationController extends Controller
 
 
     }
-    public function execute(){
+    public function execute($donation_amount, $donation_name){
+        
+       $curr = geoip()->getLocation(\Request::ip())->currency;
+      
   
+        // dd($amount);
         $apiContext = new \PayPal\Rest\ApiContext(
             new \PayPal\Auth\OAuthTokenCredential(
                 'ATAWA6JeTzh-x6i1c2vr7t4EZYTjAvTMuzuLQB5TG0dlERLTHwsGRRovTO2QtpSDCpiU7cNu3X7NXVwP',     // ClientID
@@ -98,21 +119,37 @@ class donationController extends Controller
 
     $transaction = new Transaction();
     $amount = new Amount();
-    $details = new Details();
+    // $details = new Details();
 
-    $details->setShipping(1.2)
-        ->setTax(1.3)
-        ->setSubtotal(17.50);
+    // $details->setShipping(1.2)
+    //     ->setTax(1.3)
+    //     ->setSubtotal(17.50);
 
-    $amount->setCurrency('USD');
-    $amount->setTotal(20);
-    $amount->setDetails($details);
+    $amount->setCurrency($curr);
+    $amount->setTotal($donation_amount);
+    // $amount->setDetails($details);
     $transaction->setAmount($amount);
 
     $execution->addTransaction($transaction);
-
+    // dd($execution->payer_id);
     $result = $payment->execute($execution, $apiContext);
+    $payerId = $result->id;
+    $payerEmail = $result->payer->payer_info->email;
+    $transactionId = $result->transactions[0]->related_resources[0]->sale->id;
     
-    return $result;
+    
+    $donation = Donation::create([
+        'donation_email' => $payerEmail,
+        'donation_name' => $donation_name,
+        'donation_amount' => $donation_amount,
+        'donation_transaction_id' => $transactionId
+       
+    ]);
+    
+    $donation->save();
+
+    // dd($result->transactions[0]->related_resources[0]->sale->id);
+
+    return redirect('/')->with('success', 'Thank you for supporting our organization!');
     }
 }

@@ -139,8 +139,8 @@
                                 
                 <form action="{{ route('create-payment') }}" method="post">
                     @csrf
-                @auth
-                <input type="hidden" id="show_user_id" name="show_user_id" value={{ Auth::user()->id }}>
+                    @auth
+                {{-- <input type="hidden" id="show_user_id" name="show_user_id" value={{ Auth::user()->id }}> --}}
                 @endauth
                     <br>
                 <img src="{{ asset('assets/images/pspcalogo.png') }}" alt="" id="card_logo"
@@ -148,11 +148,19 @@
                 
                 <div class="form-group row">
                     <div class="col-md-10 offset-md-1">
+                        @if(Auth::check() == 1)
+                     
                         <input name="donation_name" id="donation_name" type="text"
                             class="form-control @error('donation_name') is-invalid @enderror"
-                            value="{{ Auth::user()->name }}" autocomplete="donation_name" placeholder="leave it blank if you want to be annonymous" autofocus>
-
-                        @error('donation_name')
+                            value="{{ Auth::user()->name }}" autocomplete="donation_name"
+                            data-toggle="tooltip" data-placement="top" title="leave it blank if you want to be annonymous" autofocus>
+                        @else
+                            <input name="donation_name" id="donation_name" type="text"
+                            class="form-control @error('donation_name') is-invalid @enderror"
+                            value="{{ old('donation_name') }}" autocomplete="donation_name" placeholder="leave it blank if you want to be annonymous" autofocus>
+                       @endif
+                       
+                            @error('donation_name')
                         <span class="invalid-feedback text-center" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>

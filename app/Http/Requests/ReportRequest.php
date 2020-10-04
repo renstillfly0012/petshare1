@@ -24,7 +24,7 @@ class ReportRequest extends FormRequest
     public function rules()
     {
         return [
-            'user_id' => 'required',
+            'user_id' => 'required','number',
             'address' => 'required',
             'description' => 'required',
             'image' => 'required','mimes:jpeg,jpg,png,gif','image', 'max:25000',

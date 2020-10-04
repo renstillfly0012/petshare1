@@ -29,11 +29,10 @@ Route::get('/donation', function (){
 });
 
 Route::post('/create-payment', 'donationController@create')->name('create-payment');
-Route::get('/execute-payment', 'donationController@execute');
+Route::get('/execute-payment/{amount}/{name}', 'donationController@execute');
 
 
 Route::get('/admin/login', function(){
-    // dd(Request::route()->getName());
     return view('auth.login');
 })->name('adminLogin');
 
@@ -47,14 +46,14 @@ Route::get('/availablepets', 'HomeController@availablePets')->name('availpets');
 
 Route::get('/map-maker', 'adminController@mapMaker');
 
-// Route::get('/map', function(){
+Route::get('/map', function(){
 
-//     // return $_SERVER['REMOTE_ADDR']->postal_code;
-//     dd(geoip()->getLocation('121.54.32.154'));
-//     $map = geoip()->getLocation('175.158.210.181');
-//     dd($map);
-//     return view('welcome')->with('map', $map);
-// });
+    // return $_SERVER['REMOTE_ADDR']->postal_code;
+    dd(geoip()->getLocation(Request::ip())->currency);
+    $map = geoip()->getLocation('175.158.210.181');
+    dd($map);
+    return view('welcome')->with('map', $map);
+});
 
 // Route::get('/viewProfile/{user}/show', 'UserController@show')->middleware('verified')->name('viewProfile');
 // Route::get('/editProfile/{user}/edit', 'UserController@edit')->middleware('verified')->name('editProfile');
