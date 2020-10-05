@@ -142,7 +142,8 @@ class donationController extends Controller
         'donation_email' => $payerEmail,
         'donation_name' => $donation_name,
         'donation_amount' => $donation_amount,
-        'donation_transaction_id' => $transactionId
+        'donation_transaction_id' => $transactionId,
+        'donation_currency' => $curr,
        
     ]);
     

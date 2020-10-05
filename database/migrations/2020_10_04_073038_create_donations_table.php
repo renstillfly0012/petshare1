@@ -19,7 +19,7 @@ class CreateDonationsTable extends Migration
             $table->unsignedBigInteger('user_id')->nullable();
             $table->string('donation_name');
             $table->integer('donation_amount');
-            $table->string('donation_transaction_id');
+            $table->string('donation_transaction_id')->default('PHP');
             $table->string('currency');
             $table->timestamps();
         });
