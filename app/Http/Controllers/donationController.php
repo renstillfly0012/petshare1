@@ -143,7 +143,7 @@ class donationController extends Controller
         'donation_name' => $donation_name,
         'donation_amount' => $donation_amount,
         'donation_transaction_id' => $transactionId,
-        'donation_currency' => $curr,
+        'currency' => $curr,
        
     ]);
     
