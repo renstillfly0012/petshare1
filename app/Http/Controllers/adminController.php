@@ -81,7 +81,7 @@ class adminController extends Controller
             return redirect()->route('landing')->with('warning', 'Authorized person can only access this');;
         }
         $reports = Report::with('user')->get();
-        // dd($reports);
+        $paginate = Report::paginate(5);
         return view('admin.report.report')->with('reports', $reports);
     }
 

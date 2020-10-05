@@ -295,6 +295,29 @@
                     </li>
                 @endif
 
+                @if (Request::route()->getName() == 'donations') 
+                <li class="nav-item">
+                    <a href="/donations" class="nav-link active">
+                        <i class="nav-icon fas fa-donate"></i>
+                        <p>
+                            DONATIONS
+
+                        </p>
+                    </a>
+                </li>
+
+                @else
+                    <li class="nav-item">
+                        <a href="/donations" class="nav-link ">
+                            <i class="nav-icon fas fa-donate"></i>
+                            <p>
+                                DONATIONS
+
+                            </p>
+                        </a>
+                    </li>
+                @endif
+
                 <li class="nav-item">
                     <a href="/cms" class="nav-link ">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
