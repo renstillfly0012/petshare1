@@ -64,7 +64,7 @@
 
                 @else
                 <ul class="navbar-nav">
-                <div class="btn-group ">
+             
                     {{-- <li class="nav-item">
                         <a class="nav-link" id="nav-link" href="#">{{ __('About Us') }}</a>
                     </li>
@@ -86,7 +86,7 @@
                                                                                                                                 background-color: rgba(0, 0, 0, .1);"
                             data-toggle="modal" data-target="#modalDonation">{{ __('Donate') }}</button>
                     </li>
-                </div>
+           
             </ul>
             <ul class="navbar-nav ml-auto">
                     <li class="nav-item dropdown">
@@ -141,7 +141,7 @@
                     @csrf
                     @auth
                 {{-- <input type="hidden" id="show_user_id" name="show_user_id" value={{ Auth::user()->id }}> --}}
-                @endauth
+                     @endauth
                     <br>
                 <img src="{{ asset('assets/images/pspcalogo.png') }}" alt="" id="card_logo"
                                 class="rounded-circle img-responsive mb-5">

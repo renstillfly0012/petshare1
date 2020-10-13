@@ -84,11 +84,15 @@
 <script src="{{ asset('js/app.js') }}" defer></script>
 
 
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
-<script src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_APIKEY')}}&libraries=places&callback=initMap" async defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_APIKEY')}}&libraries=places,visualization&callback=initMap" async defer></script>
+
 <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+
+
 {{-- <script
 src="https://www.paypal.com/sdk/js?client-id={{ env('SB_CLIENT_ID')}}"> // Required. Replace SB_CLIENT_ID with your sandbox client ID.
 </script> --}}

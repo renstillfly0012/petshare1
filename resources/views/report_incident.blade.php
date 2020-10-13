@@ -83,11 +83,16 @@
            
         </div>
 
-        <div class="form-group row mb-0 ">
+        <div class="form-group row ml-5">
             <div class="col-md-2 offset-md-5">
-                <button type="submit" class="btn btn-primary">
+                <button type="submit" class="btn btn-primary ml-4">
                     {{ __('Submit Report') }}
                 </button>
+            </div>
+            <div class="col-md-2 offset-md-5 mt-2">
+                <a href="/" class="btn btn-secondary ml-5" style="color:white;">
+                  Cancel
+                </a>
             </div>
         </div>
     </form>
@@ -149,6 +154,8 @@ function initMap() {
   const input = document.getElementById("address_input");
   const autocomplete = new google.maps.places.Autocomplete(address_input);
 
+            
+
   autocomplete.bindTo("bounds", map); // Specify just the place data fields that you need.
 
   autocomplete.setFields(["place_id", "geometry", "name"]);
@@ -204,11 +211,10 @@ function initMap() {
             travelMode: 'DRIVING',
     };
     directionService.route(request, function(result, status){
-
-     
         if(status=="OK"){
             directionDisplay.setDirections(result);
             document.getElementById('map').style.display = "block";
+            
         }else{
             directionDisplay.setMap(null);
             directionDisplay.setDirections(null);
@@ -216,6 +222,8 @@ function initMap() {
         }
     });
   });
+
+
 
 
 

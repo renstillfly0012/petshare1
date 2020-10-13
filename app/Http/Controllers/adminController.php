@@ -155,23 +155,5 @@ class adminController extends Controller
         //
     }
 
-    public function mapMaker(){
-        //     $locations = Location::all();
-        //     $map_markers = array();
-        //     foreach($locations as $key => $location){
-        //  $map_markers[] = (object)array(
-        // 'location_title' => $location->location_title,
-        // 'coords_lat' => $location->coords_lat,
-        // 'coords_lng' => $location->coords_lng,
-        // 'number' => $location->number,
-        // 'addresline1' => $location->addresline1,
-        // 'addresline2' => $location->addresline2,
-        // 'city' => $location->city,
-        // 'country' => get_country($location->country), 
-        //  );
-        // }  
-    
-    // return view('vendor.googlemap.view');
-
-    }
+  
 }

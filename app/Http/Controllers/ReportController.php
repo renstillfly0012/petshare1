@@ -59,6 +59,7 @@ class ReportController extends Controller
             $data = array_merge($validated, ['image' => $filename]);
           
         }
+        dd($data);
         $report = Report::create($data);
         // dd($report);
         return redirect('/')->with('success', 'Your Report has been submitted');

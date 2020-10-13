@@ -13,6 +13,7 @@ use PayPal\Api\PaymentExecution;
 use PayPal\Api\RedirectUrls;
 use PayPal\Api\Transaction;
 use App\Donation;
+use App\Http\Requests\DonationRequest;
 
 
 
@@ -26,8 +27,8 @@ class donationController extends Controller
     }
   
     
-    public function create(Request $request){
-      
+    public function create(DonationRequest $request){
+        // is_numeric
         $apiContext = new \PayPal\Rest\ApiContext(
             new \PayPal\Auth\OAuthTokenCredential(
                 'ATAWA6JeTzh-x6i1c2vr7t4EZYTjAvTMuzuLQB5TG0dlERLTHwsGRRovTO2QtpSDCpiU7cNu3X7NXVwP',     // ClientID
@@ -58,13 +59,15 @@ class donationController extends Controller
         // $details->setShipping(1.2)
         //     ->setTax(1.3)
         //     ->setSubtotal(17.50);
+        
         $currency = geoip()->getLocation(\Request::ip())->currency;
-
+        
         $amount = new Amount();
+       
         $amount->setCurrency($currency)
             ->setTotal($request->donation_amount);
             // ->setDetails($details);
-
+        
         $transaction = new Transaction();
         $transaction->setAmount($amount)
             // ->setItemList($itemList)

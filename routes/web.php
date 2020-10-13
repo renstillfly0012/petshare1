@@ -37,16 +37,15 @@ Route::get('/', 'HomeController@index')->name('landing');
 Route::get('/howtoadopt', 'HomeController@howToAdopt')->name('adopt1');
 Route::get('/availablepets', 'HomeController@availablePets')->name('availpets');
 
-// Route::get('/map-maker', 'adminController@mapMaker');
 
-// Route::get('/map', function(){
+Route::get('/map', function(){
 
-//     // return $_SERVER['REMOTE_ADDR']->postal_code;
-//     dd(geoip()->getLocation(Request::ip())->currency);
-//     $map = geoip()->getLocation('175.158.210.181');
-//     dd($map);
-//     return view('welcome')->with('map', $map);
-// });
+    // return $_SERVER['REMOTE_ADDR']->postal_code;
+    // dd(geoip()->getLocation(Request::ip())->currency);
+    $map = geoip()->getLocation('175.158.210.181');
+    // dd($map);
+    return view('map')->with('map', $map);
+});
 
 
 Route::group(['middleware' => ['verified']], function () {
