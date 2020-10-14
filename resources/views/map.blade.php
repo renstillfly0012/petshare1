@@ -342,12 +342,41 @@ function initMap() {
 
 
     options = {
-        zoom: 14,
-        // center: {lat:14.6009,lng:120.9881}
-        center: {lat:14.5654,lng:120.9979}
+        zoom: 17,
+        center: {lat:14.6009,lng:120.9881},
+        // center: {lat:14.5654,lng:120.9979}
+        // mapTypeId: "terrain",
     }
 
     map = new google.maps.Map(document.getElementById("map"),options);
+    
+
+  //BORDER OF BRGY 390
+    const flightPlanCoordinates = [
+ { lat: 14.601594, lng: 120.988096 },
+    { lat: 14.600512, lng: 120.987423 }, 
+    { lat: 14.600385, lng: 120.987637 }, 
+    { lat: 14.600357, lng: 120.987622 }, 
+    { lat: 14.599522, lng: 120.988716 }, 
+    { lat: 14.599466, lng: 120.988809 }, 
+    { lat: 14.599354, lng: 120.989073 },
+    { lat: 14.599284, lng:  120.9893409 },
+    { lat: 14.597637, lng: 120.989524 },
+    {lat:14.600418, lng:120.990879 },
+    { lat: 14.601594, lng: 120.988096 },
+  ];
+
+  const flightPath = new google.maps.Polygon({
+    path: flightPlanCoordinates,
+    geodesic: true,
+    strokeColor: "#FF0000",
+    strokeOpacity: 1.0,
+    strokeWeight: 2,
+    fillColor: "#FF0000",
+    fillOpacity: 0.35,
+  });
+  flightPath.setMap(map);
+  //BORDER OF BRGY 390
 
     //Array of markers
     var markers = [{
@@ -409,6 +438,7 @@ function initMap() {
 
     }
 
+    //heatmap 
     heatmap = new google.maps.visualization.HeatmapLayer({
     data: getPoints(),
     map: map,
@@ -464,9 +494,11 @@ function changeOpacity() {
 
 function getPoints() {
   return [
-    new google.maps.LatLng( 14.6009, 120.9881),
+    new google.maps.LatLng(14.6009, 120.9881),
     new google.maps.LatLng(14.5654,120.9979),
-  
+    new google.maps.LatLng(14.601594, 120.988096),
+    new google.maps.LatLng(14.601587, 120.988087),
+    new google.maps.LatLng(14.601609, 120.988082),
         ];
        
 }

@@ -12,8 +12,8 @@
 
    <div class="card-body">
     <div class="text-center" style="margin-bottom: 22px;">
-    <a href="/"><img src="/assets/images/{{Auth::user()->image}}" alt="" id="card_logo"
-                height="229ppx" width="235px" class="rounded-circle img-responsive"></a>
+    <img src="/assets/images/{{Auth::user()->image}}" alt="" id="card_logo"
+                height="229ppx" width="235px" class="rounded-circle img-responsive">
     </div>
     <form method="POST" action="#">
         @csrf
@@ -54,11 +54,17 @@
 
 
 
-        <div class="form-group row mb-0 ">
-            <div class="col-md-2 offset-md-5">
-                <button type="submit" class="btn btn-primary">
-                    {{ __('Register') }}
+        <div class="form-group row ml-5 ">
+            {{-- <div class="col-md-2 offset-md-5">
+                <button type="submit" class="btn btn-primary ml-5">
+                    {{ __('Submit') }}
                 </button>
+            </div> --}}
+
+            <div class="col-md-2 offset-md-5 mt-2">
+                <a href="/" class="btn btn-secondary ml-5" style="color:white;">
+                  Cancel
+                </a>
             </div>
         </div>
     </form>
