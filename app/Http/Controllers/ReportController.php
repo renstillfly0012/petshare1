@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Report;
 use App\Http\Requests\ReportRequest;
+use App\Location;
 
 class ReportController extends Controller
 {
@@ -42,11 +43,16 @@ class ReportController extends Controller
      */
     public function store(ReportRequest $request)
     {
-        $validated = $request->validated();
+        
+        
+        $lat = $request->address_lat;
+        $lng = $request->address_lng;
+        // dd($lat+$lng);
         // dd($request->validate($rules));
         if($request->hasFile('image') == true){
             // $user->image = $request->edit_image->getClientOriginalName();
-           
+            $validated = $request->validated();
+            // dd($validated);
             $file = $request->image;
             $extension = $file->getClientOriginalExtension();
             $filename = time().'.USER_ID_'.$request->user_id.'.'.$extension;
@@ -59,9 +65,18 @@ class ReportController extends Controller
             $data = array_merge($validated, ['image' => $filename]);
           
         }
-        dd($data);
+        
+        // dd($data);
         $report = Report::create($data);
-        // dd($report);
+        // dd($data,$report,$lat,$lng);
+        $location = new Location;
+        $location->report_id = $report->id;
+        $location->address = $report->address;
+        $location->address_latitude = $lat;   
+        $location->address_longitude = $lng;
+        $location->save();
+        
+        // dd($data,$report,$location);
         return redirect('/')->with('success', 'Your Report has been submitted');
     }
 

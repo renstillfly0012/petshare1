@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class LocationUser extends Migration
+class CreateLocationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class LocationUser extends Migration
      */
     public function up()
     {
-        Schema::create('location_user', function (Blueprint $table) {
+        Schema::create('locations', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedBigInteger('report_id');
-            // $table->foreign('report_id')->references('id')->on('reports');
-            $table->string('address')->nullable();
-            $table->double('address_latitude')->nullable();
-            $table->double('address_longitude')->nullable();
+            $table->unsignedInteger('report_id')->nullable();
+            $table->foreign('report_id')->references('id')->on('reports');
+            $table->string('address');
+            $table->double('address_latitude');
+            $table->double('address_longitude');
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ class LocationUser extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('locations');
     }
 }

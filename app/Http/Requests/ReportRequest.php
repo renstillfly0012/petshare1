@@ -28,6 +28,14 @@ class ReportRequest extends FormRequest
             'address' => 'required',
             'description' => 'required',
             'image' => 'required','mimes:jpeg,jpg,png,gif','image', 'max:25000',
+            'address_lat' => 'required','double',
+            'address_lng' => 'required','double',
+        ];
+    }
+
+    public function messages(){
+        return[
+          
         ];
     }
 }

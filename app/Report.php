@@ -11,11 +11,18 @@ class Report extends Model
 
     
     protected $fillable = [
-        'user_id','address', 'description','image'
+        'user_id','address', 'description','image',
     ];
 
+    protected $hidden = [
+        'address'
+    ];
 
     public function user(){
         return $this->belongsTo('App\User');
+    }
+
+    public function locations(){
+        return $this->hasMany('App\Location');
     }
 }

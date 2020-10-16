@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Mail\VerificationMail;
-
+use App\Location;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -43,8 +43,10 @@ Route::get('/map', function(){
     // return $_SERVER['REMOTE_ADDR']->postal_code;
     // dd(geoip()->getLocation(Request::ip())->currency);
     $map = geoip()->getLocation('175.158.210.181');
+    $location = Location::all();
     // dd($map);
-    return view('map')->with('map', $map);
+    return view('map')->with(compact('map'))
+    ->with(compact('location'));
 });
 
 

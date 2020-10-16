@@ -63,6 +63,9 @@
             </div>
         </div>
 
+        <input type="hidden" id="address_lat" name="address_lat" value="">
+        <input type="hidden" id="address_lng" name="address_lng"  value="">
+
 
 
         <div class="form-group row">
@@ -111,7 +114,8 @@
     var userLat;
     var userLng;
     var start;
-    var end;
+    var endLat;
+    var endLng;
     var autocomplete;
 
 window.addEventListener('load', (event) => {
@@ -154,7 +158,7 @@ function initMap() {
   const input = document.getElementById("address_input");
   const autocomplete = new google.maps.places.Autocomplete(address_input);
 
-            
+
 
   autocomplete.bindTo("bounds", map); // Specify just the place data fields that you need.
 
@@ -201,10 +205,13 @@ function initMap() {
     start = new google.maps.LatLng(14.6009,120.9881);
     // user = new google.maps.LatLng(parseFloat(userLat),parseFloat(userLng));
   
-        end = new google.maps.LatLng(14.5654,120.9979);
+    endLat = autocomplete.getPlace().geometry.location.lat();
+    endLng = autocomplete.getPlace().geometry.location.lng();
     
-    // lat:14.5916,lng:121.0147
-    console.log(start+""+end)
+    
+    
+
+    console.log(endLat+"\n"+endLng);
     var request = {
         	origin: start,
             destination: place.geometry.location,
@@ -214,7 +221,8 @@ function initMap() {
         if(status=="OK"){
             directionDisplay.setDirections(result);
             document.getElementById('map').style.display = "block";
-            
+            document.getElementById("address_lat").value = endLat;
+            document.getElementById("address_lng").value = endLng; 
         }else{
             directionDisplay.setMap(null);
             directionDisplay.setDirections(null);

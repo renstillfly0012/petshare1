@@ -121,8 +121,6 @@ h3{
     font-size:16px;
    
   }
-
-  
 }
 /* ipad */
 @media (min-width:768px)  {
@@ -183,6 +181,23 @@ h3{
   </div>
 <input id="map-lat"  value="{{$map->lat ?? ''}}" hidden>
 <input id="map-lon"  value="{{$map->lon ?? ''}}" hidden>
+
+ @foreach ($location as $locations) 
+<script>
+  var NumberOfReports =  @json($locations::count());
+  var a = new array();
+  for(NumberOfReports; NumberOfReports>=0; NumberOfReports--){
+    a[NumberofReports] = new Array @json($locations->id,$locations->address_latitude,$locations->address_longitude)
+  }
+  console.log(a[NumberOfReports]);
+</script>
+  <input type="hidden" value="{{$locations->id}}">
+  <input type="hidden" value="{{$locations->report_id}}">
+  <input type="hidden" value="{{$locations->address}}">
+  <input type="hidden" value="{{$locations->address_latitude}}">
+  <input type="hidden" value="{{$locations->address_longitude}}">
+  <br>
+@endforeach 
 
 
 
@@ -333,6 +348,11 @@ h3{
     let map,heatmap;
     var options;
     var infoWindow;
+    var controllerId = @json($locations->id);
+    var controllerLat = @json($locations->address_latitude);
+    var controllerLng = @json($locations->address_longitude);
+    var reportLat_Lng = [controllerLat, controllerLng];
+   
  //need to let the user know that we will use his/her location to pin point.
 
 function initMap() {
@@ -340,16 +360,18 @@ function initMap() {
     var userLon = document.getElementById('map-lon').getAttribute('value');
     console.log(userLat+" "+userLon);
 
+   
 
     options = {
         zoom: 17,
-        center: {lat:14.6009,lng:120.9881},
+      
+        center: {lat:reportLat_Lng[0],lng:reportLat_Lng[1]},
         // center: {lat:14.5654,lng:120.9979}
         // mapTypeId: "terrain",
     }
 
     map = new google.maps.Map(document.getElementById("map"),options);
-    
+    console.log(controllerId);
 
   //BORDER OF BRGY 390
     const flightPlanCoordinates = [
@@ -499,6 +521,7 @@ function getPoints() {
     new google.maps.LatLng(14.601594, 120.988096),
     new google.maps.LatLng(14.601587, 120.988087),
     new google.maps.LatLng(14.601609, 120.988082),
+    new google.maps.LatLng(reportLat_Lng[0],reportLat_Lng[1]),
         ];
        
 }
