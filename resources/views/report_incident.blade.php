@@ -35,7 +35,7 @@
             {{-- <img src="{{ asset('assets/images/pspcalogo.png') }}" alt="" id="card_logo"
                 height="229ppx" width="235px" class="rounded-circle img-responsive"> --}}
             <div>
-            <input class="mb-4" type="file" name="image" id="image" value="">
+            <input class="mb-4" type="file" name="image" accept="image/*" id="image" value="">
 
             @error('image')
             <span class="invalid-feedback text-center" role="alert">

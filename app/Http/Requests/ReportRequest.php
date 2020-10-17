@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Validator;
 
 class ReportRequest extends FormRequest
 {
@@ -27,10 +28,23 @@ class ReportRequest extends FormRequest
             'user_id' => 'required','number',
             'address' => 'required',
             'description' => 'required',
-            'image' => 'required','mimes:jpeg,jpg,png,gif','image', 'max:25000',
+            'image' => 'required|image|mimes:jpeg,jpg,png,gif', 'max:25000',
             'address_lat' => 'required','double',
             'address_lng' => 'required','double',
         ];
+    }
+
+    public function withValidator($validator)
+    {
+        if ($validator->fails()) {
+         
+            // dd($validator->messages()->all()[0])->withInput();
+            // die(var_dump($validator->errors()));
+            // return back()->with('error', $validator->messages()->all())->withInput();
+            return redirect()->route('incident');
+        } else {
+           dd('passed');
+        }
     }
 
     public function messages(){
