@@ -71,7 +71,7 @@
                     View Profile
                 </a>
 
-                <a href="/viewProfile/{{Auth::user()->id}}/edit" class="dropdown-item">
+                <a href="/editProfile/{{Auth::user()->id}}/edit" class="dropdown-item">
                     Edit Profile
                 </a>
 
