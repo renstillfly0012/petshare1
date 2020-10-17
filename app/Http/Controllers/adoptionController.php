@@ -109,7 +109,7 @@ class adoptionController extends Controller
         : $user->notify(new AppointmentDeclined());
         
         
-        return redirect('/pet-requests')->with('success', 'Appointment Changes Request '.$id.' was Saved');
+        return redirect('/pets-requests')->with('success', 'Appointment Changes Request '.$id.' was Saved');
 
     }
 
@@ -149,7 +149,7 @@ class adoptionController extends Controller
         $appointment->appointment_status = 'Declined';
         $appointment->save();
       
-        return redirect('/pet-requests')->with('success', 'Appointment Changes Request '.$id.' was Saved');
+        return redirect('/pets-requests')->with('success', 'Appointment Changes Request '.$id.' was Saved');
         
        
     }
