@@ -3,7 +3,9 @@
 
 
 <style>
-
+body{
+    height:100px;
+}
 </style>
 
 @section('content')

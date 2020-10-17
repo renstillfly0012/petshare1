@@ -39,10 +39,10 @@
 </head>
 @if (Request::route()->getName() == 'landing')
 
-    <body  id="body">
+    <body  id="body" >
     @else
 
-        <body style="overflow: ;">
+        <body >
 @endif
 <div id="app" >
     @switch(Request::route()->getName())

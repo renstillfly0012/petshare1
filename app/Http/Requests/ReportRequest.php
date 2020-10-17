@@ -43,7 +43,7 @@ class ReportRequest extends FormRequest
             // return back()->with('error', $validator->messages()->all())->withInput();
             return redirect()->route('incident');
         } else {
-           dd('passed');
+        //    dd('passed');
         }
     }
 
