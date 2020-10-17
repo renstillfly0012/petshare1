@@ -157,7 +157,7 @@
                         @else
                             <input name="donation_name" id="donation_name" type="text"
                             class="form-control @error('donation_name') is-invalid @enderror"
-                            value="{{ old('donation_name') }}" autocomplete="donation_name" placeholder="leave it blank if you want to be annonymous" autofocus>
+                            value="{{ old('donation_name') }}" autocomplete="donation_name" placeholder="Write Anonymous if you want to be unknown." autofocus>
                        @endif
                        
                             @error('donation_name')

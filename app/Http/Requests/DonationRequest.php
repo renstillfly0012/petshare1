@@ -24,6 +24,7 @@ class DonationRequest extends FormRequest
     public function rules()
     {
         return [
+            'donation_name' => 'required',
             'donation_amount' => 'required|numeric',
         ];
     }

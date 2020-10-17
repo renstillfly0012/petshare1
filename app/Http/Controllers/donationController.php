@@ -75,21 +75,27 @@ class donationController extends Controller
             ->setInvoiceNumber(uniqid());
 
       
-        if(!$request->has('donation_name') ){
-            $name = explode(" ",$request->donation_name);
-            $sliced_name = $name[0].$name[1];
-        }else{
-            $sliced_name = 'Anonymous';
-        }
+        // if($request->has('donation_name') ){
+        //     // $name = explode(" ",$request->donation_name);
+            
+        //     // if(preg_match('/\s/',$request->donation_name))
+        //     // {
+        //     //     $sliced_name = $name[0].$name[1];
+        //     // }
+        //     $sliced_name = $request->donation_name;
+          
+        // }else{
+        //     $sliced_name = 'Anonymous';
+        // }
     
        
         
 
         $redirectUrls = new RedirectUrls();
-        $redirectUrls->setReturnUrl('http://pet-share.com/execute-payment/'.$request->donation_amount.'/'.$sliced_name)
-        ->setCancelUrl('http://pet-share.com/cancel');
-        // $redirectUrls->setReturnUrl('http://petshare1.test/execute-payment/'.$request->donation_amount.'/'.$sliced_name)
-        // ->setCancelUrl('http://petshare1.test/cancel');
+        // $redirectUrls->setReturnUrl('http://pet-share.com/execute-payment/'.$request->donation_amount.'/'.$sliced_name)
+        // ->setCancelUrl('http://pet-share.com/cancel');
+        $redirectUrls->setReturnUrl('http://petshare1.test/execute-payment/'.$request->donation_amount.'/'.$request->donation_name)
+        ->setCancelUrl('http://petshare1.test/cancel');
             
         $payment = new Payment();
         $payment->setIntent("sale")
@@ -145,6 +151,7 @@ class donationController extends Controller
     $payerEmail = $result->payer->payer_info->email;
     $transactionId = $result->transactions[0]->related_resources[0]->sale->id;
     
+   
     
     $donation = Donation::create([
         'donation_email' => $payerEmail,
