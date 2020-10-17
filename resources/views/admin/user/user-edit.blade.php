@@ -81,16 +81,16 @@
                 class="col-md-4 offset-md-4  col-form-label text-md-center">{{ __('Confirm Password') }}</label>
         </div>
 
-        <div class="form-group row">
+        <div class="form-group row text-center">
             <div class="col-md-2 offset-md-5">
                 <button type="submit" class="btn btn-primary">
                     {{ __('Submit') }}
                 </button>
             </div>
 
-            <div class="col-md-2 offset-md-5 mt-2">
-                <a href="/" class="btn btn-secondary" style="color:white;">
-                  Cancel
+            <div class="col-md-2 offset-md-5 mt-2 ">
+                <a href="/" class="btn btn-secondary " style="color:white;">
+                  &nbsp;Cancel
                 </a>
             </div>
         </div>

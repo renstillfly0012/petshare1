@@ -14,7 +14,7 @@
 <div id="map" style="height:400px; width:100%; display:none;"></div>
 <div id="infowindow-content">
     <span id="place-name" class="title"></span><br />
-    <strong>Place ID:</strong> <span id="place-id"></span><br />
+    <strong></strong> <span id="place-id"></span><br />
     <span id="place-address"></span>
   </div>
 <input id="map-lat"  value="{{$map->lat ?? ''}}" hidden>
