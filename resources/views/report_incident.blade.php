@@ -171,9 +171,13 @@ function initMap() {
     map: map,
   });
 
-  marker.addListener("click", () => {
-    infowindow.open(map, marker);
-  });
+
+
+//setting marker
+   
+//   marker.addListener("click", () => {
+//     infowindow.open(map, marker);
+//   });
   autocomplete.addListener("place_changed", () => {
     infowindow.close();
     const place = autocomplete.getPlace();
@@ -189,10 +193,11 @@ function initMap() {
       map.setZoom(17);
     } // Set the position of the marker using the place ID and location.
 
-    marker.setPlace({
-      placeId: place.place_id,
-      location: place.geometry.location,
-    });
+//setting marker
+ // marker.setPlace({
+    //   placeId: place.place_id,
+    //   location: place.geometry.location,
+    // });
     marker.setVisible(true);
     infowindowContent.children.namedItem("place-name").textContent = place.name;
     infowindowContent.children.namedItem("place-id").textContent =
