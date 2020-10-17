@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Report;
+use Illuminate\Http\Request;
 use App\Http\Requests\ReportRequest;
 use App\Location;
 use App\User;
@@ -100,7 +101,7 @@ class ReportController extends Controller
      * @param  \App\Report  $report
      * @return \Illuminate\Http\Response
      */
-    public function edit(Report $report)
+    public function edit($id)
     {
         $report = Report::findorfail($id);
        
@@ -123,13 +124,13 @@ class ReportController extends Controller
      * @param  \App\Report  $report
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Report $report)
+    public function update(Request $request, $id)
     {
-        dd($report);
-        $report->report_status = 'Approved';
+        $report = Report::findOrFail($id);
+        $report->report_status = 'Apprved';
         $report->save();
 
-        return redirect('/reports')->with('success', 'Report Changes '.$id.' was Saved');
+        return redirect('/')->with('success', 'Report Changes '.$id.' was Saved');
     }
 
     /**
@@ -138,8 +139,15 @@ class ReportController extends Controller
      * @param  \App\Report  $report
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Report $report)
+    public function destroy($id)
     {
-        //
+
+        $report = Report::findOrFail($id);
+        $report->report_status = 'Declined';
+        $report->save();
+      
+        return redirect('/incident')->with('success', 'Report Changes '.$id.' was Saved');
+        
+       
     }
 }

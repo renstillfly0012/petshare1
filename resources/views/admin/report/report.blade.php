@@ -151,7 +151,7 @@
 
                         $.ajax({
                             type: 'put',
-                            url: 'reports/' + update_id,
+                            url: 'incident/' + update_id,
                             // method: 'put',
                             data: data,
                             success: function(response) {
@@ -164,7 +164,7 @@
                             'The Report has been approved.',
                             'success'
                         ).then((result) => {
-                            window.location.href = "/reports/"+ update_id+ "/edit" ;
+                            window.location.href = "/incident/"+ update_id+ "/edit" ;
                         });
 
 
@@ -214,7 +214,7 @@
 
                         $.ajax({
                             type: "DELETE",
-                            url: 'pets-requests/' + del_id,
+                            url: 'incident/' + del_id,
                             data: data,
                             success: function(response) {
 
@@ -226,7 +226,7 @@
                             'The Request has been declined.',
                             'success'
                         ).then((result) => {
-                            window.location.href = "/reports/"+ del_id+ "/edit" ;
+                            window.location.href = "/incident/"+ del_id+ "/edit" ;
                         });
 
 

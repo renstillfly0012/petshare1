@@ -66,8 +66,10 @@ Route::resource('/users', 'UserController');
 Route::resource('/pets', 'petController');
 Route::resource('/pets-requests', 'adoptionController');
 Route::resource('/incident', 'ReportController')->names([
-    'index' => 'incident'
+    'index' => 'incident',
+    
 ]);
+
 
 
 });

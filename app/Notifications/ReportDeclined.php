@@ -41,7 +41,7 @@ class ReportDeclined extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The report you filed has been approved')
+                    ->line('The report you filed has been declined')
                     ->action('Notification Action', url('/'))
                     ->line('Thank you for using our application!');
     }

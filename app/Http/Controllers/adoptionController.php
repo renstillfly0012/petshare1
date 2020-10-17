@@ -125,7 +125,7 @@ class adoptionController extends Controller
         $appointment = Appointment::findOrFail($id);
         $appointment->appointment_status = 'Approved';
         $appointment->save();
-        $user = User::findorfail($id);
+        
        
         // dd($user);
         // Mail::to($user->email)->send(new VerificationMail);
