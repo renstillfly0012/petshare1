@@ -105,7 +105,7 @@
 @endsection
 
 
-@section('pet_modal_script')
+@section('report_modal_script')
 
 
     <script type="text/javascript">
@@ -151,7 +151,7 @@
 
                         $.ajax({
                             type: 'put',
-                            url: 'pets-requests/' + update_id,
+                            url: 'reports/' + update_id,
                             // method: 'put',
                             data: data,
                             success: function(response) {
@@ -161,10 +161,10 @@
 
                         Swal.fire(
                             'Info',
-                            'The Request has been approved.',
+                            'The Report has been approved.',
                             'success'
                         ).then((result) => {
-                            window.location.href = "/incident/"+ update_id+ "/edit" ;
+                            window.location.href = "/reports/"+ update_id+ "/edit" ;
                         });
 
 
@@ -226,7 +226,7 @@
                             'The Request has been declined.',
                             'success'
                         ).then((result) => {
-                            window.location.href = "/incident/"+ del_id+ "/edit" ;
+                            window.location.href = "/reports/"+ del_id+ "/edit" ;
                         });
 
 

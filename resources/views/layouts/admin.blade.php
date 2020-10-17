@@ -76,6 +76,7 @@
  
     @yield('user_modal_script')
     @yield('pet_modal_script')
+    @yield('report_modal_script')
 
     @include('sweetalert::alert')
 

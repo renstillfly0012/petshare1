@@ -66,7 +66,7 @@ class UserController extends Controller
      */
     public function store(PostRequest $request)
     {
-    
+        
         $validated = $request->validated(); 
 
         $data = array_merge($validated, ['email_verified_at' => now()]);

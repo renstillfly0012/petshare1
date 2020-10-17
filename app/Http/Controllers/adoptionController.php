@@ -104,11 +104,12 @@ class adoptionController extends Controller
         $user = User::findorfail($appointment->user_id);
         // dd($user->email);
         // Mail::to($user->email)->send(new VerificationMail);
+   
         $appointment->appointment_status == 'Approved' ? $user->notify(new AppointmentApproved())
         : $user->notify(new AppointmentDeclined());
-       
         
-        return redirect('/reports')->with('success', 'Appointment Changes Request '.$id.' was Saved');
+        
+        return redirect('/pet-requests')->with('success', 'Appointment Changes Request '.$id.' was Saved');
 
     }
 
@@ -125,7 +126,8 @@ class adoptionController extends Controller
         $appointment->appointment_status = 'Approved';
         $appointment->save();
         $user = User::findorfail($id);
-        dd($user);
+       
+        // dd($user);
         // Mail::to($user->email)->send(new VerificationMail);
         // ;
         return redirect('/')->with('success', 'Appointment Changes Request '.$id.' was Saved');
@@ -146,8 +148,8 @@ class adoptionController extends Controller
         $appointment = Appointment::findOrFail($id);
         $appointment->appointment_status = 'Declined';
         $appointment->save();
-    
-        return redirect('/')->with('success', 'Appointment Changes Request '.$id.' was Saved');
+      
+        return redirect('/pet-requests')->with('success', 'Appointment Changes Request '.$id.' was Saved');
         
        
     }

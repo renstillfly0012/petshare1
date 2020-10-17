@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Report;
 use App\Http\Requests\ReportRequest;
 use App\Location;
+use App\User;
+use App\Notifications\ReportAppoved;
+use App\Notifications\ReportDeclined;
 
 class ReportController extends Controller
 {
@@ -100,14 +103,16 @@ class ReportController extends Controller
     public function edit(Report $report)
     {
         $report = Report::findorfail($id);
+       
         $user = User::findorfail($report->user_id);
+        // $report->report_status =
         // dd($user->email);
         // Mail::to($user->email)->send(new VerificationMail);
         $report->report_status == 'Approved' ? $user->notify(new ReportApproved())
         : $user->notify(new ReportDeclined());
        
         
-        return redirect('/pets-requests')->with('success', 'Appointment Changes Request '.$id.' was Saved');
+        return redirect('/reports')->with('success', 'Report Changes '.$id.' was Saved');
 
     }
 
@@ -120,7 +125,11 @@ class ReportController extends Controller
      */
     public function update(Request $request, Report $report)
     {
-        //
+        dd($report);
+        $report->report_status = 'Approved';
+        $report->save();
+
+        return redirect('/reports')->with('success', 'Report Changes '.$id.' was Saved');
     }
 
     /**
