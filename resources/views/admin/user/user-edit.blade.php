@@ -12,22 +12,23 @@
     <img src="/assets/images/{{Auth::user()->image}}" alt="" id="card_logo"
                 height="229ppx" width="235px" class="rounded-circle img-fluid"><
     </div>
-    <form method="POST" action="#">
+    <form method="POST" action="{{ action('UserController@update',Auth::user()->id) }}">
         @csrf
+        @method('PUT')
 
         <div class="form-group row">
 
 
             <div class="col-md-10 offset-md-1">
-                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
-                    name="name" value="{{ Auth::user()->name }}" autocomplete="name" autofocus>
+                <input id="edit_user_name" type="text" class="form-control @error('edit_user_name') is-invalid @enderror"
+                    name="edit_user_name" value="{{ Auth::user()->name }}" autocomplete="edit_user_name" autofocus>
 
-                @error('name')
+                @error('edit_user_name')
                 <span class="invalid-feedback text-center " role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
                 @enderror
-                <label for="name"
+                <label for="edit_user_name"
                     class="col-md-4 offset-md-4  col-form-label text-md-center">{{ __('Name') }}</label>
             </div>
         </div>
@@ -36,15 +37,15 @@
 
 
             <div class="col-md-10 offset-md-1">
-                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
-                    name="email" value="{{Auth::user()->email }}" autocomplete="email">
+                <input id="edit_email" type="email" class="form-control @error('email') is-invalid @enderror"
+                    name="edit_email" value="{{Auth::user()->email }}" autocomplete="edit_email">
 
-                @error('email')
+                @error('edit_email')
                 <span class="invalid-feedback text-center" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
                 @enderror
-                <label for="email"
+                <label for="edit_email"
                     class="col-md-4 offset-md-4  col-form-label text-md-center">{{ __('E-Mail Address') }}</label>
             </div>
         </div>
@@ -55,16 +56,16 @@
 
 
             <div class="col-md-10 offset-md-1">
-                <input id="password" type="password"
-                    class="form-control @error('password') is-invalid @enderror" name="password"
-                    value="{{Auth::user()->password }}" autocomplete="new-password">
+                <input id="edit_password" type="password"
+                    class="form-control @error('edit_password') is-invalid @enderror" name="edit_password"
+                    value="{{Auth::user()->password }}" autocomplete="edit_password">
 
-                @error('password')
+                @error('edit_password')
                 <span class="invalid-feedback text-center" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
                 @enderror
-                <label for="password"
+                <label for="edit_password"
                     class="col-md-4 offset-md-4  col-form-label text-md-center">{{ __('Password') }}</label>
             </div>
         </div>

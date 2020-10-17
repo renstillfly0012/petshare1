@@ -136,7 +136,11 @@ class UserController extends Controller
         // $user = User::update($data);
         
         // $request->edit_image->store('assets/images/uploads','public');
+        if($user->roles->first()->name == 'foster'){
+            return redirect('/')->with('success', 'Changes to your Data has been Saved');
+        }
         return redirect('/users')->with('success', 'Changes to '.$user->name."'s Data has been Saved");
+        
 
     }
 
