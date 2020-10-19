@@ -16,12 +16,13 @@ class Reports extends Migration
         Schema::create('reports', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('image')->default('pspcalogo.png');
             $table->string('address');
             $table->text('description');
             $table->string('report_status')->default('Pending');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

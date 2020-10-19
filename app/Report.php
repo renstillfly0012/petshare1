@@ -4,11 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Report extends Model
 {
     use Notifiable;
-
+    use SoftDeletes;
     
     protected $fillable = [
         'user_id','address', 'description','image',

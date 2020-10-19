@@ -22,6 +22,7 @@ class CreateDonationsTable extends Migration
             $table->string('donation_transaction_id');
             $table->string('currency')->default('PHP');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

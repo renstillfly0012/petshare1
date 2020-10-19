@@ -33,6 +33,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'email','password', 'remember_token','email_verified_at',
     ];
 
+    protected $dates = ['deleted_at'];
+
     /**
      * The attributes that should be cast to native types.
      *
@@ -85,6 +87,20 @@ class User extends Authenticatable implements MustVerifyEmail
         {
             $this->attributes['password'] = bcrypt($password);
         }   
+    }
+
+    protected static function boot() {
+        parent::boot();
+
+        static::deleting(function($user) {
+            $user->appointments()->delete();
+        });
+    
+        static::deleting(function($user) {
+            $user->reports()->delete();
+        });
+
+        
     }
 
  

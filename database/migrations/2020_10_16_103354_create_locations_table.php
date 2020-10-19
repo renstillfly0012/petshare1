@@ -16,11 +16,12 @@ class CreateLocationsTable extends Migration
         Schema::create('locations', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('report_id')->nullable();
-            $table->foreign('report_id')->references('id')->on('reports');
+            $table->foreign('report_id')->references('id')->on('reports')->onDelete('cascade');
             $table->string('address');
             $table->double('address_latitude');
             $table->double('address_longitude');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
