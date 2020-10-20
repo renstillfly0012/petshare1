@@ -1,9 +1,11 @@
 @extends('layouts.admin')
 
 @section('content')
+
+
 <div class="card">
     <div class="card-header">
-        <h3 class="card-title">All Donations and their informations</h3>
+        <h3 class="card-title">All contents and their contents</h3>
     </div>
     <!-- /.card-header -->
     <div class="card-body">
@@ -20,34 +22,33 @@
                             <tr role="row">
                                 <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
                                     aria-sort="ascending"
-                                    aria-label="Rendering engine: activate to sort column descending">Donation ID
+                                    aria-label="Rendering engine: activate to sort column descending">Content ID
                                 </th>
                                 <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
-                                    aria-label="Browser: activate to sort column ascending">Name</th>
+                                    aria-label="Browser: activate to sort column ascending">Content Section</th>
                                     <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
-                                    aria-label="Browser: activate to sort column ascending">Donation Email</th>
-                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
-                                    aria-label="Platform(s): activate to sort column ascending">Donation Amount</th>
-                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
-                                    aria-label="Engine version: activate to sort column ascending">Currency</th>
+                                    aria-label="Browser: activate to sort column ascending">Content Title</th>
+                 
                                     <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
-                                    aria-label="Browser: activate to sort column ascending">Transaction ID</th>
+                                    aria-label="Browser: activate to sort column ascending">Content Image</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                    aria-label="Browser: activate to sort column ascending">Content Description</th>
+                 
                                 <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
                                     aria-label="CSS grade: activate to sort column ascending">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($donations as $donation)
+                            @foreach($contents as $content)
                             <tr role="row" class="odd">
-                                <td class="sorting_1">{{$donation->id}}</td>
-                                <td>{{$donation->donation_name}}</td>
-                                <td>{{$donation->donation_email}}</td>
-                                <td>{{$donation->donation_amount}}</td>
-                                <td>{{$donation->currency}}</td>
-                                <td>{{$donation->donation_transaction_id}}</td>
+                                <td class="sorting_1">{{$content->id}}</td>
+                                <td>{{$content->content_section}}</td>
+                                <td>{{$content->content_title}}</td>
+                                <td>{{$content->content_image}}</td>
+                                <td>{{$content->content_description}}</td>
                                 <td>
-                                    {{-- <button class="btn btn-warning pr-4 editbtn">Approve</button><br>
-                                    <button class="btn btn-danger deletebtn">Decline</button> --}}
+                                   <button class="btn btn-warning pr-4 editbtn">Edit</button><br>
+                                    <button class="btn btn-primary deletebtn">View</button> 
                                 </td>
                             </tr>
                             @endforeach
@@ -55,12 +56,11 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <th rowspan="1" colspan="1">Donation ID</th>
-                                <th rowspan="1" colspan="1">Name</th>
-                                <th rowspan="1" colspan="1">Donation Email</th>
-                                <th rowspan="1" colspan="1">Donation Amount</th>
-                                <th rowspan="1" colspan="1">Currency</th>
-                                <th rowspan="1" colspan="1">Transaction ID</th>
+                                <th rowspan="1" colspan="1">Content ID</th>
+                                <th rowspan="1" colspan="1">Content Section</th>
+                                <th rowspan="1" colspan="1">Content Title</th>
+                                <th rowspan="1" colspan="1">Content Image</th>
+                                <th rowspan="1" colspan="1">Content Description</th>
                                 <th rowspan="1" colspan="1">Action</th>
                             </tr>
                         </tfoot>
@@ -72,12 +72,19 @@
                    
                 </div>
                 <div class="col-sm-12 col-md-7">
-                    {{ $donations->links() }}
+                    {{ $contents->links() }}
                 </div>
             </div>
         </div>
+    
     </div>
     <!-- /.card-body -->
 </div>
 
+
 @endsection
+
+
+
+<!-- Add Modal -->
+

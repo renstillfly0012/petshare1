@@ -29,6 +29,7 @@ class UsersTableSeeder extends Seeder
             'email' => 'admin@admin.com',
             'email_verified_at' => now(),
             'password' => 'admin',
+            'status' => 'Activated'
             // 'password' => Hash::make('admin'),
         ]);
 
@@ -37,12 +38,14 @@ class UsersTableSeeder extends Seeder
             'email' => 'foster@foster.com',
             'email_verified_at' => now(),
             'password' => 'foster',
+            'status' => 'Activated'
         ]);
 
         $vet = User::create([
             'name' => 'Vet User',
             'email' => 'vet@vet.com',
             'password' => 'vet',
+        
         ]);
 
         $admin->roles()->attach($adminRole);

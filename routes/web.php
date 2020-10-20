@@ -70,6 +70,8 @@ Route::resource('/incident', 'ReportController')->names([
     
 ]);
 
+Route::resource('/cms', 'cmsController');
+
 
 
 });
