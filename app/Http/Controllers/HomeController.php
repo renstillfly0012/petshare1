@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Pet;
 use Gate;
 use Auth;
+use App\Content;
 
 class HomeController extends Controller
 {
@@ -28,6 +29,7 @@ class HomeController extends Controller
 
             public function index()
             {
+
                 if(Auth::check()){
                 if(Gate::denies('isAdmin')){
                     return view('welcome');
@@ -37,7 +39,9 @@ class HomeController extends Controller
                   }
       
                 }
-                return view('welcome');
+                $contents = Content::all();
+                // dd($contents[0]->content_image);
+                return view('welcome')->with('contents', $contents);
             }
             public function howToAdopt(){
                 return view('howtoadopt');

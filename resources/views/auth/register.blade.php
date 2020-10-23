@@ -3,16 +3,20 @@
 
 </style>
 
+
 @section('content')
+
     <div class="container" id="Register_container">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card" id="register_card">
                     {{-- <div class="card-header">{{ __('Register') }}</div> --}}
-
+                 
+                 
+                
                     <div class="card-body">
                         <div class="text-center" style="margin-bottom: 22px;">
-                            <a href="/"><img src="{{ asset('assets/images/pspcalogo.png') }}" alt="" id="card_logo"
+                            <a href="/"><img src="assets/images/{{$contents[0]->content_image}}" alt="" id="card_logo"
                                     class="rounded-circle img-responsive"></a>
                         </div>
                         <form method="POST" action="{{ route('register') }}">

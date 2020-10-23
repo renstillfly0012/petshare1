@@ -325,7 +325,7 @@
                             <div class="col-md-2 offset-md-4">
                                 <img class="mb-4 image-center rounded-circle" src="" alt="User Image" id="rowImage"
                                     height="129px" width="129px">
-                                <input class="mb-4" type="file" name="edit_image" id="imageName" value="">
+                                <input class="mb-4" type="file" name="edit_image" id="imageName" value="" accept="image/*">
 
                                 @error('edit_image')
                                 <span class="invalid-feedback text-center" role="alert">

@@ -62,8 +62,9 @@ class adminController extends Controller
         $userCount = User::count();
         $petCount = Pet::count();
         $appointmentCount = Appointment::count();
+        $reportCount = Report::count();
         // return view('admin.home')->with('userCount', $userCount);
-        return view('admin.home',  compact('userCount', 'petCount', 'appointmentCount' ));
+        return view('admin.home',  compact('userCount', 'petCount', 'appointmentCount', 'reportCount'));
         // return redirect()->route('admin-landing');
     }
     public function  viewPets()

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\CmsRequest;
 use App\Content;
 
 class cmsController extends Controller
@@ -59,7 +60,7 @@ class cmsController extends Controller
      */
     public function edit($id)
     {
-        //
+       
     }
 
     /**
@@ -69,9 +70,31 @@ class cmsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CmsRequest $request, $id)
     {
-        //
+        
+        // dd($cms = $request);
+        $cms = Content::findorfail($id);
+        // dd($cms);
+        $cms->content_section = $request->edit_content_section;
+        $cms->content_title = $request->edit_content_title;
+        $cms->content_description = $request->edit_content_description;
+        if($request->hasFile('edit_image') == true){
+            // $user->image = $request->edit_image->getClientOriginalName();
+           
+            $file = $request->edit_image;
+            $extension = $file->getClientOriginalExtension();
+            $filename = time().'.CONTENT_ID_'.$cms->id.'.'.$extension;
+            // $filename = $file->getClientOriginalName();
+            $cms->content_image = $filename;
+           
+            // dd($cms);
+            // $data = array_merge($validated, ['image' => $filename]);
+            $file->move('assets/images/', $filename);
+            }
+        // dd($cms);
+        $cms->save();
+        return redirect('/cms')->with('success', "Changes to the row's Data has been Saved");
     }
 
     /**

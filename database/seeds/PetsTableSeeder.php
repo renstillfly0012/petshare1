@@ -11,6 +11,7 @@ class PetsTableSeeder extends Seeder
      */
     public function run()
     {
+       
         factory(Pet::class, 10)->create();
     }
 }

@@ -53,25 +53,27 @@
                     <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
                 </ol>
                 <div class="carousel-inner">
+                    {{-- @foreach($contents->take(3) as $content) --}}
                     <div class="carousel-item active">
-                        <img class="d-block img-fluid" src="{{ asset('assets/images/adopt.png') }}" alt="First slide">
+                    <img class="d-block img-fluid" src="assets/images/{{$contents[0]->content_image}}" alt="First slide">
                         <div class="carousel-caption d-none d-md-block">
-                            <h5>Announcement 1</h5>
-                            <p>text 1</p>
+                            <h5>{{$contents[0]->content_title}}</h5>
+                            <p>{{$contents[0]->content_description}}</p>
                         </div>
                     </div>
+                    {{-- @endforeach --}}
                     <div class="carousel-item">
-                        <img class="d-block img-fluid" src="{{ asset('assets/images/report.png') }}" alt="Second slide">
+                        <img class="d-block img-fluid" src="assets/images/{{$contents[0]->content_image}}" alt="Second slide">
                         <div class="carousel-caption d-none d-md-block">
-                            <h5>Announcement 2</h5>
-                            <p>text 2</p>
+                            <h5>{{$contents[1]->content_title}}</h5>
+                            <p>{{$contents[1]->content_description}}</p>
                         </div>
                     </div>
                     <div class="carousel-item">
                         <img class="d-block img-fluid" src="{{ asset('assets/images/donate.png') }}" alt="Third slide">
                         <div class="carousel-caption d-none d-md-block">
-                            <h5>Announcement 3</h5>
-                            <p>text 3</p>
+                            <h5>{{$contents[2]->content_title}}</h5>
+                            <p>{{$contents[2]->content_description}}</p>
                         </div>
                     </div>
                 </div>
@@ -87,16 +89,16 @@
         </div>
         <div class="container-fluid">
             <div class="row" style="margin-left: 200px; margin-top: 500px;">
-                <div class="col-md-3" style="margin-right:160px; text-center">
-                    <img src="{{ asset('assets/images/adopt.png') }}" alt="AdminLTE Logo"
-                        class="img-circle elevation-5 img-fluid">
-                    <h3 class="text-center mt-5 mr-5 pr-5">
-                        ADOPT/SURRENDER
-                        <br> A
-                        <br> PET
+                @foreach($contents->slice(3,3) as $content)
+                <div class="col-md-3 ml-5" style=" text-center">
+                <img src="assets/images/{{$content->content_image}}" alt=""
+                        class="img-circle elevation-5 img-fluid ml-5">
+                    <h3 class="text-center mt-5 ml-4 pr-5">
+                        {{$content->content_description}}
                     </h3>
                 </div>
-                <div class=" col-md-3" style="margin-right:160px;">
+                @endforeach
+                {{-- <div class=" col-md-3" style="margin-right:160px;">
                     <img src="{{ asset('assets/images/report.png') }}" alt="AdminLTE Logo" height="332px" width="317ppx"
                         class=" img-circle elevation-5 img-fluid">
                     <h3 class="text-center mt-5 mr-5 pr-5">
@@ -113,8 +115,7 @@
                         DONATE TO HELP
                         <br> THE ANIMALS.
                     </h3>
-                </div>
-
+                </div> --}}
             </div>
             
         </div>
