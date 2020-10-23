@@ -80,6 +80,7 @@
                     <div class="col-sm-12 col-md-7">
                         
                         {{ $pets->links() }}
+                       
                     </div>
                    
                 </div>
@@ -307,7 +308,7 @@
                                     height="129px" width="129px">
                             </div>
                             <div class="col-md-4 offset-md-2">
-                                <input class="mb-4" type="file" name="edit_pet_image" id="imageName" value="">
+                                <input class="mb-4" type="file" name="edit_pet_image" id="imageName" value="" accept="image/*">
                             </div>
 
                             @error('edit_pet_image')
@@ -409,11 +410,7 @@
                             <textarea id="edit_pet_description" name="edit_pet_description"
                                 class="form-control @error('edit_pet_description') is-invalid @enderror" rows="3"
                                 value="{{ old('edit_pet_description') }}" autofocus></textarea>
-                            {{--
-
-                            <input id="password-confirm" type="password" class="form-control"
-                                name="password_confirmation" autocomplete="new-password">
-                            --}}
+            
 
                             @error('edit_pet_description')
                             <span class="invalid-feedback text-center" role="alert">

@@ -8,7 +8,8 @@ use Faker\Generator as Faker;
 $factory->define(Pet::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
-        'image' => $faker->imageUrl,
+        // 'image' => $faker->imageUrl(400,420),
+        'image' => 'https://picsum.photos/400/400',
         'age' => $faker->randomDigitNot(0),
         'breed' => $faker->word,
         'status' => 'Available',

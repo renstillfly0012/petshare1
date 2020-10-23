@@ -12,7 +12,7 @@
 
                     <div class="card-body">
                         <div class="text-center" style="margin-bottom: 166px;">
-                            <a href="/"><img src="{{ asset('assets/images/pspcalogo.png') }}" alt="" id="card_logo"
+                        <a href="/"><img src="assets/images/{{$contents[0]->content_image}}" alt="" id="card_logo"
                                     class="rounded-circle img-responsive"></a>
                         </div>
                         <form method="POST" action="{{ route('login') }}">

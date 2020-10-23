@@ -56,7 +56,7 @@
 
                             <!-- /.card-header -->
                             <div class="card-body ">
-                                Insert Number
+                                {{ $reportCount }}
                             </div>
                             <!-- /.card-body  -->
                             <div class="card-footer">

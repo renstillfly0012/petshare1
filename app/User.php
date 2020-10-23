@@ -100,6 +100,10 @@ class User extends Authenticatable implements MustVerifyEmail
             $user->reports()->delete();
         });
 
+        static::deleting(function($user) {
+            $user->appointments()->delete();
+        });
+
         
     }
 

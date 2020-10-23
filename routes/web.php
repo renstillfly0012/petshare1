@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Mail\VerificationMail;
 use App\Location;
+use App\Content;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,6 +33,18 @@ Route::get('/admin/login', function(){
 // Auth::routes();
 
 Auth::routes(['verify' => true]);
+
+Route::get('/login', function(){
+    $contents = Content::where('id', 11)->get();
+//    dd($contents[0]->content_image);
+    return view('auth.login')->with('contents', $contents);
+})->name('login');
+
+Route::get('/register', function(){
+    $contents = Content::where('id', 11)->get();
+//    dd($contents[0]->content_image);
+    return view('auth.register')->with('contents', $contents);
+})->name('register');
 
 Route::get('/', 'HomeController@index')->name('landing');
 Route::get('/howtoadopt', 'HomeController@howToAdopt')->name('adopt1');
@@ -69,6 +82,8 @@ Route::resource('/incident', 'ReportController')->names([
     'index' => 'incident',
     
 ]);
+
+Route::resource('/cms', 'cmsController');
 
 
 
