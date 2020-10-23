@@ -63,14 +63,14 @@
                     </div>
                     {{-- @endforeach --}}
                     <div class="carousel-item">
-                        <img class="d-block img-fluid" src="assets/images/{{$contents[0]->content_image}}" alt="Second slide">
+                        <img class="d-block img-fluid" src="assets/images/{{$contents[1]->content_image}}" alt="Second slide">
                         <div class="carousel-caption d-none d-md-block">
                             <h5>{{$contents[1]->content_title}}</h5>
                             <p>{{$contents[1]->content_description}}</p>
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img class="d-block img-fluid" src="{{ asset('assets/images/donate.png') }}" alt="Third slide">
+                        <img class="d-block img-fluid" src="assets/images/{{$contents[2]->content_image}}" alt="Third slide">
                         <div class="carousel-caption d-none d-md-block">
                             <h5>{{$contents[2]->content_title}}</h5>
                             <p>{{$contents[2]->content_description}}</p>

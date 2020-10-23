@@ -28,19 +28,19 @@ class HomeController extends Controller
      */
 
             public function index()
-            {
-
+            { $contents = Content::all();
+              
                 if(Auth::check()){
                 if(Gate::denies('isAdmin')){
-                    return view('welcome');
+                    return view('welcome')->with('contents', $contents);
                 
                   }else{
                     return redirect('home');
                   }
       
                 }
-                $contents = Content::all();
-                // dd($contents[0]->content_image);
+               
+                
                 return view('welcome')->with('contents', $contents);
             }
             public function howToAdopt(){
