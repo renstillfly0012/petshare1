@@ -181,7 +181,7 @@ h3{
   </div>
 <input id="map-lat"  value="{{$map->lat ?? ''}}" hidden>
 <input id="map-lon"  value="{{$map->lon ?? ''}}" hidden>
-
+{{-- 
  @foreach ($location as $locations) 
 <script>
   var NumberOfReports =  @json($locations::count());
@@ -197,7 +197,7 @@ h3{
   <input type="hidden" value="{{$locations->address_latitude}}">
   <input type="hidden" value="{{$locations->address_longitude}}">
   <br>
-@endforeach 
+@endforeach  --}}
 
 
 
@@ -348,10 +348,7 @@ h3{
     let map,heatmap;
     var options;
     var infoWindow;
-    var controllerId = @json($locations->id);
-    var controllerLat = @json($locations->address_latitude);
-    var controllerLng = @json($locations->address_longitude);
-    var reportLat_Lng = [controllerLat, controllerLng];
+
    
  //need to let the user know that we will use his/her location to pin point.
 
