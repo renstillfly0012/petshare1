@@ -25,7 +25,7 @@ class DonationRequest extends FormRequest
     {
         return [
             'donation_name' => 'required',
-            'donation_amount' => 'required|numeric',
+            'donation_amount' => 'required|numeric','min:20',
         ];
     }
 }

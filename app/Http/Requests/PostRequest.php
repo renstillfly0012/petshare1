@@ -31,6 +31,7 @@ class PostRequest extends FormRequest
              'name' => ['required', 'string', 'max:255'],
              'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
              'password' => ['required', 'string', 'min:8', 'confirmed'],   
+             'image' => 'required|image|mimes:jpeg,jpg,png,gif', 'max:25000',
         ];
 
         

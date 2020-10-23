@@ -70,8 +70,27 @@ class UserController extends Controller
         $validated = $request->validated(); 
 
         $data = array_merge($validated, ['email_verified_at' => now()]);
+
+        // if($request->hasFile('image') == true){
+            // $user->image = $request->edit_image->getClientOriginalName();
+           
+            $new_user_id = User::count()+1;
+            
+            $file = $request->image;
+            $extension = $file->getClientOriginalExtension();
+            $filename = time().'.USER_ID_'.$new_user_id.'.'.$extension;
+            // $filename = $file->getClientOriginalName();
+       
+           
+    
+            $data = array_merge($validated, ['image' => $filename]);
+            
+        // }
       
+        // dd($data);
         $user = User::create($data);
+        $file->move('assets/images/users', $filename);
+
         $role = Role::select('id')->where('name', 'admin')->first();
 
         $user->roles()->attach($role);
@@ -127,7 +146,7 @@ class UserController extends Controller
        
 
         // $data = array_merge($validated, ['image' => $filename]);
-        $file->move('assets/images/', $filename);
+        $file->move('assets/images/users', $filename);
         }
      
        

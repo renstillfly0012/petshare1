@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\PetRequest;
 use Gate;
 use App\Pet;
 use Illuminate\Support\Facades\Auth;
+
 
 class petController extends Controller
 {
@@ -51,24 +52,54 @@ class petController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PetRequest $request)
     {
-        $validator = Validator::make($request->all(),[
-            'pet_name' => ['required', 'string', 'max:255'],
-             'pet_age' => ['required', 'integer', 'max:20', 'min:0'],
-              'pet_breed' => ['required', 'string', 'max: 20'],
-              'pet_description' => ['required', 'string', 'max:255'],
-         ]);
-
+        // $validator = Validator::make($request->all(),[
+        //     'pet_name' => ['required', 'string', 'max:255'],
+        //      'pet_age' => ['required', 'integer', 'max:20', 'min:0'],
+        //       'pet_breed' => ['required', 'string', 'max: 20'],
+        //       'pet_description' => ['required', 'string', 'max:255'],
+        //       'pet_image' => 'mimes:jpeg,jpg,png,gif','image', 'max:25000',
+        //  ]);
+        
+        if($request->validated()==true)
+        {
         $pet = new Pet;
         $pet->name = $request->input('pet_name');
         $pet->age = $request->input('pet_age');
         $pet->breed = $request->input('pet_breed');
         $pet->description = $request->input('pet_description');
-        // dd($pet);
+
+        // $validated = $request->validated();
+       
+        // $data = $validated;
+     
+        // if($request->hasFile('pet_image') == true){
+            // $user->image = $request->edit_image->getClientOriginalName();
+            
+            $new_pet_id = Pet::count()+1;
+            
+            $file = $request->pet_image;
+            $extension = $file->getClientOriginalExtension();
+            $filename = time().'.PET_ID_'.$new_pet_id.'.'.$extension;
+            // $filename = $file->getClientOriginalName();
+            $pet->image = $filename;
+            
+            // $data = array_merge($validated, ['image' => $filename]);
+           
+        // }
+       
+    //    $pet->create($data);
+        // $pet = Pet::create($data);
+        
         $pet->save();
+        // dd($pet);
+        $file->move('assets/images/pets', $filename);
+       
+      
        
         return redirect('/pets')->with('success', 'New Data has been Saved');
+        }
     }
 
     /**

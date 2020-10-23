@@ -63,8 +63,13 @@
                                         <td>{{ $user->id }}</td>
 
                                         <td class="sorting_1 text-center">
+                                        @if($user->image == 'pspcalogo.png')
                                             <img src="assets/images/{{ $user->image }}" alt="User Image"
                                                 class="img-responsive rounded-circle" height="129" width="129">
+                                            @else
+                                            <img src="assets/images/users/{{ $user->image }}" alt="User Image"
+                                            class="img-responsive rounded-circle" height="129" width="129">
+                                        @endif
                                         </td>
                                         <td>{{ $user->name }}</td>
                                         <td>{{ $user->email }}</td>
@@ -87,7 +92,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-12 col-md-5">
+                    <div class="col-sm-12 col-md-4">
                         {{-- <div class="dataTables_info" id="example2_info" role="status" aria-live="polite">Showing {{$users->count()}} of
                            {{$users->count()}}</div> --}}
                     </div>
@@ -145,14 +150,32 @@
                 </div>
 
             </div>
-            <form method="POST" action="{{ action('UserController@store') }}">
+            <form method="POST" action="{{ action('UserController@store') }}" enctype="multipart/form-data">
                 @csrf
                 @method('POST')
 
                 <input type="hidden" name="id" value="">
 
+                
+
                 <div class="modal-body">
                     <div class="card-body">
+
+                        <div class="input-group">
+                            <div class="col-md-2 offset-md-4">
+                               
+                                <input class="mb-4" type="file" name="image" id="imageName" value="" accept="image/*">
+
+                                @error('image')
+                                <span class="invalid-feedback text-center" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+
+
+                            </div>
+                        </div>
+
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <span style="color:#fdc370; background-color:#2d643b;"

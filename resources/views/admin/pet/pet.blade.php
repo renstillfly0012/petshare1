@@ -49,10 +49,13 @@
                                         <td>{{ $pet->id }}</td>
 
                                         <td class="sorting_1 text-center">
-                                            {{-- <img src="assets/images/pets/{{ $pet->image }}" alt="User Image"
-                                                class="rounded-circle" height="129" width="129"> --}}
-                                                <img src="{{ $pet->image }}" alt="User Image"
+                                            @if($pet->image == 'https://picsum.photos/400/400')
+                                                <img src="{{ $pet->image }}" alt="Pet Image"
                                                 class="rounded-circle" height="129" width="129">
+                                                @else
+                                                <img src="assets/images/pets/{{ $pet->image }}" alt="Pet Image"
+                                                class="rounded-circle" height="129" width="129">
+                                            @endif
                                         </td>
                                         <td>{{ $pet->name }}</td>
                                         <td>{{ $pet->age }}</td>
@@ -73,7 +76,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-12 col-md-5">
+                    <div class="col-sm-12 col-md-4">
                         {{-- <div class="dataTables_info" id="example2_info" role="status" aria-live="polite">Showing {{$pets->count()}} of
                            {{App\Pet::count()}}</div> --}}
                     </div>
@@ -121,7 +124,7 @@
                 </div>
 
             </div>
-            <form method="POST" action="{{ action('petController@store') }}">
+            <form method="POST" action="{{ action('petController@store') }}" enctype="multipart/form-data">
                 @csrf
                 @method('POST')
 
@@ -129,6 +132,22 @@
 
                 <div class="modal-body">
                     <div class="card-body">
+
+                        <div class="input-group">
+                            <div class="col-md-2 offset-md-4">
+                               
+                                <input class="mb-4" type="file" name="pet_image" id="imageName" value="" accept="image/*">
+
+                                @error('pet_image')
+                                <span class="invalid-feedback text-center" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+
+
+                            </div>
+                        </div>
+
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <span style="color:#fdc370; background-color:#2d643b;"
