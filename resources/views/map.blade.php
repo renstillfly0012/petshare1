@@ -349,6 +349,7 @@ h3{
     var options;
     var infoWindow;
 
+
    
  //need to let the user know that we will use his/her location to pin point.
 
@@ -361,14 +362,14 @@ function initMap() {
 
     options = {
         zoom: 17,
-      
-        center: {lat:reportLat_Lng[0],lng:reportLat_Lng[1]},
+        // center: {lat:reportLat_Lng[0],lng:reportLat_Lng[1]},
         // center: {lat:14.5654,lng:120.9979}
-        // mapTypeId: "terrain",
+        center: {lat:14.6009,lng:120.9881},
+        mapTypeId: "terrain",
     }
 
     map = new google.maps.Map(document.getElementById("map"),options);
-    console.log(controllerId);
+    // console.log(controllerId);
 
   //BORDER OF BRGY 390
     const flightPlanCoordinates = [
