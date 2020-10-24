@@ -4,6 +4,7 @@
 
 #nav-link {
     color: #FDC370;
+    
 }
 
 a:link,
@@ -11,6 +12,7 @@ a:visited {
     text-decoration: none;
     color: black;
     cursor: pointer;
+   
 }
 
 img {
@@ -52,6 +54,7 @@ input[type="address"]{
     box-shadow: 4px 4px 18px 0px rgba(0, 0, 0, 1), -4px -4px 18px 0px rgba(255, 255, 255, 1);
 
 }
+
 
 
 

@@ -7,6 +7,13 @@
         color: #fdc370;
     }
 
+    .card-footer{
+        font-size:22px;
+    }
+    .card-body > p {
+        font-size:18px;
+    }
+
 </style>
 @section('content')
 
@@ -14,7 +21,7 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">{{ __('Dashboard') }}
+                    <div class="card-header">
 
 
                         <div class="card-body ">
@@ -24,7 +31,7 @@
                                 </div>
                             @endif
 
-                            {{ __('You are logged in!') }}
+                           <p> {{ __('You are logged in!') }} </p>
                             <span class="flag-icon flag-icon-gr"></span>
                             <span class="flag-icon flag-icon-gr flag-icon-squared"></span>
                             <i class="ion-ios-paper-plane-outline"></i>
@@ -40,7 +47,7 @@
 
                             <!-- /.card-header -->
                             <div class="card-body ">
-                                {{ $petCount }}
+                               <p> {{ $petCount }}</p>
                             </div>
                             <!-- /.card-body  -->
                             <div class="card-footer">
@@ -56,7 +63,7 @@
 
                             <!-- /.card-header -->
                             <div class="card-body ">
-                                {{ $reportCount }}
+                               <p> {{ $reportCount }}</p>
                             </div>
                             <!-- /.card-body  -->
                             <div class="card-footer">
@@ -76,7 +83,7 @@
 
                             <!-- /.card-header -->
                             <div class="card-body ">
-                                {{ $userCount }}
+                              <p>  {{ $userCount }}</p>
                             </div>
                             <!-- /.card-body  -->
                             <div class="card-footer">
@@ -92,8 +99,8 @@
 
                             <!-- /.card-header -->
                             <div class="card-body ">
-                                {{ $appointmentCount }}
-                            </div>
+                               <p>{{ $appointmentCount }}</p> 
+                            </div> 
                             <!-- /.card-body  -->
                             <div class="card-footer">
                                 Requests

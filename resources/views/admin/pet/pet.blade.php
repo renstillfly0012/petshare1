@@ -1,10 +1,13 @@
 @extends('layouts.admin')
 
+<style>
+
+
+</style>
+
 @section('content')
-    <div class="card">
-        <div>
-      
-        </div>
+    <div class="card" >
+
         <div class="card-header">
             <h3 class="card-title">All pets and their informations</h3>
         </div>
@@ -48,7 +51,7 @@
                                     <tr role="row" class="odd">
                                         <td>{{ $pet->id }}</td>
 
-                                        <td class="sorting_1 text-center">
+                                        <td>
                                             @if($pet->image == 'https://picsum.photos/400/400')
                                                 <img src="{{ $pet->image }}" alt="Pet Image"
                                                 class="rounded-circle" height="129" width="129">
@@ -106,7 +109,7 @@
 <div class="modal fade" id="addPet" data-backdrop="static" data-keyboard="false" tabindex="-1"
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content">
+        <div class="modal-content" >
             <div class="">
                 {{-- <h5 class="modal-title" id="staticBackdropLabel"><i
                         class="fas fa-pet"></i> Add User</h5> --}}

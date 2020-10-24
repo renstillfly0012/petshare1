@@ -3,26 +3,7 @@
 @section('content')
 
     <div class="card">
-        <div>
-            {{-- @if (count($errors) > 0)
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif --}}
 
-            {{-- @if (\Session::has('success'))
-                <div class="alert alert-success">
-                    <b>
-                    
-                        <h3>{{ \Session::get('success') }}</h3>
-                    </b>
-                </div>
-            @endif --}}
-        </div>
         <div class="card-header">
             <h3 class="card-title">All appointment requets</h3>
         </div>
@@ -65,16 +46,12 @@
                                 @foreach ($appointments as $appointment)
                                     <tr role="row" class="odd">
                                         <td>{{ $appointment->id }}</td>
-
-                                        {{-- <td class="sorting_1 text-center">
-                                            <img src="assets/images/pets/{{ $appointment->image }}" alt="User Image"
-                                                class="img-responsive rounded-circle" height="129" width="129">
-                                        </td> --}}
                                         <td>{{ $appointment->user->name }}</td>
-                                        {{-- <td>{{ $appointment->pet->first()->name }}</td> --}}
+                                        <td>{{ $appointment->pet->name }}</td>
                                         <td>{{ $appointment->requested_date }}</td>
                                         <td>{{ $appointment->appointment_type }}</td>
-                                        <td>{{ $appointment->appointment_status }}</td>
+                                        {{-- <td>{{ $appointment->appointment_type }}</td> --}}
+                                        <td>{{ $appointment->appointment_status}}</td>
                                         <td>
                                             <button class="btn btn-warning pr-4 editbtn">Approve</button><br>
                                             <button class="btn btn-danger deletebtn">Decline</button>

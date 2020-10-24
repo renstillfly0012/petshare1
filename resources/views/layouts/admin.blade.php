@@ -12,12 +12,13 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/adminstyle.css') }}" rel="stylesheet">
     {{-- <link href="{{ asset('css/googlemap.css') }}" rel="stylesheet"> --}}
 
 
 </head>
 
-<body class="hold-transition sidebar-mini layout-fixed">
+<body class="hold-transition sidebar-mini layout-fixed" >
     <div class="wrapper">
 
         <!-- Navbar -->
@@ -28,7 +29,7 @@
 
 
         <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
+        <div class="content-wrapper" >
             <!-- Content Header (Page header) -->
             <div class="content-header">
 
@@ -36,7 +37,7 @@
             <!-- /.content-header -->
 
             <!-- Main content -->
-            <section class="content">
+            <section class="content"  >
                 @yield('content')
             </section>
             <!-- /.content -->

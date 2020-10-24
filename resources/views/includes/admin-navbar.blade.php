@@ -12,6 +12,7 @@
     .brand-text,
     #username {
         color: #fdc370;
+        
     }
 
 
@@ -26,6 +27,7 @@
         background-color: #000;
         color: #fdc370;
         opacity: .1;
+        
     }
 
     .sidebar-dark-primary .nav-sidebar>.nav-item>.nav-link.active,
@@ -79,10 +81,10 @@
                 <div class="dropdown-divider"></div>
                 {{-- <a href="#" class="dropdown-item dropdown-footer">See All
                     Messages</a> --}}
-                <a class="dropdown-item dropdown-footer" href="{{ route('logout') }}"
+                <a style="font-size:18px;" class="dropdown-item dropdown-footer" href="{{ route('logout') }}"
                     onclick="event.preventDefault();
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              document.getElementById('logout-form').submit();">
-                    {{ __('Logout') }}
+                    Logout
                 </a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                     @csrf

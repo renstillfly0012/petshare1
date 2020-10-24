@@ -14,7 +14,7 @@ class Pet extends Model
     ];
 
     public function appointments(){
-        return $this->hasMany('App\appointment');
+        return $this->hasMany('App\Appointment');
     }
 
     public function users(){

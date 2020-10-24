@@ -21,7 +21,7 @@ class Appointment extends Model
 
     public function pet()
     {
-        return $this->belongsTo('App\Pet');
+        return $this->belongsTo('App\Pet', 'requested_pet_id');
     }
 
     
