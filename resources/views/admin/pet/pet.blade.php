@@ -26,12 +26,15 @@
                                 <tr role="row">
                                     <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
                                         aria-label="Browser: activate to sort column ascending">Pet ID</th>
+                                        <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                        aria-sort="ascending"
+                                        aria-label="Rendering engine: activate to sort column descending">Pet Code
+                                    </th>
                                     <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
                                         aria-sort="ascending"
                                         aria-label="Rendering engine: activate to sort column descending">Image
                                     </th>
-                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
-                                        aria-label="Browser: activate to sort column ascending">Name</th>
+                                   
                                     <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
                                         aria-label="Platform(s): activate to sort column ascending">Age</th>
                                     <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
@@ -49,7 +52,8 @@
                             <tbody>
                                 @foreach ($pets as $pet)
                                     <tr role="row" class="odd">
-                                        <td>{{ $pet->id }}</td>
+                                    <td>{{$pet->id}}</td>
+                                    <td>{{$pet->name}}</td>
 
                                         <td>
                                             @if($pet->image == 'https://picsum.photos/400/400')
@@ -60,7 +64,7 @@
                                                 class="rounded-circle" height="129" width="129">
                                             @endif
                                         </td>
-                                        <td>{{ $pet->name }}</td>
+                                  
                                         <td>{{ $pet->age }}</td>
                                         <td>{{ $pet->breed }}</td>
                                         <td>{{ $pet->description }}</td>
@@ -484,7 +488,7 @@
 
                 $('#updateID').val(data[0]);
                 $('#rowImage').attr("src", img);
-                $('#edit_pet_name').val(data[2]);
+                $('#edit_pet_name').val(data[1]);
                 $('#edit_pet_age').val(data[3]);
                 $('#edit_pet_breed').val(data[4]);
                 $('#edit_pet_description').val(data[5]);

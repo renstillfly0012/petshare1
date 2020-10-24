@@ -30,8 +30,24 @@
                                     {{ session('status') }}
                                 </div>
                             @endif
-
-                           <p> {{ __('You are logged in!') }} </p>
+                            
+                            @forelse ($notifications as $notification)
+                           <div class="alert alert-success" role="alert">
+                               [{{$notification->created_at}}] User {{$notification->data['name']}} ({{ $notification->data['email'] }}) has just registered.
+                               <a href="#" class="float-right markbtn" data-id="{{ $notification->id }}">
+                                Mark as read
+                            </a>
+                           </div>
+                                @if($loop->last)
+                                <a href="#" id="mark-all">
+                                    Mark all as read
+                                </a>
+                                @endif
+                             @empty
+                            There are no new notifications
+                            @endforelse
+                          
+                           {{-- <p> {{ __('You are logged in!') }} </p> --}}
                             <span class="flag-icon flag-icon-gr"></span>
                             <span class="flag-icon flag-icon-gr flag-icon-squared"></span>
                             <i class="ion-ios-paper-plane-outline"></i>
@@ -116,3 +132,30 @@
         </div>
 
     @endsection
+
+    @section('notification_script')
+    <script type="text/javascript">
+        $(document).ready(function() {
+            function sendMarkRequest(id = null) {
+            return $.ajax("/home/"+id, {
+                method: 'GET',
+                data: {
+                    id
+                }
+            });
+        }
+            
+            $('.markbtn').click(function() {
+                let request = sendMarkRequest($(this).data('id'));
+                request.done(() => {
+                    $(this).parents('div.alert').remove();
+                });
+            });
+
+            
+        });
+    </script>
+
+    @endsection
+
+    

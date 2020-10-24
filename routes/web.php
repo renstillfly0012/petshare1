@@ -20,9 +20,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('/emailV', function () {
-//     // return new VerificationMail;
-// });
+
+
 
 
 
@@ -52,6 +51,7 @@ Route::get('/availablepets', 'HomeController@availablePets')->name('availpets');
 
 
 Route::get('/map', function(){
+    
 
     // return $_SERVER['REMOTE_ADDR']->postal_code;
     // dd(geoip()->getLocation(Request::ip())->currency);
@@ -70,6 +70,7 @@ Route::get('/viewProfile/{user}/show', 'UserController@show')->name('viewProfile
 Route::get('/editProfile/{user}/edit', 'UserController@edit')->name('editProfile');
 
 Route::get('/home', 'adminController@index')->name('home');
+Route::get('/home/{id}', 'adminController@show')->name('markedNotif');
 Route::get('/pets', 'adminController@viewPets')->name('pets');
 Route::get('/reports', 'adminController@viewReports')->name('reports');
 Route::get('/donations', 'donationController@getAllDonations')->name('donations');

@@ -9,6 +9,7 @@ use App\User;
 use App\Pet;
 use App\Appointment;
 use App\Report;
+use Alert;
 
 
 class adminController extends Controller
@@ -63,8 +64,18 @@ class adminController extends Controller
         $petCount = Pet::count();
         $appointmentCount = Appointment::count();
         $reportCount = Report::count();
+        $notifications = auth()->user()->unreadNotifications()->get();
+        // dd($notifications);
         // return view('admin.home')->with('userCount', $userCount);
-        return view('admin.home',  compact('userCount', 'petCount', 'appointmentCount', 'reportCount'));
+        foreach($notifications as $notification)
+        {
+            toast('['.$notification->created_at.'] User: '.$notification->data['name'].'('.$notification->data['email'].
+            ') has just registered.','success');
+          
+        }
+        
+        
+        return view('admin.home',  compact('userCount', 'petCount', 'appointmentCount', 'reportCount', 'notifications'));
         // return redirect()->route('admin-landing');
     }
     public function  viewPets()
@@ -85,6 +96,8 @@ class adminController extends Controller
         $paginate = Report::paginate(5);
         return view('admin.report.report')->with('reports', $reports);
     }
+
+   
 
 
 
@@ -119,7 +132,14 @@ class adminController extends Controller
      */
     public function show($id)
     {
-        //
+        auth()->user()
+            ->unreadNotifications
+            ->when($id, function ($query) use ($id) {
+                return $query->where('id', $id);
+            })
+            ->markAsRead();
+
+        return response()->noContent();
     }
 
     /**

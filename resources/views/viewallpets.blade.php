@@ -107,7 +107,7 @@
                             </span>
                             @enderror
 
-                            <label for="show_pet_name" class="mt-3">{{ __('Name') }}</label>
+                            <label for="show_pet_name" class="mt-3">{{ __('Pet Code') }}</label>
                         </div>
                     </div>
 

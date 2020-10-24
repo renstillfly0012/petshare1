@@ -7,7 +7,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Pet::class, function (Faker $faker) {
     return [
-        'name' => $faker->name,
+        'name' => bcrypt(now()),
         // 'image' => $faker->imageUrl(400,420),
         'image' => 'https://picsum.photos/400/400',
         'age' => $faker->randomDigitNot(0),

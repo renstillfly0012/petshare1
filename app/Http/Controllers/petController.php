@@ -7,6 +7,7 @@ use App\Http\Requests\PetRequest;
 use Gate;
 use App\Pet;
 use Illuminate\Support\Facades\Auth;
+use Validator;
 
 
 class petController extends Controller
@@ -98,7 +99,7 @@ class petController extends Controller
        
       
        
-        return redirect('/pets')->with('success', 'New Data has been Saved');
+        return redirect('/pets')->with('toast_success', 'New Data has been Saved');
         }
     }
 
@@ -165,7 +166,7 @@ class petController extends Controller
             //   dd($pet);
             $pet->save();
        
-        return redirect('/pets')->with('success', 'Changes to '.$pet->name."'s Data has been Saved");
+        return redirect('/pets')->with('toast_success', 'Changes to PET ID: '.$pet->id."'s Data has been Saved");
     }
 
     /**
@@ -178,7 +179,7 @@ class petController extends Controller
     {
         $pet = Pet::findorfail($id);
         $pet->delete();
-        return redirect('/pets')->with('success', 'PET ID:'.$id.' has been Deleted');
+        return redirect('/pets')->with('toast_success', 'PET ID:'.$id.' has been Deleted');
 
     }
 }

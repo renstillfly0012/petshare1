@@ -111,7 +111,7 @@ class adoptionController extends Controller
         : $user->notify(new AppointmentDeclined());
         
         
-        return redirect('/pets-requests')->with('success', 'Appointment Changes Request '.$id.' was Saved');
+        return redirect('/pets-requests')->with('toast_success', 'Appointment Changes Request '.$id.' was Saved');
 
     }
 
@@ -132,7 +132,7 @@ class adoptionController extends Controller
         // dd($user);
         // Mail::to($user->email)->send(new VerificationMail);
         // ;
-        return redirect('/')->with('success', 'Appointment Changes Request '.$id.' was Saved');
+        return redirect('/')->with('toast_success', 'Appointment Changes Request '.$id.' was Saved');
       
     }
 
@@ -151,7 +151,7 @@ class adoptionController extends Controller
         $appointment->appointment_status = 'Declined';
         $appointment->save();
       
-        return redirect('/pets-requests')->with('success', 'Appointment Changes Request '.$id.' was Saved');
+        return redirect('/pets-requests')->with('toast_success', 'Appointment Changes Request '.$id.' was Saved');
         
        
     }

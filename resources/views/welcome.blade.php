@@ -13,7 +13,6 @@
         }
         h3,p{
             font-size: 22px;
-          
         }
         h3{
             color: #fdc370;

@@ -113,7 +113,7 @@ class ReportController extends Controller
         : $user->notify(new ReportDeclined());
        
         
-        return redirect('/reports')->with('success', 'Report Changes '.$id.' was Saved');
+        return redirect('/reports')->with('toast_success', 'Report Changes '.$id.' was Saved');
 
     }
 
@@ -130,7 +130,7 @@ class ReportController extends Controller
         $report->report_status = 'Apprved';
         $report->save();
 
-        return redirect('/')->with('success', 'Report Changes '.$id.' was Saved');
+        return redirect('/')->with('toast_success', 'Report Changes '.$id.' was Saved');
     }
 
     /**

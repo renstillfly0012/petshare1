@@ -79,8 +79,11 @@
     @yield('pet_modal_script')
     @yield('report_modal_script')
     @yield('cms_modal_script')
+    @yield('notification_script')
 
     @include('sweetalert::alert')
+
+    
 
   
 

@@ -94,7 +94,7 @@ class cmsController extends Controller
             }
         // dd($cms);
         $cms->save();
-        return redirect('/cms')->with('success', "Changes to the row's Data has been Saved");
+        return redirect('/cms')->with('toast_success', "Changes to the row's Data has been Saved");
     }
 
     /**

@@ -11,6 +11,7 @@ use App\Role;
 use App\Http\Requests\PostRequest;
 use App\Http\Requests\PostUpdateRequest;
 use View;
+use DB;
 
 
 class UserController extends Controller
@@ -42,7 +43,9 @@ class UserController extends Controller
 
         // $a = User::with('roles')->get();
         // dd($a->toArray());
-        $users = User::paginate(5);
+        // $admins = User::where('role_id', 1)->get();
+        // dd($admins);
+        $users = User::with('roles')->paginate(5);
         
         return view('admin.user.user')->with('users', $users);
         // return redirect()->route('users');
@@ -70,6 +73,8 @@ class UserController extends Controller
         $validated = $request->validated(); 
 
         $data = array_merge($validated, ['email_verified_at' => now()]);
+        
+        $data2 = array_merge($data, ['role_id' => 1]);
 
         // if($request->hasFile('image') == true){
             // $user->image = $request->edit_image->getClientOriginalName();
@@ -83,19 +88,21 @@ class UserController extends Controller
        
            
     
-            $data = array_merge($validated, ['image' => $filename]);
+            $data3= array_merge($data2, ['image' => $filename]);
             
         // }
       
-        // dd($data);
-        $user = User::create($data);
+       
+        
+        $user = User::create($data3);
         $file->move('assets/images/users', $filename);
 
         $role = Role::select('id')->where('name', 'admin')->first();
 
         $user->roles()->attach($role);
         // dd($user, $data);
-        return redirect('/users')->with('success', 'New Data has been Saved');
+        
+        return redirect('/users')->with('toast_success', 'New Data has been Saved');
     }
 
     /**
@@ -158,7 +165,7 @@ class UserController extends Controller
         if($user->roles->first()->name == 'foster'){
             return redirect('/')->with('success', 'Changes to your Data has been Saved');
         }
-        return redirect('/users')->with('success', 'Changes to '.$user->name."'s Data has been Saved");
+        return redirect('/users')->with('toast_success', 'Changes to '.$user->name."'s Data has been Saved");
         
 
     }
@@ -175,7 +182,7 @@ class UserController extends Controller
         // $user = User::findorfail($id);
         
         $user->delete();
-        return redirect('/users')->with('success', 'USER ID:'.$user->id.' has been Deleted');
+        return redirect('/users')->with('toast_success', 'USER ID:'.$user->id.' has been Deleted');
     }
 
    
