@@ -6,6 +6,7 @@
         border-radius: 30px;
         box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 1), -3px -3px 6px 0px rgba(255, 255, 255, 1);
     } */
+   
 </style>
 
 @section('content')
@@ -50,7 +51,7 @@
 
         <div class="form-group row">
             <div class="col-md-10 offset-md-1">
-                <input id="address" type="text" class="form-control @error('address') is-invalid @enderror"
+                <input style="font-size:16px" id="address" type="text" class="form-control @error('address') is-invalid @enderror"
                     name="address" value="{{ old('address') }}" autocomplete="address">
 
                 @error('address')
@@ -58,7 +59,7 @@
                     <strong>{{ $message }}</strong>
                 </span>
                 @enderror
-                <label for="address"
+                <label style=" font-size:24px;" for="address"
                     class="col-md-4 offset-md-4  col-form-label text-md-center" placeholder="">{{ __('Address') }}</label>
             </div>
         </div>
@@ -71,7 +72,7 @@
         <div class="form-group row">
 
             <div class="col-md-10 offset-md-1">
-                <input id="description" type="text" class="form-control  @error('description') is-invalid @enderror"
+                <input  style="font-size:16px" id="description" type="text" class="form-control  @error('description') is-invalid @enderror"
                     name="description" value="{{ old('description') }}" autocomplete="description">
 
                     @error('description')
@@ -80,7 +81,7 @@
                     </span>
                     @enderror
 
-                    <label for="description"
+                    <label style=" font-size:24px;"for="description"
                     class="col-md-4 offset-md-4  col-form-label text-md-center">{{ __('Report Description') }}</label>
             </div>
            
@@ -88,12 +89,12 @@
 
         <div class="form-group row ml-5">
             <div class="col-md-2 offset-md-5">
-                <button type="submit" class="btn btn-primary ml-4">
+                <button type="submit" class="btn btn-primary ml-3" style="font-size:20px">
                     {{ __('Submit Report') }}
                 </button>
             </div>
             <div class="col-md-2 offset-md-5 mt-2">
-                <a href="/" class="btn btn-secondary ml-5" style="color:white;">
+                <a href="/" class="btn btn-secondary ml-5" style="color:white; font-size:20px;">
                   Cancel
                 </a>
             </div>

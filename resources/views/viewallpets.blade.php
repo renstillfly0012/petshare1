@@ -4,7 +4,7 @@
 
     <style>
   
-
+        
     </style>
     <div class="container-fluid">
         <div class="col-md-4 offset-md-4" style=" margin-top:75px;">
@@ -87,9 +87,9 @@
                     @csrf
                     @method('POST')
                     @auth
-                        <input type="hidden" id="show_user_id" name="show_user_id" value={{ Auth::user()->id }}>
+                        <input style="font-size:20px" type="hidden" id="show_user_id" name="show_user_id" value={{ Auth::user()->id }}>
                     @endauth
-                    <input type="hidden" id="show_pet_id" name="show_pet_id">
+                    <input style="font-size:20px" type="hidden" id="show_pet_id" name="show_pet_id">
 
 
                     <img src="" class="rounded-circle img-fluid mb-4" alt="PET IMAGE" id="show_pet_image"
@@ -97,7 +97,7 @@
 
                     <div class="form-group row">
                         <div class="col-md-10 offset-md-1">
-                            <input id="show_pet_name" type="text"
+                            <input style="font-size:20px" style="font-size:20px" id="show_pet_name" type="text"
                                 class="form-control @error('show_pet_name') is-invalid @enderror" name="show_pet_name"
                                 value="{{ old('show_pet_name') }}" autocomplete="show_pet_name" autofocus disabled>
 
@@ -113,7 +113,7 @@
 
                     <div class="form-group row">
                         <div class="col-md-10 offset-md-1">
-                            <input id="show_pet_age" type="text"
+                            <input style="font-size:20px" id="show_pet_age" type="text"
                                 class="form-control @error('show_pet_age') is-invalid @enderror" name="show_pet_age"
                                 value="{{ old('show_pet_age') }}" autocomplete="show_pet_age" autofocus disabled>
 
@@ -129,7 +129,7 @@
 
                     <div class="form-group row">
                         <div class="col-md-10 offset-md-1">
-                            <input id="show_pet_breed" type="text"
+                            <input style="font-size:20px" id="show_pet_breed" type="text"
                                 class="form-control @error('show_pet_breed') is-invalid @enderror" name="show_pet_breed"
                                 value="{{ old('show_pet_breed') }}" autocomplete="show_pet_breed" autofocus disabled>
 
@@ -145,7 +145,7 @@
 
                     <div class="form-group row">
                         <div class="col-md-10 offset-md-1">
-                            <input id="show_pet_description" type="text"
+                            <input style="font-size:20px" id="show_pet_description" type="text"
                                 class="form-control @error('show_pet_description') is-invalid @enderror"
                                 name="show_pet_description" value="{{ old('show_pet_description') }}"
                                 autocomplete="show_pet_description" autofocus disabled>
@@ -162,7 +162,7 @@
 
                     <div class="form-group row">
                         <div class="col-md-10 offset-md-1" id="datepicker">
-                            <input type="datetime-local" class="form-control" name="show_requested_date">
+                            <input style="font-size:20px" type="datetime-local" class="form-control" name="show_requested_date">
 
 
                             @error('show_pet_description')
@@ -266,7 +266,7 @@
 
 
                         var data = {
-                            "token": $('input[name=_token]').val(),
+                            "token": $('input style="font-size:20px"[name=_token]').val(),
                             "id": del_id,
                         };
 

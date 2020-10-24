@@ -6,6 +6,7 @@
     #nav-link {
         color: #FDC370;
     }
+    
 
 </style>
 
@@ -150,7 +151,7 @@
                     <div class="col-md-10 offset-md-1">
                         @if(Auth::check() == 1)
                      
-                        <input name="donation_name" id="donation_name" type="text"
+                        <input style="font-size:16px" name="donation_name" id="donation_name" type="text"
                             class="form-control @error('donation_name') is-invalid @enderror"
                             value="{{ Auth::user()->name }}" autocomplete="donation_name"
                             data-toggle="tooltip" data-placement="top" title="leave it blank if you want to be annonymous" autofocus>
@@ -166,13 +167,13 @@
                         </span>
                         @enderror
 
-                        <label for="donation_name" class="mt-3">{{ __('Full Name') }}</label>
+                        <label style="font-size:20px" for="donation_name" class="mt-3">{{ __('Full Name') }}</label>
                     </div>
                 </div>
 
                 <div class="form-group row">
                     <div class="col-md-10 offset-md-1">
-                        <input name="donation_amount" id="donation_amount" type="text"
+                        <input style="font-size:16px" name="donation_amount" id="donation_amount" type="text"
                             class="form-control @error('donation_amount') is-invalid @enderror"
                             value="{{ old('donation_amount') }}" autocomplete="donation_amount"  autofocus>
 
@@ -182,7 +183,7 @@
                         </span>
                         @enderror
 
-                        <label for="donation_amount" class="mt-3">{{ __('Amount') }}</label>
+                        <label style="font-size:20px" for="donation_amount" class="mt-3">{{ __('Amount') }}</label>
                     </div>
                 </div>
                

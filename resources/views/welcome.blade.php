@@ -11,8 +11,11 @@
     
 
         }
-        h3 {
-            font-size: 18px;
+        h3,p{
+            font-size: 22px;
+          
+        }
+        h3{
             color: #fdc370;
         }
 
@@ -42,7 +45,7 @@
     
 </style>
    
-    <div class="box" style="height:2693px">
+    <div class="box" style="height:2693px;">
         <div class="container-fluid"
             style="margin-top:5%; background-color:black; border-color:black; width: 90%; height:15%;" id="carousel_div">
 
@@ -57,7 +60,7 @@
                     <div class="carousel-item active">
                     <img class="d-block img-fluid" src="assets/images/{{$contents[0]->content_image}}" alt="First slide">
                         <div class="carousel-caption d-none d-md-block">
-                            <h5>{{$contents[0]->content_title}}</h5>
+                            <p>{{$contents[0]->content_title}}</p>
                             <p>{{$contents[0]->content_description}}</p>
                         </div>
                     </div>
@@ -65,14 +68,14 @@
                     <div class="carousel-item">
                         <img class="d-block img-fluid" src="assets/images/{{$contents[1]->content_image}}" alt="Second slide">
                         <div class="carousel-caption d-none d-md-block">
-                            <h5>{{$contents[1]->content_title}}</h5>
+                            <p>{{$contents[1]->content_title}}</p>
                             <p>{{$contents[1]->content_description}}</p>
                         </div>
                     </div>
                     <div class="carousel-item">
                         <img class="d-block img-fluid" src="assets/images/{{$contents[2]->content_image}}" alt="Third slide">
                         <div class="carousel-caption d-none d-md-block">
-                            <h5>{{$contents[2]->content_title}}</h5>
+                            <p>{{$contents[2]->content_title}}</p>
                             <p>{{$contents[2]->content_description}}</p>
                         </div>
                     </div>
