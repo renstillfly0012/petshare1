@@ -91,9 +91,13 @@ class userController extends Controller
     }
     public function login(Request $request){
 
-        $user = User::all()
-        ->where('email', $request->email)
-        ->where('password', $request->password);
+        // $user = User::where('email', $request->email)
+        // ->where('password', $request->password);
+
+        $user = User::where([
+            'email' => $request->email,
+            'password' => $request->password,
+        ])->get();
 
         // dd($user);
         if(!$user->isEmpty()){
