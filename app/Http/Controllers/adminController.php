@@ -67,24 +67,26 @@ class adminController extends Controller
         $notifications = auth()->user()->unreadNotifications()->get();
         // dd($notifications);
         // return view('admin.home')->with('userCount', $userCount);
-        
-        foreach($notifications as $notification)
-        {
-            // if($notification->type == 'App\Notifications\newUserNotification' ){
-              
-            //     toast('['.$notification->created_at.'] User: '.$notification->data['name'].'('.$notification->data['email'].
-            //     ') has just registered.','success');
-            // }
-            if($notification->type == 'App\Notifications\newReportNotification')
+        if($notifications > 0){
+            foreach($notifications as $notification)
             {
-                $reportName = User::where('id',$notification->data['user_id'])->get();
-                // dd('asd');
-                toast('Recent Notification: <br> ['.$notification->created_at.'] <br> User: '.$reportName->first()->name.' <br> Address: <br>('.$notification->data['address'].
-                ') ','warning');
+                // if($notification->type == 'App\Notifications\newUserNotification' ){
+                  
+                //     toast('['.$notification->created_at.'] User: '.$notification->data['name'].'('.$notification->data['email'].
+                //     ') has just registered.','success');
+                // }
+                if($notification->type == 'App\Notifications\newReportNotification')
+                {
+                    $reportName = User::where('id',$notification->data['user_id'])->get();
+                    // dd('asd');
+                    toast('Recent Notification: <br> ['.$notification->created_at.'] <br> User: '.$reportName->first()->name.' <br> Address: <br>('.$notification->data['address'].
+                    ') ','warning');
+                }
+                        
+                  
             }
-                    
-              
         }
+       
         
         
         return view('admin.home',  compact('userCount', 'petCount', 'appointmentCount', 'reportCount', 'notifications', 'reportName'));
