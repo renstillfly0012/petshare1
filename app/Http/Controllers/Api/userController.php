@@ -5,9 +5,8 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
-use Validator;
 use Hash;
-
+use Crypt;
 class userController extends Controller
 {
     /**
@@ -91,21 +90,19 @@ class userController extends Controller
     }
     public function login(Request $request){
 
-        // $user = User::where('email', $request->email)
-        // ->where('password', $request->password);
-
         $user = User::where([
             'email' => $request->email,
-            'password' => $request->password,
         ])->get();
 
-        // dd($user);
-        if(!$user->isEmpty()){
-            return response()->json($user->first(), 200);
+        $pass = $user->first()->password;
+        if(Hash::check($request->password, $pass)){
+                return response()->json($user->first(), 200); 
         }
         else{
             return response()->json('',404);
         }
+     
+       
        
         
     }
