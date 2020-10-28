@@ -13,8 +13,18 @@
     .card-body > p {
         font-size:18px;
     }
+  
+   
 
 </style>
+@section('Notification_Count')
+@if($notifications->count() > 0)
+({{$notifications->count()}}) 
+@endif
+@endsection
+@section('refresh')
+<meta http-equiv="refresh" content="5">
+@endsection
 @section('content')
 
     <div class="container">
@@ -32,17 +42,42 @@
                             @endif
                             
                             @forelse ($notifications as $notification)
-                           <div class="alert alert-success" role="alert">
-                               [{{$notification->created_at}}] User {{$notification->data['name']}} ({{ $notification->data['email'] }}) has just registered.
-                               <a href="#" class="float-right markbtn" data-id="{{ $notification->id }}">
+                          
+                           
+                            {{-- @if($notification->type == 'App\Notifications\newUserNotification')
+                            <div class="alert alert-success" role="alert">
+                               <span style="color: black; font-size:18px">
+                                [{{$notification->created_at}}] 
+                                <br>
+                                User: {{$notification->data['name']}} 
+                                (Email: {{ $notification->data['email'] }}) has just registered.
+                            
+                            
+                            </span>
+                                <a style="color: black; font-size:18px" href="#" class="float-right markbtn" data-id="{{ $notification->id }}">
                                 Mark as read
-                            </a>
+                                </a> --}}
+                            @if($notification->type == 'App\Notifications\newReportNotification')
+                            <div class="alert alert-danger" role="alert">
+                            <span style="color: black; font-size:18px">
+                                Notification:
+                                <br>
+                                [{{$notification->created_at}}] 
+                                <br>
+                                Foster Name: {{$reportName->first()->name}}
+                                <a style="color: black; font-size:18px" href="#" class="float-right markbtn" data-id="{{ $notification->id }}">
+                                Mark as read
+                                </a>
+                                <br>
+                                (Address: {{ $notification->data['address'] }}) 
+                            </span>
+                            @endif
                            </div>
-                                @if($loop->last)
-                                <a href="#" id="mark-all">
+                                {{-- @if($loop->last)
+                                <a style=" font-size:18px"href="#" id="mark-all">
                                     Mark all as read
                                 </a>
-                                @endif
+                                @endif --}}
                              @empty
                             There are no new notifications
                             @endforelse
@@ -151,6 +186,13 @@
                     $(this).parents('div.alert').remove();
                 });
             });
+
+            $('#mark-all').click(function() {
+            let request = sendMarkRequest();
+            request.done(() => {
+                $('div.alert').remove();
+            });
+        });
 
             
         });

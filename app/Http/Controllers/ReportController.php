@@ -9,6 +9,9 @@ use App\Location;
 use App\User;
 use App\Notifications\ReportAppoved;
 use App\Notifications\ReportDeclined;
+use App\Events\ReportCreated;
+use Notification;
+use App\Notifications\newReportNotification;
 
 class ReportController extends Controller
 {
@@ -70,15 +73,27 @@ class ReportController extends Controller
           
         }
         
-        // dd($data);
+       
         $report = Report::create($data);
         // dd($data,$report,$lat,$lng);
+        // event(new ReportCreated($report));
+
+        $admins = User::where('role_id', 1)->get();
+
+        Notification::send($admins, new newReportNotification($report));
+
         $location = new Location;
         $location->report_id = $report->id;
         $location->address = $report->address;
         $location->address_latitude = $lat;   
         $location->address_longitude = $lng;
+        // dd(sendNewReportNotification::class);
         $location->save();
+
+        // $admins = User::where('role_id', 1)->get();
+
+        // Notification::send($admins, new newReportNotification($report));
+
         
         // dd($data,$report,$location);
         return redirect('/')->with('success', 'Your Report has been submitted');

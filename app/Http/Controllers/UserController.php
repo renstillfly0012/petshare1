@@ -46,9 +46,13 @@ class UserController extends Controller
         // $admins = User::where('role_id', 1)->get();
         // dd($admins);
         $users = User::with('roles')->paginate(5);
+        // foreach($users as $user)
+        // {
+        //     dd($user->roles->first()->name);
+        
+        // }
         
         return view('admin.user.user')->with('users', $users);
-        // return redirect()->route('users');
     }
 
     /**

@@ -67,15 +67,27 @@ class adminController extends Controller
         $notifications = auth()->user()->unreadNotifications()->get();
         // dd($notifications);
         // return view('admin.home')->with('userCount', $userCount);
+        
         foreach($notifications as $notification)
         {
-            toast('['.$notification->created_at.'] User: '.$notification->data['name'].'('.$notification->data['email'].
-            ') has just registered.','success');
-          
+            // if($notification->type == 'App\Notifications\newUserNotification' ){
+              
+            //     toast('['.$notification->created_at.'] User: '.$notification->data['name'].'('.$notification->data['email'].
+            //     ') has just registered.','success');
+            // }
+            if($notification->type == 'App\Notifications\newReportNotification')
+            {
+                $reportName = User::where('id',$notification->data['user_id'])->get();
+                // dd('asd');
+                toast('Recent Notification: <br> ['.$notification->created_at.'] <br> User: '.$reportName->first()->name.' <br> Address: <br>('.$notification->data['address'].
+                ') ','warning');
+            }
+                    
+              
         }
         
         
-        return view('admin.home',  compact('userCount', 'petCount', 'appointmentCount', 'reportCount', 'notifications'));
+        return view('admin.home',  compact('userCount', 'petCount', 'appointmentCount', 'reportCount', 'notifications', 'reportName'));
         // return redirect()->route('admin-landing');
     }
     public function  viewPets()
@@ -93,6 +105,7 @@ class adminController extends Controller
             return redirect()->route('landing')->with('warning', 'Authorized person can only access this');;
         }
         $reports = Report::with('user')->get();
+        // dd($reports);
         $paginate = Report::paginate(5);
         return view('admin.report.report')->with('reports', $reports);
     }
