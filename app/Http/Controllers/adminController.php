@@ -84,12 +84,17 @@ class adminController extends Controller
                 }
                         
                   
+                
             }
+            return view('admin.home',  compact('userCount', 'petCount', 'appointmentCount', 'reportCount', 'notifications', 'reportName'));
+        }
+        else{
+            return view('admin.home',  compact('userCount', 'petCount', 'appointmentCount', 'reportCount', 'notifications'));
         }
        
         
         
-        return view('admin.home',  compact('userCount', 'petCount', 'appointmentCount', 'reportCount', 'notifications', 'reportName'));
+        
         // return redirect()->route('admin-landing');
     }
     public function  viewPets()
