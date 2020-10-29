@@ -67,7 +67,7 @@ class adminController extends Controller
         $notifications = auth()->user()->unreadNotifications()->get();
         // dd($notifications);
         // return view('admin.home')->with('userCount', $userCount);
-        if($notifications > 0){
+        // if($notifications > 0){
             foreach($notifications as $notification)
             {
                 // if($notification->type == 'App\Notifications\newUserNotification' ){
@@ -85,7 +85,7 @@ class adminController extends Controller
                         
                   
             }
-        }
+        // }
        
         
         
