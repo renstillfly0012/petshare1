@@ -18,13 +18,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::prefix('guest')->group(function() {
-    route::get('/users', 'Api\userController@index');
-<<<<<<< HEAD
-    route::get('/login', 'Api\userController@login');
-    route::get('/register', 'Api\userController@store');
-=======
-    route::get('/login/{user}', 'Api\userController@login');
-    route::post('/register', 'Api\userController@store');
->>>>>>> makeAPI
-});
+// Route::prefix('guest')->group(function() {
+//     route::get('/users', 'Api\userController@index');
+//     route::get('/login', 'Api\userController@login');
+//     route::get('/register', 'Api\userController@store');
+// });
