@@ -44,7 +44,9 @@ class PostRequest extends FormRequest
             // dd($validator->messages()->all()[0])->withInput();
             // die(var_dump($validator->errors()));
             // return back()->with('error', $validator->messages()->all())->withInput();
-            return redirect()->route('incident');
+            // return redirect()->route('incident');
+
+            return $validator->messages()->all();
         } else {
            
         }
