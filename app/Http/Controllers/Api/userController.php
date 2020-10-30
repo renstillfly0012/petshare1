@@ -4,9 +4,12 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\PostRequest;
 use App\User;
+use App\Role;
+use Validator;
 use Hash;
-use Crypt;
+
 class userController extends Controller
 {
     /**
@@ -38,10 +41,37 @@ class userController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PostRequest $request)
     {
 
-        return response()->json($request);
+        // dd($request->all());
+        // $request->validate([
+        //     'name' => ['required', 'string', 'max:255'],
+        //     'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+        //     'password' => ['required', 'string', 'min:8', 'confirmed'],  
+        // ]);
+
+       
+      
+        //create new user
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => $request->password,
+            'role_id' => 2,
+        ]);
+
+
+        //assign user role to the new user
+        $role = Role::select('id')->where('name', 'foster')->first();
+
+        $user->roles()->attach($role);
+
+        //send email verification
+        $user->sendEmailVerificationNotification();
+
+
+        return response()->json(['status' => 'OK']);
     }
 
     /**
@@ -90,19 +120,17 @@ class userController extends Controller
     }
     public function login(Request $request){
 
-        $user = User::where([
-            'email' => $request->email,
-        ])->get();
+        $user = User::all()
+        ->where('email', $request->email)
+        ->where('password', $request->password);
 
-        $pass = $user->first()->password;
-        if(Hash::check($request->password, $pass)){
-                return response()->json($user->first(), 200); 
+        // dd($user);
+        if(!$user->isEmpty()){
+            return response()->json($user->first(), 200);
         }
         else{
             return response()->json('',404);
         }
-     
-       
        
         
     }
