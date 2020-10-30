@@ -21,5 +21,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::prefix('guest')->group(function() {
     route::get('/users', 'Api\userController@index');
     route::get('/login', 'Api\userController@login');
-    route::get('/register', 'Api\userController@store');
+    route::post('/register', 'Api\userController@store');
 });

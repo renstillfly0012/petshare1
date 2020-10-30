@@ -4,11 +4,25 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Http\Requests\PostRequest;
+use App\Http\Requests\Api\userPostRequest;
 use App\User;
 use App\Role;
 use Validator;
 use Hash;
+
+/*
+200 = ok
+201 = object created = store
+204 = no content found after executed succesfully
+206 = partial content for paginations
+400 = bad request = fail to pass validations.
+401 = unauthorized
+403 = forbidden = user auth but no permission to do this action.
+404 = not found 
+500 = internal server error
+503 = service unavailable.
+
+*/
 
 class userController extends Controller
 {
@@ -41,18 +55,9 @@ class userController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(PostRequest $request)
+    public function store(userPostRequest $request)
     {
-
-        // dd($request->all());
-        // $request->validate([
-        //     'name' => ['required', 'string', 'max:255'],
-        //     'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-        //     'password' => ['required', 'string', 'min:8', 'confirmed'],  
-        // ]);
-
-       
-      
+        
         //create new user
         $user = User::create([
             'name' => $request->name,
@@ -61,7 +66,7 @@ class userController extends Controller
             'role_id' => 2,
         ]);
 
-
+        // dd($user);
         //assign user role to the new user
         $role = Role::select('id')->where('name', 'foster')->first();
 
@@ -71,7 +76,7 @@ class userController extends Controller
         $user->sendEmailVerificationNotification();
 
 
-        return response()->json(['status' => 'OK']);
+        return response()->json($user, 201);
     }
 
     /**
@@ -124,14 +129,15 @@ class userController extends Controller
             'email' => $request->email,
         ])->get()->first();
 
-       
+       $plainPass = $request->password;
         $hashPass = $user->password;
         // dd( $request->all(),$pass,Hash::check($pass,$user->password ),$user->password);
-        if(Hash::check($request->password, $hashPass)){
+        //plaint text,hashpass
+        if(Hash::check($plainPass, $hashPass)){
                 return response()->json($user->first(), 200); 
         }
         else{
-            return response()->json('User Not Found',404);
+            return response()->json('User Not Found',204);
         } 
         
     }
