@@ -120,18 +120,20 @@ class userController extends Controller
     }
     public function login(Request $request){
 
-        $user = User::all()
-        ->where('email', $request->email)
-        ->where('password', $request->password);
+        // dd($request->all());
+        $user = User::where([
+            'email' => $request->email,
+            'password' => $request->password,
+        ])->get();
 
-        // dd($user);
-        if(!$user->isEmpty()){
-            return response()->json($user->first(), 200);
+        dd($user);
+        $pass = $user->password;
+        if(Hash::check($request->password, $pass)){
+                return response()->json($user->first(), 200); 
         }
         else{
             return response()->json('',404);
         }
        
-        
     }
 }
