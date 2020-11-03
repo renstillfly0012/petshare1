@@ -57,6 +57,8 @@ class userController extends Controller
      */
     public function store(userPostRequest $request)
     {
+
+        // dd($request);
         
         //create new user
         $user = User::create([
@@ -134,7 +136,7 @@ class userController extends Controller
         // dd( $request->all(),$pass,Hash::check($pass,$user->password ),$user->password);
         //plaint text,hashpass
         if(Hash::check($plainPass, $hashPass)){
-                return response()->json($user->first(), 200); 
+                return response()->json($user, 200); 
         }
         else{
             return response()->json('User Not Found',204);
