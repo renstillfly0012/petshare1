@@ -13,6 +13,7 @@ class VerifyCsrfToken extends Middleware
      */
     protected $except = [
         //
-        // 'https://pet-share.com/api/guest/*',
+        'https://pet-share.com/api/guest/*',
     ];
+    
 }
