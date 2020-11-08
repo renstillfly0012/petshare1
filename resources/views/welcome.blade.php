@@ -47,7 +47,7 @@
     <div class="box" style="height:2693px;">
         <div class="container-fluid"
             style="margin-top:5%; background-color:black; border-color:black; width: 90%; height:15%;" id="carousel_div">
-
+        
             <div id="carouselExampleIndicators" class="carousel slide " data-ride="carousel" style="padding-top:140px;">
                 <ol class="carousel-indicators">
                     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -90,6 +90,7 @@
             </div>
         </div>
         <div class="container-fluid">
+            <p>@csrf</p>
             <div class="row" style="margin-left: 200px; margin-top: 500px;">
                 @foreach($contents->slice(3,3) as $content)
                 <div class="col-md-3 ml-5" style=" text-center">
