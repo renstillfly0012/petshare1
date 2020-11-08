@@ -92,10 +92,10 @@ class donationController extends Controller
         
 
         $redirectUrls = new RedirectUrls();
-        // $redirectUrls->setReturnUrl('http://pet-share.com/execute-payment/'.$request->donation_amount.'/'.$sliced_name)
-        // ->setCancelUrl('http://pet-share.com/cancel');
-        $redirectUrls->setReturnUrl('http://petshare1.test/execute-payment/'.$request->donation_amount.'/'.$request->donation_name)
-        ->setCancelUrl('http://petshare1.test/cancel');
+        $redirectUrls->setReturnUrl('http://pet-share.com/execute-payment/'.$request->donation_amount.'/'.$sliced_name)
+        ->setCancelUrl('http://pet-share.com/cancel');
+        // $redirectUrls->setReturnUrl('http://petshare1.test/execute-payment/'.$request->donation_amount.'/'.$request->donation_name)
+        // ->setCancelUrl('http://petshare1.test/cancel');
             
         $payment = new Payment();
         $payment->setIntent("sale")

@@ -58,9 +58,9 @@ class userController extends Controller
     public function store(userPostRequest $request)
     {
 
-        // dd($request);
-        
-        //create new user
+        try{
+
+            //create new user
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -79,6 +79,12 @@ class userController extends Controller
 
 
         return response()->json($user, 201);
+
+        }catch(\Exception $error){
+               return response()->json($error, 404);
+        }
+
+        
     }
 
     /**
@@ -126,6 +132,7 @@ class userController extends Controller
         //
     }
     public function login(Request $request){
+        
 
         $user = User::where([
             'email' => $request->email,

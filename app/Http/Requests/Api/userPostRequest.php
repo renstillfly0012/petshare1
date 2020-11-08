@@ -36,8 +36,6 @@ class userPostRequest extends FormRequest
     {
         if ($validator->fails()) {
          
-        
-
             return $validator->messages()->all();
         } 
     }
