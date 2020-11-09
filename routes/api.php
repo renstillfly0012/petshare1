@@ -22,4 +22,6 @@ Route::prefix('guest')->group(function() {
     route::get('/users', 'Api\userController@index');
     route::get('/login', 'Api\userController@login');
     route::post('/register', 'Api\userController@store');
+
+
 });
