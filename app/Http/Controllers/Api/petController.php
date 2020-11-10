@@ -49,6 +49,7 @@ class petController extends Controller
      */
     public function show(Pet $pet)
     {
+        // dd($pet);
         return response()->json($pet, 200);
     }
 

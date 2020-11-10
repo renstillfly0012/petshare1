@@ -28,5 +28,5 @@ Route::prefix('guest')->group(function() {
 
 Route::prefix('user')->group(function(){
     route::get('/viewallpets', 'Api\petController@index');
-    route::get('/view-pet/{id}', 'Api\petController@show');
+    route::get('/view-pet/{pet}', 'Api\petController@show');
 });
