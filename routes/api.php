@@ -23,5 +23,10 @@ Route::prefix('guest')->group(function() {
     route::get('/login', 'Api\userController@login');
     route::post('/register', 'Api\userController@store');
 
+    
+});
 
+Route::prefix('user')->group(function(){
+    route::get('/viewallpets', 'Api\petController@index');
+    route::get('/view-pet/{id}', 'Api\petController@show');
 });
