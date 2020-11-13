@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\Api\adoptPostRequest;
+use App\Appointment;
 
 class adoptionController extends Controller
 {
@@ -40,7 +41,7 @@ class adoptionController extends Controller
             
             return response()->json($request, 200);
      
-            $appointment = User::create([
+            $appointment = Appointment::create([
                 'user_id' => $request->user_id,
                 'requested_pet_id' => $request->requested_pet_id,
                 'requested_date' => $request->requested_date,
