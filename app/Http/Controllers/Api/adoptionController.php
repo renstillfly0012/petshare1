@@ -37,6 +37,8 @@ class adoptionController extends Controller
     public function store(adoptPostRequest $request)
     {
         try{
+            
+            return response()->json($request, 200);
      
             $appointment = User::create([
                 'user_id' => $request->user_id,
