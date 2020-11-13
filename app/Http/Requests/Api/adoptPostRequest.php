@@ -25,9 +25,9 @@ class adoptPostRequest extends FormRequest
     public function rules()
     {
         return [
-            'show_user_id' => ['required', 'integer', 'max:255'],
-            'show_pet_id' => ['required', 'integer', 'max:255'],
-            'show_requested_date' => 'required',
+            'user_id' => ['required', 'integer', 'max:255'],
+            'requested_pet_id' => ['required', 'integer', 'max:255'],
+            'requested_date' => 'required',
         ];
     }
 
