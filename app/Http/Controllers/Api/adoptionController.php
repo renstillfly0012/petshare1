@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\Api\adoptPostRequest;
 
 class adoptionController extends Controller
 {
@@ -33,32 +34,21 @@ class adoptionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(adoptPostRequest $request)
     {
         try{
-        $validator = Validator::make($request->all(),[
-            'show_user_id' => ['required', 'integer', 'max:255'],
-            'show_pet_id' => ['required', 'integer', 'max:255'],
-            'show_requested_date' => 'required',
-         ]);
+     
+            $appointment = User::create([
+                'user_id' => $request->user_id,
+                'requested_pet_id' => $request->requested_pet_id,
+                'requested_date' => $request->requested_date,
+                'appointment_type' => "Adoption",
+            ]);
 
-         if ($validator->fails()) {
-         
-            return $validator->messages()->all();
-        } 
-
-         $appointment = new Appointment;
-         $appointment->user_id = $request->input('show_user_id');
-         $appointment->requested_pet_id = $request->input('show_pet_id');
-         $appointment->requested_date = $request->input('show_requested_date');
-         $appointment->appointment_type = "Adoption";
-        // dd($appointment);
-         $appointment->save();
-
-         return response()->json($appointment, 201);
+        return response()->json($appointment, 201);
 
         }catch(\Exception $error){
-               return response()->json($appointment, 404);
+        return response()->json($appointment, 404);
         }
     }
 
