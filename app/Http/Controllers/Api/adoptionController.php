@@ -39,7 +39,7 @@ class adoptionController extends Controller
     {
         try{
             
-            return response()->json($request->all(), 200);
+            // return response()->json($request->all(), 200);
      
             $appointment = Appointment::create([
                 'user_id' => $request->user_id,
