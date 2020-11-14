@@ -56,8 +56,6 @@ class adoptionController extends Controller
 
         }catch(\Exception $error){
 
-            return $error;
-
         return response()->json($error, 400);
 
         }
