@@ -81,7 +81,7 @@ class userController extends Controller
         return response()->json($user, 201);
 
         }catch(\Exception $error){
-               return response()->json($error, 204);
+               return response()->json($error, 400);
         }
 
         
@@ -114,7 +114,7 @@ class userController extends Controller
         return response()->json($user, 201);
 
         }catch(\Exception $error){
-               return response()->json($error, 204);
+               return response()->json($error, 400);
         }
 
         
@@ -177,7 +177,7 @@ class userController extends Controller
         return response()->json($user, 201);
 
         }catch(\Exception $error){
-            return response()->json($error, 204);
+            return response()->json($error, 400);
         }
     }
 

@@ -50,11 +50,13 @@ class adoptionController extends Controller
                 'appointment_type' => "Adoption",
             ]);
 
+        
+
         return response()->json($appointment, 201);
 
         }catch(\Exception $error){
 
-        return response()->json($error, 204);
+        return response()->json($error, 400);
 
         }
     }
