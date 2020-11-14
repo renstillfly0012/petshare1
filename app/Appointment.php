@@ -14,7 +14,7 @@ class Appointment extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'user_id','requested_pet_id','requested_pet','appointment_type'
+        'user_id','requested_pet_id','requested_date','appointment_type'
     ];
     
     
