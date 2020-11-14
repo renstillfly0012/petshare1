@@ -12,6 +12,10 @@ class Appointment extends Model
 {
     use Notifiable;
     use SoftDeletes;
+
+    protected $fillable = [
+        'user_id','requested_pet_id','requested_pet','appointment_type'
+    ];
     
     
     public function user()
