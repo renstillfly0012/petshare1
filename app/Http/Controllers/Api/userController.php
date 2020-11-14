@@ -81,11 +81,46 @@ class userController extends Controller
         return response()->json($user, 201);
 
         }catch(\Exception $error){
-               return response()->json($error, 404);
+               return response()->json($error, 204);
         }
 
         
     }
+
+    public function storeAdmin(userPostRequest $request)
+    {
+
+        try{
+
+            //create new user
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => $request->password,
+            'role_id' => 1,
+            'email_verified_at' => now(),
+        ]);
+
+        // dd($user);
+        //assign user role to the new user
+        $role = Role::select('id')->where('name', 'admin')->first();
+
+        $user->roles()->attach($role);
+
+        //send email verification
+        $user->sendEmailVerificationNotification();
+
+
+        return response()->json($user, 201);
+
+        }catch(\Exception $error){
+               return response()->json($error, 204);
+        }
+
+        
+    }
+
+
 
     /**
      * Display the specified resource.
@@ -95,7 +130,7 @@ class userController extends Controller
      */
     public function show(User $user)
     {
-        
+        return response()->json($user, 200);
     }
 
     /**
@@ -116,9 +151,34 @@ class userController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(userPostRequest $request, User $user)
     {
-        //
+        try{
+            $user->name = $request->edit_user_name;
+        $user->email = $request->edit_email;
+        $user->password = $request->edit_password;
+        if($request->hasFile('edit_image') == true){
+        // $user->image = $request->edit_image->getClientOriginalName();
+       
+        $file = $request->edit_image;
+        $extension = $file->getClientOriginalExtension();
+        $filename = time().'.USER_ID_'.$user->id.'.'.$extension;
+        // $filename = $file->getClientOriginalName();
+        $user->image = $filename;
+       
+
+        // $data = array_merge($validated, ['image' => $filename]);
+        $file->move('assets/images/users', $filename);
+        }
+     
+       
+        $user->save();
+
+        return response()->json($user, 201);
+
+        }catch(\Exception $error){
+            return response()->json($error, 204);
+        }
     }
 
     /**
@@ -127,9 +187,10 @@ class userController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($user)
     {
-        //
+        $user->delete();
+        return response()->json($user, 200);
     }
     public function login(Request $request){
         

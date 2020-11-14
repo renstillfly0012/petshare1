@@ -22,14 +22,21 @@ Route::prefix('guest')->group(function() {
     route::get('/users', 'Api\userController@index');
     route::get('/login', 'Api\userController@login');
     route::post('/register', 'Api\userController@store');
-
-    
 });
 
 Route::prefix('user')->group(function(){
     route::get('/viewallpets', 'Api\petController@index');
     route::get('/view-pet/{pet}', 'Api\petController@show');
     route::post('/adoptPet', 'Api\adoptionController@store');
+    route::get('/allrequests', 'Api\adoptionController@index');
+    
 });
 
+Route::prefix('admin')->group(function(){
+    route::get('/users', 'Api\userController@index');
+    route::get('/view-user/{user}', 'Api\userController@index');
+    route::post('/register', 'Api\userController@storeAdmin');
+    route::put('/edit-user/{user}', 'Api\userController@update');
+    route::delete('/delete/{user}', 'Api\userController@destroy');
+});
 

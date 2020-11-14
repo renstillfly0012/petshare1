@@ -28,6 +28,7 @@ class userPostRequest extends FormRequest
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8'],   
+            'image' => 'mimes:jpeg,jpg,png,gif','image', 'max:25000',
        ];
 
     }
