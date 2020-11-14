@@ -34,7 +34,7 @@ Route::prefix('user')->group(function(){
 
 Route::prefix('admin')->group(function(){
     route::get('/users', 'Api\userController@index');
-    route::get('/view-user/{user}', 'Api\userController@index');
+    route::get('/view-user/{user}', 'Api\userController@show');
     route::post('/register', 'Api\userController@storeAdmin');
     route::put('/edit-user/{user}', 'Api\userController@update');
     route::delete('/delete/{user}', 'Api\userController@destroy');
