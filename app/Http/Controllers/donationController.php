@@ -28,12 +28,17 @@ class donationController extends Controller
   
     
     public function create(DonationRequest $request){
+
+        $sb_client =  env('SB_CLIENT_ID');
+        $sb_secret = env('SB_SECRET');
+
         // is_numeric
         $apiContext = new \PayPal\Rest\ApiContext(
             new \PayPal\Auth\OAuthTokenCredential(
-                'ATAWA6JeTzh-x6i1c2vr7t4EZYTjAvTMuzuLQB5TG0dlERLTHwsGRRovTO2QtpSDCpiU7cNu3X7NXVwP',     // ClientID
-                'EK97TjY48sf4ho76Si4rMgQQLaLpYzZs6q87zemLd0E7wrjhSFab_s0WAvTi6--iY0cgQDUtWW-J9peE'      // ClientSecret
+                $sb_client,     // ClientID
+                $sb_secret      // ClientSecret
             )
+           
     );
         $payer = new Payer();
         $payer->setPaymentMethod("paypal");
@@ -92,7 +97,7 @@ class donationController extends Controller
         
 
         $redirectUrls = new RedirectUrls();
-        $redirectUrls->setReturnUrl('http://pet-share.com/execute-payment/'.$request->donation_amount.'/'.$sliced_name)
+        $redirectUrls->setReturnUrl('http://pet-share.com/execute-payment/'.$request->donation_amount.'/'.$request->donation_name)
         ->setCancelUrl('http://pet-share.com/cancel');
         // $redirectUrls->setReturnUrl('http://petshare1.test/execute-payment/'.$request->donation_amount.'/'.$request->donation_name)
         // ->setCancelUrl('http://petshare1.test/cancel');
@@ -115,13 +120,16 @@ class donationController extends Controller
     public function execute($donation_amount, $donation_name){
         
        $curr = geoip()->getLocation(\Request::ip())->currency;
+
+       $sb_client =  env('SB_CLIENT_ID');
+        $sb_secret = env('SB_SECRET');
       
   
         // dd($amount);
         $apiContext = new \PayPal\Rest\ApiContext(
             new \PayPal\Auth\OAuthTokenCredential(
-                'ATAWA6JeTzh-x6i1c2vr7t4EZYTjAvTMuzuLQB5TG0dlERLTHwsGRRovTO2QtpSDCpiU7cNu3X7NXVwP',     // ClientID
-                'EK97TjY48sf4ho76Si4rMgQQLaLpYzZs6q87zemLd0E7wrjhSFab_s0WAvTi6--iY0cgQDUtWW-J9peE'      // ClientSecret
+                $sb_client,     // ClientID
+                $sb_secret      // ClientSecret
             )
     );
 

@@ -9,6 +9,7 @@ use App\User;
 use App\Role;
 use Validator;
 use Hash;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 /*
 200 = ok
@@ -130,6 +131,8 @@ class userController extends Controller
      */
     public function show(User $user)
     {
+        // return QrCode::size(150)
+        // ->generate('https://pet-share.com', public_path('assets/images/qrcodes/'.$user->email.''.time().'.png'));
         return response()->json($user, 200);
     }
 
@@ -141,12 +144,12 @@ class userController extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**
      * Update the specified resource in storage.
-     *
+     * 
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
