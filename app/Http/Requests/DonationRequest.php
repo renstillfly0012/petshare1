@@ -36,8 +36,6 @@ class DonationRequest extends FormRequest
         if ($validator->fails()) {
 
             return $validator->messages()->all();
-        } else {
-           
-        }
+        } 
     }
 }
