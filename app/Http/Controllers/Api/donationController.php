@@ -22,7 +22,7 @@ class donationController extends Controller
     }
 
     public function storeDonation(DonationRequest $request){
-        // dd($request);
+        dd($request);
         try{
         $donation = Donation::create([
             'donation_name' => $request->donation_name,
