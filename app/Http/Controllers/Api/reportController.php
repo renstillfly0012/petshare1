@@ -51,7 +51,7 @@ class reportController extends Controller
     public function store(ReportRequest $request)
     {
 
-        dd($request);
+        
         try{
 
         $lat = $request->address_lat;
