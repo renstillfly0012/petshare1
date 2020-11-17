@@ -21,8 +21,8 @@ class donationController extends Controller
         }      
     }
 
-    public function storeDonation(donation_amount $request){
-        return response()->json($request);
+    public function storeDonation(DonationRequest $request){
+        // dd($request);
         try{
         $donation = Donation::create([
             'donation_name' => $request->donation_name,
