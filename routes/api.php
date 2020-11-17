@@ -29,6 +29,14 @@ Route::prefix('user')->group(function(){
     route::get('/view-pet/{pet}', 'Api\petController@show');
     route::post('/adoptPet', 'Api\adoptionController@store');
     route::get('/allrequests', 'Api\adoptionController@index');
+
+    Route::prefix('donation')->group(function(){
+        route::post('/create', 'Api\donationController@storeDonation');
+    });
+
+    Route::prefix('reports')->group(function(){
+        route::post('/create', 'Api\reportController@store');
+    });
     
 });
 
@@ -41,12 +49,12 @@ Route::prefix('admin')->group(function(){
 
     Route::prefix('donation')->group(function(){
         route::get('/all', 'Api\donationController@getAllDonations');
-        route::post('/create', 'Api\donationController@storeDonation');
+        // route::post('/create', 'Api\donationController@storeDonation');
     });
 
     Route::prefix('reports')->group(function(){
         route::get('/all', 'Api\reportController@index');
-        route::post('/create', 'Api\reportController@store');
+        // route::post('/create', 'Api\reportController@store');
     });
 
 
