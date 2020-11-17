@@ -28,4 +28,14 @@ class DonationRequest extends FormRequest
             'donation_amount' => 'required|numeric','min:20',
         ];
     }
+
+    public function withValidator($validator)
+    {
+        if ($validator->fails()) {
+
+            return $validator->messages()->all();
+        } else {
+           
+        }
+    }
 }

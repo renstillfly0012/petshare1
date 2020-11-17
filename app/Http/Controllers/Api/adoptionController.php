@@ -16,9 +16,15 @@ class adoptionController extends Controller
      */
     public function index()
     {
+        try{
         $appointment = Appointment::all();
 
         return response()->json($appointment, 200);
+    
+
+        }catch(\Exception $error){
+               return response()->json($error, 400);
+        }
     }
 
     /**
