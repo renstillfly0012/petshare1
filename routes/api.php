@@ -45,8 +45,8 @@ Route::prefix('admin')->group(function(){
     });
 
     Route::prefix('reports')->group(function(){
-        route::get('/all', 'Api\donationController@getAllDonations');
-        route::post('/create', 'Api\donationController@storeDonation');
+        route::get('/all', 'Api\reportController@index');
+        route::post('/create', 'Api\reportController@store');
     });
 
 
