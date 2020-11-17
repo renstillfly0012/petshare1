@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\ReportRequest;
 use App\Location;
 use App\User;
+use App\Report;
 use App\Notifications\ReportAppoved;
 use App\Notifications\ReportDeclined;
 use App\Events\ReportCreated;
@@ -23,8 +24,8 @@ class reportController extends Controller
     public function index()
     {
         try{
-            $donations = Donation::paginate(5);
-            return response()->json($donations, 200);
+            $reports = Report::paginate(5);
+            return response()->json($reports, 200);
     
             }catch(\Exception $error){
             return response()->json($error, 400);
