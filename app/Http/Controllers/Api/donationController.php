@@ -33,7 +33,7 @@ class donationController extends Controller
         
         $donation->save();
 
-        return response()->json($user, 201);
+        return response()->json($donation, 201);
 
         }catch(\Exception $error){
             return response()->json($error, 400);
