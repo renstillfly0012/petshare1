@@ -38,5 +38,17 @@ Route::prefix('admin')->group(function(){
     route::post('/register', 'Api\userController@storeAdmin');
     route::put('/edit-user/{user}', 'Api\userController@update');
     route::delete('/delete/{user}', 'Api\userController@destroy');
+
+    Route::prefix('donation')->group(function(){
+        route::get('/all', 'Api\donationController@getAllDonations');
+        route::post('/create', 'Api\donationController@storeDonation');
+    });
+
+    Route::prefix('reports')->group(function(){
+        route::get('/all', 'Api\donationController@getAllDonations');
+        route::post('/create', 'Api\donationController@storeDonation');
+    });
+
+
 });
 
