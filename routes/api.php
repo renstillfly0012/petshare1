@@ -56,7 +56,5 @@ Route::prefix('admin')->group(function(){
         route::get('/all', 'Api\reportController@index');
         // route::post('/create', 'Api\reportController@store');
     });
-
-
 });
 

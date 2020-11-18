@@ -25,10 +25,10 @@ class donationController extends Controller
       
         try{
         $donation = Donation::create([
+            'user_id' => $request->user_id,
             'donation_name' => $request->donation_name,
             'donation_amount' => $request->donation_amount,
             'donation_transaction_id' => $request->transactionId,
-            'currency' => $curr,
         ]);
         
         $donation->save();
