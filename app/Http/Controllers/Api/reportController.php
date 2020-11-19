@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Http\Requests\ReportRequest;
+use App\Http\Requests\Api\ReportRequest;
 use App\Location;
 use App\User;
 use App\Report;
