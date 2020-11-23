@@ -8,6 +8,7 @@ use Gate;
 use App\Pet;
 use Illuminate\Support\Facades\Auth;
 use Validator;
+use QRCode;
 
 
 class petController extends Controller
@@ -55,51 +56,49 @@ class petController extends Controller
      */
     public function store(PetRequest $request)
     {
-        // $validator = Validator::make($request->all(),[
-        //     'pet_name' => ['required', 'string', 'max:255'],
-        //      'pet_age' => ['required', 'integer', 'max:20', 'min:0'],
-        //       'pet_breed' => ['required', 'string', 'max: 20'],
-        //       'pet_description' => ['required', 'string', 'max:255'],
-        //       'pet_image' => 'mimes:jpeg,jpg,png,gif','image', 'max:25000',
-        //  ]);
+      
         
         if($request->validated()==true)
         {
+              //getPetId
+            //   $new_pet_id = Pet::all()->last()->id+1;
+            $new_pet_id = Pet::count()+1;
+            //   dd($new_pet_id);
+ 
         $pet = new Pet;
-        $pet->name = $request->input('pet_name');
+        $pet->name = "PETCODE-".$new_pet_id;
         $pet->age = $request->input('pet_age');
         $pet->breed = $request->input('pet_breed');
         $pet->description = $request->input('pet_description');
 
-        // $validated = $request->validated();
-       
-        // $data = $validated;
-     
-        // if($request->hasFile('pet_image') == true){
-            // $user->image = $request->edit_image->getClientOriginalName();
-            
-            $new_pet_id = Pet::count()+1;
+      
             
             $file = $request->pet_image;
             $extension = $file->getClientOriginalExtension();
-            $filename = time().'.PET_ID_'.$new_pet_id.'.'.$extension;
-            // $filename = $file->getClientOriginalName();
+            $filename = time().'.PET_CODE_'.$new_pet_id.'.'.$extension;
             $pet->image = $filename;
-            
-            // $data = array_merge($validated, ['image' => $filename]);
-           
-        // }
-       
-    //    $pet->create($data);
-        // $pet = Pet::create($data);
+            $file->move('assets/images/pets', $filename);
+
+        //filepath of the qrcode.
+        $qrcodeImgName = time().'.PET_ID_'.$new_pet_id.'.png';
+        $file = 'assets/images/qrcodes/'.$qrcodeImgName;
         
-        $pet->save();
-        // dd($pet);
-        $file->move('assets/images/pets', $filename);
+        $pet->qrcodePath = $qrcodeImgName;
+        //generate qrcode
+        $newQrcode = QRCode::text("petshare1.test/pethealth/view/".$new_pet_id)
+        ->setSize(4)
+        ->setMargin(2)
+        ->setOutfile($file)
+        ->png();
+
+        //check if is generated
+        // if($newQrcode){
+          //save data to database.
+          $pet->save();
+          return redirect('/pets')->with('toast_success', 'New Data has been Saved');
+        // }
+ 
        
-      
-       
-        return redirect('/pets')->with('toast_success', 'New Data has been Saved');
         }
     }
 

@@ -9,9 +9,9 @@ class FakePetSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
-    {
-        Pet::truncate();
-       factory(Pet::class, 10)->create();
-    }
+//     public function run()
+//     {
+//         Pet::truncate();
+//        factory(Pet::class, 10)->create();
+//     }
 }

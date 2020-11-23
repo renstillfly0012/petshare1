@@ -155,7 +155,7 @@
                             </div>
                         </div>
 
-                        <div class="input-group">
+                        {{-- <div class="input-group">
                             <div class="input-group-prepend">
                                 <span style="color:#fdc370; background-color:#2d643b;"
                                     class="input-group-text">Name</span>
@@ -171,7 +171,7 @@
                             </span>
                             @enderror
 
-                        </div>
+                        </div> --}}
 
 
                         <div class="input-group  mt-4">

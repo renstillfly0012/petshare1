@@ -55,17 +55,7 @@
                                 @endforeach
                                
                             </tbody>
-                            <tfoot>
-                                <tr>
-                                    <th rowspan="1" colspan="1">Report ID</th>
-                                    <th rowspan="1" colspan="1">Name</th>
-                                    <th rowspan="1" colspan="1">Report Image</th>
-                                    <th rowspan="1" colspan="1">Incident Report</th>
-                                    <th rowspan="1" colspan="1">Location</th>
-                                    <th rowspan="1" colspan="1">Report Status</th>
-                                    <th rowspan="1" colspan="1">Action</th>
-                                </tr>
-                            </tfoot>
+                         
                         </table>
                     </div>
                 </div>

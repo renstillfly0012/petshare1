@@ -10,7 +10,7 @@ class Pet extends Model
     //
 
     protected $fillable = [
-        'name', 'age', 'breed','description','image'
+        'name', 'age', 'breed','description','image','qrcodePath'
     ];
 
     public function appointments(){
@@ -20,4 +20,11 @@ class Pet extends Model
     public function users(){
         return $this->belongsToMany('App\User');
     }
+
+    public function pet_info(){
+        return $this->hasOne('App\Pet_Info');
+    }
+
+
+    
 }

@@ -65,6 +65,10 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany('App\Appointment');
     }
 
+    public function pet_infos(){
+        return $this->hasMany('App\Pet_Info');
+    }
+
 
     public function hasAnyRoles($roles)
     {

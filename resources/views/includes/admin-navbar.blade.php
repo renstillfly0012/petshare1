@@ -60,7 +60,7 @@
         <!-- Messages Dropdown Menu -->
         <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#" id="username">{{ Auth::user()->name }}
-                <i class="fa fa-caret-down" aria-hidden="true"></i> <img src="assets/images/{{ Auth::user()->image }} "
+                <i class="fa fa-caret-down" aria-hidden="true"></i> <img src="/assets/images/{{ Auth::user()->image }} "
                     class="img-circle img-responsive" height="33px" width="33px" alt="User Image">
             </a>
 
@@ -103,7 +103,7 @@
     <!-- Brand Logo -->
 
     <a href="/home" class="brand-link">
-        <img src="{{ asset('assets/images/pspcalogo.png') }}" alt="AdminLTE Logo" height="33px" width="33px"
+        <img src="{{ asset('/assets/images/pspcalogo.png') }}" alt="AdminLTE Logo" height="33px" width="33px"
             class="brand-image img-circle elevation-3 img-responsive" style="opacity: .8">
         <span class="brand-text font-weight-light">PetShare</span>
     </a>
@@ -113,7 +113,7 @@
         <!-- Sidebar user panel (optional) -->
         <div class="text-center mt-3 mb-3">
             <div class=" image">
-                <img src="assets/images/{{ Auth::user()->image }}" class="img-circle elevation-2" alt="User Image"
+                <img src="/assets/images/{{ Auth::user()->image }}" class="img-circle elevation-2" alt="User Image"
                     height="100px" width="100px" id="sidebar_img">
             </div>
             <div class="info text-center mt-2">
@@ -187,6 +187,13 @@
                                 </a>
                             </li>
 
+                            <li class="nav-item">
+                                <a href="/pethealth/all" class="nav-link">
+                                    <i class="nav-icon fas fa-file-medical"></i>
+                                    <p>PET'S HEALTH RECORD</p>
+                                </a>
+                            </li>
+
                         </ul>
                     </li>
 
@@ -214,8 +221,51 @@
                                 </a>
                             </li>
 
+                            <li class="nav-item">
+                                <a href="/pethealth/all" class="nav-link">
+                                    <i class="nav-icon fas fa-file-medical"></i>
+                                    <p>HEALTH RECORD</p>
+                                </a>
+                            </li>
+
                         </ul>
                     </li>
+
+                    @elseif(Route::currentRouteName() == 'pethealth/all')
+                    <li class="nav-item has-treeview menu-close">
+                        <a href="/pets" class="nav-link active">
+                            <i class="nav-icon fas fa-paw"></i>
+                            <p>
+                                PET MANAGEMENT
+                                <i class="right fas fa-angle-left"></i>
+
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview" style="display: block;">
+                            <li class="nav-item">
+                                <a href="/pets-requests" class="nav-link ">
+                                    <i class="fa fa-tasks nav-icon" aria-hidden="true"></i>
+                                    <p>APPOINTMENT REQUESTS</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/pets" class="nav-link ">
+                                    <i class="nav-icon fas fa-paw"></i>
+                                    <p>PETS</p>
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="/pethealth/all" class="nav-link active">
+                                    <i class="nav-icon fas fa-file-medical"></i>
+                                    <p>HEALTH RECORD</p>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </li>
+
+
 
 
                 @else
@@ -239,6 +289,13 @@
                                 <a href="/pets" class="nav-link">
                                     <i class="nav-icon fas fa-paw"></i>
                                     <p>PETS</p>
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="/pethealth/all" class="nav-link">
+                                    <i class="nav-icon fas fa-file-medical"></i>
+                                    <p>HEALTH RECORD</p>
                                 </a>
                             </li>
 

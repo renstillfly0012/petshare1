@@ -21,6 +21,7 @@ class CreatePetsTable extends Migration
             $table->string('breed');
             $table->string('status')->default('Available');
             $table->text('description');
+            $table->text('qrcodePath');
             $table->timestamps();
         });
     }

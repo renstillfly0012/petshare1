@@ -51,6 +51,7 @@ class UserController extends Controller
         //     dd($user->roles->first()->name);
         
         // }
+        // dd($users);
         
         return view('admin.user.user')->with('users', $users);
     }

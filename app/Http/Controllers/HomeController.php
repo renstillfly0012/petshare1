@@ -7,6 +7,7 @@ use App\Pet;
 use Gate;
 use Auth;
 use App\Content;
+use QRCode;
 
 class HomeController extends Controller
 {
@@ -28,7 +29,9 @@ class HomeController extends Controller
      */
 
             public function index()
-            { $contents = Content::all();
+            { 
+              //---------
+              $contents = Content::all();
               
                 if(Auth::check()){
                 if(Gate::denies('isAdmin')){

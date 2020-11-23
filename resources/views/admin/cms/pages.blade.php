@@ -59,16 +59,7 @@
                             @endforeach
                            
                         </tbody>
-                        <tfoot>
-                            <tr>
-                                <th rowspan="1" colspan="1">Content ID</th>
-                                <th rowspan="1" colspan="1">Content Section</th>
-                                <th rowspan="1" colspan="1">Content Title</th>
-                                <th rowspan="1" colspan="1">Content Image</th>
-                                <th rowspan="1" colspan="1">Content Description</th>
-                                <th rowspan="1" colspan="1">Action</th>
-                            </tr>
-                        </tfoot>
+                
                     </table>
                 </div>
             </div>
