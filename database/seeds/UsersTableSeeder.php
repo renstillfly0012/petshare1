@@ -49,8 +49,48 @@ class UsersTableSeeder extends Seeder
         
         ]);
 
+        $foster2 = User::create([
+            'name' => 'Manuel',
+            'email' => 'manuel@manuel.com',
+            'email_verified_at' => now(),
+            'password' => 'manuel',
+            'status' => 'Activated'
+        ]);
+
+
+        $foster3 = User::create([
+            'name' => 'Edward',
+            'email' => 'edward@edward.com',
+            'email_verified_at' => now(),
+            'password' => 'edward',
+            'status' => 'Activated'
+        ]);
+
+        $admin2 = User::create([
+            'name' => 'Rico',
+            'email' => 'rico@rico.com',
+            'email_verified_at' => now(),
+            'password' => 'rico',
+            'status' => 'Activated',
+            'role_id' => '1',
+        ]);
+        $admin3 = User::create([
+            'name' => 'Daniel',
+            'email' => 'daniel@daniel.com',
+            'email_verified_at' => now(),
+            'password' => 'daniel',
+            'status' => 'Activated',
+            'role_id' => '1',
+        ]);
+
+       
+
         $admin->roles()->attach($adminRole);
+        $admin2->roles()->attach($adminRole);
+        $admin3->roles()->attach($adminRole);
         $foster->roles()->attach($fosterRole);
+        $foster2->roles()->attach($fosterRole);
+        $foster3->roles()->attach($fosterRole);
         $vet->roles()->attach($vetRole);
         
     }

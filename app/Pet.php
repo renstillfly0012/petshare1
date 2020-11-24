@@ -25,6 +25,10 @@ class Pet extends Model
         return $this->hasOne('App\Pet_Info');
     }
 
+    public function medical_history(){
+        return $this->hasOne('App\Pet_Info');
+    }
+
 
     
 }

@@ -17,7 +17,7 @@ class petInfoController extends Controller
     public function index()
     {
         $petinfos = Pet_Info::paginate(5);
-        // dd($petinfos[0]);
+        // dd($petinfos[0]->users->name);
         return view('admin.pet-health.all')->with('petinfos', $petinfos);
     }
 
@@ -64,7 +64,7 @@ class petInfoController extends Controller
     public function show($id)
     {
         $medinfos = Medical_Histories::where('pet_id',$id)->get();
-        // dd($medinfo);
+        // dd($medinfos[0]->pets);
         return view('admin.pet-health.view')->with('medinfos', $medinfos);
     }
 

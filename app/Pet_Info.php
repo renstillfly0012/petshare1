@@ -12,11 +12,15 @@ class Pet_Info extends Model
     
 
     public function user(){
-        return $this->belongsToMany('App\User', 'pet_owner_id');
+        return $this->belongsTo('App\User', 'pet_owner_id', 'id');
     }
 
     public function pets(){
-        return $this->belongsTo('App\Pet');
+        return $this->belongsTo('App\Pet', 'pet_id', 'id');
+    }
+
+    public function medhistory(){
+        return $this->hasOne('App\MedicaL_Histories');
     }
 
    

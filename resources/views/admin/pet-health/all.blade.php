@@ -36,9 +36,9 @@
                                     aria-label="Platform(s): activate to sort column ascending">Allergies</th>
                                 <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
                                     aria-label="Engine version: activate to sort column ascending">Exisiting Conditions</th>
-                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
-                                    aria-label="Browser: activate to sort column ascending">Veterinarian</th>
-                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                    {{-- <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                    aria-label="Browser: activate to sort column ascending">Veterinarian</th>--}}
+                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" 
                                     aria-label="Browser: activate to sort column ascending">Action</th>
             
                             </tr>
@@ -49,11 +49,11 @@
                             <tr role="row" class="odd text-center">
                                 <td class="sorting_1">{{$petinfo->id}}</td>
                                 
-                                <td>{{$petinfo->pet_owner_id != null ? $petinfo->pet_ownder_id : 'None'}}</td>
-                                <td>{{$petinfo->pet_id}}</td>
+                                <td>{{$petinfo->pet_owner_id != null ? $petinfo->user->name : 'None'}}</td>
+                                <td>{{$petinfo->pets->name}}</td>
                                 <td>{{$petinfo->pet_allergies}}</td>
                                  <td>{{$petinfo->pet_existing_conditions}}</td>
-                                <td>{{$petinfo->vet_id}}</td>
+                                {{-- <td>{{$petinfo->vet_id}}</td> --}}
 
  
                                 <td>

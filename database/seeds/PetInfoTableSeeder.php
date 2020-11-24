@@ -31,7 +31,7 @@ class PetInfoTableSeeder extends Seeder
         ]);
 
         $petinfo = Pet_Info::create([
-            'pet_owner_id' => 3,
+            'pet_owner_id' => 4,
             'pet_id' => 3,
             'pet_allergies' => 'None',
             'pet_existing_conditions' => 'None',

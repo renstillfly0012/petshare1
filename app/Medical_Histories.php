@@ -15,7 +15,11 @@ class Medical_Histories extends Model
         ,'action','medications','comments'
         ];
 
-    public function pet_infos(){
-        return $this->belongsToMany('App\Pet_Info');
+    public function pet_info(){
+        return $this->belongsTo('App\Pet_Info','pet_info_id', 'id');
+    }
+
+    public function pets(){
+        return $this->belongsTo('App\Pet', 'pet_id', 'id');
     }
 }
