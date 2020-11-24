@@ -88,7 +88,8 @@ Route::resource('/cms', 'cmsController');
 
 Route::prefix('pethealth')->group(function(){
     route::get('/all', 'petInfoController@index');
-    route::get('view/{health}', 'petInfoController@show');
+    route::get('view/{id}', 'petInfoController@show');
+    route::post('/create', 'petInfoController@store');
     
 });
 

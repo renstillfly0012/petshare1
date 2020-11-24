@@ -17,7 +17,7 @@
                         <table id="example2" class="table table-bordered table-hover dataTable" role="grid"
                             aria-describedby="example2_info">
                             <thead>
-                                <tr role="row">
+                                <tr role="row" class="odd text-center">
                                     <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
                                         aria-sort="ascending"
                                         aria-label="Rendering engine: activate to sort column descending">Report ID
@@ -39,7 +39,7 @@
                             <tbody>
                               
                                 @foreach($reports as $report)
-                                <tr role="row" class="odd">
+                                <tr role="row" class="odd text-center">
                                     <td class="sorting_1">{{$report->id}}</td>
                                     <td>{{$report->user->name}}</td>
                                     <td><img src="assets/images/reports/{{ $report->image }}" alt="User Image"
@@ -61,8 +61,7 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-12 col-md-5">
-                        <div class="dataTables_info" id="example2_info" role="status" aria-live="polite">Showing 1 to 10 of
-                            57 entries</div>
+                        
                     </div>
                     <div class="col-sm-12 col-md-7">
                         <div class="dataTables_paginate paging_simple_numbers" id="example2_paginate">

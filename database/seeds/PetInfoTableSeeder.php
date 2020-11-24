@@ -18,7 +18,7 @@ class PetInfoTableSeeder extends Seeder
             'pet_allergies' => 'None',
             'pet_existing_conditions' => 'None',
             'vet_id' => '3',
-            'medical_history_id' => 1,
+            
         ]);
 
         $petinfo = Pet_Info::create([
@@ -27,7 +27,7 @@ class PetInfoTableSeeder extends Seeder
             'pet_allergies' => 'None',
             'pet_existing_conditions' => 'None',
             'vet_id' => '3',
-            'medical_history_id' => 2,
+            
         ]);
 
         $petinfo = Pet_Info::create([
@@ -36,7 +36,7 @@ class PetInfoTableSeeder extends Seeder
             'pet_allergies' => 'None',
             'pet_existing_conditions' => 'None',
             'vet_id' => '3',
-            'medical_history_id' => 3,
+             
         ]);
 
         $petinfo = Pet_Info::create([
@@ -45,7 +45,7 @@ class PetInfoTableSeeder extends Seeder
             'pet_allergies' => 'None',
             'pet_existing_conditions' => 'None',
             'vet_id' => '3',
-            'medical_history_id' => 4,
+            
         ]);
 
         $petinfo = Pet_Info::create([
@@ -54,7 +54,7 @@ class PetInfoTableSeeder extends Seeder
             'pet_allergies' => 'None',
             'pet_existing_conditions' => 'None',
             'vet_id' => '3',
-            'medical_history_id' => 5,
+           
         ]);
 
         $petinfo = Pet_Info::create([
@@ -63,7 +63,7 @@ class PetInfoTableSeeder extends Seeder
             'pet_allergies' => 'None',
             'pet_existing_conditions' => 'None',
             'vet_id' => '3',
-            'medical_history_id' => null,
+            
         ]);
 
         $petinfo = Pet_Info::create([
@@ -72,7 +72,7 @@ class PetInfoTableSeeder extends Seeder
             'pet_allergies' => 'None',
             'pet_existing_conditions' => 'None',
             'vet_id' => '3',
-            'medical_history_id' => null,
+            
         ]);
 
         $petinfo = Pet_Info::create([
@@ -81,7 +81,7 @@ class PetInfoTableSeeder extends Seeder
             'pet_allergies' => 'None',
             'pet_existing_conditions' => 'None',
             'vet_id' => '3',
-            'medical_history_id' => null,
+            
         ]);
 
         $petinfo = Pet_Info::create([
@@ -90,7 +90,7 @@ class PetInfoTableSeeder extends Seeder
             'pet_allergies' => 'None',
             'pet_existing_conditions' => 'None',
             'vet_id' => '3',
-            'medical_history_id' => null,
+            
         ]);
 
         $petinfo = Pet_Info::create([
@@ -99,7 +99,7 @@ class PetInfoTableSeeder extends Seeder
             'pet_allergies' => 'None',
             'pet_existing_conditions' => 'None',
             'vet_id' => '3',
-            'medical_history_id' => null,
+            
         ]);
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Pet_Info;
 use Illuminate\Http\Request;
 use App\Medical_Histories;
+use App\Http\Requests\medhisPostRequest;
 
 class petInfoController extends Controller
 {
@@ -36,9 +37,22 @@ class petInfoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(medhisPostRequest $request)
     {
-        //
+        // dd($request->validated(), $request->medhis_date);
+        $validated = $request->validated();
+
+        // $validator = Validator::make($request->all(),[
+        //     'edit_pet_name' => ['required', 'string', 'max:255'],
+        //      'edit_pet_age' => ['required', 'integer', 'max:20', 'min:0'],
+        //       'edit_pet_breed' => ['required', 'string', 'max: 20'],
+        //       'edit_pet_description' => ['required', 'string', 'max:255'],
+        //  ]);
+
+        
+        $medinfo = Medical_Histories::Create($validated);
+        // dd($medinfo);
+        return redirect('/pethealth/all')->with('toast_success', 'New Medical Record has been Saved');
     }
 
     /**
@@ -47,9 +61,11 @@ class petInfoController extends Controller
      * @param  \App\PetInfo  $petInfo
      * @return \Illuminate\Http\Response
      */
-    public function show(PetInfo $petInfo)
+    public function show($id)
     {
-        //
+        $medinfos = Medical_Histories::where('pet_id',$id)->get();
+        // dd($medinfo);
+        return view('admin.pet-health.view')->with('medinfos', $medinfos);
     }
 
     /**

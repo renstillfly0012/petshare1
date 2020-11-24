@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMedicalHistoriesTable extends Migration
+class CreateMedicalHistories extends Migration
 {
     /**
      * Run the migrations.
@@ -15,6 +15,8 @@ class CreateMedicalHistoriesTable extends Migration
     {
         Schema::create('medical_histories', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('pet_info_id')->nullable();
+            $table->foreign('pet_info_id')->references('id')->on('pet_health_infos')->onDelete('cascade');
             $table->unsignedBigInteger('pet_id')->nullable();
             $table->foreign('pet_id')->references('id')->on('pets')->onDelete('cascade');
             $table->string('date');

@@ -190,7 +190,7 @@
                             <li class="nav-item">
                                 <a href="/pethealth/all" class="nav-link">
                                     <i class="nav-icon fas fa-file-medical"></i>
-                                    <p>PET'S HEALTH RECORD</p>
+                                    <p>PET's HEALTH RECORD</p>
                                 </a>
                             </li>
 
@@ -224,14 +224,14 @@
                             <li class="nav-item">
                                 <a href="/pethealth/all" class="nav-link">
                                     <i class="nav-icon fas fa-file-medical"></i>
-                                    <p>HEALTH RECORD</p>
+                                    <p>PET's HEALTH RECORD</p>
                                 </a>
                             </li>
 
                         </ul>
                     </li>
 
-                    @elseif(Route::currentRouteName() == 'pethealth/all')
+                    @elseif(Route::currentRouteAction() == 'App\Http\Controllers\petInfoController@index' || Route::currentRouteAction() == 'App\Http\Controllers\petInfoController@show')
                     <li class="nav-item has-treeview menu-close">
                         <a href="/pets" class="nav-link active">
                             <i class="nav-icon fas fa-paw"></i>
@@ -258,7 +258,7 @@
                             <li class="nav-item">
                                 <a href="/pethealth/all" class="nav-link active">
                                     <i class="nav-icon fas fa-file-medical"></i>
-                                    <p>HEALTH RECORD</p>
+                                    <p>PET's HEALTH RECORD</p>
                                 </a>
                             </li>
 
@@ -295,7 +295,7 @@
                             <li class="nav-item">
                                 <a href="/pethealth/all" class="nav-link">
                                     <i class="nav-icon fas fa-file-medical"></i>
-                                    <p>HEALTH RECORD</p>
+                                    <p>PET's HEALTH RECORD</p>
                                 </a>
                             </li>
 

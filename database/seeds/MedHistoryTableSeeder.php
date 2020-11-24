@@ -13,6 +13,7 @@ class MedHistoryTableSeeder extends Seeder
     public function run()
     {
         $medhis = Medical_Histories::create([
+            'pet_info_id' => 1,
             'pet_id' => 1,
             'date' => now(),
             'description' => 'Does not want to eat',
@@ -25,6 +26,7 @@ class MedHistoryTableSeeder extends Seeder
         ]);
 
         $medhis = Medical_Histories::create([
+            'pet_info_id' => 2,
             'pet_id' => 2,
             'date' => now(),
             'description' => 'Deworming',
@@ -36,6 +38,7 @@ class MedHistoryTableSeeder extends Seeder
             'comments' => 'NA',
         ]);
         $medhis = Medical_Histories::create([
+            'pet_info_id' => 3,
             'pet_id' => 3,
             'date' => now(),
             'description' => 'Heartworm preventive',
@@ -48,6 +51,7 @@ class MedHistoryTableSeeder extends Seeder
         ]);
 
         $medhis = Medical_Histories::create([
+            'pet_info_id' => 4,
             'pet_id' => 4,
             'date' => now(),
             'description' => 'Flea anbd Trick Treatment',
@@ -60,6 +64,7 @@ class MedHistoryTableSeeder extends Seeder
         ]);
 
         $medhis = Medical_Histories::create([
+            'pet_info_id' => 5,
             'pet_id' => 5,
             'date' => now(),
             'description' => 'Does not want to eat',

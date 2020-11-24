@@ -23,8 +23,6 @@ class CreatePetHealthInfosTable extends Migration
             $table->string('pet_existing_conditions');
             $table->unsignedBigInteger('vet_id')->nullable();
             $table->foreign('vet_id')->references('id')->on('users')->onDelete('cascade');
-            $table->unsignedBigInteger('medical_history_id')->nullable();
-            $table->foreign('medical_history_id')->references('id')->on('medical_histories')->onDelete('cascade');
             $table->timestamps();
         });
     }

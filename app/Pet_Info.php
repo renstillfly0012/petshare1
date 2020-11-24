@@ -9,6 +9,8 @@ class Pet_Info extends Model
    
     public $table = 'pet_health_infos';
 
+    
+
     public function user(){
         return $this->belongsToMany('App\User', 'pet_owner_id');
     }

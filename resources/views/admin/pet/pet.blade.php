@@ -23,7 +23,7 @@
                         <table id="example2" class="table table-bordered table-hover dataTable table-responsive-md"
                             role="grid" aria-describedby="example2_info">
                             <thead>
-                                <tr role="row">
+                                <tr role="row" class="odd text-center">
                                     <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
                                         aria-label="Browser: activate to sort column ascending">Pet ID</th>
                                         <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
@@ -51,7 +51,7 @@
                             </thead>
                             <tbody>
                                 @foreach ($pets as $pet)
-                                    <tr role="row" class="odd">
+                                    <tr role="row" class="odd text-center">
                                     <td>{{$pet->id}}</td>
                                     <td>{{$pet->name}}</td>
 

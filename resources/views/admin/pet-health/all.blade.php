@@ -9,7 +9,7 @@
 
 <div class="card">
     <div class="card-header">
-        <h3 class="card-title">All Reports and their information</h3>
+        <h3 class="card-title">All Pet's health information</h3>
     </div>
     <!-- /.card-header -->
     <div class="card-body">
@@ -23,10 +23,10 @@
                     <table id="example2" class="table table-bordered table-hover dataTable" role="grid"
                         aria-describedby="example2_info">
                         <thead>
-                            <tr role="row">
+                            <tr role="row" class="odd text-center">
                                 <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
                                     aria-sort="ascending"
-                                    aria-label="Rendering engine: activate to sort column descending">Report ID
+                                    aria-label="Rendering engine: activate to sort column descending">Pet Health ID
                                 </th>
                                 <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
                                     aria-label="Browser: activate to sort column ascending">Pet Owner</th>
@@ -38,13 +38,15 @@
                                     aria-label="Engine version: activate to sort column ascending">Exisiting Conditions</th>
                                     <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
                                     aria-label="Browser: activate to sort column ascending">Veterinarian</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                    aria-label="Browser: activate to sort column ascending">Action</th>
             
                             </tr>
                         </thead>
                         <tbody>
                           
                             @foreach($petinfos as $petinfo)
-                            <tr role="row" class="odd">
+                            <tr role="row" class="odd text-center">
                                 <td class="sorting_1">{{$petinfo->id}}</td>
                                 
                                 <td>{{$petinfo->pet_owner_id != null ? $petinfo->pet_ownder_id : 'None'}}</td>
@@ -52,10 +54,10 @@
                                 <td>{{$petinfo->pet_allergies}}</td>
                                  <td>{{$petinfo->pet_existing_conditions}}</td>
                                 <td>{{$petinfo->vet_id}}</td>
-                                <td>{{$petinfo->medical_history_id}}</td>
 
+ 
                                 <td>
-                                    <button class="btn btn-primary pr-4 editbtn">View</button><br>
+                                    <a class="btn btn-primary pr-4" href="view/{{$petinfo->pet_id}}">View</a><br>
                                     {{-- <button class="btn btn-danger deletebtn">Decline</button> --}}
                                 </td>
                             </tr>
@@ -68,8 +70,7 @@
             </div>
             <div class="row">
                 <div class="col-sm-12 col-md-5">
-                    <div class="dataTables_info" id="example2_info" role="status" aria-live="polite">Showing 1 to 10 of
-                        57 entries</div>
+                    
                 </div>
                 <div class="col-sm-12 col-md-7">
                     <div class="dataTables_paginate paging_simple_numbers" id="example2_paginate">

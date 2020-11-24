@@ -17,7 +17,7 @@
                     <table id="example2" class="table table-bordered table-hover dataTable" role="grid"
                         aria-describedby="example2_info">
                         <thead>
-                            <tr role="row">
+                            <tr role="row" class="odd text-center">
                                 <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
                                     aria-sort="ascending"
                                     aria-label="Rendering engine: activate to sort column descending">Donation ID
@@ -38,7 +38,7 @@
                         </thead>
                         <tbody>
                             @foreach($donations as $donation)
-                            <tr role="row" class="odd">
+                            <tr role="row" class="odd text-center">
                                 <td class="sorting_1">{{$donation->id}}</td>
                                 <td>{{$donation->donation_name}}</td>
                                 <td>{{$donation->donation_email}}</td>
