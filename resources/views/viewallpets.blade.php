@@ -30,7 +30,7 @@
                                             data-card-widget="card-refresh" data-source="/pages/widgets.html"
                                             data-source-selector="#card-refresh-content"><i
                                                 class="fas fa-sync-alt"></i></button> --}}
-                                        <img src="{{ $pet->image }}" class="rounded img-fluid" alt="">
+                                        <img src="assets/images/pets/{{ $pet->image }}" class="rounded img-fluid" alt="">
                                     </div>
                                     <!-- /.card-tools -->
                                 </div>
