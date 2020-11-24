@@ -84,6 +84,24 @@ Route::resource('/incident', 'ReportController')->names([
     
 ]);
 
+route::get('qrcode', function(){
+
+    $qrcodeImgName = 'QR_PET_ID_10.png';
+        $file = 'assets/images/qrcodes/'.$qrcodeImgName;
+        
+        
+        //generate qrcode
+        // $newQrcode = QRCode::text("petshare1.test/pethealth/view/".$new_pet_id)
+        $newQrcode = QRCode::text("https://pet-share.com/pethealth/view/10")
+        ->setSize(4)
+        ->setMargin(2)
+        ->setOutfile($file)
+        ->png();
+
+        return $newQrcode;
+
+});
+
 Route::resource('/cms', 'cmsController');
 
 Route::prefix('pethealth')->group(function(){

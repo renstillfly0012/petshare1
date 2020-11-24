@@ -85,7 +85,8 @@ class petController extends Controller
         
         $pet->qrcodePath = $qrcodeImgName;
         //generate qrcode
-        $newQrcode = QRCode::text("petshare1.test/pethealth/view/".$new_pet_id)
+        // $newQrcode = QRCode::text("petshare1.test/pethealth/view/".$new_pet_id)
+        $newQrcode = QRCode::text("https://pet-share.com/pethealth/view/".$new_pet_id)
         ->setSize(4)
         ->setMargin(2)
         ->setOutfile($file)
