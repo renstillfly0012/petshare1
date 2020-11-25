@@ -65,6 +65,8 @@ class adminController extends Controller
         $appointmentCount = Appointment::count();
         $reportCount = Report::count();
         $notifications = auth()->user()->unreadNotifications()->get();
+        $audits = Pet::find(1)->audits;
+        // dd($audits);
         // dd($notifications);
         // return view('admin.home')->with('userCount', $userCount);
         if($notifications->count() > 0){
@@ -86,10 +88,10 @@ class adminController extends Controller
                   
                 
             }
-            return view('admin.home',  compact('userCount', 'petCount', 'appointmentCount', 'reportCount', 'notifications', 'reportName'));
+            return view('admin.home',  compact('userCount', 'petCount', 'appointmentCount', 'reportCount', 'notifications', 'reportName', 'audits'));
         }
         else{
-            return view('admin.home',  compact('userCount', 'petCount', 'appointmentCount', 'reportCount', 'notifications'));
+            return view('admin.home',  compact('userCount', 'petCount', 'appointmentCount', 'reportCount', 'notifications','audits'));
         }
        
         
