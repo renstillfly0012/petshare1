@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Mail\VerificationMail;
 use App\Location;
 use App\Content;
+use Spatie\Activitylog\Models\Activity;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -102,7 +103,8 @@ Route::resource('/incident', 'ReportController')->names([
 
 // });
 
-Route::resource('/cms', 'cmsController');
+Route::resource('/cms', 'cmsController')->names([
+    'index' => 'cms']);
 
 Route::prefix('pethealth')->group(function(){
     route::get('/all', 'petInfoController@index');
@@ -110,6 +112,14 @@ Route::prefix('pethealth')->group(function(){
     route::post('/create', 'petInfoController@store');
     
 });
+
+Route::get('/audit', function(){
+
+    $logs = Activity::paginate(10);
+    // dd(Route::currentRouteName());
+    return view('admin.audit.all')->with('logs', $logs);
+    
+})->name('audit');
 
 
 });
