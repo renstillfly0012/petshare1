@@ -50,7 +50,10 @@ Route::prefix('admin')->group(function(){
     route::delete('/delete/{id}', 'Api\userController@destroy');
     });
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> newhead
     Route::prefix('pets')->group(function(){
         route::get('/all', 'Api\petController@index');
         route::get('/view-pet/{id}', 'Api\petController@show');
@@ -58,15 +61,24 @@ Route::prefix('admin')->group(function(){
         route::put('/edit/{id}', 'Api\petController@update');
         route::delete('/delete/{id}', 'Api\petController@destroy');
     });
+<<<<<<< HEAD
+=======
+    
+>>>>>>> newhead
 
     Route::prefix('pethealth')->group(function(){
         route::get('/all', 'Api\petInfoController@index');
         route::get('view/{id}', 'Api\petInfoController@show');
         route::post('/create', 'Api\petInfoController@store');
+<<<<<<< HEAD
 
     });
 
     //hello world
+=======
+        
+    });
+>>>>>>> newhead
 
     Route::prefix('donation')->group(function(){
         route::get('/all', 'Api\donationController@getAllDonations');

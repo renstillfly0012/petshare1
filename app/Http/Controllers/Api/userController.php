@@ -193,16 +193,17 @@ class userController extends Controller
      */
     public function destroy($id)
     {
-        try{    
+        // $user->delete();
+        try{
         $user = User::findorfail($id);
-        $user->delete();
         return response()->json($user, 200);
-        }catch(\Exception $error){
-            return response()->json($error, 400);
+            }catch(\Exception $error){
+         return response()->json($error, 400);
         }
     }
     public function login(Request $request){
         
+        try{
 
         $user = User::where([
             'email' => $request->email,
@@ -217,6 +218,9 @@ class userController extends Controller
         }
         else{
             return response()->json('User Not Found',204);
+        }
+         }catch(\Exception $error){
+        return response()->json($error, 400);
         } 
         
     }

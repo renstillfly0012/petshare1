@@ -12,6 +12,7 @@ use App\Report;
 use Alert;
 
 
+
 class adminController extends Controller
 {
     /**
@@ -65,6 +66,13 @@ class adminController extends Controller
         $appointmentCount = Appointment::count();
         $reportCount = Report::count();
         $notifications = auth()->user()->unreadNotifications()->get();
+        // activity()->log('Look mum, I logged something');
+        
+        // dd($logs[0]);
+
+        // $audits = Pet::find(1)->audits;
+        // $userAudit = User::find(1)->audits;
+        // dd($audits);
         // dd($notifications);
         // return view('admin.home')->with('userCount', $userCount);
         if($notifications->count() > 0){
