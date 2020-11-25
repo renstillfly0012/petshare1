@@ -41,11 +41,14 @@ Route::prefix('user')->group(function(){
 });
 
 Route::prefix('admin')->group(function(){
-    route::get('/users', 'Api\userController@index');
-    route::get('/view-user/{user}', 'Api\userController@show');
+
+    Route::prefix('users')->group(function(){
+    route::get('/all', 'Api\userController@index');
+    route::get('/view/{user}', 'Api\userController@show');
     route::post('/register', 'Api\userController@storeAdmin');
-    route::put('/edit-user/{id}', 'Api\userController@update');
+    route::put('/edit/{id}', 'Api\userController@update');
     route::delete('/delete/{id}', 'Api\userController@destroy');
+    });
 
     Route::prefix('pets')->group(function(){
         route::get('/all', 'Api\petController@index');
