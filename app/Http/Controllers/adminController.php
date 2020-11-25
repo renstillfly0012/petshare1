@@ -10,7 +10,7 @@ use App\Pet;
 use App\Appointment;
 use App\Report;
 use Alert;
-use Spatie\Activitylog\Models\Activity;
+
 
 
 class adminController extends Controller
@@ -67,7 +67,7 @@ class adminController extends Controller
         $reportCount = Report::count();
         $notifications = auth()->user()->unreadNotifications()->get();
         // activity()->log('Look mum, I logged something');
-        $logs = Activity::paginate(5);
+        
         // dd($logs[0]);
 
         // $audits = Pet::find(1)->audits;
@@ -94,10 +94,10 @@ class adminController extends Controller
                   
                 
             }
-            return view('admin.home',  compact('userCount', 'petCount', 'appointmentCount', 'reportCount', 'notifications', 'reportName', 'logs'));
+            return view('admin.home',  compact('userCount', 'petCount', 'appointmentCount', 'reportCount', 'notifications', 'reportName'));
         }
         else{
-            return view('admin.home',  compact('userCount', 'petCount', 'appointmentCount', 'reportCount', 'notifications', 'logs'));
+            return view('admin.home',  compact('userCount', 'petCount', 'appointmentCount', 'reportCount', 'notifications'));
         }
        
         

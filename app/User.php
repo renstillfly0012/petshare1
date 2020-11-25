@@ -52,9 +52,11 @@ class User extends Authenticatable implements MustVerifyEmail
 
     protected static $logName = 'User';
 
+    protected static $logOnlyDirty = true;
+
     public function getDescriptionForEvent(string $eventName): string
     {
-        return "This model has been {$eventName}";
+        return "has {$eventName}";
     }
 
 
