@@ -167,21 +167,17 @@
         </div>
 
         
-        <ul>
-            @forelse ($audits as $audit)
-            <li>
-                @lang('article.updated.metadata', $audit->getMetadata())
-        
-                @foreach ($audit->getModified() as $attribute => $modified)
-                <ul>
-                    <li>@lang('article.'.$audit->event.'.modified.'.$attribute, $modified)</li>
-                </ul>
-                @endforeach
-            </li>
-            @empty
-            <p>@lang('article.unavailable_audits')</p>
-            @endforelse
-        </ul>
+       @foreach ($logs as $log)
+           <p>{{ $log->id }}</p>
+           <p>{{ $log->log_name }}</p>
+           <p>{{ $log->description }}</p>
+           <p>{{ $log->subject_type }}</p>
+           <p>{{ $log->subject_id }}</p>
+           <p>{{ $log->causer_type }}</p>
+           <p>{{ $log->causer_id }}</p>
+           <p>{{ $log->properties }}</p>
+           <p>{{ $log->created_at }}</p>
+       @endforeach
 
     @endsection
 

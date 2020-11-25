@@ -18,10 +18,10 @@
         "laravel/framework": "^7.0",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.1",
-        "owen-it/laravel-auditing": "10.0",
         "paypal/rest-api-sdk-php": "*",
         "realrashid/sweet-alert": "^3.1",
         "simplesoftwareio/simple-qrcode": "~4",
+        "spatie/laravel-activitylog": "^3.16",
         "torann/geoip": "1.2",
         "werneckbh/laravel-qr-code": "^0.1.3"
     },

@@ -7,13 +7,15 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Hash;
-use OwenIt\Auditing\Contracts\Auditable;
+use Spatie\Activitylog\Traits\LogsActivity;
 
-class User extends Authenticatable implements MustVerifyEmail,Auditable
+
+class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
     use SoftDeletes;
-    use \OwenIt\Auditing\Auditable;
+    use LogsActivity;
+ 
 
     // protected $dates = ['deleted_at'];
 
@@ -45,6 +47,16 @@ class User extends Authenticatable implements MustVerifyEmail,Auditable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    protected static $logAttributes = ['name', 'email', 'image'];
+
+    protected static $logName = 'User';
+
+    public function getDescriptionForEvent(string $eventName): string
+    {
+        return "This model has been {$eventName}";
+    }
+
 
 
     public function roles()
