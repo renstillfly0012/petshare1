@@ -198,23 +198,6 @@ class userController extends Controller
     public function login(Request $request){
         
 
-<<<<<<< HEAD
-        $user = User::where([
-            'email' => $request->email,
-        ])->get()->first();
-
-       $plainPass = $request->password;
-        $hashPass = $user->password;
-        // dd( $request->all(),$pass,Hash::check($pass,$user->password ),$user->password);
-        //plaint text,hashpass
-        if(Hash::check($plainPass, $hashPass)){
-                return response()->json($user, 200); 
-        }
-        else{
-            return response()->json('User Not Found',204);
-        } 
-        
-=======
         // dd($request->all());
         $user = User::where([
             'email' => $request->email,
@@ -230,6 +213,5 @@ class userController extends Controller
             return response()->json('',404);
         }
        
->>>>>>> newhead
     }
 }
