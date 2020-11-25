@@ -51,8 +51,8 @@ Route::prefix('admin')->group(function(){
         route::get('/all', 'Api\petController@index');
         route::get('/view-pet/{id}', 'Api\petController@show');
         route::post('/create','Api\petController@store');
-        route::put('/edit/{id}', 'Api\userController@update');
-        route::delete('/delete/{id}', 'Api\userController@destroy');
+        route::put('/edit/{id}', 'Api\petController@update');
+        route::delete('/delete/{id}', 'Api\petController@destroy');
     });
 
     Route::prefix('pethealth')->group(function(){
