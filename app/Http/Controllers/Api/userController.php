@@ -154,9 +154,10 @@ class userController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(userPostRequest $request, User $user)
+    public function update(userPostRequest $request, $id)
     {
         try{
+            $user = User::findorfail($id);
             $user->name = $request->edit_user_name;
         $user->email = $request->edit_email;
         $user->password = $request->edit_password;
@@ -190,9 +191,10 @@ class userController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($user)
+    public function destroy($id)
     {
-        $user->delete();
+        // $user->delete();
+        $user = User::findorfail($id);
         return response()->json($user, 200);
     }
     public function login(Request $request){
