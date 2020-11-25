@@ -66,6 +66,8 @@ Route::prefix('admin')->group(function(){
 
     });
 
+    //hello world
+
     Route::prefix('donation')->group(function(){
         route::get('/all', 'Api\donationController@getAllDonations');
         // route::post('/create', 'Api\donationController@storeDonation');
