@@ -39,14 +39,15 @@ class UsersTableSeeder extends Seeder
             'email' => 'foster@foster.com',
             'email_verified_at' => now(),
             'password' => 'foster',
-            'status' => 'Activated'
+            'status' => 'Activated',
+            'role_id' => '2',
         ]);
 
         $vet = User::create([
             'name' => 'Vet User',
             'email' => 'vet@vet.com',
             'password' => 'vet',
-        
+            'role_id' => '3',
         ]);
 
         $foster2 = User::create([
@@ -54,7 +55,8 @@ class UsersTableSeeder extends Seeder
             'email' => 'manuel@manuel.com',
             'email_verified_at' => now(),
             'password' => 'manuel',
-            'status' => 'Activated'
+            'status' => 'Activated',
+            'role_id' => '2',
         ]);
 
 
@@ -63,7 +65,8 @@ class UsersTableSeeder extends Seeder
             'email' => 'edward@edward.com',
             'email_verified_at' => now(),
             'password' => 'edward',
-            'status' => 'Activated'
+            'status' => 'Activated',
+            'role_id' => '2',
         ]);
 
         $admin2 = User::create([
