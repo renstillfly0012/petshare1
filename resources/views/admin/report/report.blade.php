@@ -32,6 +32,8 @@
                                         aria-label="Engine version: activate to sort column ascending">Location</th>
                                         <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
                                         aria-label="Browser: activate to sort column ascending">Report Status</th>
+                                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                        aria-label="Browser: activate to sort column ascending">Submitted At</th>
                                     <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
                                         aria-label="CSS grade: activate to sort column ascending">Action</th>
                                 </tr>
@@ -47,6 +49,7 @@
                                     <td>{{$report->description}}</td>
                                     <td>{{$report->address}}</td>
                                     <td>{{$report->report_status}}</td>
+                                    <td>{{$report->created_at}}</td>
                                     <td>
                                         <button class="btn btn-warning pr-4 editbtn">Approve</button><br>
                                         <button class="btn btn-danger deletebtn">Decline</button>
