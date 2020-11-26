@@ -81,6 +81,7 @@
     @yield('report_modal_script')
     @yield('cms_modal_script')
     @yield('notification_script')
+    @yield('javascript')
 
     @include('sweetalert::alert')
 

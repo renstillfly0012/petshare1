@@ -10,6 +10,7 @@ use App\Pet;
 use App\Appointment;
 use App\Report;
 use Alert;
+use LaravelDaily\LaravelCharts\Classes\LaravelChart;
 
 
 class adminController extends Controller
@@ -67,6 +68,82 @@ class adminController extends Controller
         $notifications = auth()->user()->unreadNotifications()->get();
         // dd($notifications);
         // return view('admin.home')->with('userCount', $userCount);
+
+         //charts for users
+         $settings1 = [
+            'chart_title' => 'Roles',
+            // 'report_type' => 'group_by_date',
+            'report_type' => 'group_by_relationship',
+            'model' => 'App\User',
+            // 'conditions'            => [
+            //     ['name' => 'Administrators', 'condition' => 'role_id = 1', 'color' => '#D31B2E'],
+            //     ['name' => 'Fosters', 'condition' => 'role_id = 2', 'color' => '#FDC370'],
+            //     ['name' => 'Vets', 'condition' => 'role_id = 3', 'color' => '#1C4496'],
+            // ],
+
+            // 'group_by_field' => 'created_at',
+            // 'group_by_period' => 'day',
+
+            // 'continuous_time' => true,
+            // 'chart_type' => 'line',
+
+            'relationship_name' => 'role',
+            'group_by_field' => 'name',
+            'chart_type' => 'pie',
+        ];
+
+        $chart1  = new LaravelChart($settings1);
+
+        //charts for appointments
+        $settings2 = [
+            'chart_title' => 'Monthly Appointments',
+            'report_type' => 'group_by_date',
+            'model' => 'App\Appointment',
+            'conditions'            => [
+                ['name' => 'Adopted', 'condition' => 'appointment_type = "Adoption"', 'color' => '#FDC370'],
+                ['name' => 'Surrendered', 'condition' => 'appointment_type = "Surrender"', 'color' => '#D31B2E'],
+            ],
+
+            'group_by_field' => 'created_at',
+            'group_by_period' => 'day',
+            'continuous_time' => true,
+            'chart_type' => 'line',
+
+        ];
+
+        $chart2  = new LaravelChart($settings2);
+        //charts for reports
+        $settings3 = [
+            'chart_title' => 'Weekly Incident Reports',
+            'report_type' => 'group_by_date',
+            'model' => 'App\Report',
+            'conditions'            => [
+                ['name' => 'Approved', 'condition' => 'report_status = "Apprved"', 'color' => '#1C4496'],
+                ['name' => 'Disapproved', 'condition' => 'report_status = "Declined"', 'color' => '#D31B2E'],
+                ['name' => 'Pending', 'condition' => 'report_status = "Pending"', 'color' => '#FDC370'],
+            ],
+
+            'group_by_field' => 'created_at',
+            'group_by_period' => 'day',
+
+            'continuous_time' => true,
+            'chart_type' => 'line',
+        ];
+
+        $chart3  = new LaravelChart($settings3);
+
+        //charts for pets
+        $settings4 = [
+            'chart_title' => 'Breed',
+            'report_type' => 'group_by_string',
+            'model' => 'App\Pet',
+            'group_by_field' => 'breed',
+            'chart_type' => 'pie',
+        ];
+
+        $chart4  = new LaravelChart($settings4);
+
+
         if($notifications->count() > 0){
             foreach($notifications as $notification)
             {
@@ -86,10 +163,10 @@ class adminController extends Controller
                   
                 
             }
-            return view('admin.home',  compact('userCount', 'petCount', 'appointmentCount', 'reportCount', 'notifications', 'reportName'));
+            return view('admin.home',  compact('userCount', 'petCount', 'appointmentCount', 'reportCount', 'notifications', 'reportName', 'chart1', 'chart2', 'chart3', 'chart4'));
         }
         else{
-            return view('admin.home',  compact('userCount', 'petCount', 'appointmentCount', 'reportCount', 'notifications'));
+            return view('admin.home',  compact('userCount', 'petCount', 'appointmentCount', 'reportCount', 'notifications', 'chart1', 'chart2', 'chart3', 'chart4'));
         }
        
         
@@ -111,7 +188,7 @@ class adminController extends Controller
         if (Gate::denies('isAdmin')) {
             return redirect()->route('landing')->with('warning', 'Authorized person can only access this');;
         }
-        $reports = Report::with('user')->get();
+        $reports = Report::orderBy('id', 'desc')->with('user')->get();
         // dd($reports);
         $paginate = Report::paginate(5);
         return view('admin.report.report')->with('reports', $reports);

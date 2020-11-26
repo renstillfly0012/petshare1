@@ -22,7 +22,7 @@ class donationController extends Controller
 {
 
     public function getAllDonations(){
-        $donations = Donation::paginate(5);
+        $donations = Donation::orderBy('id', 'desc')->paginate(5);
         return view('admin.donate.donation')->with('donations', $donations);
     }
   

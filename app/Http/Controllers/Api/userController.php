@@ -204,18 +204,16 @@ class userController extends Controller
         try{
         $user = User::where([
             'email' => $request->email,
-        ])->get()->first();
-
-       $plainPass = $request->password;
-        $hashPass = $user->password;
-        // dd( $request->all(),$pass,Hash::check($pass,$user->password ),$user->password);
-        //plaint text,hashpass
-        if(Hash::check($plainPass, $hashPass)){
-                return response()->json($user, 200); 
-        }
-        else{
-            return response()->json('User Not Found',204);
-        } 
+            'password' => $request->password,
+            ])->get();
+    
+            dd($user);
+            $pass = $user->password;
+            if(Hash::check($request->password, $pass)){
+                    return response()->json($user->first(), 200); 
+            }else{
+                return response()->json('',404);
+            }
         }catch(\Exception $error){
         return response()->json($error, 400);
        }

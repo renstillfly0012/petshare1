@@ -115,7 +115,7 @@ Route::prefix('pethealth')->group(function(){
 
 Route::get('/audit', function(){
 
-    $logs = Activity::paginate(10);
+    $logs = Activity::orderBy('id', 'desc')->paginate(10);
     // dd(Route::currentRouteName());
     return view('admin.audit.all')->with('logs', $logs);
     

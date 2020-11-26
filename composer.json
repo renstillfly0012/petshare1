@@ -23,6 +23,7 @@
         "simplesoftwareio/simple-qrcode": "~4",
         "spatie/laravel-activitylog": "^3.16",
         "torann/geoip": "1.2",
+        "laraveldaily/laravel-charts": "^0.1.25",
         "werneckbh/laravel-qr-code": "^0.1.3"
     },
 
