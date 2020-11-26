@@ -196,6 +196,7 @@ class userController extends Controller
         // $user->delete();
         try{
         $user = User::findorfail($id);
+        $user->delete();
         return response()->json($user, 200);
             }catch(\Exception $error){
          return response()->json($error, 400);
@@ -204,21 +205,19 @@ class userController extends Controller
     public function login(Request $request){
         
         try{
-
-        // dd($request->all());
         $user = User::where([
             'email' => $request->email,
             'password' => $request->password,
-        ])->get();
-
-        dd($user);
-        $pass = $user->password;
-        if(Hash::check($request->password, $pass)){
-                return response()->json($user->first(), 200); 
-        }
-        else{
-            return response()->json('',404);
-        }
-       
+            ])->get();
+    
+            dd($user);
+            $pass = $user->password;
+            if(Hash::check($request->password, $pass)){
+                    return response()->json($user->first(), 200); 
+            }
+        }catch(\Exception $error){
+        return response()->json($error, 400);
+       }
+        
     }
 }

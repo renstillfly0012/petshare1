@@ -81,7 +81,7 @@
             </div>
             <div class="modal-body text-center">
 
-
+            <input id="dateNow" type="text" value="{{now()}}"/>
 
                 <form method="POST" action="{{ action('adoptionController@store') }}">
                     @csrf
@@ -160,11 +160,16 @@
                         </div>
                     </div>
 
+                    <?php
+                    $date = new DateTime();
+                    $dt= $date->format('Y-m-d\TH:i:s'); 
+                    ?>
+
                     <div class="form-group row">
                         <div class="col-md-10 offset-md-1" id="datepicker">
-                            <input style="font-size:20px" type="datetime-local" class="form-control" name="show_requested_date">
+                        <input style="font-size:20px" id="select_date" type="datetime-local" class="form-control" name="show_requested_date" value="{{$dt}}" min="{{$dt}}">
 
-
+                        <span id="time"></span>
                             @error('show_pet_description')
                             <span class="invalid-feedback text-center" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -193,6 +198,10 @@
 
 
     <script type="text/javascript">
+        
+
+
+
         $(document).ready(function() {
 
 
@@ -215,8 +224,8 @@
 
 
                 $('#show_pet_id').val(petID);
-                // $('#show_pet_image').attr("src", "assets/images/pets/" + petImg);
-                $('#show_pet_image').attr("src", petImg);
+                $('#show_pet_image').attr("src", "assets/images/pets/" + petImg);
+                // $('#show_pet_image').attr("src", petImg);
                 $('#show_pet_name').val(petName);
                 $('#show_pet_age').val(petAge);
                 $('#show_pet_breed').val(petBreed);

@@ -103,7 +103,8 @@ Route::resource('/incident', 'ReportController')->names([
 
 // });
 
-Route::resource('/cms', 'cmsController');
+Route::resource('/cms', 'cmsController')->names([
+    'index' => 'cms']);
 
 Route::prefix('pethealth')->group(function(){
     route::get('/all', 'petInfoController@index');
@@ -112,12 +113,14 @@ Route::prefix('pethealth')->group(function(){
     
 });
 
-    Route::get('/audit', function(){
+Route::get('/audit', function(){
 
-        $logs = Activity::paginate(5);
-        return view('admin.audit.all')->with('logs', $logs);
-        
-    });
+    $logs = Activity::orderBy('id', 'desc')->paginate(10);
+    // dd(Route::currentRouteName());
+    return view('admin.audit.all')->with('logs', $logs);
+    
+})->name('audit');
+
 
 });
 

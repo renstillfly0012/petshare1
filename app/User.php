@@ -9,13 +9,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Activitylog\Traits\LogsActivity;
 
-
 class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
     use SoftDeletes;
     use LogsActivity;
- 
 
     // protected $dates = ['deleted_at'];
 
@@ -56,14 +54,18 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function getDescriptionForEvent(string $eventName): string
     {
-        return "has {$eventName}";
+        return "has {$eventName} an";
     }
-
 
 
     public function roles()
     {
         return $this->belongsToMany('App\Role');
+    }
+
+    public function role()
+    {
+        return $this->belongsTo('App\Role');
     }
 
     public function pets()

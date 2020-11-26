@@ -377,6 +377,17 @@
                     </li>
                 @endif
 
+                @if (Route::currentRouteName() == 'cms')
+                <li class="nav-item">
+                    <a href="/cms" class="nav-link active">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>
+                            CONTENT MANAGEMENT
+
+                        </p>
+                    </a>
+                </li>
+                @else
                 <li class="nav-item">
                     <a href="/cms" class="nav-link ">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -386,6 +397,29 @@
                         </p>
                     </a>
                 </li>
+                @endif
+
+                @if (Route::currentRouteName() == 'audit')
+                <li class="nav-item">
+                    <a href="/audit" class="nav-link active">
+                        <i class="nav-icon fas fa-history"></i>
+                        <p>
+                            AUDIT TRAIL
+
+                        </p>
+                    </a>
+                </li>
+                @else
+                <li class="nav-item">
+                    <a href="/audit" class="nav-link ">
+                        <i class="nav-icon fas fa-history"></i>
+                        <p>
+                            AUDIT TRAIL
+
+                        </p>
+                    </a>
+                </li>
+                @endif
 
 
 
