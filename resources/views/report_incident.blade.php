@@ -27,7 +27,7 @@
 
    <div class="card-body" >
     
-<form method="post" action="{{ action('ReportController@store') }}" enctype="multipart/form-data" id="rprtfrm">
+<form method="post" action="{{ action('ReportController@store') }}" enctype="multipart/form-data">
         @csrf
 
        
@@ -72,9 +72,8 @@
         <div class="form-group row">
 
             <div class="col-md-10 offset-md-1">
-                <textarea  style="font-size:16px" id="description" type="text" class="form-control  @error('description') is-invalid @enderror"
-                    name="description" value="{{ old('description') }}" autocomplete="description" rows="4" cols="50" form="rprtfrm">
-                </textarea>
+                <input  style="font-size:16px" id="description" type="text" class="form-control  @error('description') is-invalid @enderror"
+                    name="description" value="{{ old('description') }}" autocomplete="description">
 
                     @error('description')
                     <span class="invalid-feedback text-center" role="alert">

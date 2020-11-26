@@ -94,42 +94,36 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="card">
-                            <div class="card-header"> Users</div>
-
-                            <!-- /.card-header -->
-                            <div class="card-body ">
-                            
-                              <h1>{{ $chart1->options['chart_title'] }}</h1>
-                            {!! $chart1->renderHtml() !!}
-                            </div>
-                            <!-- /.card-body  -->
-                            <div class="card-footer">
-                                <p>  Total: {{ $userCount }}</p>
-                            </div>
-                            <!-- /.card-footer -->
-                        </div>
-                        <!-- /.card -->
-                    </div>
-                    
-                    <div class="col-md-6">
                         <div class="card ">
-                            <div class="card-header"> Pets</div>
+
                             <!-- /.card-header -->
                             <div class="card-body ">
-                                <h1>{{ $chart4->options['chart_title'] }}</h1>
-                                {!! $chart4->renderHtml() !!}
+                               <p> {{ $petCount }}</p>
                             </div>
                             <!-- /.card-body  -->
                             <div class="card-footer">
-                                <p>Total: {{ $petCount }}</p>
+                                Animal Count
                             </div>
                             <!-- /.card-footer -->
                         </div>
                         <!-- /.card -->
                     </div>
 
-                   
+                    <div class="col-md-6">
+                        <div class="card">
+
+                            <!-- /.card-header -->
+                            <div class="card-body ">
+                               <p> {{ $reportCount }}</p>
+                            </div>
+                            <!-- /.card-body  -->
+                            <div class="card-footer">
+                                Reports
+                            </div>
+                            <!-- /.card-footer -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
                 </div>
             </div>
 
@@ -137,18 +131,14 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="card">
-                            <div class="card-header"> Incident Reports</div>
+
                             <!-- /.card-header -->
                             <div class="card-body ">
-
-                                <h1>{{ $chart3->options['chart_title'] }}</h1>
-                                {!! $chart3->renderHtml() !!}
-                             
+                              <p>  {{ $userCount }}</p>
                             </div>
                             <!-- /.card-body  -->
                             <div class="card-footer">
-                                
-                                <p> Total: {{ $reportCount }}</p>
+                                Users
                             </div>
                             <!-- /.card-footer -->
                         </div>
@@ -157,18 +147,14 @@
 
                     <div class="col-md-6">
                         <div class="card">
-                         
-                            <div class="card-header"> Appointments</div>
+
                             <!-- /.card-header -->
                             <div class="card-body ">
-                                <h1>{{ $chart2->options['chart_title'] }}</h1>
-                                 {!! $chart2->renderHtml() !!}
-                               
+                               <p>{{ $appointmentCount }}</p> 
                             </div> 
                             <!-- /.card-body  -->
                             <div class="card-footer">
-                                
-                                <p>Total: {{ $appointmentCount }}</p> 
+                                Requests
                             </div>
                             <!-- /.card-footer -->
                         </div>
@@ -179,7 +165,6 @@
 
 
         </div>
-
 
     @endsection
 
@@ -213,14 +198,6 @@
         });
     </script>
 
-    @endsection
-
-    @section('javascript')
-    {!! $chart1->renderChartJsLibrary() !!}
-    {!! $chart1->renderJs() !!}
-    {!! $chart2->renderJs() !!}
-    {!! $chart3->renderJs() !!}
-    {!! $chart4->renderJs() !!}
     @endsection
 
     
