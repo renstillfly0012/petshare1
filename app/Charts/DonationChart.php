@@ -7,6 +7,7 @@ namespace App\Charts;
 use Chartisan\PHP\Chartisan;
 use ConsoleTVs\Charts\BaseChart;
 use Illuminate\Http\Request;
+use App\Donation;
 
 class DonationChart extends BaseChart
 {

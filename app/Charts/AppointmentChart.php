@@ -57,7 +57,7 @@ class AppointmentChart extends BaseChart
                 '27', '28', '29',
                 '30','31'
             ])
-            ->dataset('Adopted', [
+            ->dataset('Adoption', [
                 $adoptCount[1],$adoptCount[2],$adoptCount[3],
                 $adoptCount[4],$adoptCount[5],$adoptCount[6],
                 $adoptCount[7],$adoptCount[8],$adoptCount[9],

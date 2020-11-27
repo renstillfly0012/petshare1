@@ -30,6 +30,7 @@ class AppServiceProvider extends ServiceProvider
             \App\Charts\AppointmentChart::class,
             \App\Charts\ReportChart::class,
             \App\Charts\DonationChart::class,
+            \App\Charts\PetChart::class,
         ]);
 
         // date_default_timezone_set('Asia/Manila');

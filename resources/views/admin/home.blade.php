@@ -99,9 +99,10 @@
 
             <div class="container">
                 <div class="row">
-                    <div class="col-md-12">
+
+                    <div class="col-md-6">
                         <div class="card">
-                            <div class="card-header"> <h3>Incidents</h3>
+                            <div class="card-header"> <h3>Report</h3>
                                 {{-- <p>November 2020</p> --}}
                             </div>
                             <!-- /.card-header -->
@@ -116,8 +117,35 @@
                         </div>
                         <!-- /.card -->
                     </div>
+                    
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header"> <h3>Pets</h3>
+                                {{-- <p>November 2020</p> --}}
+                            </div>
+                            <!-- /.card-header -->
+                         
+                                <div id="chart4" style="height: 300px;"></div>
+                            
+                            <!-- /.card-body  -->
+                            <div class="card-footer text-right">
+                                <p> Total: {{ $petCount }}</p>
+                            </div>
+                            <!-- /.card-footer -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
 
-                    <div class="col-md-12">
+                   
+
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="row">
+
+                    
+                    <div class="col-md-6">
                         <div class="card">
                             <div class="card-header"> 
                                 <h3>Appointments</h3>
@@ -135,12 +163,8 @@
                         </div>
                         <!-- /.card -->
                     </div>
-                </div>
-            </div>
-
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
+                    
+                    <div class="col-md-6">
                             <div class="card">
                                 <div class="card-header"> <h3>Users</h3>
                                 {{-- <p>Year 2020</p> --}}
@@ -248,15 +272,33 @@
             .tooltip()
       });
 
-      const chart3 = new Chartisan({
-        el: '#donation_chart',
-        url: "@chart('donation_chart')",
-        hooks: new ChartisanHooks()
-            .legend()
-            .colors()
-            .tooltip()
+   
+
+    //   const chart3 = new Chartisan({
+    //     el: '#donation_chart',
+    //     url: "@chart('donation_chart')",
+    //     hooks: new ChartisanHooks()
+    //         .legend()
+    //         .colors()
+    //         .tooltip()
             
+    //   });
+
+      const chart4 = new Chartisan({
+        el: '#chart4',
+        url: "@chart('pet_chart')",
+        hooks: new ChartisanHooks()
+                    .legend()
+                .colors()
+                .tooltip()
+                .axis(false)
+                .datasets([
+                { type: 'pie', radius: ['40%', '60%'] },
+                { type: 'pie', radius: ['10%', '30%'] },
+                ]),
       });
+
+     
     </script>
     @endsection
 
