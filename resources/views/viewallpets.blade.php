@@ -30,7 +30,7 @@
                                             data-card-widget="card-refresh" data-source="/pages/widgets.html"
                                             data-source-selector="#card-refresh-content"><i
                                                 class="fas fa-sync-alt"></i></button> --}}
-                                        <img src="assets/images/pets/{{ $pet->image }}" class="rounded img-fluid" alt="">
+                                        <img src="assets/images/pets/{{ $pet->image }}" class="rounded img-fluid" alt=""  >
                                     </div>
                                     <!-- /.card-tools -->
                                 </div>
@@ -79,9 +79,21 @@
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
-            <div class="modal-body text-center">
+            <div class="modal-body">
 
-         
+                <div class="row mt-5">
+                <div class="col-md-6 offset-md-1">
+                <img src="" class="rounded-circle img-fluid mb-4" alt="PET IMAGE" id="show_pet_image"
+                name="show_pet_image">
+                </div>
+                 
+                <div class="col-md-5">
+                <p style="font-size:20px;" id="lblPetCode" for="show_pet_name" class="mt-3">{{ __('Pet Code: ') }}</p>
+                <p style="font-size:20px;" id="lblPetAge" for="show_pet_age" class="mt-3">{{ __('Age: ') }}</p>
+                <p style="font-size:20px;" id="lblPetBreed" for="show_pet_breed" class="mt-3">{{ __('Breed: ') }}</p>
+                <p style="font-size:20px;" id="lblPetDescription"  for="show_pet_description" class="mt-3">{{ __('Description: ') }}</p>
+                </div>
+                </div>
 
                 <form method="POST" action="{{ action('adoptionController@store') }}">
                     @csrf
@@ -92,14 +104,13 @@
                     <input style="font-size:20px" type="hidden" id="show_pet_id" name="show_pet_id">
 
 
-                    <img src="" class="rounded-circle img-fluid mb-4" alt="PET IMAGE" id="show_pet_image"
-                        name="show_pet_image">
+                
 
-                    <div class="form-group row">
+                    <div class="form-group row text-right">
                         <div class="col-md-10 offset-md-1">
-                            <input style="font-size:20px" style="font-size:20px" id="show_pet_name" type="text"
+                            <input style="font-size:20px" style="font-size:20px" id="show_pet_name" type="hidden"
                                 class="form-control @error('show_pet_name') is-invalid @enderror" name="show_pet_name"
-                                value="{{ old('show_pet_name') }}" autocomplete="show_pet_name" autofocus disabled>
+                                value="{{ old('show_pet_name') }}" autocomplete="show_pet_name" autofocus disabled >
 
                             @error('show_pet_name')
                             <span class="invalid-feedback text-center" role="alert">
@@ -107,13 +118,12 @@
                             </span>
                             @enderror
 
-                            <label for="show_pet_name" class="mt-3">{{ __('Pet Code') }}</label>
                         </div>
                     </div>
 
-                    <div class="form-group row">
+                    <div class="form-group row text-right">
                         <div class="col-md-10 offset-md-1">
-                            <input style="font-size:20px" id="show_pet_age" type="text"
+                            <input style="font-size:20px" id="show_pet_age" type="hidden"
                                 class="form-control @error('show_pet_age') is-invalid @enderror" name="show_pet_age"
                                 value="{{ old('show_pet_age') }}" autocomplete="show_pet_age" autofocus disabled>
 
@@ -123,13 +133,13 @@
                             </span>
                             @enderror
 
-                            <label for="show_pet_age" class="mt-3">{{ __('Age') }}</label>
+                       
                         </div>
                     </div>
 
-                    <div class="form-group row">
+                    <div class="form-group row text-right">
                         <div class="col-md-10 offset-md-1">
-                            <input style="font-size:20px" id="show_pet_breed" type="text"
+                            <input style="font-size:20px" id="show_pet_breed" type="hidden"
                                 class="form-control @error('show_pet_breed') is-invalid @enderror" name="show_pet_breed"
                                 value="{{ old('show_pet_breed') }}" autocomplete="show_pet_breed" autofocus disabled>
 
@@ -139,13 +149,12 @@
                             </span>
                             @enderror
 
-                            <label for="show_pet_breed" class="mt-3">{{ __('Breed') }}</label>
                         </div>
                     </div>
 
-                    <div class="form-group row">
+                    <div class="form-group row text-right">
                         <div class="col-md-10 offset-md-1">
-                            <input style="font-size:20px" id="show_pet_description" type="text"
+                            <input style="font-size:20px" id="show_pet_description" type="hidden"
                                 class="form-control @error('show_pet_description') is-invalid @enderror"
                                 name="show_pet_description" value="{{ old('show_pet_description') }}"
                                 autocomplete="show_pet_description" autofocus disabled>
@@ -156,8 +165,7 @@
                             </span>
                             @enderror
 
-                            <label for="email" class="mt-3">{{ __('Description') }}</label>
-                        </div>
+                       </div>
                     </div>
 
                     <?php
@@ -165,10 +173,10 @@
                     $dt= $date->format('Y-m-d\TH:i:s'); 
                     ?>
 
-                    <div class="form-group row">
+                    <div class="form-group row text-right">
                         <div class="col-md-10 offset-md-1" id="datepicker">
-                        {{-- <input style="font-size:20px" id="select_date" type="datetime-local" class="form-control" name="show_requested_date"  min="{{$dt}}"> --}}
-                        <input style="font-size:20px" id="select_date" type="datetime-local" class="form-control" name="show_requested_date"  value="{{$dt}}" min="{{$dt}}">
+                        <input style="font-size:20px" id="select_date" type="datetime-local" class="form-control" name="show_requested_date" value="{{$dt}}" min="{{$dt}}">
+
                         <span id="time"></span>
                             @error('show_pet_description')
                             <span class="invalid-feedback text-center" role="alert">
@@ -230,6 +238,13 @@
                 $('#show_pet_age').val(petAge);
                 $('#show_pet_breed').val(petBreed);
                 $('#show_pet_description').val(petDescription);
+
+                lblPetCode.innerText += petName;
+                lblPetAge.innerText += petAge;
+                lblPetBreed.innerText += petBreed;
+                lblPetDescription.innerText += petDescription;
+
+
                 // $('#edit_pet_status').val(data[6]);
                 // $('#imageName').attr('value', imgstr);
                 // $('#editForm').attr('action', '/pets/' + data[0]);

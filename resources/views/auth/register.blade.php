@@ -10,20 +10,22 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card" id="register_card">
-                    {{-- <div class="card-header">{{ __('Register') }}</div> --}}
+            
                  
-                 
+                    
                 
                     <div class="card-body">
+                       
                         <div class="text-center" style="margin-bottom: 22px;">
                             <a href="/"><img src="assets/images/{{$contents[0]->content_image}}" alt="" id="card_logo"
                                     class="rounded-circle img-responsive"></a>
+                                    <h3 class="mt-4 mb-4">Account Registration</h3>
                         </div>
+                      
                         <form method="POST" action="{{ route('register') }}">
                             @csrf
 
                             <div class="form-group row">
-
 
                                 <div class="col-md-10 offset-md-1">
                                     <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
@@ -34,9 +36,10 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                     @enderror
-                                    <label for="name"
-                                        class="col-md-4 offset-md-4  col-form-label text-md-center">{{ __('Name') }}</label>
+                                    
                                 </div>
+                                <label for="name"
+                                        class="col-md-4 offset-md-4  col-form-label ml-5 pl-4" >{{ __('Name') }}</label>
                             </div>
 
                             <div class="form-group row">
@@ -51,9 +54,10 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                     @enderror
-                                    <label for="email"
-                                        class="col-md-4 offset-md-4  col-form-label text-md-center">{{ __('E-Mail Address') }}</label>
+                                    
                                 </div>
+                                <label for="email"
+                                        class="col-md-4 offset-md-4  col-form-label ml-5 pl-4">{{ __('E-Mail Address') }}</label>
                             </div>
 
 
@@ -71,9 +75,11 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                     @enderror
-                                    <label for="password"
-                                        class="col-md-4 offset-md-4  col-form-label text-md-center">{{ __('Password') }}</label>
+                                    
                                 </div>
+
+                                <label for="password"
+                                        class="col-md-4 offset-md-4  col-form-label ml-5 pl-4">{{ __('Password') }}</label>
                             </div>
 
                             <div class="form-group row">
@@ -84,7 +90,7 @@
                                         name="password_confirmation" autocomplete="new-password">
                                 </div>
                                 <label for="password-confirm"
-                                    class="col-md-4 offset-md-4  col-form-label text-md-center">{{ __('Confirm Password') }}</label>
+                                    class="col-md-4 offset-md-4  col-form-label ml-5 pl-4">{{ __('Confirm Password') }}</label>
                             </div>
 
                             <div class="form-group row mb-0 ">

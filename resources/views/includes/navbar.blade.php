@@ -4,6 +4,7 @@
     }
 
     #nav-link {
+        font-size:22px;
         color: #FDC370;
     }
     

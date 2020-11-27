@@ -27,7 +27,7 @@
 <input type="text" id="user_id" name="user_id" value="{{Auth::user()->id}}" hidden>
 @endauth
     <div class="form-group row">
-        <div class="col-md-10 offset-md-1">
+        <div class="col-md-8 offset-md-1">
             @auth
             <input style="font-size:16px" id="" type="text" class="form-control @error('name') is-invalid @enderror"
                 name="name" value="{{ Auth::user()->name }}" autocomplete="name" readonly>
@@ -42,9 +42,11 @@
                 <strong>{{ $message }}</strong>
             </span>
             @enderror
-            <label style=" font-size:24px;" for="name"
-                class="col-md-4 offset-md-4  col-form-label text-md-center" placeholder="">{{ __('Name') }}</label>
+                <label style=" font-size:24px;" for="name"
+                class="col-md-4 offset-md-4  col-form-label ml-1 mt-2" placeholder="">{{ __('Name') }}</label>
         </div>
+
+       
     </div>
 
                     <?php
@@ -54,7 +56,7 @@
                     ?>
 
                     <div class="form-group row">
-                        <div class="col-md-10 offset-md-1" id="datepicker">
+                        <div class="col-md-8 offset-md-1" id="datepicker">
                         {{-- <input style="font-size:20px" id="datetime" type="datetime-local" class="form-control" name="requested_date"  min="{{$dt}}"> --}}
                         <input style="font-size:20px" id="datetime" type="datetime-local" class="form-control" name="requested_date"  value="{{$dt}}" min="{{$dt}}">
 
@@ -68,13 +70,17 @@
 
                            
                             <label style=" font-size:24px;"for="Date"
-                class="col-md-4 offset-md-4  col-form-label text-md-center">{{ __('Date') }}</label>
+                class="col-md-4 offset-md-4  col-form-label ml-1 mt-2">{{ __('Date') }}</label>
                         </div>
                     </div>
     <div class="form-group row">
-
-        <div class="col-md-10 offset-md-1">
-            <textarea  style="font-size:16px" id="message" type="text" class="form-control  @error('message') is-invalid @enderror"
+        
+        
+        <div class="col-md-8 offset-md-1 mt-3">
+            <label style=" font-size:24px;"for="message"
+            class="col-md-4 offset-md-8  col-form-label ml-1" s>{{ __('Message:') }}</label>
+                 
+            <textarea  style="font-size:16px;" id="message" type="text" class="form-control  @error('message') is-invalid @enderror"
                 name="message" value="{{ old('message') }}" autocomplete="message" rows="8"></textarea form="usrform">
 
                 @error('message')
@@ -83,8 +89,7 @@
                 </span>
                 @enderror
 
-                <label style=" font-size:24px;"for="message"
-                class="col-md-4 offset-md-4  col-form-label text-md-center">{{ __('Message') }}</label>
+         
         </div>
        
     </div>
