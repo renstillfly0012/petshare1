@@ -81,7 +81,7 @@
             </div>
             <div class="modal-body text-center">
 
-            <input id="dateNow" type="text" value="{{now()}}"/>
+         
 
                 <form method="POST" action="{{ action('adoptionController@store') }}">
                     @csrf
@@ -167,8 +167,8 @@
 
                     <div class="form-group row">
                         <div class="col-md-10 offset-md-1" id="datepicker">
-                        <input style="font-size:20px" id="select_date" type="datetime-local" class="form-control" name="show_requested_date" value="{{$dt}}" min="{{$dt}}">
-
+                        {{-- <input style="font-size:20px" id="select_date" type="datetime-local" class="form-control" name="show_requested_date"  min="{{$dt}}"> --}}
+                        <input style="font-size:20px" id="select_date" type="datetime-local" class="form-control" name="show_requested_date"  value="{{$dt}}" min="{{$dt}}">
                         <span id="time"></span>
                             @error('show_pet_description')
                             <span class="invalid-feedback text-center" role="alert">

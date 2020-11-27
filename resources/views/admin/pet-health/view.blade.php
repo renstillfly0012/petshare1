@@ -5,7 +5,15 @@
 
 </style>
 
-@section('content')   
+@section('content')  
+<nav aria-label="breadcrumb" class="d-none d-lg-block">
+    <ol class="breadcrumb bg-transparent justify-content-end p-0">
+                                      <li class="breadcrumb-item text-capitalize"><a href="/home">Admin</a></li>
+                                                    <li class="breadcrumb-item text-capitalize active" aria-current="page"><a href="/pets">Pets</a></li>
+                                                    <li class="breadcrumb-item text-capitalize active" aria-current="page"><a href="/pethealth/all">Health Records</a></li>
+                                                    <li class="breadcrumb-item text-capitalize active" aria-current="page">List</li>
+                            </ol>
+</nav> 
 <div class="card">
     <div class="card-header">
         <h3 class="card-title">{{ $medinfos[0]->pets->name }}</h3>

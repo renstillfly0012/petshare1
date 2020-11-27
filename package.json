@@ -23,7 +23,9 @@
         "vue-template-compiler": "^2.6.11"
     },
     "dependencies": {
+        "@chartisan/chartjs": "^2.1.0",
         "admin-lte": "^3.0.5",
+        "chart.js": "^2.9.4",
         "font-awesome": "^4.7.0",
         "heatmap.js": "^2.0.5"
     }

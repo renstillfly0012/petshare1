@@ -27,6 +27,9 @@ class AppServiceProvider extends ServiceProvider
         //
         $charts->register([
             \App\Charts\SampleChart::class,
+            \App\Charts\AppointmentChart::class,
+            \App\Charts\ReportChart::class,
+            \App\Charts\DonationChart::class,
         ]);
 
         // date_default_timezone_set('Asia/Manila');

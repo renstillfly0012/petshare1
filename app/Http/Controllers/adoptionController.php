@@ -33,15 +33,15 @@ class adoptionController extends Controller
         }
         // $appointments = Appointment::all();
 
-        $appointments = Appointment::orderBy('id', 'desc')->with('user', 'pet')->get();
-        $pagination = Appointment::paginate(5);
+        $appointments = Appointment::orderBy('id', 'desc')->with('user', 'pet')->paginate(5);
+        // $pagination = Appointment::paginate(5);
 
         
         
 
         // dd($appointments->pet);
     
-        return view('admin.pet.request', compact('appointments', 'pagination'));
+        return view('admin.pet.request', compact('appointments'));
     }
 
 
@@ -68,7 +68,7 @@ class adoptionController extends Controller
         $validator = Validator::make($request->all(),[
             'show_user_id' => ['required', 'integer', 'max:255'],
             'show_pet_id' => ['required', 'integer', 'max:255'],
-            'show_requested_date' => 'required|date|after:now',
+            'show_requested_date' => 'required|date',
          ]);
 
          $appointment = new Appointment;
@@ -82,6 +82,7 @@ class adoptionController extends Controller
          return redirect('/')->with('success', 'Appointment Saved');
       
     }
+
 
     /**
      * Display the specified resource.

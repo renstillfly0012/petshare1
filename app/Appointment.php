@@ -16,7 +16,7 @@ class Appointment extends Model
     use LogsActivity;
 
     protected $fillable = [
-        'user_id','requested_pet_id','requested_date','appointment_type'
+        'user_id','requested_pet_id','requested_date','appointment_type','name','message'
     ];
 
     // protected static $logAttributes = ['name', 'age', 'breed','description','image'];
@@ -35,7 +35,7 @@ class Appointment extends Model
     
     public function user()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\User', 'user_id');
     }
 
     public function pet()

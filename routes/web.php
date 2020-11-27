@@ -62,6 +62,10 @@ Route::get('/map', function(){
 });
 
 
+Route::get('/surrender', 'surrenderController@index')->name('surrender');
+Route::post('/surrender/store', 'surrenderController@store')->name('surrender');
+
+
 Route::group(['middleware' => ['verified']], function () {
 
 
