@@ -29,7 +29,7 @@
 <nav aria-label="breadcrumb" class="d-none d-lg-block">
     <ol class="breadcrumb bg-transparent justify-content-end p-0">
                                       <li class="breadcrumb-item text-capitalize"><a href="/home">Admin</a></li>
-                                                    <li class="breadcrumb-item text-capitalize active" aria-current="page">Dashboard</li>
+                                                    <li class="breadcrumb-item text-capitalize active" aria-current="page"><strong>Dashboard</strong></li>
                             </ol>
   </nav>
 

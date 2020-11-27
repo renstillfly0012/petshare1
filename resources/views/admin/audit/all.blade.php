@@ -6,7 +6,7 @@
     <ol class="breadcrumb bg-transparent justify-content-end p-0">
                                       <li class="breadcrumb-item text-capitalize"><a href="/home">Admin</a></li>
                                                     <li class="breadcrumb-item text-capitalize active" aria-current="page"><a href="/audit">Audit Trails</a></li>
-                                                    <li class="breadcrumb-item text-capitalize active" aria-current="page">List</li>
+                                                    <li class="breadcrumb-item text-capitalize active" aria-current="page"><strong>List</strong></li>
                             </ol>
   </nav>
 

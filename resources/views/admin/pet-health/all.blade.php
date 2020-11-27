@@ -11,7 +11,7 @@
                                       <li class="breadcrumb-item text-capitalize"><a href="/home">Admin</a></li>
                                                     <li class="breadcrumb-item text-capitalize active" aria-current="page"><a href="/pets">Pets</a></li>
                                                     <li class="breadcrumb-item text-capitalize active" aria-current="page"><a href="/pethealth/all">Health Records</a></li>
-                                                    <li class="breadcrumb-item text-capitalize active" aria-current="page">List</li>
+                                                    <li class="breadcrumb-item text-capitalize active" aria-current="page"><strong>List</strong></li>
                             </ol>
 </nav>
 

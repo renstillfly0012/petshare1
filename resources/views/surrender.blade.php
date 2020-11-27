@@ -27,7 +27,7 @@
 <input type="text" id="user_id" name="user_id" value="{{Auth::user()->id}}" hidden>
 @endauth
     <div class="form-group row">
-        <div class="col-md-8 offset-md-1">
+        <div class="col-md-10 offset-md-1">
             @auth
             <input style="font-size:16px" id="" type="text" class="form-control @error('name') is-invalid @enderror"
                 name="name" value="{{ Auth::user()->name }}" autocomplete="name" readonly>
@@ -56,7 +56,7 @@
                     ?>
 
                     <div class="form-group row">
-                        <div class="col-md-8 offset-md-1" id="datepicker">
+                        <div class="col-md-10 offset-md-1" id="datepicker">
                         {{-- <input style="font-size:20px" id="datetime" type="datetime-local" class="form-control" name="requested_date"  min="{{$dt}}"> --}}
                         <input style="font-size:20px" id="datetime" type="datetime-local" class="form-control" name="requested_date"  value="{{$dt}}" min="{{$dt}}">
 
@@ -76,7 +76,7 @@
     <div class="form-group row">
         
         
-        <div class="col-md-8 offset-md-1 mt-3">
+        <div class="col-md-10 offset-md-1 mt-3">
             <label style=" font-size:24px;"for="message"
             class="col-md-4 offset-md-8  col-form-label ml-1" s>{{ __('Message:') }}</label>
                  

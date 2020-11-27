@@ -60,7 +60,7 @@
                 </span>
                 @enderror
                 <label style=" font-size:24px;" for="address"
-                    class="col-md-4 offset-md-4  col-form-label text-md-center" placeholder="">{{ __('Address') }}</label>
+                    class="col-md-4 offset-md-4  col-form-label ml-1" placeholder="">{{ __('Address') }}</label>
             </div>
         </div>
 
@@ -72,8 +72,10 @@
         <div class="form-group row">
 
             <div class="col-md-10 offset-md-1">
-                <input  style="font-size:16px" id="description" type="text" class="form-control  @error('description') is-invalid @enderror"
-                    name="description" value="{{ old('description') }}" autocomplete="description">
+                <label style=" font-size:24px;"for="description"
+                class="col-md-4 offset-md-4  col-form-label ml-1 mb-3">{{ __('Report Description: ') }}</label>
+                <textarea  rows="8" style="font-size:16px" id="description" type="text" class="form-control  @error('description') is-invalid @enderror"
+                    name="description" value="{{ old('description') }}" autocomplete="description" form="usrform" ></textarea>
 
                     @error('description')
                     <span class="invalid-feedback text-center" role="alert">
@@ -81,24 +83,15 @@
                     </span>
                     @enderror
 
-                    <label style=" font-size:24px;"for="description"
-                    class="col-md-4 offset-md-4  col-form-label text-md-center">{{ __('Report Description') }}</label>
+                   
             </div>
            
         </div>
 
-        <div class="col-md-10 offset-md-1">
-            <textarea  style="font-size:16px" id="note" type="text" class="form-control  @error('note') is-invalid @enderror"
-                name="note" value="{{ old('note') }}" autocomplete="note" rows="8"></textarea form="usrform">
-
-                @error('note')
-                <span class="invalid-feedback text-center" role="alert">
-                    <strong>{{ $note }}</strong>
-                </span>
-                @enderror
-
-                <label style=" font-size:24px;"for="note"
-                class="col-md-4 offset-md-4  col-form-label text-md-center">{{ __('Message') }}</label>
+        <div class="col-md-10 offset-md-1 ">
+            <div class="alert alert-warning" role="alert">
+                <p><strong>This is a warning insert</strong> note here</p>
+              </div>
         </div>
 
         <div class="form-group row ml-5">
