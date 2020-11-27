@@ -206,11 +206,10 @@ class userController extends Controller
         
         try{
         $user = User::where([
-            'email' => $request->email,
-            'password' => $request->password,
-            ])->get();
+            'email' => $request->email
+            ])->get()->first();
     
-            // dd($user);
+            // dd($user->password);
             $pass = $user->password;
             if(Hash::check($request->password, $pass)){
                     return response()->json($user->first(), 200); 

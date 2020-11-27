@@ -62,7 +62,7 @@ Route::prefix('admin')->group(function(){
 
     Route::prefix('pethealth')->group(function(){
         route::get('/all', 'Api\petInfoController@index');
-        route::get('view/{id}', 'Api\petInfoController@show');
+        route::get('/view/{id}', 'Api\petInfoController@show');
         route::post('/create', 'Api\petInfoController@store');
         
     });
