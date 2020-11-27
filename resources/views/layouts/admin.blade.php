@@ -74,7 +74,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     {{-- <script src="{{ asset('js/googlemap.js') }}" defer></script> --}}
+    
 
+    <script src="https://unpkg.com/echarts/dist/echarts.min.js"></script>
+    <!-- Chartisan -->
+    <script src="https://unpkg.com/@chartisan/echarts/dist/chartisan_echarts.js"></script>
  
     @yield('user_modal_script')
     @yield('pet_modal_script')
@@ -82,6 +86,7 @@
     @yield('cms_modal_script')
     @yield('notification_script')
     @yield('javascript')
+    @yield('charts')
 
     @include('sweetalert::alert')
 

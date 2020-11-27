@@ -67,6 +67,8 @@ class adoptionController extends Controller
         }
     }
 
+   
+
     /**
      * Display the specified resource.
      *

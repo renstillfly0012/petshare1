@@ -2,6 +2,14 @@
 
 @section('content')
 
+<nav aria-label="breadcrumb" class="d-none d-lg-block">
+    <ol class="breadcrumb bg-transparent justify-content-end p-0">
+                                      <li class="breadcrumb-item text-capitalize"><a href="/home">Admin</a></li>
+                                                    <li class="breadcrumb-item text-capitalize active" aria-current="page"><a href="/pet-requests">Appointments</a></li>
+                                                    <li class="breadcrumb-item text-capitalize active" aria-current="page">List</li>
+                            </ol>
+  </nav>
+
     <div class="card">
 
         <div class="card-header">
@@ -46,8 +54,8 @@
                                 @foreach ($appointments as $appointment)
                                     <tr role="row" class="odd text-center">
                                         <td>{{ $appointment->id }}</td>
-                                        <td>{{ $appointment->user->name }}</td>
-                                        <td>{{ $appointment->pet->name }}</td>
+                                        <td>{{ $appointment->user_id != null ? $appointment->user->name : $appointment->name}}</td>
+                                        <td>{{ $appointment->requested_pet_id != null ? $appointment->pet->name : "None"}}</td>
                                         <td>{{ $appointment->requested_date }}</td>
                                         <td>{{ $appointment->appointment_type }}</td>
                                         {{-- <td>{{ $appointment->appointment_type }}</td> --}}
@@ -67,12 +75,12 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-12 col-md-5">
-                        <div class="dataTables_info" id="example2_info" role="status" aria-live="polite">Showing {{$appointments->count()}} of
-                            {{App\Appointment::count()}}</div>
+                        {{-- <div class="dataTables_info" id="example2_info" role="status" aria-live="polite">Showing {{$appointments->count()}} of
+                            {{App\Appointment::count()}}</div> --}}
                     </div>
                     <div class="col-sm-12 col-md-7">
                       
-                        {{$pagination->links()}}
+                        {{$appointments->links()}}
                     </div>
                 
                 </div>

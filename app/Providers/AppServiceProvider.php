@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use ConsoleTVs\Charts\Registrar as Charts;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -21,9 +22,16 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(Charts $charts)
     {
         //
-        date_default_timezone_set('Asia/Manila');
+        $charts->register([
+            \App\Charts\SampleChart::class,
+            \App\Charts\AppointmentChart::class,
+            \App\Charts\ReportChart::class,
+            \App\Charts\DonationChart::class,
+        ]);
+
+        // date_default_timezone_set('Asia/Manila');
     }
 }

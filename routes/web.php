@@ -24,8 +24,6 @@ Route::get('/', function () {
 
 
 
-
-
 Route::get('/admin/login', function(){
     return view('auth.login');
 })->name('adminLogin');
@@ -62,6 +60,10 @@ Route::get('/map', function(){
     return view('map')->with(compact('map'))
     ->with(compact('location'));
 });
+
+
+Route::get('/surrender', 'surrenderController@index')->name('surrender');
+Route::post('/surrender/store', 'surrenderController@store')->name('surrender');
 
 
 Route::group(['middleware' => ['verified']], function () {

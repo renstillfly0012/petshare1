@@ -27,7 +27,7 @@
 
    <div class="card-body" >
     
-<form method="post" action="{{ action('ReportController@store') }}" enctype="multipart/form-data">
+<form method="post" action="{{ action('ReportController@store') }}" enctype="multipart/form-data" id="usrform">
         @csrf
 
        
@@ -85,6 +85,20 @@
                     class="col-md-4 offset-md-4  col-form-label text-md-center">{{ __('Report Description') }}</label>
             </div>
            
+        </div>
+
+        <div class="col-md-10 offset-md-1">
+            <textarea  style="font-size:16px" id="note" type="text" class="form-control  @error('note') is-invalid @enderror"
+                name="note" value="{{ old('note') }}" autocomplete="note" rows="8"></textarea form="usrform">
+
+                @error('note')
+                <span class="invalid-feedback text-center" role="alert">
+                    <strong>{{ $note }}</strong>
+                </span>
+                @enderror
+
+                <label style=" font-size:24px;"for="note"
+                class="col-md-4 offset-md-4  col-form-label text-md-center">{{ __('Message') }}</label>
         </div>
 
         <div class="form-group row ml-5">

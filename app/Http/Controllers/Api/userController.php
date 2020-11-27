@@ -212,7 +212,7 @@ class userController extends Controller
             // dd($user->password);
             $pass = $user->password;
             if(Hash::check($request->password, $pass)){
-                    return response()->json($user->first(), 200); 
+                    return response()->json($user, 200); 
             }
         }catch(\Exception $error){
         return response()->json($error, 400);

@@ -39,9 +39,7 @@
                     <li class="nav-item">
                         <a class="nav-link" id="nav-link" href="#">{{ __('Contact Us') }}</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="nav-link" href="{{ route('adopt1') }}">{{ __('Adopt') }}</a>
-                    </li>
+                   
                     <li class="nav-item">
                         <a class="nav-link" id="nav-link" href="{{ route('login') }}">{{ __('Sign In') }}</a>
                     </li>
@@ -50,10 +48,12 @@
                             <a class="nav-link" id="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                         </li>
                     @endif
-
+                    <li class="nav-item">
+                        <a class="nav-link" id="nav-link" href="{{ route('adopt1') }}">{{ __('Adopt') }}</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" id="nav-link"
-                            href="{{ route('login') }}">{{ __('Report An Incident') }}</a>
+                            href="/surrender">{{ __('Surrender') }}</a>
                     </li>
 
                     <li class="nav-item">
@@ -74,6 +74,11 @@
                     </li> --}}
                     <li class="nav-item">
                         <a class="nav-link" id="nav-link" href="{{ route('adopt1') }}">{{ __('Adopt') }}</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" id="nav-link"
+                            href="/surrender">{{ __('Surrender') }}</a>
                     </li>
 
                     <li class="nav-item">
