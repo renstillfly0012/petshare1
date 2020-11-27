@@ -204,7 +204,7 @@ class userController extends Controller
     }
     public function login(Request $request){
         
-        try{
+        // try{
         $user = User::where([
             'email' => $request->email,
             'password' => $request->password,
@@ -215,9 +215,9 @@ class userController extends Controller
             if(Hash::check($request->password, $pass)){
                     return response()->json($user->first(), 200); 
             }
-        }catch(\Exception $error){
-        return response()->json($error, 400);
-       }
+    //     }catch(\Exception $error){
+    //     return response()->json($error, 400);
+    //    }
         
     }
 }
