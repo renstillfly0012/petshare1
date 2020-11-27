@@ -171,6 +171,8 @@
 
         </div>
 
+        <div id="chart" style="height: 300px;"></div>
+
     @endsection
 
     @section('notification_script')
@@ -211,6 +213,13 @@
     {!! $chart2->renderJs() !!}
     {!! $chart3->renderJs() !!}
     {!! $chart4->renderJs() !!}
+    @endsection
+
+    @section('javascript')
+    const chart = new Chartisan({
+        el: '#chart',
+        url: "@chart('sample_chart')",
+      });
     @endsection
 
     

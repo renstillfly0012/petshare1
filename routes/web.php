@@ -24,8 +24,6 @@ Route::get('/', function () {
 
 
 
-
-
 Route::get('/admin/login', function(){
     return view('auth.login');
 })->name('adminLogin');
