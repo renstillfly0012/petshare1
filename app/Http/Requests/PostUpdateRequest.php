@@ -27,7 +27,7 @@ class PostUpdateRequest extends FormRequest
             'edit_user_name' => 'required', 'string', 'max:255',
             'edit_email' => 'required', 'string', 'email', 'max:255', 'unique:users',
             'edit_password' => 'required', 'string', 'min:8', 'confirmed',
-            'edit_image' => 'mimes:jpeg,jpg,png,gif','image', 'max:25000',
+            // 'edit_image' => 'mimes:jpeg,jpg,png,gif','image', 'max:25000',
         ];
     }
 
