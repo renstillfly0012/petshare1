@@ -31,8 +31,8 @@
 
                 
 
-                <li class="nav-item">
-                    <button class="nav-link" id="nav-link" id="paypal-button-container"
+                <li class="nav-item active">
+                    <button class="nav-link active" id="nav-link" id="paypal-button-container"
                         style="text-decoration: underline; border:none; 
                                                                                                                             background-color: rgba(0, 0, 0, .1);"
                         data-toggle="modal" data-target="#modalDonation">{{ __('Donate') }}</button>
@@ -57,8 +57,8 @@
 
                 
 
-                <li class="nav-item">
-                    <button class="nav-link" id="nav-link" id="paypal-button-container"
+                <li class="nav-item active">
+                    <button class="nav-link active" id="nav-link" id="paypal-button-container"
                         style="text-decoration: underline; border:none; 
                                                                                                                             background-color: rgba(0, 0, 0, .1);"
                         data-toggle="modal" data-target="#modalDonation">{{ __('Donate') }}</button>
