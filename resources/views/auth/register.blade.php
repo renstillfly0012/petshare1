@@ -17,7 +17,7 @@
                     <div class="card-body">
                        
                         <div class="text-center" style="margin-bottom: 22px;">
-                            <a href="/"><img src="assets/images/{{$contents[0]->content_image}}" alt="" id="card_logo"
+                            <a href="/"><img src="assets/images/contents/{{$contents[0]->content_image}}" alt="" id="card_logo"
                                     class="rounded-circle img-responsive"></a>
                                     <h3 class="mt-4 mb-4">Account Registration</h3>
                         </div>

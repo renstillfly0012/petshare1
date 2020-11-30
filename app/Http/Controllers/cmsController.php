@@ -70,15 +70,18 @@ class cmsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CmsRequest $request, $id)
+    public function update(Request $request, $id)
     {
         
         // dd($cms = $request);
         $cms = Content::findorfail($id);
         // dd($cms);
+        
         $cms->content_section = $request->edit_content_section;
         $cms->content_title = $request->edit_content_title;
+        $cms->content_text = $request->edit_content_text;
         $cms->content_description = $request->edit_content_description;
+        $cms->content_date = $request->edit_content_date;
         if($request->hasFile('edit_image') == true){
             // $user->image = $request->edit_image->getClientOriginalName();
            

@@ -33,13 +33,13 @@ Route::get('/admin/login', function(){
 Auth::routes(['verify' => true]);
 
 Route::get('/login', function(){
-    $contents = Content::where('id', 11)->get();
-//    dd($contents[0]->content_image);
+    $contents = Content::where('id', 32)->get();
+//    dd($contents->content_image);
     return view('auth.login')->with('contents', $contents);
 })->name('login');
 
 Route::get('/register', function(){
-    $contents = Content::where('id', 11)->get();
+    $contents = Content::where('id', 32)->get();
 //    dd($contents[0]->content_image);
     return view('auth.register')->with('contents', $contents);
 })->name('register');

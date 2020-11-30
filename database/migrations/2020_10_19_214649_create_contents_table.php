@@ -17,8 +17,10 @@ class CreateContentsTable extends Migration
             $table->id();
             $table->string('content_section');
             $table->string('content_title')->nullable();
+            $table->string('content_text')->nullable();
             $table->string('content_image')->nullable();
             $table->string('content_description')->nullable();
+            $table->string('content_date')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
