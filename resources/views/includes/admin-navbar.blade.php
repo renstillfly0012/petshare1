@@ -103,7 +103,7 @@
     <!-- Brand Logo -->
 
     <a href="/home" class="brand-link">
-        <img src="{{ asset('/assets/images/pspcalogo.png') }}" alt="AdminLTE Logo" height="33px" width="33px"
+        <img src="{{ asset('/assets/images/contents/pspcalogo.png') }}" alt="AdminLTE Logo" height="33px" width="33px"
             class="brand-image img-circle elevation-3 img-responsive" style="opacity: .8">
         <span class="brand-text font-weight-light">PetShare</span>
     </a>
