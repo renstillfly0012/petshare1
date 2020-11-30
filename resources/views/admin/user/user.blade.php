@@ -74,7 +74,7 @@
 
                                         <td class="sorting_1 text-center">
                                         @if($user->image == 'pspcalogo.png')
-                                            <img src="assets/images/{{ $user->image }}" alt="User Image"
+                                            <img src="assets/images/users/{{ $user->image }}" alt="User Image"
                                                 class="img-responsive rounded-circle" height="129" width="129">
                                             @else
                                             <img src="assets/images/users/{{ $user->image }}" alt="User Image"
