@@ -69,7 +69,7 @@
                 <li class="nav-item dropdown">
                     <a id=" navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre style="color:#fdc370;">
-                        <img src="{{ asset('assets/images/pspcalogo.png') }}" alt="" 
+                        <img src="{{ asset('/assets/images/users/{{Auth::user()->image}}') }}" alt="" 
                             class="rounded-circle img-responsive float-right" height="33px;" width="33px;">
 
                         {{ Auth::user()->name }} <span class="caret"></span>
