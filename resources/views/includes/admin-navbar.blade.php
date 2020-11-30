@@ -60,7 +60,7 @@
         <!-- Messages Dropdown Menu -->
         <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#" id="username">{{ Auth::user()->name }}
-                <i class="fa fa-caret-down" aria-hidden="true"></i> <img src="/assets/images/user/{{ Auth::user()->image }} "
+                <i class="fa fa-caret-down" aria-hidden="true"></i> <img src="/assets/images/users/{{ Auth::user()->image }} "
                     class="img-circle img-responsive" height="33px" width="33px" alt="User Image">
             </a>
 
@@ -113,7 +113,7 @@
         <!-- Sidebar user panel (optional) -->
         <div class="text-center mt-3 mb-3">
             <div class=" image">
-                <img src="/assets/images/user/{{ Auth::user()->image }}" class="img-circle elevation-2" alt="User Image"
+                <img src="/assets/images/users/{{ Auth::user()->image }}" class="img-circle elevation-2" alt="User Image"
                     height="100px" width="100px" id="sidebar_img">
             </div>
             <div class="info text-center mt-2">
