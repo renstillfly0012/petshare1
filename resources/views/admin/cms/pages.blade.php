@@ -36,11 +36,17 @@
                                     aria-label="Browser: activate to sort column ascending">Content Section</th>
                                     <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
                                     aria-label="Browser: activate to sort column ascending">Content Title</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                    aria-label="Browser: activate to sort column ascending">Content Text</th>
                  
                                     <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
                                     aria-label="Browser: activate to sort column ascending">Content Image</th>
+                                
                                     <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
                                     aria-label="Browser: activate to sort column ascending">Content Description</th>
+
+                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                    aria-label="Browser: activate to sort column ascending">Content Dates</th>
                  
                                 <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
                                     aria-label="CSS grade: activate to sort column ascending">Action</th>
@@ -54,11 +60,19 @@
                                     {{$content->content_section}}
                                 </td>
                                 <td>{{$content->content_title}}</td>
+                                <td>{{$content->content_text}}</td>
                                 <td class="text-center">
-                                    <img src="assets/images/{{$content->content_image}}" alt=""
+                                    @if($content->content_image != '')
+                                    <img src="assets/images/contents/{{$content->content_image}}" alt=""
                                     class="img-responsive rounded-circle" height="129" width="129">
+                                    @else
+                                    
+                                    <img src="assets/images/contents/{{$content->content_image}}" style="display:none;" alt=""
+                                    class="img-responsive rounded-circle" height="129" width="129">
+                                    @endif
                                 </td>
                                 <td>{{$content->content_description}}</td>
+                                <td>{{$content->content_date}}</td>
                                 <td>
                                    <button class="btn btn-warning pr-4 editbtn">Edit</button><br>
                                     
@@ -125,6 +139,7 @@
                             <div class="col-md-2 offset-md-4">
                                 <img class="mb-4 text-center rounded-circle" src="" alt="User Image" id="rowImage"
                                     height="129px" width="129px">
+                                    
                                 <input class="mb-4" type="file" name="edit_image" id="imageName" value="" accept="image/*">
 
                                 @error('edit_image')
@@ -158,13 +173,34 @@
                         <div class="input-group mt-4">
                             <div class="input-group-prepend">
                                 <span style="color:#fdc370; background-color:#2d643b;"
-                                    class="input-group-text">Name</span>
+                                    class="input-group-text">Content Title</span>
                             </div>
                             <input id="edit_content_title" type="text"
-                                class="form-control @error('name') is-invalid @enderror" name="edit_content_title"
+                                class="form-control @error('edit_content_title') is-invalid @enderror" name="edit_content_title"
                                 value="{{ old('edit_content_title') }}" autocomplete="edit_content_title" autofocus>
 
                             @error('edit_content_title')
+                            <span class="invalid-feedback text-center" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+
+                        </div>
+
+                        <div class="input-group mt-4">
+                            <div class="input-group-prepend">
+                                <span style="color:#fdc370; background-color:#2d643b;"
+                                    class="input-group-text">{{ __('Content Text') }}</span>
+
+
+                            </div>
+
+                            <textarea id="edit_content_text" name="edit_content_text"
+                                class="form-edit_content_text @error('edit_content_text') is-invalid @enderror" rows="3"
+                                value="{{ old('edit_content_descredit_content_textiption') }}" autofocus></textarea>
+            
+
+                            @error('edit_content_text')
                             <span class="invalid-feedback text-center" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -189,6 +225,24 @@
             
 
                             @error('edit_content_description')
+                            <span class="invalid-feedback text-center" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+
+                        </div>
+
+
+                        <div class="input-group mt-4">
+                            <div class="input-group-prepend">
+                                <span style="color:#fdc370; background-color:#2d643b;"
+                                    class="input-group-text">Content Date</span>
+                            </div>
+                            <input id="edit_content_date" type="text"
+                                class="form-control @error('name') is-invalid @enderror" name="edit_content_date"
+                                value="{{ old('edit_content_date') }}" autocomplete="edit_content_date" autofocus>
+
+                            @error('edit_content_date')
                             <span class="invalid-feedback text-center" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -239,7 +293,9 @@
                 $('#rowImage').attr("src", img);
                 $('#edit_content_section').val(data[1].trim());
                 $('#edit_content_title').val(data[2]);
-                $('#edit_content_description').val(data[4]);
+                $('#edit_content_text').val(data[3]);
+                $('#edit_content_description').val(data[5]);
+                $('#edit_content_date').val(data[6]);
                 $('#imageName').attr('value', imgstr);
                 $('#editForm').attr('action', '/cms/' + data[0]);
                 $('#editImageForm').attr('action', '/cms/' + data[0]);

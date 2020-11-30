@@ -9,6 +9,7 @@ use Auth;
 use App\Content;
 use QRCode;
 
+
 class HomeController extends Controller
 {
     /**
@@ -32,10 +33,15 @@ class HomeController extends Controller
             { 
               //---------
               $contents = Content::all();
+              $pets = Pet::whereBetween('id', array(3,8))->get();
+              $header = Content::where('content_section','Header')->get();
+              $content = Content::all();
+
+              // dd($header[0]);
               
                 if(Auth::check()){
                 if(Gate::denies('isAdmin')){
-                    return view('welcome')->with('contents', $contents);
+                    return view('welcome',compact('contents','pets','header','content'));
                 
                   }else{
                     return redirect('home');
@@ -44,7 +50,7 @@ class HomeController extends Controller
                 }
                
                 
-                return view('welcome')->with('contents', $contents);
+                return view('welcome' ,compact('contents','pets','header','content'));
             }
             public function howToAdopt(){
                 return view('howtoadopt');

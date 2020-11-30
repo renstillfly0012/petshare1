@@ -12,7 +12,7 @@
 
                     <div class="card-body">
                         <div class="text-center mb-5" style="margin-bottom: 0px;">
-                        <a href="/"><img src="assets/images/{{$contents[0]->content_image}}" alt="" id="card_logo"
+                        <a href="/"><img src="assets/images/contents/{{$contents[0]->content_image}}" alt="" id="card_logo"
                                     class="rounded-circle img-responsive"></a>
                                    
                         </div>

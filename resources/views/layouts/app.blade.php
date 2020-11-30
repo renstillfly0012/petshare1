@@ -15,6 +15,7 @@
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link rel="icon" href="https://pet-share.com/asstes/images/pspcalogo.png" sizes="57x57">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
 

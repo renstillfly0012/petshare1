@@ -26,7 +26,9 @@ class CmsRequest extends FormRequest
         return [
             'edit_content_section' => 'required', 'string', 'max:255',
             'edit_content_title' => 'required', 'string', 'max:255',
+            'edit_content_text' => 'required', 'string', 'max:255',
             'edit_content_description' => 'required', 'string', 'max:255',
+            'edit_content_date' => 'required', 'string', 'max:255',
             'edit_image' => 'mimes:jpeg,jpg,png,gif','image', 'max:25000',
         ];
     }

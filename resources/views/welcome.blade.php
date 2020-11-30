@@ -13,10 +13,10 @@
     <!-- Masthead-->
     <header class="masthead">
         <div class="container">
-            <div class="masthead-heading">EVERY ANIMAL NEEDS SHELTER. 
+            <div class="masthead-heading">{{ $content[0]->content_text }}
               </div>
-            <div class="masthead-heading text-uppercase">Let’s help each other build them a better home.</div>
-           <div class="masthead-subheading"> You can chip in with money & effort!</div>
+            <div class="masthead-heading text-uppercase">{{ $content[1]->content_text }}</div>
+           <div class="masthead-subheading"> {{ $content[2]->content_text }}</div>
             <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"  data-toggle="modal" data-target="#modalDonation">DONATE NOW!</a>
 
             
@@ -26,37 +26,71 @@
     <section class="page-section" id="services">
         <div class="container">
             <div class="text-center">
-                <h2 class="section-heading text-uppercase">How to adopt a Pet</h2>
+                <h2 class="section-heading text-uppercase">{{ $content[3]->content_text }}</h2>
             </div>
             <div class="row text-center">
                 <div class="col-md-3">
                     <span class="fa-stack fa-4x">
                         {{-- <i class="fas fa-circle fa-stack-2x text-primary"></i> --}}
-                       <img src="http://petshare1.test/assets/images/adoptPet.png" alt="" height="124" width="124">
+                       <img src="assets/images/contents/{{ $content[4]->content_image }}" alt="" height="124" width="124">
                     </span>
-                    <h4 class="my-3">Choose A Pet</h4>
+                    <h4 class="my-3">{{ $content[4]->content_text }}</h4>
                     {{-- <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p> --}}
                 </div>
                 <div class="col-md-3">
                     <span class="fa-stack fa-4x">
-                        <img src="http://petshare1.test/assets/images/booking.png" alt="" height="124" width="124">
+                        <img src="assets/images/contents/{{ $content[5]->content_image }}" alt="" height="124" width="124">
                     </span>
-                    <h4 class="my-3">Book an appointment for meeting the pet.</h4>
+                    <h4 class="my-3">{{ $content[5]->content_text }}</h4>
                     {{-- <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p> --}}
                 </div>
                 <div class="col-md-3">
                     <span class="fa-stack fa-4x">
-                        <img src="http://petshare1.test/assets/images/bgcheck.png" alt="" height="124" width="124">
+                        <img src="assets/images/contents/{{ $content[6]->content_image }}" alt="" height="124" width="124">
                     </span>
-                    <h4 class="my-3">Background Check</h4>
+                    <h4 class="my-3">{{ $content[6]->content_text }}</h4>
                     {{-- <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p> --}}
                 </div>
 
                 <div class="col-md-3">
                     <span class="fa-stack fa-4x">
-                        <img src="  http://petshare1.test/assets/images/takecare.png" alt="" height="124" width="124">
+                        <img src="assets/images/contents/{{ $content[7]->content_image }}" alt="" height="124" width="124">
                     </span>
-                    <h4 class="my-3">Take Care of it.</h4>
+                    <h4 class="my-3">{{ $content[7]->content_text }}</h4>
+                    {{-- <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p> --}}
+                </div>
+
+
+              
+            </div>
+        </div>
+
+        <div class="container mt-5">
+            <div class="text-center">
+                <h2 class="section-heading text-uppercase">{{ $content[8]->content_text }}</h2>
+            </div>
+            <div class="row text-center">
+           
+                <div class="col-md-4">
+                    <span class="fa-stack fa-4x">
+                        <img src="assets/images/contents/{{ $content[9]->content_image }}" alt="" height="124" width="124">
+                    </span>
+                    <h4 class="my-3">{{ $content[9]->content_text }}</h4>
+                    {{-- <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p> --}}
+                </div>
+                <div class="col-md-4">
+                    <span class="fa-stack fa-4x">
+                        <img src="assets/images/contents/{{ $content[10]->content_image }}" alt="" height="124" width="124">
+                    </span>
+                    <h4 class="my-3">{{ $content[10]->content_text }}</h4>
+                    {{-- <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p> --}}
+                </div>
+
+                <div class="col-md-4">
+                    <span class="fa-stack fa-4x">
+                        <img src="assets/images/contents/{{ $content[11]->content_image }}" alt="" height="124" width="124">
+                    </span>
+                    <h4 class="my-3">{{ $content[11]->content_text }}</h4>
                     {{-- <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p> --}}
                 </div>
 
@@ -71,24 +105,25 @@
             <div class="text-center">
                 <h2 class="section-heading text-uppercase">Bring a new Pet Home.</h2>
 
-                <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="/availablepets">ADOPT NOW!</a>
+                <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger mb-5" href="/availablepets">ADOPT NOW!</a>
             </div>
             <div class="row">
+                @foreach($pets as $pet)
                 <div class="col-lg-4 col-sm-6 mb-4">
                     <div class="portfolio-item">
-                        <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1">
+                        <a class="portfolio-link" data-toggle="modal" href="#portfolioModal{{ $pet->id }}">
                             <div class="portfolio-hover">
                                 <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                             </div>
-                            <img class="img-fluid" src="assets/img/portfolio/01-thumbnail.jpg" alt="" />
+                            <img class="img-fluid" src="assets/images/pets/{{ $pet->image }}" alt="" />
                         </a>
                         <div class="portfolio-caption">
-                            <div class="portfolio-caption-heading">Threads</div>
-                            <div class="portfolio-caption-subheading text-muted">Illustration</div>
+                            <div class="portfolio-caption-heading">{{ $pet->name }}</div>
+                            <div class="portfolio-caption-subheading text-muted">{{ $pet->breed }}</div>
                         </div>
                     </div>
                 </div>
-            
+                @endforeach
             </div>
         </div>
     </section>
@@ -101,51 +136,50 @@
             </div>
             <ul class="timeline">
                 <li>
-                    <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/a1.png" alt=""/></div>
+                    <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/images/contents/{{ $content[12]->content_image }}" alt=""/></div>
                     <div class="timeline-panel">
                         <div class="timeline-heading">
-                            <h4>Sept. 29 to October 06, 2013</h4>
-                            <h4 class="subheading">9th Animal Welfare Week Celebration</h4>
+                            <h4>{{ $content[12]->content_date }}</h4>
+                            <h4 class="subheading">{{ $content[12]->content_text }}</h4>
                         </div>
-                        <div class="timeline-body"><p class="text-muted">9th Animal Welfare Week Celebration (Sept. 29 to October 06, 2013) - Bureau of Animal Industry held at Quezon Memorial Circle
-                            Theme: "Sa Bansang Progresibo, Pagpapahalaga sa Hayop ay Aktibo"</p></div>
+                        <div class="timeline-body"><p class="text-muted">{{ $content[12]->content_description }}</p></div>
                     </div>
                 </li>
 
                 <li>
-                    <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/a4.png" alt="" /></div>
+                    <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/images/contents/{{ $content[13]->content_image }}" alt="" /></div>
                     <div class="timeline-panel">
                 </li>
                 <li class="timeline-inverted">
-                    <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/a2.png" alt="" /></div>
+                    <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/images/contents/{{ $content[14]->content_image }}" alt="" /></div>
                     <div class="timeline-panel">
                         <div class="timeline-heading">
-                            <h4>January 2011</h4>
-                            <h4 class="subheading">PET PROJECT art exhibit </h4>
+                            <h4>{{ $content[14]->content_date }}</h4>
+                            <h4 class="subheading">{{ $content[14]->content_text }} </h4>
                         </div>
-                        <div class="timeline-body"><p class="text-muted">(Filipinio Artists Realist Movement)</p></div>
+                        <div class="timeline-body"><p class="text-muted">{{ $content[14]->content_description }}</p></div>
                     </div>
                 </li>
 
                 <li class="timeline-inverted">
-                    <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/a3.jpg" alt="" /></div>
+                    <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/images/contents/{{ $content[15]->content_image }}" alt="" /></div>
                     <div class="timeline-panel">
                 </li>
 
                 <li>
-                    <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/a5.png" alt="" /></div>
+                    <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/images/contents/{{ $content[16]->content_image }}" alt="" /></div>
                     <div class="timeline-panel">
                         <div class="timeline-heading">
-                            <h4>July 13 2013</h4>
-                            <h4 class="subheading">PSPCA Free Mass Anti-Rabies Vaccination
+                            <h4>{{ $content[16]->content_date }}</h4>
+                            <h4 class="subheading">{{ $content[16]->content_text }}
                             </h4>
                         </div>
-                        <div class="timeline-body"><p class="text-muted">Insert Description</p></div>
+                        <div class="timeline-body"><p class="text-muted">{{ $content[16]->content_description }}</p></div>
                     </div>
                 </li>
 
                 <li>
-                    <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/a6.png" alt="" /></div>
+                    <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/images/contents/{{ $content[17]->content_image }}" alt="" /></div>
                     <div class="timeline-panel">
                         
                     </div>
@@ -153,29 +187,30 @@
 
 
                 <li class="timeline-inverted">
-                    <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/a7.png" alt="" /></div>
+                    <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/images/contents/{{ $content[18]->content_image }}" alt="" /></div>
                     <div class="timeline-panel">
                         <div class="timeline-heading">
-                            <h4>July 13 2013</h4>
-                            <h4 class="subheading">By Bust Operation@ San Simon, Pampanga</h4>
+                            <h4>{{ $content[18]->content_date }}</h4>
+                            <h4 class="subheading">{{ $content[18]->content_text }}
+                            </h4>
                         </div>
-                        <div class="timeline-body"><p class="text-muted">Insert Description</p></div>
+                        <div class="timeline-body"><p class="text-muted">{{ $content[18]->content_description }}</p></div>
                     </div>
                 </li>
                 <li class="timeline-inverted">
-                    <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/a8.png" alt="" /></div>
+                    <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/images/contents/{{ $content[19]->content_image }}" alt="" /></div>
            
                 </li>
 
                 <li class="timeline-inverted">
-                    <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/a9.png" alt="" /></div>
+                    <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/images/contents/{{ $content[20]->content_image }}" alt="" /></div>
            
                 </li>
 
 
                 <li class="timeline-inverted">
                     <div class="timeline-image">
-                        <h4>
+                        <h4 style="color:black;">
                             Be Part
                             <br />
                             Of Our
@@ -201,7 +236,7 @@
                         <h4>Kay Garland</h4>
                         <p class="text-muted">Lead Designer</p>
                         <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
+                        <a href=""class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
                         <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
@@ -268,27 +303,27 @@
                         </ol>
                         <div class="carousel-inner">
                           <div class="carousel-item active">
-                            <img class="d-block w-100" src="assets/img/feedbacks/f1.png" alt="First slide">
+                            <img class="d-block w-100" src="assets/images/contents/{{ $content[21]->content_image }}" alt="First slide">
                           </div>
                           <div class="carousel-item">
-                            <img class="d-block w-100" src="assets/img/feedbacks/f2.png" alt="Second slide">
+                            <img class="d-block w-100" src="assets/images/contents/{{ $content[22]->content_image }}" alt="Second slide">
                           </div>
                           <div class="carousel-item">
-                            <img class="d-block w-100" src="assets/img/feedbacks/f3.png" alt="Third slide">
+                            <img class="d-block w-100" src="assets/images/contents/{{ $content[23]->content_image }}" alt="Third slide">
                           </div>
 
                           <div class="carousel-item ">
-                            <img class="d-block w-100" src="assets/img/feedbacks/f4.png" alt="Fourth slide">
+                            <img class="d-block w-100" src="assets/images/contents/{{ $content[24]->content_image }}" alt="Fourth slide">
                           </div>
                           <div class="carousel-item">
-                            <img class="d-block w-100" src="assets/img/feedbacks/f5.png" alt="Fifth slide">
+                            <img class="d-block w-100" src="assets/images/contents/{{ $content[25]->content_image }}" alt="Fifth slide">
                           </div>
                           <div class="carousel-item">
-                            <img class="d-block w-100" src="assets/img/feedbacks/f6.png" alt="Sixth slide">
+                            <img class="d-block w-100" src="assets/images/contents/{{ $content[26]->content_image }}" alt="Sixth slide">
                           </div>
 
                           <div class="carousel-item">
-                            <img class="d-block w-100" src="assets/img/feedbacks/f7.png" alt="Seventh slide">
+                            <img class="d-block w-100" src="assets/images/contents/{{ $content[27]->content_image }}" alt="Seventh slide">
                           </div>
 
 
@@ -315,10 +350,10 @@
                 <h2 class="section-heading text-uppercase">Contact Us</h2>
                 <h3 class="section-subheading text-muted"></h3>
             </div>
-            <h3 class="section-heading text-uppercase"><i class="fas fa fa-map-marker mr-3" style="color:#D31B2E"></i>  C.M. Recto Ave.,Quiapo Manila (In front of UE Recto gate)</h2>
-                <h3 class="section-heading text-uppercase"><i class="fas fa fa-phone mr-3" style="color:#D31B2E"></i>(02) 82939698 2044 / 02-7339427</h3>
+            <h3 class="section-heading text-uppercase"><i class="fas fa fa-map-marker mr-3" style="color:#D31B2E"></i> {{ $content[28]->content_text }}</h2>
+                <h3 class="section-heading text-uppercase"><i class="fas fa fa-phone mr-3" style="color:#D31B2E"></i>{{ $content[29]->content_text }}</h3>
               
-                <h3 class="section-heading text-uppercase"><i class="fas fa fa-paper-plane mr-3" style="color:#D31B2E"></i>phil.spca@gmail.com</h3>  
+                <h3 class="section-heading text-uppercase"><i class="fas fa fa-paper-plane mr-3" style="color:#D31B2E"></i>{{ $content[30]->content_text }}</h3>  
             </div>
     </section>
     <!-- Footer-->
@@ -328,7 +363,7 @@
                 <div class="col-lg-4 text-lg-left">Copyright © Your Website 2020</div>
                 <div class="col-lg-4 my-3 my-lg-0">
                     <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
-                    <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-dark btn-social mx-2" href="https://www.facebook.com/PSPCAph/"><i class="fab fa-facebook-f"></i></a>
                     <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-linkedin-in"></i></a>
                 </div>
                 <div class="col-lg-4 text-lg-right">
@@ -340,7 +375,10 @@
     </footer>
     <!-- Portfolio Modals-->
     <!-- Modal 1-->
-    <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
+    @foreach ($pets as $pet)
+        
+  
+    <div class="portfolio-modal modal fade" id="portfolioModal{{ $pet->id }}" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="close-modal" data-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
@@ -349,18 +387,16 @@
                         <div class="col-lg-8">
                             <div class="modal-body">
                                 <!-- Project Details Go Here-->
-                                <h2 class="text-uppercase">Project Name</h2>
-                                <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                                <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/01-full.jpg" alt="" />
-                                <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                                <h2 class="text-uppercase">{{ $pet->name }}</h2>
+                                <p class="item-intro text-muted">{{ $pet->breed }}</p>
+                                <img class="img-fluid d-block mx-auto" src="assets/images/pets/{{ $pet->image }}" alt="" />
+                                <p>Description</p>
                                 <ul class="list-inline">
-                                    <li>Date: January 2020</li>
-                                    <li>Client: Threads</li>
-                                    <li>Category: Illustration</li>
+                                  <li>{{ $pet->description }}</li>
                                 </ul>
                                 <button class="btn btn-primary" data-dismiss="modal" type="button">
                                     <i class="fas fa-times mr-1"></i>
-                                    Close Project
+                                    Close
                                 </button>
                             </div>
                         </div>
@@ -369,7 +405,7 @@
             </div>
         </div>
     </div>
-   
+    @endforeach
 
 </body>
 @endsection
