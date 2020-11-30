@@ -30,7 +30,8 @@
             @endif --}}
         </div>
         <div class="card-header">
-            <h3 class="card-title">All users and their informations</h3>
+            <h3 class="card-title">All users and their informations</h3><br>
+            
         </div>
         <!-- /.card-header -->
         <div class="card-body">
@@ -40,6 +41,14 @@
                     <div class="col-sm-12 col-md-6"></div>
                 </div>
                 <div class="row">
+                    <div class="text-right ml-3">
+                        Filter By:
+                        <a href="/users?role=1">Admins</a> | 
+                        <a href="/users?role=2">Fosters</a> | 
+                        <a href="/users?role=3">Vets</a> | 
+                        <a href="/users">Reset</a>
+                        
+                        </div>
                     <div class="col-sm-12">
                         <table id="example2" class="table table-bordered table-hover dataTable table-responsive-md"
                             role="grid" aria-describedby="example2_info">

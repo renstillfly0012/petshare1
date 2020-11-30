@@ -45,7 +45,16 @@ class UserController extends Controller
         // dd($a->toArray());
         // $admins = User::where('role_id', 1)->get();
         // dd($admins);
-        $users = User::with('roles')->paginate(5);
+        if(request()->has('role')){
+            
+            $users = User::where('role_id', request('role'))
+            ->paginate(5)
+            ->appends('gender', request('role'));
+
+        }else{
+            $users = User::with('roles')->paginate(5);
+        }
+       
         // foreach($users as $user)
         // {
         //     dd($user->roles->first()->name);

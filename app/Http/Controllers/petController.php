@@ -34,7 +34,18 @@ class petController extends Controller
         }else{
             return redirect()->route('landing')->with('warning', 'Kindly login first to view this page');
         }
-        $pets = Pet::paginate(5);
+
+        if(request()->has('breed')){
+            
+            $pets = Pet::where('breed', request('breed'))
+            ->paginate(5)
+            ->appends('breed', request('breed'));
+
+        }else{
+            $pets = Pet::paginate(5);
+        }
+       
+     
         return view('admin.pet.pet')->with('pets', $pets);
     }
 

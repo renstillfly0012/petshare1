@@ -15,8 +15,17 @@ class cmsController extends Controller
      */
     public function index()
     {
-        
-        $contents = Content::paginate(5);
+        if(request()->has('section')){
+            
+            $contents = Content::where('content_section', request('section'))
+            ->paginate(5)
+            ->appends('section', request('section'));
+
+        }else{
+            $contents = Content::paginate(5);
+        }
+       
+       
         return view('admin.cms.pages')->with('contents', $contents);
     }
 

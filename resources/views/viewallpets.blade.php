@@ -7,11 +7,18 @@
         
     </style>
     <div class="container-fluid">
-        <div class="col-md-4 offset-md-4" style=" margin-top:75px;">
+        <div class="col-md-4 offset-md-4" style=" margin-top:100px;">
             <h1 class="text-center">AVAILABLE
                 PETS</h1>
         </div>
         <div class="row">
+            <div class="text-right ml-3 mt-5">
+                Filter By:
+                <a href="/availablepets?breed=Aspin">Aspin</a> | 
+                <a href="/availablepets?breed=Puskal">Puskal</a> |  
+                <a href="/availablepets">Reset</a>
+                
+                </div>
             <div class="d-flex" style="margin-top:52px;">
 
                 @foreach ($pets as $pet)

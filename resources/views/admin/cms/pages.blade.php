@@ -19,6 +19,19 @@
     <div class="card-body">
         <div id="example2_wrapper" class="dataTables_wrapper dt-bootstrap4">
             <div class="row">
+                <div class="text-right ml-3">
+                    Filter By:
+                    <a href="/cms?section=Header">Header</a> | 
+                    <a href="/cms?section=Section_Adopt">Section_Adopt</a> |  
+                    <a href="/cms?section=Section_Report">Section_Report</a> |  
+                    <a href="/cms?section=Event">Events</a> |
+                    <a href="/cms?section=Feedback">Feedbacks</a> |
+                    <a href="/cms?section=Contact Us">Contacts</a> |
+                    <a href="/cms?section=Logo">Logo</a> |
+
+                    <a href="/cms">Reset</a>
+                    
+                    </div>
                 <div class="col-sm-12 col-md-6"></div>
                 <div class="col-sm-12 col-md-6"></div>
             </div>

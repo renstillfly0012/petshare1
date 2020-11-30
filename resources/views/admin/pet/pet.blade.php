@@ -25,6 +25,13 @@
         <div class="card-body">
             <div id="example2_wrapper" class="dataTables_wrapper dt-bootstrap4">
                 <div class="row">
+                    <div class="text-right ml-3">
+                        Filter By:
+                        <a href="/pets?breed=Aspin">Aspin</a> | 
+                        <a href="/pets?breed=Puskal">Puskal</a> |  
+                        <a href="/pets">Reset</a>
+                        
+                        </div>
                     <div class="col-sm-12 col-md-6"></div>
                     <div class="col-sm-12 col-md-6"></div>
                 </div>
