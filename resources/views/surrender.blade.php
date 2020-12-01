@@ -98,8 +98,11 @@
     
     <div class="col-md-10 offset-md-1 ">
         <div class="alert alert-warning" role="alert">
-            <p><strong>Note:</strong> Always advanced a week for the date of the appointment.
-            Ex: today is Jan 1,2020 (monday) select Jan 8,2020 (monday)</p>
+            <strong> <p>Note: Always advanced a week for the date of the appointment.
+                Ex: today is Jan 1,2020 (monday) select Jan 8,2020 (monday)</p>
+                <br>
+                <p>Upon the reservation of the appointment, all the appointments will be subjected to evaluation. 
+                    Once validated, the administrator will send a notice.<p></strong>
           </div>
     </div>
 
