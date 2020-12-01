@@ -5,14 +5,14 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Database\Eloquent\SoftDeletes;
+// use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Activitylog\Traits\LogsActivity;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
-    use SoftDeletes;
+    // use SoftDeletes;
     use LogsActivity;
 
     // protected $dates = ['deleted_at'];
@@ -32,7 +32,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $hidden = [
-        'email','password', 'remember_token','email_verified_at',
+     'password', 'remember_token','email_verified_at',
     ];
 
     protected $dates = ['deleted_at'];
@@ -111,23 +111,23 @@ class User extends Authenticatable implements MustVerifyEmail
         }   
     }
 
-    protected static function boot() {
-        parent::boot();
+    // protected static function boot() {
+    //     parent::boot();
 
-        static::deleting(function($user) {
-            $user->appointments()->delete();
-        });
+    //     static::deleting(function($user) {
+    //         $user->appointments()->delete();
+    //     });
     
-        static::deleting(function($user) {
-            $user->reports()->delete();
-        });
+    //     static::deleting(function($user) {
+    //         $user->reports()->delete();
+    //     });
 
-        static::deleting(function($user) {
-            $user->appointments()->delete();
-        });
+    //     static::deleting(function($user) {
+    //         $user->appointments()->delete();
+    //     });
 
         
-    }
+    // }
 
  
 
