@@ -91,7 +91,8 @@
         <div class="col-md-10 offset-md-1 ">
             <div class="alert alert-warning" role="alert">
                 <p><strong>Note:</strong> Upon submitting a report, all reports will be subjected to evaluation. 
-                Once validated, the administrator will send a notice containing the action for the report.</p>
+                Once validated, the administrator will send a notice containing the action for the report.<br><br>
+            Please Enter an address within our scope (Only in Philippines) for now.</p>
               </div>
         </div>
 
@@ -240,7 +241,7 @@ function initMap() {
         }else{
             directionDisplay.setMap(null);
             directionDisplay.setDirections(null);
-            alert('Could not display directions due to '+ status);
+            alert('Could not display directions due to '+ status+ "\n Please refresh the page and try again. thank you!");
         }
     });
   });
