@@ -19,7 +19,7 @@
                 <a href="/availablepets">Reset</a>
                 
                 </div>
-            <div class="d-flex" style="margin-top:52px;">
+            <div class="row mt-5" >
 
                 @foreach ($pets as $pet)
 
@@ -206,6 +206,8 @@
     </div>
     <!-- /.modal-dialog -->
 </div>
+
+
 
 
 

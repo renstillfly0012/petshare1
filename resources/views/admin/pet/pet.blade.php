@@ -24,7 +24,7 @@
         <!-- /.card-header -->
         <div class="card-body">
             <div id="example2_wrapper" class="dataTables_wrapper dt-bootstrap4">
-                <div class="row">
+                <div class="row ">
                     <div class="text-right ml-3">
                         Filter By:
                         <a href="/pets?breed=Aspin">Aspin</a> | 
@@ -36,7 +36,7 @@
                     <div class="col-sm-12 col-md-6"></div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-12">
+                    <div class="col-sm-12 table-responsive">
                         <table id="example2" class="table table-bordered table-hover dataTable table-responsive-md"
                             role="grid" aria-describedby="example2_info">
                             <thead>

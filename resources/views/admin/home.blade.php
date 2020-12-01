@@ -103,7 +103,7 @@
                     <div class="col-md-6">
                         <div class="card">
                             <div class="card-header"> <h3>Report</h3>
-                                {{-- <p>November 2020</p> --}}
+                                <p>December 2020</p>
                             </div>
                             <!-- /.card-header -->
                          
@@ -149,7 +149,7 @@
                         <div class="card">
                             <div class="card-header"> 
                                 <h3>Appointments</h3>
-                                {{-- <p>November 2020</p> --}}
+                                <p>December 2020</p>
                             </div>
                             <!-- /.card-header -->
                                
@@ -167,7 +167,7 @@
                     <div class="col-md-6">
                             <div class="card">
                                 <div class="card-header"> <h3>Users</h3>
-                                {{-- <p>Year 2020</p> --}}
+                                <p>Year 2020</p>
                             </div>
     
                                 <div id="chart" style="height: 300px;"></div>
@@ -246,7 +246,7 @@
             .legend()
             .datasets([{ type: 'bar', color:'#FDC370' },{ type: 'bar', color: '#D31B2E' },{ type: 'bar', color: '#1C4496' }])
             .colors()
-            .title('2020')
+
             .tooltip()
       });
 
@@ -256,7 +256,6 @@
         hooks: new ChartisanHooks()
             .legend()
             .colors()
-            .title('November 2020')
             .datasets([{ type: 'line', color:'#0E401E' },{ type: 'line', color: '#D31B2E' }])
             .tooltip()
       });
@@ -267,7 +266,7 @@
         hooks: new ChartisanHooks()
             .legend()
             .colors()
-            .title('November 2020')
+
             .datasets([{ type: 'bar', color: '#D31B2E' }])
             .tooltip()
       });

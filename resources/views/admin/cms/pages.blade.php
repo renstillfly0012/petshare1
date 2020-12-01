@@ -36,8 +36,8 @@
                 <div class="col-sm-12 col-md-6"></div>
             </div>
             <div class="row">
-                <div class="col-sm-12">
-                    <table id="example2" class="table table-bordered table-hover dataTable" role="grid"
+                <div class="col-sm-12 table-responsive">
+                    <table id="example2" class="table table-bordered table-hover dataTable " role="grid"
                         aria-describedby="example2_info">
                         <thead>
                             <tr role="row" class="odd text-center">
