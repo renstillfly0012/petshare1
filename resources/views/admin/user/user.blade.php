@@ -69,9 +69,9 @@
                                     <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
                                         aria-label="Engine version: activate to sort column ascending">Verification Status
                                     </th>
-                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                    {{-- <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
                                         aria-label="Engine version: activate to sort column ascending">Account Status
-                                    </th>
+                                    </th> --}}
                                     <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
                                         aria-label="CSS grade: activate to sort column ascending">Action</th>
                                 </tr>
@@ -96,7 +96,7 @@
 
                                         <td>{{ $user->email_verified_at == null ? 'Not yet but already sent one' : $user->email_verified_at }}
                                         </td>
-                                        <td>{{ $user->status }}</td>
+                                        {{-- <td>{{ $user->status }}</td> --}}
                                         <td>
                                             <button class="btn btn-warning pr-4 editbtn">Edit</button><br>
                                             <button class="btn btn-danger deletebtn">Delete</button>
