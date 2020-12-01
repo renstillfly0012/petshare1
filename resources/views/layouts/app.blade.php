@@ -23,7 +23,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     
-<link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+
 <!-- Font Awesome icons (free version)-->
 <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" crossorigin="anonymous"></script>
 <!-- Google fonts-->
@@ -48,7 +48,7 @@
         }
     </style> --}}
     @yield('header_of_landing')
-
+    <link rel="shortcut icon" type="image/x-icon" href="assets/images/contents/pspcalogo.ico" />
 </head>
 @if (Request::route()->getName() == 'landing')
 

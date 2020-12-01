@@ -16,7 +16,7 @@
     <link href="{{ asset('css/adminstyle.css') }}" rel="stylesheet">
     {{-- <link href="{{ asset('css/googlemap.css') }}" rel="stylesheet"> --}}
 
-
+    <link rel="shortcut icon" type="image/x-icon" href="assets/images/contents/pspcalogo.ico" />
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed" >
