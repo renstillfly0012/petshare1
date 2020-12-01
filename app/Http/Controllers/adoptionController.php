@@ -107,6 +107,8 @@ class adoptionController extends Controller
         $user = User::findorfail($appointment->user_id);
         // dd($user->email);
         // Mail::to($user->email)->send(new VerificationMail);
+
+        dd($appointment->appointment_status);
    
         $appointment->appointment_status == 'Approved' ? $user->notify(new AppointmentApproved())
         : $user->notify(new AppointmentDeclined());
