@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\ReportRequest;
 use App\Location;
 use App\User;
-use App\Notifications\ReportAppoved;
+use App\Notifications\ReportApproved;
 use App\Notifications\ReportDeclined;
 use App\Events\ReportCreated;
 use Notification;
@@ -124,7 +124,7 @@ class ReportController extends Controller
         // $report->report_status =
         // dd($user->email);
         // Mail::to($user->email)->send(new VerificationMail);
-   
+        // dd($user->notify(new ReportApproved()));
         $report->report_status == 'Approved' ? $user->notify(new ReportApproved())
         : $user->notify(new ReportDeclined());
        
