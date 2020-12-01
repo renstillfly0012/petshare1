@@ -90,7 +90,8 @@
 
         <div class="col-md-10 offset-md-1 ">
             <div class="alert alert-warning" role="alert">
-                <p><strong>This is a warning insert</strong> note here</p>
+                <p><strong>Note:</strong> Upon submitting a report, all reports will be subjected to evaluation. 
+                Once validated, the administrator will send a notice containing the action for the report.</p>
               </div>
         </div>
 

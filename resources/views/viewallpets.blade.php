@@ -177,6 +177,7 @@
 
                     <?php
                     $date = new DateTime();
+                    $date->modify('+7 day');
                     $dt= $date->format('Y-m-d\TH:i:s'); 
                     ?>
 
@@ -196,6 +197,14 @@
                     </div>
             </div>
 
+            
+            <div class="col-md-10 offset-md-1 ">
+                <div class="alert alert-warning" role="alert">
+                    <p><strong>Note:</strong> Always advanced a week for the date of the appointment.
+                    Ex: today is Jan 1,2020 (monday) select Jan 8,2020 (monday)</p>
+                  </div>
+            </div>
+        
             <div class="modal-footer justify-content-between">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 <button type="submit" class="btn btn-primary">Adopt</button>
