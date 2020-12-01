@@ -35,8 +35,8 @@ class donationController extends Controller
         // is_numeric
         $apiContext = new \PayPal\Rest\ApiContext(
             new \PayPal\Auth\OAuthTokenCredential(
-                $sb_client,     // ClientID
-                $sb_secret      // ClientSecret
+               'ATAWA6JeTzh-x6i1c2vr7t4EZYTjAvTMuzuLQB5TG0dlERLTHwsGRRovTO2QtpSDCpiU7cNu3X7NXVwP',     // ClientID
+                'EK97TjY48sf4ho76Si4rMgQQLaLpYzZs6q87zemLd0E7wrjhSFab_s0WAvTi6--iY0cgQDUtWW-J9peE'      // ClientSecret
             )
            
     );
@@ -122,8 +122,8 @@ class donationController extends Controller
         
        $curr = geoip()->getLocation(\Request::ip())->currency;
 
-       $sb_client =  env('SB_CLIENT_ID');
-        $sb_secret = env('SB_SECRET');
+    //    $sb_client =  env('SB_CLIENT_ID');
+    //     $sb_secret = env('SB_SECRET');
       
   
         // dd($amount);
@@ -133,6 +133,8 @@ class donationController extends Controller
                 'EK97TjY48sf4ho76Si4rMgQQLaLpYzZs6q87zemLd0E7wrjhSFab_s0WAvTi6--iY0cgQDUtWW-J9peE'      // ClientSecret
             )
     );
+
+
 
     $paymentId = request('paymentId');
     $payment = Payment::get($paymentId, $apiContext);
