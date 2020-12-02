@@ -51,7 +51,6 @@ Route::get('/availablepets', 'HomeController@availablePets')->name('availpets');
 
 Route::get('/map', function(){
     
-
     // return $_SERVER['REMOTE_ADDR']->postal_code;
     // dd(geoip()->getLocation(Request::ip())->currency);
     $map = geoip()->getLocation('175.158.210.181');
@@ -61,12 +60,15 @@ Route::get('/map', function(){
     ->with(compact('location'));
 });
 
+Route::resource('/incident', 'ReportController')->names([
+    'index' => 'incident',
+    
+]);
 
-Route::get('/surrender', 'surrenderController@index')->name('surrender');
-Route::post('/surrender/store', 'surrenderController@store')->name('surrender');
 
 
-Route::group(['middleware' => ['verified']], function () {
+
+Route::group(['middleware' => ['verified', 'status']], function () {
 
 
 Route::get('/viewProfile/{user}/show', 'UserController@show')->name('viewProfile');
@@ -78,14 +80,14 @@ Route::get('/pets', 'adminController@viewPets')->name('pets');
 Route::get('/reports', 'adminController@viewReports')->name('reports');
 Route::get('/donations', 'donationController@getAllDonations')->name('donations');
 
+Route::get('/surrender', 'surrenderController@index')->name('surrender');
+Route::post('/surrender/store', 'surrenderController@store')->name('surrender');
+
 
 Route::resource('/users', 'UserController');
 Route::resource('/pets', 'petController');
 Route::resource('/pets-requests', 'adoptionController');
-Route::resource('/incident', 'ReportController')->names([
-    'index' => 'incident',
-    
-]);
+
 
 // route::get('qrcode', function(){
 

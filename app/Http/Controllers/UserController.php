@@ -51,8 +51,14 @@ class UserController extends Controller
             ->paginate(5)
             ->appends('gender', request('role'));
 
+        }elseif(request()->has('all')){
+            $users = User::with('roles')
+            ->withTrashed()
+            ->paginate(0);
         }else{
-            $users = User::with('roles')->paginate(5);
+            $users = User::with('roles')
+            ->withTrashed()
+            ->paginate(5);
         }
        
         // foreach($users as $user)
@@ -194,9 +200,17 @@ class UserController extends Controller
     {
         //
         // $user = User::findorfail($id);
-        
-        $user->delete();
-        return redirect('/users')->with('toast_success', 'USER ID:'.$user->id.' has been Deleted');
+        if($user->status == "Activated"){
+            $user->status = "Deactivated";
+            $user->save();
+            return redirect('/users')->with('toast_success', 'USER ID:'.$user->id.' has been Deactivated');
+        }else{
+            $user->status = "Activated";
+            $user->save();
+            return redirect('/users')->with('toast_success', 'USER ID:'.$user->id.' has been Activated');
+        }
+       
+      
     }
 
    

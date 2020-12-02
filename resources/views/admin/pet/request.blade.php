@@ -13,16 +13,28 @@
     <div class="card">
 
         <div class="card-header">
-            <h3 class="card-title">All appointment requets</h3>
+            <h3 class="card-title">All appointment requests</h3>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
             <div id="example2_wrapper" class="dataTables_wrapper dt-bootstrap4">
                 <div class="row">
+                    
                     <div class="col-sm-12 col-md-6"></div>
                     <div class="col-sm-12 col-md-6"></div>
                 </div>
                 <div class="row">
+                    <div class="text-right ml-3">
+                        Filter By:
+                        <a href="/pets-requests?type=Adoption">Adoption</a> | 
+                        <a href="/pets-requests?type=Surrender">Surrender</a> | 
+                        <a href="/pets-requests?status=Pending">Pending</a> | 
+                        <a href="/pets-requests?status=Approved">Approved</a> | 
+                        <a href="/pets-requests?status=Declined">Declined</a> | 
+                        <a href="/pets-requests?all">All</a> | 
+                        <a href="/pets-requests">Reset</a>
+                        
+                        </div>
                     <div class="col-sm-12 table-responsive">
                         <table id="example2" class="table table-bordered table-hover dataTable table-responsive-md"
                             role="grid" aria-describedby="example2_info">

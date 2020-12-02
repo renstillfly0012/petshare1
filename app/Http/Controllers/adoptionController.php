@@ -33,15 +33,38 @@ class adoptionController extends Controller
         }
         // $appointments = Appointment::all();
 
-        $appointments = Appointment::orderBy('id', 'desc')->with('user', 'pet')->paginate(5);
+       
         // $pagination = Appointment::paginate(5);
 
         
-        
+        if(request()->has('type')){
+            
+            $appointments = Appointment::where('appointment_type', request('type'))
+            ->orderBy('id', 'desc')
+            ->with('user', 'pet')
+            ->paginate(5)
+            ->appends('type', request('type'));
+            // dd($appointments);
+
+        }if(request()->has('status')){
+            
+            $appointments = Appointment::where('appointment_status', request('status'))
+            ->orderBy('id', 'desc')
+            ->with('user', 'pet')
+            ->paginate(5)
+            ->appends('status', request('status'));
+
+        }elseif(request()->has('all')){
+            $appointments = Appointment::orderBy('id', 'desc')->with('user', 'pet')->paginate(0);
+        }else{
+            $appointments = Appointment::orderBy('id', 'desc')->with('user', 'pet')->paginate(5);
+        }
+    
+
 
         // dd($appointments->pet);
     
-        return view('admin.pet.request', compact('appointments'));
+        return view('admin.pet.request')->with('appointments', $appointments);
     }
 
 
@@ -108,7 +131,7 @@ class adoptionController extends Controller
         // dd($user->email);
         // Mail::to($user->email)->send(new VerificationMail);
 
-        dd($appointment->appointment_status);
+        // dd($appointment->appointment_status);
    
         $appointment->appointment_status == 'Approved' ? $user->notify(new AppointmentApproved())
         : $user->notify(new AppointmentDeclined());

@@ -46,6 +46,7 @@
                         <a href="/users?role=1">Admins</a> | 
                         <a href="/users?role=2">Fosters</a> | 
                         <a href="/users?role=3">Vets</a> | 
+                        <a href="/users?all">All</a> | 
                         <a href="/users">Reset</a>
                         
                         </div>
@@ -69,9 +70,9 @@
                                     <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
                                         aria-label="Engine version: activate to sort column ascending">Verification Status
                                     </th>
-                                    {{-- <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
                                         aria-label="Engine version: activate to sort column ascending">Account Status
-                                    </th> --}}
+                                    </th>
                                     <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
                                         aria-label="CSS grade: activate to sort column ascending">Action</th>
                                 </tr>
@@ -96,10 +97,11 @@
 
                                         <td>{{ $user->email_verified_at == null ? 'Not yet but already sent one' : $user->email_verified_at }}
                                         </td>
-                                        {{-- <td>{{ $user->status }}</td> --}}
+                                        <td>{{ $user->status }}</td>
                                         <td>
                                             <button class="btn btn-warning pr-4 editbtn">Edit</button><br>
-                                            <button class="btn btn-danger deletebtn">Delete</button>
+                                            <button class="btn btn-danger deletebtn mt-2">{{ $user->status == 'Activated' ? 'Deactivate' :  'Activate'}}</button>
+
                                         </td>
                                     </tr>
                                 @endforeach
@@ -512,7 +514,7 @@
                     allowOutsideClick: false,
                     confirmButtonColor: '#3085d6',
                     cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, delete it!'
+                    confirmButtonText: 'Yes, Im sure!'
                 }).then((result) => {
                     if (result.value) {
 
