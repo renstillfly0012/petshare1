@@ -66,8 +66,6 @@ Route::resource('/incident', 'ReportController')->names([
 ]);
 
 
-
-
 Route::group(['middleware' => ['verified', 'status']], function () {
 
 
@@ -87,6 +85,10 @@ Route::post('/surrender/store', 'surrenderController@store')->name('surrender');
 Route::resource('/users', 'UserController');
 Route::resource('/pets', 'petController');
 Route::resource('/pets-requests', 'adoptionController');
+
+Route::prefix('print')->group(function(){
+route::get('/appointments', 'adoptionController@printPDF');
+});
 
 
 // route::get('qrcode', function(){

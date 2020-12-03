@@ -36,14 +36,22 @@ class adoptionController extends Controller
        
         // $pagination = Appointment::paginate(5);
 
-        
         if(request()->has('type')){
             
             $appointments = Appointment::where('appointment_type', request('type'))
             ->orderBy('id', 'desc')
             ->with('user', 'pet')
-            ->paginate(5)
+            ->paginate(request('page'))
             ->appends('type', request('type'));
+            // dd($appointments);
+
+        }elseif(request()->has('date')){
+            
+            $appointments = Appointment::where('requested_date','like',  '%'.request('date').'%')
+            ->orderBy('id', 'desc')
+            ->with('user', 'pet')
+            ->paginate(5)
+            ->appends('date', request('date'));
             // dd($appointments);
 
         }elseif(request()->has('status')){
@@ -59,12 +67,13 @@ class adoptionController extends Controller
         }else{
             $appointments = Appointment::orderBy('id', 'desc')->with('user', 'pet')->paginate(5);
         }
-    
+        
 
 
         // dd($appointments->pet);
     
         return view('admin.pet.request')->with('appointments', $appointments);
+        
     }
 
 
@@ -191,6 +200,67 @@ class adoptionController extends Controller
         return redirect('/pets-requests')->with('toast_success', 'Appointment Changes Request '.$id.' was Saved');
         
        
+    }
+
+    public function printPDF(){
+
+        if (Gate::denies('isAdmin')) {
+            return redirect()->route('landing')->with('warning', 'Authorized person can only access this');
+        }
+        // $appointments = Appointment::all();
+
+       
+        // $pagination = Appointment::paginate(5);
+
+       
+        if(request()->has('type')){
+            
+            $appointments = Appointment::where('appointment_type', request('type'))
+            ->orderBy('id', 'desc')
+            ->with('user', 'pet')
+            ->paginate(5)
+            ->appends('type', request('type'));
+            // dd($appointments);
+
+        }elseif(request()->has('type') && request()->has('date')){
+            
+            $appointments = Appointment::where('requested_date','like',  '%'.request('date').'%')
+            ->where('appointment_type', request('type'))
+            ->orderBy('id', 'desc')
+            ->with('user', 'pet')
+            ->paginate(5)
+            ->appends('date', request('date'));
+            dd($appointments);
+
+        }elseif(request()->has('date')){
+            
+            $appointments = Appointment::where('requested_date','like',  '%'.request('date').'%')
+            ->orderBy('id', 'desc')
+            ->with('user', 'pet')
+            ->paginate(5)
+            ->appends('date', request('date'));
+            // dd($appointments);
+
+        }elseif(request()->has('status')){
+            
+            $appointments = Appointment::where('appointment_status', request('status'))
+            ->orderBy('id', 'desc')
+            ->with('user', 'pet')
+            ->paginate(5)
+            ->appends('status', request('status'));
+
+        }elseif(request()->has('all')){
+            $appointments = Appointment::orderBy('id', 'desc')->with('user', 'pet')->paginate(0);
+        }else{
+            $appointments = Appointment::orderBy('id', 'desc')->with('user', 'pet')->paginate(5);
+        }
+    
+
+
+        // dd($appointments->pet);
+    
+        return view('admin.prints.appointments')->with('appointments', $appointments);
+
     }
 
 
