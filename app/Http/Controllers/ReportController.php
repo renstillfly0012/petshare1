@@ -21,10 +21,10 @@ class ReportController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
     public function index()
     {
         $map = geoip()->getLocation(\Request::ip());
@@ -50,7 +50,7 @@ class ReportController extends Controller
      */
     public function store(ReportRequest $request)
     {
-        
+        // dd($request->all());
         
         $lat = $request->address_lat;
         $lng = $request->address_lng;

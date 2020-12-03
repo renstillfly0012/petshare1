@@ -46,7 +46,7 @@ class adoptionController extends Controller
             ->appends('type', request('type'));
             // dd($appointments);
 
-        }if(request()->has('status')){
+        }elseif(request()->has('status')){
             
             $appointments = Appointment::where('appointment_status', request('status'))
             ->orderBy('id', 'desc')
@@ -93,10 +93,21 @@ class adoptionController extends Controller
             'show_pet_id' => ['required', 'integer', 'max:255'],
             'show_requested_date' => 'required|date',
          ]);
+         
+        
+         $userName = User::where('id', $request->show_user_id)
+         ->pluck('name')
+         ->first();
 
          $appointment = new Appointment;
+         $appointment->name = $userName;
          $appointment->user_id = $request->input('show_user_id');
          $appointment->requested_pet_id = $request->input('show_pet_id');
+         $petImage = Pet::where('id', $request->show_pet_id)
+         ->pluck('image')
+         ->first();    
+         $appointment->image = $petImage;
+
          $appointment->requested_date = $request->input('show_requested_date');
          $appointment->appointment_type = "Adoption";
         // dd($appointment);

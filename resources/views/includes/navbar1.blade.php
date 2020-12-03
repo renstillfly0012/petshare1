@@ -14,7 +14,7 @@
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/#portfolio">Adopt</a></li>
                 <li class="nav-item">
                     <a class="nav-link" id="nav-link"
-                        href="/surrender">{{ __('Surrender') }}</a>
+                    href="{{ route('incident') }}">{{ __('Report An Incident') }}</a>
                 </li>
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/#about">Events</a></li>
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/#team">Team</a></li>
@@ -52,7 +52,8 @@
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/#contact">Contact</a></li> --}}
                 <li class="nav-item">
                     <a class="nav-link" id="nav-link"
-                        href="{{ route('incident') }}">{{ __('Report An Incident') }}</a>
+                    href="{{ route('incident') }}">{{ __('Report An Incident') }}</a>
+                 
                 </li>
 
                 
@@ -121,7 +122,7 @@
                 {{-- <input type="hidden" id="show_user_id" name="show_user_id" value={{ Auth::user()->id }}> --}}
                      @endauth
                     <br>
-                <img src="{{ asset('assets/images/pspcalogo.png') }}" alt="" id="card_logo"
+                <img src="{{ asset('assets/images/contents/pspcalogo.png') }}" alt="" id="card_logo"
                                 class="rounded-circle img-responsive mb-5">
                 
                 <div class="form-group row">

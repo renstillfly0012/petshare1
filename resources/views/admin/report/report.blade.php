@@ -33,10 +33,14 @@
                                         aria-label="Browser: activate to sort column ascending">Name</th>
                                         <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
                                         aria-label="Browser: activate to sort column ascending">Report Image</th>
+                                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                        aria-label="Browser: activate to sort column ascending">Email</th>
                                     <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
                                         aria-label="Platform(s): activate to sort column ascending">Incident Report</th>
                                     <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
                                         aria-label="Engine version: activate to sort column ascending">Location</th>
+                                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                        aria-label="Browser: activate to sort column ascending">Report Type</th>
                                         <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
                                         aria-label="Browser: activate to sort column ascending">Report Status</th>
                                         <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
@@ -50,11 +54,15 @@
                                 @foreach($reports as $report)
                                 <tr role="row" class="odd text-center">
                                     <td class="sorting_1">{{$report->id}}</td>
-                                    <td>{{$report->user->name}}</td>
+                                   
+                                    <td>{{$report->user_id != null ? $report->user->name : "Not Registered"}}</td>
+                                 
                                     <td><img src="assets/images/reports/{{ $report->image }}" alt="User Image"
                                         class="img-responsive rounded-circle" height="129" width="129"></td>
+                                        <td>{{$report->email}}</td>
                                     <td>{{$report->description}}</td>
                                     <td>{{$report->address}}</td>
+                                    <td>{{$report->report_type}}</td>
                                     <td>{{$report->report_status}}</td>
                                     <td>{{$report->created_at}}</td>
                                     <td>

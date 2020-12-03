@@ -48,6 +48,8 @@
                                     </th> --}}
                                     <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
                                         aria-label="Browser: activate to sort column ascending">Name</th>
+                                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                        aria-label="Browser: activate to sort column ascending">Image</th>
                                     <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
                                         aria-label="Platform(s): activate to sort column ascending">Requested Pet</th>
                                     <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
@@ -67,6 +69,7 @@
                                     <tr role="row" class="odd text-center">
                                         <td>{{ $appointment->id }}</td>
                                         <td>{{ $appointment->user_id != null ? $appointment->user->name : $appointment->name}}</td>
+                                        <td>{{ $appointment->image }}</td>
                                         <td>{{ $appointment->requested_pet_id != null ? $appointment->pet->name : "None"}}</td>
                                         <td>{{ $appointment->requested_date }}</td>
                                         <td>{{ $appointment->appointment_type }}</td>

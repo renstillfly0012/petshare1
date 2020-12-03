@@ -50,7 +50,7 @@
                         <a href="/users">Reset</a>
                         
                         </div>
-                    <div class="col-sm-12">
+                    <div class="col-sm-12 table-responsive">
                         <table id="example2" class="table table-bordered table-hover dataTable table-responsive-md"
                             role="grid" aria-describedby="example2_info">
                             <thead>

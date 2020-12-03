@@ -83,8 +83,10 @@ class adminController extends Controller
         
         // dd($surrenderCount);
 
+            // dd($notifications);
 
         if($notifications->count() > 0){
+            
             foreach($notifications as $notification)
             {
                 // if($notification->type == 'App\Notifications\newUserNotification' ){
@@ -92,11 +94,19 @@ class adminController extends Controller
                 //     toast('['.$notification->created_at.'] User: '.$notification->data['name'].'('.$notification->data['email'].
                 //     ') has just registered.','success');
                 // }
+                
                 if($notification->type == 'App\Notifications\newReportNotification')
                 {
-                    $reportName = User::where('id',$notification->data['user_id'])->get();
-                    // dd('asd');
-                    toast('Recent Notification: <br> ['.$notification->created_at.'] <br> User: '.$reportName->first()->name.' <br> Address: <br>('.$notification->data['address'].
+                    
+                    $reportName = Report::where('email',$notification->data['email'])
+                    ->orderBy('created_at', 'desc')
+                    ->get()->first();
+                    // dd( $reportName);
+                    toast('Recent Notification: <br> ['.$notification->created_at.'] <br> Email: '.$reportName->email.
+                    ' <br> Mobile Number: <br>('.$notification->data['mobile_number'].
+                    ' <br> Address: <br>('.$notification->data['address'].
+                    ' <br> Report Type: <br>('.$notification->data['report_type'].
+
                     ') ','warning');
                 }
                         

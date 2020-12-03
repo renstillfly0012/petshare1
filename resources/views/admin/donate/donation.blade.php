@@ -40,7 +40,7 @@
                                     <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
                                     aria-label="Browser: activate to sort column ascending">Transaction ID</th>
                                 <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
-                                    aria-label="CSS grade: activate to sort column ascending">Action</th>
+                                    aria-label="CSS grade: activate to sort column ascending">Date</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -52,9 +52,9 @@
                                 <td>{{$donation->donation_amount}}</td>
                                 <td>{{$donation->currency}}</td>
                                 <td>{{$donation->donation_transaction_id}}</td>
+
                                 <td>
-                                    {{-- <button class="btn btn-warning pr-4 editbtn">Approve</button><br>
-                                    <button class="btn btn-danger deletebtn">Decline</button> --}}
+                                    {{ $donation->created_at }}
                                 </td>
                             </tr>
                             @endforeach

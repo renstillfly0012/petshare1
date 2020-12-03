@@ -70,10 +70,12 @@
                                 <br>
                                 [{{$notification->created_at}}] 
                                 <br>
-                                Foster Name: {{$reportName->first()->name}}
+                                Email: {{$reportName->email}}
                                 <a style="color: black; font-size:18px" href="#" class="float-right markbtn" data-id="{{ $notification->id }}">
                                 Mark as read
                                 </a>
+                                <br>
+                                Mobile Number: {{ $reportName->mobile_number }}
                                 <br>
                                 (Address: {{ $notification->data['address'] }}) 
                             </span>
