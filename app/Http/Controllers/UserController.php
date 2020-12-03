@@ -51,6 +51,12 @@ class UserController extends Controller
             ->paginate(5)
             ->appends('gender', request('role'));
 
+        } elseif(request()->has('status')){
+            
+            $users = User::where('status', request('status'))
+            ->paginate(5)
+            ->appends('status', request('status'));
+
         }elseif(request()->has('all')){
             $users = User::with('roles')
             ->withTrashed()

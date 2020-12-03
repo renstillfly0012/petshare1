@@ -43,11 +43,17 @@
                 <div class="row">
                     <div class="text-right ml-3">
                         Filter By:
-                        <a href="/users?role=1">Admins</a> | 
-                        <a href="/users?role=2">Fosters</a> | 
-                        <a href="/users?role=3">Vets</a> | 
-                        <a href="/users?all">All</a> | 
-                        <a href="/users">Reset</a>
+        
+                        <select  name="form" onchange="location = this.value;">
+                            <option value="/users?role=1">Admins</option>  
+                            <option value="/users?role=2">Fosters</option> 
+                            <option value="/users?role=3">Vets</option>  
+                            <option value="/users?status=Activated">Activated</option> 
+                            <option value="/users?status=Deactivated">Deactivated</option> 
+                            <option value="/users?all" >All</option> 
+                            <option value="/users">Reset</option>
+                            <option value="/pets-requests" selected style="display: none"   ></option>
+                        </select>
                         
                         </div>
                     <div class="col-sm-12 table-responsive">

@@ -27,9 +27,15 @@
                 <div class="row ">
                     <div class="text-right ml-3">
                         Filter By:
-                        <a href="/pets?breed=Aspin">Aspin</a> | 
-                        <a href="/pets?breed=Puskal">Puskal</a> |  
-                        <a href="/pets">Reset</a>
+                       
+
+                        <select  name="form" onchange="location = this.value;">
+                            <option value="/pets?breed=Aspin">Aspin</option>  
+                            <option value="/pets?breed=Puskal">Puskal</option>   
+                            <option value="/pets?all" >All</option> 
+                            <option value="/pets">Reset</option>
+                            <option value="/pets" selected style="display: none"   ></option>
+                        </select>
                         
                         </div>
                     <div class="col-sm-12 col-md-6"></div>

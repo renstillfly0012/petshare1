@@ -36,7 +36,7 @@
                         <option value="/pets-requests?status=Declined">Declined</option> 
                         <option value="/pets-requests?all" >All</option> 
                         <option value="/pets-requests">Reset</option>
-                        <option value="/pets-requests" selected style="display: none"></option>
+                        <option value="/pets-requests" selected style="display: none"   ></option>
                     </select>
                     <br>
                     <button class="btn btn-primary mt-2" id="printQuery" onclick="printByQuery()" target="_blank" >PRINT PDF</button>
