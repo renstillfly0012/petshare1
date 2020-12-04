@@ -104,6 +104,12 @@
           </div>
     </div>
 
+    <div class="form-group row">
+        <div class="col-md-6 offset-md-4">
+            <div class="g-recaptcha" data-sitekey="6LfQJPkZAAAAABIM-1Bom813BLOTg_dcKLVytD5B" ></div>
+        </div>
+    </div>
+
 
     <div class="form-group row text-center">
         <div class="col-md-2 offset-md-5">
