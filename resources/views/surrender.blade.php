@@ -2,16 +2,14 @@
 
 @section('content')
 
-<div style="width:1593px; height:1060px; border-radius: 40px;" class="card col-md-10 offset-md-1 mt-5">
+<div style="width:1593px; height:1260px; border-radius: 40px;" class="card col-md-10 offset-md-1 mt-5">
     <p style="font-size:40px; margin-left:87px;" class="mt-5"><b>SURRENDER A PET</b></p>
  
     <div class="card-body" >
 <form method="post" action="{{ action('surrenderController@store') }}" enctype="multipart/form-data" id="usrform">
     @csrf
-{{-- 
+
     <div class="col-md-10 offset-md-1 text-md-center" style="margin-bottom: 22px;">
-        {{-- <img src="{{ asset('assets/images/pspcalogo.png') }}" alt="" id="card_logo"
-            height="229ppx" width="235px" class="rounded-circle img-responsive">
         <div>
         <input class="mb-4" type="file" name="image" accept="image/*" id="image" value="">
 
@@ -21,11 +19,11 @@
         </span>
         @enderror
         </div>
-    </div> --}}
+    </div>
     
-@auth
+
 <input type="text" id="user_id" name="user_id" value="{{Auth::user()->id}}" hidden>
-@endauth
+
     <div class="form-group row">
         <div class="col-md-10 offset-md-1">
             @auth
@@ -107,14 +105,14 @@
     </div>
 
 
-    <div class="form-group row ml-5">
+    <div class="form-group row text-center">
         <div class="col-md-2 offset-md-5">
-            <button type="submit" class="btn btn-primary ml-5" style="font-size:20px">
+            <button type="submit" class="btn btn-primary" style="font-size:20px; color:black">
                 {{ __('Submit') }}
             </button>
         </div>
         <div class="col-md-2 offset-md-5 mt-2">
-            <a href="/" class="btn btn-secondary ml-5" style="color:white; font-size:20px;">
+            <a href="/" class="btn btn-secondary ml-1" style="color:white; font-size:20px;">
               Cancel
             </a>
         </div>

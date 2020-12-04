@@ -27,6 +27,13 @@ class surrenderPostRequest extends FormRequest
             'name' => 'required',
             'message' => 'required',
             'requested_date' => 'required|date',
+            'image' => 'required|image|mimes:jpeg,jpg,png,gif', 'max:25000',
+        ];
+    }
+
+    public function messages(){
+        return[
+          'image' => 'Try again, please select a valid image. ',
         ];
     }
 }

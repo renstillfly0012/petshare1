@@ -15,7 +15,7 @@ class Report extends Model
 
     
     protected $fillable = [
-        'user_id','address', 'description','image',
+        'user_id','address', 'description','image','email','mobile_number','report_type'
     ];
 
     protected $hidden = [

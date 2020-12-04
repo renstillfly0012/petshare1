@@ -103,6 +103,13 @@ class petController extends Controller
         ->setOutfile($file)
         ->png();
 
+        $file = 'assets/images/qrcodes/api/'.$qrcodeImgName;
+        $newQrcode1 = QRCode::text("https://pet-share.com/api/pethealth/view/".$new_pet_id)
+        ->setSize(4)
+        ->setMargin(2)
+        ->setOutfile($file)
+        ->png();
+
         //check if is generated
         // if($newQrcode){
           //save data to database.

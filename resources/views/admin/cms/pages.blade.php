@@ -21,16 +21,18 @@
             <div class="row">
                 <div class="text-right ml-3">
                     Filter By:
-                    <a href="/cms?section=Header">Header</a> | 
-                    <a href="/cms?section=Section_Adopt">Section_Adopt</a> |  
-                    <a href="/cms?section=Section_Report">Section_Report</a> |  
-                    <a href="/cms?section=Event">Events</a> |
-                    <a href="/cms?section=Feedback">Feedbacks</a> |
-                    <a href="/cms?section=Contact Us">Contacts</a> |
-                    <a href="/cms?section=Logo">Logo</a> |
-
-                    <a href="/cms">Reset</a>
-                    
+                    <select  name="form" onchange="location = this.value;">
+                        <option value="/cms?section=Header">Header</option>  
+                        <option value="/cms?section=Section_Adopt">Section_Adopt</option> 
+                        <option value="/cms?section=Section_Report">Section_Report</option>  
+                        <option value="/cms?section=Event">Events</option> 
+                        <option value="/cms?section=Feedback">Feedbacks</option> 
+                        <option value="/cms?section=Contact Us">Contacts</option> 
+                        <option value="/cms?section=Logo">Logo</option> 
+                        <option value="/cms?all" >All</option> 
+                        <option value="/cms">Reset</option>
+                        <option value="/cms" selected style="display: none"   ></option>
+                    </select>
                     </div>
                 <div class="col-sm-12 col-md-6"></div>
                 <div class="col-sm-12 col-md-6"></div>

@@ -43,13 +43,20 @@
                 <div class="row">
                     <div class="text-right ml-3">
                         Filter By:
-                        <a href="/users?role=1">Admins</a> | 
-                        <a href="/users?role=2">Fosters</a> | 
-                        <a href="/users?role=3">Vets</a> | 
-                        <a href="/users">Reset</a>
+        
+                        <select  name="form" onchange="location = this.value;">
+                            <option value="/users?role=1">Admins</option>  
+                            <option value="/users?role=2">Fosters</option> 
+                            <option value="/users?role=3">Vets</option>  
+                            <option value="/users?status=Activated">Activated</option> 
+                            <option value="/users?status=Deactivated">Deactivated</option> 
+                            <option value="/users?all" >All</option> 
+                            <option value="/users">Reset</option>
+                            <option value="/pets-requests" selected style="display: none"   ></option>
+                        </select>
                         
                         </div>
-                    <div class="col-sm-12">
+                    <div class="col-sm-12 table-responsive">
                         <table id="example2" class="table table-bordered table-hover dataTable table-responsive-md"
                             role="grid" aria-describedby="example2_info">
                             <thead>
@@ -69,9 +76,9 @@
                                     <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
                                         aria-label="Engine version: activate to sort column ascending">Verification Status
                                     </th>
-                                    {{-- <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
                                         aria-label="Engine version: activate to sort column ascending">Account Status
-                                    </th> --}}
+                                    </th>
                                     <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
                                         aria-label="CSS grade: activate to sort column ascending">Action</th>
                                 </tr>
@@ -96,10 +103,11 @@
 
                                         <td>{{ $user->email_verified_at == null ? 'Not yet but already sent one' : $user->email_verified_at }}
                                         </td>
-                                        {{-- <td>{{ $user->status }}</td> --}}
+                                        <td>{{ $user->status }}</td>
                                         <td>
                                             <button class="btn btn-warning pr-4 editbtn">Edit</button><br>
-                                            <button class="btn btn-danger deletebtn">Delete</button>
+                                            <button class="btn btn-danger deletebtn mt-2">{{ $user->status == 'Activated' ? 'Deactivate' :  'Activate'}}</button>
+
                                         </td>
                                     </tr>
                                 @endforeach
@@ -512,7 +520,7 @@
                     allowOutsideClick: false,
                     confirmButtonColor: '#3085d6',
                     cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, delete it!'
+                    confirmButtonText: 'Yes, Im sure!'
                 }).then((result) => {
                     if (result.value) {
 

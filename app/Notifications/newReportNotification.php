@@ -58,9 +58,10 @@ class newReportNotification extends Notification
         // $user = 
         return [
             
-            'user_id' => $this->report->user_id,
+            'email' => $this->report->email,
+            'mobile_number' => $this->report->mobile_number,
             'address' => $this->report->address,
-            'description' => $this->report->description,
+            'report_type' => $this->report->report_type,
         ];
     }
 }

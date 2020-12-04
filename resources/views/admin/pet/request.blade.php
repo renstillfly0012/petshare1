@@ -13,16 +13,50 @@
     <div class="card">
 
         <div class="card-header">
-            <h3 class="card-title">All appointment requets</h3>
+            <h3 class="card-title">All appointment requests</h3>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
             <div id="example2_wrapper" class="dataTables_wrapper dt-bootstrap4">
                 <div class="row">
+                    
                     <div class="col-sm-12 col-md-6"></div>
                     <div class="col-sm-12 col-md-6"></div>
                 </div>
-                <div class="row">
+                <div class="row ">
+                    <div class="col-md-12">
+                    <div class="float-left ">
+                        
+                        Filter By:
+                        <select  name="form" onchange="location = this.value;">
+                        <option value="/pets-requests?type=Adoption">Adoption</option>  
+                        <option value="/pets-requests?type=Surrender">Surrender</option> 
+                        <option value="/pets-requests?status=Pending">Pending</option>  
+                        <option value="/pets-requests?status=Approved">Approved</option> 
+                        <option value="/pets-requests?status=Declined">Declined</option> 
+                        <option value="/pets-requests?all" >All</option> 
+                        <option value="/pets-requests">Reset</option>
+                        <option value="/pets-requests" selected style="display: none"   ></option>
+                    </select>
+                    <br>
+                    <button class="btn btn-primary mt-2" id="printQuery" onclick="printByQuery()" target="_blank" >PRINT PDF</button>
+                    </div>
+                    {{-- onclick="print()" --}}
+       
+
+                
+              
+                        <div class="float-right" id="datepicker">
+                            <input style="font-size:20px" id="select_date" type="date" class="form-control mb-2" >
+                            <button class="btn btn-primary mb-2 float-right" id="submitDate" href="" onclick="filterByDate()" >Filter By Date</button>
+                        </div>
+                      
+
+                      
+                    </div>
+                     
+
+
                     <div class="col-sm-12 table-responsive">
                         <table id="example2" class="table table-bordered table-hover dataTable table-responsive-md"
                             role="grid" aria-describedby="example2_info">
@@ -36,6 +70,8 @@
                                     </th> --}}
                                     <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
                                         aria-label="Browser: activate to sort column ascending">Name</th>
+                                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                        aria-label="Browser: activate to sort column ascending">Image</th>
                                     <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
                                         aria-label="Platform(s): activate to sort column ascending">Requested Pet</th>
                                     <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
@@ -55,6 +91,7 @@
                                     <tr role="row" class="odd text-center">
                                         <td>{{ $appointment->id }}</td>
                                         <td>{{ $appointment->user_id != null ? $appointment->user->name : $appointment->name}}</td>
+                                        <td>{{ $appointment->image }}</td>
                                         <td>{{ $appointment->requested_pet_id != null ? $appointment->pet->name : "None"}}</td>
                                         <td>{{ $appointment->requested_date }}</td>
                                         <td>{{ $appointment->appointment_type }}</td>
@@ -63,6 +100,7 @@
                                         <td>
                                             <button class="btn btn-warning pr-4 editbtn">Approve</button><br>
                                             <button class="btn btn-danger deletebtn">Decline</button>
+                                        
                                         </td>
                                     </tr>
                                 @endforeach
@@ -101,7 +139,22 @@
 
 
 @section('pet_modal_script')
+    <script>
+        function filterByDate(){
+           
+            var date = document.getElementById("select_date").value;
+        window.location.href = "/pets-requests?date="+date;
+       
+        }
 
+        function printByQuery(){
+            var url = window.location.href;
+            var newUrl = url.substring(url.indexOf("?"));
+        console.log();
+            window.open("/print/appointments"+newUrl);
+        }
+        
+        </script>
 
     <script type="text/javascript">
         $(document).ready(function() {

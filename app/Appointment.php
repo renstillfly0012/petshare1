@@ -16,7 +16,7 @@ class Appointment extends Model
     use LogsActivity;
 
     protected $fillable = [
-        'user_id','requested_pet_id','requested_date','appointment_type','name','message'
+        'user_id','requested_pet_id','requested_date','appointment_type','name','message','image'
     ];
 
     // protected static $logAttributes = ['name', 'age', 'breed','description','image'];

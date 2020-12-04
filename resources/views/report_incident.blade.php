@@ -11,7 +11,6 @@
 
 @section('content')
 
-@auth
 <div id="map" style="height:400px; width:100%; display:none;"></div>
 <div id="infowindow-content">
     <span id="place-name" class="title"></span><br />
@@ -21,8 +20,8 @@
 <input id="map-lat"  value="{{$map->lat ?? ''}}" hidden>
 <input id="map-lon"  value="{{$map->lon ?? ''}}" hidden>
 
-@endauth
-<div style="width:1593px; height:1060px; border-radius: 40px;" class="card col-md-10 offset-md-1 mt-5">
+
+<div style="width:1593px; height:1480px; border-radius: 40px;" class="card col-md-10 offset-md-1 mt-5">
    <p style="font-size:40px; margin-left:87px;" class="mt-5"><b>REPORT INCIDENT</b></p>
 
    <div class="card-body" >
@@ -33,8 +32,6 @@
        
    
         <div class="col-md-10 offset-md-1 text-md-center" style="margin-bottom: 22px;">
-            {{-- <img src="{{ asset('assets/images/pspcalogo.png') }}" alt="" id="card_logo"
-                height="229ppx" width="235px" class="rounded-circle img-responsive"> --}}
             <div>
             <input class="mb-4" type="file" name="image" accept="image/*" id="image" value="">
 
@@ -47,12 +44,50 @@
         </div>
         
 
-    <input type="text" id="user_id" name="user_id" value="{{Auth::user()->id}}" hidden>
+        @auth
+        <input type="text" id="user_id" name="user_id" value="{{Auth::user()->id}}" hidden>
+        @endauth
+
+        <div class="form-group row">
+            <div class="col-md-10 offset-md-1">
+                @auth
+                <input style="font-size:16px" id="email" type="text" class="form-control @error('email') is-invalid @enderror"
+                    name="email" value="{{Auth::user()->email}}" autocomplete="email" readonly>
+                    @endauth
+                    @guest
+                    <input style="font-size:16px" id="email" type="text" class="form-control @error('email') is-invalid @enderror"
+                    name="email" value="{{ old('email') }}" autocomplete="email"  placeholder="JuanDelaCruz@gmail.com">
+                    @endguest
+                @error('email')
+                <span class="invalid-feedback text-center" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+                <label style=" font-size:24px;" for="email"
+                    class="col-md-4 offset-md-4  col-form-label ml-1" placeholder="">{{ __('Email Address') }}</label>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-10 offset-md-1">
+                <input style="font-size:16px" id="mobile_number" type="text" class="form-control @error('mobile_number') is-invalid @enderror"
+                    name="mobile_number" value="{{ old('mobile_number') }}" autocomplete="mobile_number"    placeholder="+639121231234">
+
+                @error('mobile_number')
+                <span class="invalid-feedback text-center" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+                <label style=" font-size:24px;" for="mobile_number"
+                    class="col-md-4 offset-md-4  col-form-label ml-1" placeholder="">{{ __('Mobile Number') }}</label>
+            </div>
+        </div>
+
 
         <div class="form-group row">
             <div class="col-md-10 offset-md-1">
                 <input style="font-size:16px" id="address" type="text" class="form-control @error('address') is-invalid @enderror"
-                    name="address" value="{{ old('address') }}" autocomplete="address">
+                    name="address" value="{{ old('address') }}" autocomplete="address"  placeholder="Rizal Park">
 
                 @error('address')
                 <span class="invalid-feedback text-center" role="alert">
@@ -60,12 +95,29 @@
                 </span>
                 @enderror
                 <label style=" font-size:24px;" for="address"
-                    class="col-md-4 offset-md-4  col-form-label ml-1" placeholder="">{{ __('Address') }}</label>
+                    class="col-md-4 offset-md-4  col-form-label ml-1">{{ __('Address') }}</label>
             </div>
         </div>
 
         <input type="hidden" id="address_lat" name="address_lat" value="">
         <input type="hidden" id="address_lng" name="address_lng"  value="">
+
+        <div class="form-group row">
+            <div class="col-md-10 offset-md-1">
+          
+            <select name="report_type" class="form-control" id="exampleFormControlSelect1" form="usrform" value="">
+              <option value="Abusive Owner">Abusive Owner</option>
+              <option value="Abuse in Street" selected>Abuse in Street</option>
+              <option value="Animal Napping">Animal Napping</option>
+              <option value="Animal Accident">Animal Accident</option>
+            </select>
+            <label for="exampleFormControlSelect1" 
+            class="col-md-4 offset-md-4 col-form-lable ml-1 mt-2" 
+            style=" font-size:24px;">
+                Report Type
+            </label>
+        </div>
+    </div>
 
 
 
@@ -74,7 +126,7 @@
             <div class="col-md-10 offset-md-1">
                 <label style=" font-size:24px;"for="description"
                 class="col-md-4 offset-md-4  col-form-label ml-1 mb-3">{{ __('Report Description: ') }}</label>
-                <textarea  rows="8" style="font-size:16px" id="description" type="text" class="form-control  @error('description') is-invalid @enderror"
+                <textarea  rows="4" style="font-size:16px" id="description" type="text" class="form-control  @error('description') is-invalid @enderror"
                     name="description" value="{{ old('description') }}" autocomplete="description" form="usrform" ></textarea>
 
                     @error('description')
@@ -96,14 +148,20 @@
               </div>
         </div>
 
-        <div class="form-group row ml-5">
+        <div class="form-group row">
+            <div class="col-md-6 offset-md-4">
+                <div class="g-recaptcha" data-sitekey="6Lf6TfYZAAAAABwW4Uf34CgKWvjsYEG52gFkBq9h" ></div>
+            </div>
+        </div>
+
+        <div class="form-group row ml-2 text-center">
             <div class="col-md-2 offset-md-5">
-                <button type="submit" class="btn btn-primary ml-3" style="font-size:20px">
+                <button type="submit" class="btn btn-primary " style="font-size:20px; color:black;">
                     {{ __('Submit Report') }}
                 </button>
             </div>
-            <div class="col-md-2 offset-md-5 mt-2">
-                <a href="/" class="btn btn-secondary ml-5" style="color:white; font-size:20px;">
+            <div class="col-md-2 offset-md-5 mt-2 text-center">
+                <a href="/" class="btn btn-secondary" style="color:white; font-size:20px;">
                   Cancel
                 </a>
             </div>
@@ -116,7 +174,6 @@
 
 @endsection
 
-@auth
 <script>
     let map;
     var options;
@@ -311,4 +368,3 @@ function initMap() {
 } 
 </script>
 
-@endauth

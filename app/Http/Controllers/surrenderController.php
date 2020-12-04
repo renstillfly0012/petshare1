@@ -19,8 +19,21 @@ class surrenderController extends Controller
         
         $validated = $request->validated();
         // dd($validated);
-        $data = array_merge($validated, ['appointment_type' => "Surrender"]);
-// dd($data);
+        if($request->hasFile('image') == true){
+            // $user->image = $request->edit_image->getClientOriginalName();
+           
+            $file = $request->image;
+            $extension = $file->getClientOriginalExtension();
+            $filename = time().'.SURRENDER_USER_ID_'.$request->user_id.'.'.$extension;
+            // $filename = $file->getClientOriginalName();
+            $image = $filename;
+           
+           
+            // $data = array_merge($validated, ['image' => $filename]);
+            $file->move('assets/images/surrendered', $filename);
+            }
+            $data = array_merge($validated, ['appointment_type' => "Surrender"], ['image' => $image]);
+            // dd($data);
         $appointment = Appointment::create($data);
         return redirect('/')->with('success', 'Appointment Saved');
     }
