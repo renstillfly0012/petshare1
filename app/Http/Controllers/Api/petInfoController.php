@@ -39,6 +39,7 @@ class petInfoController extends Controller
      */
     public function store(medhisPostRequest $request)
     {
+        // dd($request->all());
         try{
         $validated = $request->validated();
         $medinfo = Medical_Histories::Create($validated);
@@ -49,7 +50,6 @@ class petInfoController extends Controller
         }
 
     }
-
     /**
      * Display the specified resource.
      *
@@ -59,13 +59,13 @@ class petInfoController extends Controller
     public function show($id)
     {
         try{
-        $medinfos = Medical_Histories::where('pet_id',$id)->get();
+        $medinfos = Medical_Histories::where('pet_id',$id)->get();                      
         // dd($medinfos[0]->pets);
         return response()->json($medinfos, 200);
 
-    }catch(\Exception $error){
-        return response()->json($error, 400);
-    }
+        }catch(\Exception $error){
+            return response()->json($error, 400);
+        }
        
     }
 

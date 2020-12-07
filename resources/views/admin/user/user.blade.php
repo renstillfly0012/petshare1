@@ -540,8 +540,8 @@
                         });
 
                         Swal.fire(
-                            'Deleted!',
-                            'Your file has been deleted.',
+                            'Updated',
+                            'Account status has been changed.',
                             'success'
                         ).then((result) => {
                             location.reload();

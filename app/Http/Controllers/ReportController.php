@@ -125,7 +125,7 @@ class ReportController extends Controller
         // dd($user->email);
         // Mail::to($user->email)->send(new VerificationMail);
         // dd($user->notify(new ReportApproved()));
-        $report->report_status == 'Approved' ? $user->notify(new ReportApproved())
+        $report->report_status == 'Responded' ? $user->notify(new ReportApproved())
         : $user->notify(new ReportDeclined());
        
         
@@ -143,7 +143,7 @@ class ReportController extends Controller
     public function update(Request $request, $id)
     {
         $report = Report::findOrFail($id);
-        $report->report_status = 'Approved';
+        $report->report_status = 'Responded';
         $report->save();
 
         return redirect('/')->with('toast_success', 'Report Changes '.$id.' was Saved');

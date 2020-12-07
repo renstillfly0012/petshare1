@@ -17,6 +17,7 @@ class Reports extends Migration
             $table->increments('id');
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->string('name')->default('guest');
             $table->string('image')->default('pspcalogo.png');
             $table->String('email');
             $table->String('mobile_number');

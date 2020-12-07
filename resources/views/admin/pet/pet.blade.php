@@ -66,7 +66,10 @@
                                         aria-label="Engine version: activate to sort column ascending">Description
                                     </th>
                                     <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
-                                        aria-label="Engine version: activate to sort column ascending">Pet Status
+                                        aria-label="Engine version: activate to sort column ascending">Staycation at PSPCA
+                                    </th>
+                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                    aria-label="Engine version: activate to sort column ascending">Pet Status
                                     </th>
                                     <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
                                         aria-label="CSS grade: activate to sort column ascending">Action</th>
@@ -91,6 +94,7 @@
                                         <td>{{ $pet->age }}</td>
                                         <td>{{ $pet->breed }}</td>
                                         <td>{{ $pet->description }}</td>
+                                        <td>{{ $pet->created_at->diffInDays(now(),false) }}</td>
                                         <td>{{ $pet->status }}</td>
                                         <td>
                                             <button class="btn btn-warning pr-4 editbtn">Edit</button><br>

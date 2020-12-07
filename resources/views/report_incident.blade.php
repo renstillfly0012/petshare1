@@ -47,6 +47,27 @@
         @auth
         <input type="text" id="user_id" name="user_id" value="{{Auth::user()->id}}" hidden>
         @endauth
+        @guest
+        <div class="form-group row">
+            <div class="col-md-10 offset-md-1">
+                @auth
+                <input style="font-size:16px" id="name" type="text" class="form-control @error('name') is-invalid @enderror"
+                    name="name" value="{{Auth::user()->email}}" autocomplete="name" readonly>
+                    @endauth
+                    @guest
+                    <input style="font-size:16px" id="name" type="text" class="form-control @error('name') is-invalid @enderror"
+                    name="name" value="{{ old('name') }}" autocomplete="name"  placeholder="Juan Dela Cruz">
+                    @endguest
+                @error('name')
+                <span class="invalid-feedback text-center" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+                <label style=" font-size:24px;" for="email"
+                    class="col-md-4 offset-md-4  col-form-label ml-1" placeholder="">{{ __('Full Name') }}</label>
+            </div>
+        </div>
+        @endguest
 
         <div class="form-group row">
             <div class="col-md-10 offset-md-1">
@@ -110,6 +131,7 @@
               <option value="Abuse in Street" selected>Abuse in Street</option>
               <option value="Animal Napping">Animal Napping</option>
               <option value="Animal Accident">Animal Accident</option>
+              <option value="Others">Others - Please Specify below</option>
             </select>
             <label for="exampleFormControlSelect1" 
             class="col-md-4 offset-md-4 col-form-lable ml-1 mt-2" 

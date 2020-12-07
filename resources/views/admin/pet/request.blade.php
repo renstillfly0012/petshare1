@@ -98,9 +98,10 @@
                                         {{-- <td>{{ $appointment->appointment_type }}</td> --}}
                                         <td>{{ $appointment->appointment_status}}</td>
                                         <td>
+                                            @if($appointment->appointment_status == 'Pending')
                                             <button class="btn btn-warning pr-4 editbtn">Approve</button><br>
                                             <button class="btn btn-danger deletebtn">Decline</button>
-                                        
+                                            @endif
                                         </td>
                                     </tr>
                                 @endforeach

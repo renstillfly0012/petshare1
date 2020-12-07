@@ -44,6 +44,9 @@ class adoptionController extends Controller
             ->paginate(request('page'))
             ->appends('type', request('type'));
             // dd($appointments);
+            if($appointments->count() == 0){
+                return redirect('/pets-requests')->with('toast_error', 'No data found');
+            }
 
         }elseif(request()->has('date')){
             
@@ -53,6 +56,10 @@ class adoptionController extends Controller
             ->paginate(5)
             ->appends('date', request('date'));
             // dd($appointments);
+            if($appointments->count() == 0){
+                return redirect('/pets-requests')->with('toast_error', 'No data found');
+            }
+           
 
         }elseif(request()->has('status')){
             
@@ -61,6 +68,9 @@ class adoptionController extends Controller
             ->with('user', 'pet')
             ->paginate(5)
             ->appends('status', request('status'));
+            if($appointments->count() == 0){
+                return redirect('/pets-requests')->with('toast_error', 'No data found');
+            }
 
         }elseif(request()->has('all')){
             $appointments = Appointment::orderBy('id', 'desc')->with('user', 'pet')->paginate(0);

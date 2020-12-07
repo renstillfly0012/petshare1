@@ -394,6 +394,7 @@
                                 <ul class="list-inline">
                                   <li>{{ $pet->description }}</li>
                                 </ul>
+                                <p>Days of Staycation: {{ $pet->created_at->diffInDays(now(),false) }}</p>
                                 <button class="btn btn-primary" data-dismiss="modal" type="button">
                                     <i class="fas fa-times mr-1"></i>
                                     Close

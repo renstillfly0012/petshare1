@@ -22,7 +22,23 @@ class donationController extends Controller
 {
 
     public function getAllDonations(){
-        $donations = Donation::orderBy('id', 'desc')->paginate(5);
+
+        if(request()->has('date')){
+            
+            $donations = Donation::where('created_at','like',  '%'.request('date').'%')
+            ->orderBy('id', 'desc')
+            ->paginate(5)
+            ->appends('date', request('date'));
+            // dd($donations);
+            if($donations->count() == 0){
+                return redirect('/donations')->with('toast_error', 'No data found');
+            }
+           
+
+        }else{
+            $donations = Donation::orderBy('id', 'desc')->paginate(5);
+        }
+ 
         return view('admin.donate.donation')->with('donations', $donations);
     }
   

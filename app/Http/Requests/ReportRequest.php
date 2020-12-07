@@ -26,6 +26,7 @@ class ReportRequest extends FormRequest
     {
         return [
             'user_id' => 'numeric',
+            'name' => 'regex:/^[a-zA-Z]{4,}(?: [a-zA-Z]+){0,2}$/',
             'address' => 'required',
             'description' => 'required',
             'image' => 'required|image|mimes:jpeg,jpg,png,gif', 'max:25000',

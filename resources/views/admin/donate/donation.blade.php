@@ -16,6 +16,36 @@
     <div class="card-body">
         <div id="example2_wrapper" class="dataTables_wrapper dt-bootstrap4">
             <div class="row">
+                <div class="col-md-12">
+                    <div class="float-left ">
+                        Filter By:
+                        <select  name="form" onchange="location = this.value;">
+                        <option value="/pets-requests?type=Adoption">Today</option>  
+                        <option value="/pets-requests?type=Surrender">Surrender</option> 
+                        <option value="/pets-requests?status=Pending">Pending</option>  
+                        <option value="/pets-requests?status=Approved">Approved</option> 
+                        <option value="/pets-requests?status=Declined">Declined</option> 
+                        <option value="/pets-requests?all" >All</option> 
+                        <option value="/pets-requests">Reset</option>
+                        <option value="/pets-requests" selected style="display: none"   ></option>
+                    </select>
+                    <br>
+                    <button class="btn btn-primary mt-2" id="printQuery" onclick="printByQuery()" target="_blank" >PRINT PDF</button>
+                    </div>
+                    {{-- onclick="print()" --}}
+       
+
+                
+              
+                        <div class="float-right" id="datepicker">
+                            Filter By:
+                            <input style="font-size:20px" id="select_date" type="date" class="form-control mb-2" >
+                            <button class="btn btn-primary mb-2 float-right" id="submitDate" href="" onclick="filterByDate()" >Filter By Date</button>
+                        </div>
+                      
+
+                      
+                    </div>
                 <div class="col-sm-12 col-md-6"></div>
                 <div class="col-sm-12 col-md-6"></div>
             </div>
@@ -78,3 +108,20 @@
 </div>
 
 @endsection
+
+<script>
+    function filterByDate(){
+       
+        var date = document.getElementById("select_date").value;
+    window.location.href = "/donations?date="+date;
+   
+    }
+
+    function printByQuery(){
+        var url = window.location.href;
+        var newUrl = url.substring(url.indexOf("?"));
+    console.log();
+        window.open("/print/appointments"+newUrl);
+    }
+    
+    </script>

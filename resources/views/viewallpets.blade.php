@@ -28,7 +28,7 @@
                         <button class="btn btn-default showbtn" data-toggle="modal" data-target="#modal-xl"
                             data-pet-id="{{ $pet->id }}" data-pet-img="{{ $pet->image }}" data-pet-name="{{ $pet->name }}"
                             data-pet-age="{{ $pet->age }}" data-pet-breed="{{ $pet->breed }}"
-                            data-pet-description="{{ $pet->description }}">
+                            data-pet-description="{{ $pet->description }}" data-pet-staycation="{{ $pet->created_at->diffInDays(now(),false) }}">
                             <div class="card card-default">
                                 <div class="card-header">
                                     <h3 class="card-title"><strong>{{ $pet->name }}</strong></h3>
@@ -99,6 +99,7 @@
                 <p style="font-size:20px;" id="lblPetAge" for="show_pet_age" class="mt-3">{{ __('Age: ') }}</p>
                 <p style="font-size:20px;" id="lblPetBreed" for="show_pet_breed" class="mt-3">{{ __('Breed: ') }}</p>
                 <p style="font-size:20px;" id="lblPetDescription"  for="show_pet_description" class="mt-3">{{ __('Description: ') }}</p>
+                <p style="font-size:20px;" id="lblDays"  for="show_pet_description" class="mt-3">{{ __('Days of Staycation: ') }}</p>
                 </div>
                 </div>
 
@@ -134,7 +135,7 @@
                                 class="form-control @error('show_pet_age') is-invalid @enderror" name="show_pet_age"
                                 value="{{ old('show_pet_age') }}" autocomplete="show_pet_age" autofocus disabled>
 
-                            @error('emshow_pet_ageail')
+                            @error('show_pet_age')
                             <span class="invalid-feedback text-center" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -248,6 +249,7 @@
                 var petAge = $(this).data('pet-age')
                 var petBreed = $(this).data('pet-breed')
                 var petDescription = $(this).data('pet-description')
+                var petStaycation =  $(this).data('pet-staycation')
 
 
                 console.log(petID);
@@ -270,6 +272,7 @@
                 lblPetAge.innerText += petAge;
                 lblPetBreed.innerText += petBreed;
                 lblPetDescription.innerText += petDescription;
+                lblDays.innerText += petStaycation;
 
 
                 // $('#edit_pet_status').val(data[6]);
