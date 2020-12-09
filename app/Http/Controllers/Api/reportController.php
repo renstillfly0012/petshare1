@@ -74,10 +74,11 @@ class reportController extends Controller
             $data = array_merge($validated, ['image' => $filename]);
           
         }
-        
-       
+         // dd($request->mobile_number);
+        // $data1 = array_merge($data, ['mobile_number' => $request->mobile_number]);
+        // dd($data);
         $report = Report::create($data);
-        dd($data,$report,$lat,$lng);
+        // dd($data,$report,$lat,$lng);
         // event(new ReportCreated($report));
 
         $admins = User::where('role_id', 1)->get();
@@ -92,7 +93,7 @@ class reportController extends Controller
         // dd(sendNewReportNotification::class);
         $location->save();
             
-            return response()->json($report, 200);
+            return response()->json($report, 201);
     
             }catch(\Exception $error){
             return response()->json($error, 400);
