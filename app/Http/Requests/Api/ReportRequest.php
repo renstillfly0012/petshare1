@@ -32,10 +32,11 @@ class ReportRequest extends FormRequest
             'address_lat' => 'required','double',
             'address_lng' => 'required','double',
             'email' => 'required', 'string', 'email', 'max:255',
-            'mobile_number' => ['required','regex:/^(09|\+639)\d{9}$/'],
+            'mobile_number' => 'required','numeric',
             'report_type' => 'required',
         ];
     }
+    // ['required','regex:/^(09|\+639)\d{9}$/']
 
     public function withValidator($validator)
     {
