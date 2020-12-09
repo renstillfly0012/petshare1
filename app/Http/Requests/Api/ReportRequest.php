@@ -28,7 +28,7 @@ class ReportRequest extends FormRequest
             'user_id' => 'required','number',
             'address' => 'required',
             'description' => 'required',
-            // 'image' => 'required|image|mimes:jpeg,jpg,png,gif', 'max:25000',
+            'image' => 'required|image|mimes:jpeg,jpg,png,gif', 'max:25000',
             'address_lat' => 'required','double',
             'address_lng' => 'required','double',
             'email' => 'required', 'string', 'email', 'max:255',
