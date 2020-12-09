@@ -77,7 +77,7 @@ class reportController extends Controller
         
        
         $report = Report::create($data);
-        // dd($data,$report,$lat,$lng);
+        dd($data,$report,$lat,$lng);
         // event(new ReportCreated($report));
 
         $admins = User::where('role_id', 1)->get();

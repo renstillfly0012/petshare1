@@ -31,6 +31,8 @@ class ReportRequest extends FormRequest
             // 'image' => 'required|image|mimes:jpeg,jpg,png,gif', 'max:25000',
             'address_lat' => 'required','double',
             'address_lng' => 'required','double',
+            'email' => 'required', 'string', 'email', 'max:255',
+            'mobile_number' => ['required','regex:/^(09|\+639)\d{9}$/'],
         ];
     }
 
