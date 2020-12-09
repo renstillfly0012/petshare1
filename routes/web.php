@@ -88,6 +88,9 @@ Route::resource('/pets-requests', 'adoptionController');
 
 Route::prefix('print')->group(function(){
 route::get('/appointments', 'adoptionController@printPDF');
+route::get('/pets', 'petController@printPDF');
+route::get('/users', 'UserController@printPDF');
+route::get('/donations', 'donationController@printPDF');
 });
 
 

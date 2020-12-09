@@ -35,6 +35,30 @@ class donationController extends Controller
             }
            
 
+        }elseif(request()->has('order')){
+            $donations = Donation::orderBy('id', request('order'))
+            ->paginate(5)
+            ->appends('order', request('order'));
+            // dd($donations);
+
+            if($donations->count() == 0){
+                return redirect('/donations')->with('toast_error', 'No data found');
+            }
+           
+
+        } elseif(request()->has('start') && request()->has('end')){
+            // dd(request('start'), request('end'));
+            $donations = Donation::whereBetween('donation_amount',[request('start'), request('end')])
+            ->orderBy('id', 'desc')
+            ->paginate(5)
+            ->appends('start', request('start'))
+            ->appends('end', request('end'));
+            // dd($donations);
+            if($donations->count() == 0){
+                return redirect('/donations')->with('toast_error', 'No data found');
+            }
+           
+
         }else{
             $donations = Donation::orderBy('id', 'desc')->paginate(5);
         }
@@ -193,5 +217,51 @@ class donationController extends Controller
     // dd($result->transactions[0]->related_resources[0]->sale->id);
 
     return redirect('/')->with('success', 'Thank you for supporting our organization!');
+    }
+
+    public function printPDF(){
+
+        if(request()->has('date')){
+            
+            $donations = Donation::where('created_at','like',  '%'.request('date').'%')
+            ->orderBy('id', 'desc')
+            ->paginate(5)
+            ->appends('date', request('date'));
+            // dd($donations);
+            if($donations->count() == 0){
+                return redirect('/donations')->with('toast_error', 'No data found');
+            }
+           
+
+        }elseif(request()->has('order')){
+            $donations = Donation::orderBy('id', request('order'))
+            ->paginate(5)
+            ->appends('order', request('order'));
+            // dd($donations);
+
+            if($donations->count() == 0){
+                return redirect('/donations')->with('toast_error', 'No data found');
+            }
+           
+
+        } elseif(request()->has('start') && request()->has('end')){
+            // dd(request('start'), request('end'));
+            $donations = Donation::whereBetween('donation_amount',[request('start'), request('end')])
+            ->orderBy('id', 'desc')
+            ->paginate(5)
+            ->appends('start', request('start'))
+            ->appends('end', request('end'));
+            // dd($donations);
+            if($donations->count() == 0){
+                return redirect('/donations')->with('toast_error', 'No data found');
+            }
+           
+
+        }else{
+            $donations = Donation::orderBy('id', 'desc')->paginate(5);
+        }
+ 
+        return view('admin.prints.donation')->with('donations', $donations);
+
     }
 }

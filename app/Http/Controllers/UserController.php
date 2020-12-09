@@ -45,13 +45,29 @@ class UserController extends Controller
         // dd($a->toArray());
         // $admins = User::where('role_id', 1)->get();
         // dd($admins);
+        // $users = User::whereNull('email_verified_at')->paginate(5);
+        $users = User::whereNotNull('email_verified_at')->paginate(5);
+
+     
         if(request()->has('role')){
             
             $users = User::where('role_id', request('role'))
             ->paginate(5)
             ->appends('gender', request('role'));
 
-        } elseif(request()->has('status')){
+        }elseif(request()->has('verify')){
+
+            // dd(request('verify') == 'verified');
+            if(request('verify') == 'verified') {
+                $users = User::whereNotNull('email_verified_at')
+                ->paginate(5)
+                ->appends('verify', request('verify'));
+            }else{
+                $users = User::whereNull('email_verified_at')
+                ->paginate(5)
+                ->appends('verify', request('verify')); 
+            }
+        }elseif(request()->has('status')){
             
             $users = User::where('status', request('status'))
             ->paginate(5)
@@ -217,6 +233,72 @@ class UserController extends Controller
         }
        
       
+    }
+
+    public function printPDF(){
+
+        if (Gate::denies('isAdmin')) {
+            return redirect()->route('landing')->with('warning', 'Authorized person can only access this');
+        }
+       
+
+        //  $user = User::find(1)->roles()->orderBy('name')->get();
+        //  $user = User::with('roles')->get();
+        //  dd($user);
+        //   dd($user->first()->name);
+          
+
+        // $a = User::with('roles')->get();
+        // dd($a->toArray());
+        // $admins = User::where('role_id', 1)->get();
+        // dd($admins);
+        // $users = User::whereNull('email_verified_at')->paginate(5);
+        $users = User::whereNotNull('email_verified_at')->paginate(5);
+
+     
+        if(request()->has('role')){
+            
+            $users = User::where('role_id', request('role'))
+            ->paginate(5)
+            ->appends('gender', request('role'));
+
+        }elseif(request()->has('verify')){
+
+            // dd(request('verify') == 'verified');
+            if(request('verify') == 'verified') {
+                $users = User::whereNotNull('email_verified_at')
+                ->paginate(5)
+                ->appends('verify', request('verify'));
+            }else{
+                $users = User::whereNull('email_verified_at')
+                ->paginate(5)
+                ->appends('verify', request('verify')); 
+            }
+        }elseif(request()->has('status')){
+            
+            $users = User::where('status', request('status'))
+            ->paginate(5)
+            ->appends('status', request('status'));
+
+        }elseif(request()->has('all')){
+            $users = User::with('roles')
+            ->withTrashed()
+            ->paginate(0);
+        }else{
+            $users = User::with('roles')
+            ->withTrashed()
+            ->paginate(5);
+        }
+       
+        // foreach($users as $user)
+        // {
+        //     dd($user->roles->first()->name);
+        
+        // }
+        // dd($users);
+        
+        return view('admin.prints.user')->with('users', $users);
+        
     }
 
    

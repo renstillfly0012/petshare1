@@ -6,6 +6,8 @@ use App\Pet_Info;
 use Illuminate\Http\Request;
 use App\Medical_Histories;
 use App\Http\Requests\medhisPostRequest;
+use App\User;
+use App\Pet;
 
 class petInfoController extends Controller
 {
@@ -16,7 +18,52 @@ class petInfoController extends Controller
      */
     public function index()
     {
-        $petinfos = Pet_Info::paginate(5);
+
+
+        if(request()->has('type') && request()->has('text')){
+      
+            // dd(request('type'),request('text'));
+            if(request('type') == 'name'){
+                $user = User::where(request('type'),'like',  '%'.request('text').'%')
+                ->pluck('id')
+                ->first();
+                
+             
+                // dd($user);
+
+
+               $petinfos = Pet_Info::where('pet_owner_id', $user)
+               ->orderBy('id', 'desc')
+               ->with('user')
+               ->paginate(5);
+
+
+            //    dd($petinfos);
+               
+            }else{
+                $pet = Pet::where('name','like',  '%'.request('text').'%')
+                ->pluck('id')
+                ->all();
+                dd($pet);
+
+                $petinfos = Pet_Info::where(request('type'), $pet)
+               ->orderBy('id', 'desc')
+               ->with('pets')
+               ->paginate(5);
+
+                   dd($petinfos);
+            }
+           
+            
+            if($petinfos->count() == 0){
+                return redirect('/pethealth')->with('toast_error', 'No data found');
+            }
+        
+
+        }else{
+            $petinfos = Pet_Info::paginate(5);
+        }
+    
         // dd($petinfos[0]->users->name);
         return view('admin.pet-health.all')->with('petinfos', $petinfos);
     }

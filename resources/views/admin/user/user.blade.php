@@ -41,19 +41,23 @@
                     <div class="col-sm-12 col-md-6"></div>
                 </div>
                 <div class="row">
-                    <div class="text-right ml-3">
+                    <div class="text-right ml-3 mb-5">
                         Filter By:
         
                         <select  name="form" onchange="location = this.value;">
                             <option value="/users?role=1">Admins</option>  
                             <option value="/users?role=2">Fosters</option> 
-                            <option value="/users?role=3">Vets</option>  
+                            <option value="/users?role=3">Vets</option> 
+                            <option value="/users?verify=verified">Verified</option> 
+                            <option value="/users?verify=notverified">Not Verified</option>  
                             <option value="/users?status=Activated">Activated</option> 
                             <option value="/users?status=Deactivated">Deactivated</option> 
                             <option value="/users?all" >All</option> 
-                            <option value="/users">Reset</option>
+                            <option value="/users">Default</option>
                             <option value="/pets-requests" selected style="display: none"   ></option>
                         </select>
+                        <br>
+                        <button class="btn btn-warning mt-2 float-left" id="printQuery" onclick="printByQuery()" target="_blank" >PRINT PDF</button>
                         
                         </div>
                     <div class="col-sm-12 table-responsive">
@@ -456,6 +460,19 @@
 </div>
 
 @section('user_modal_script')
+
+<script>
+
+    function printByQuery(){
+        var url = window.location.href;
+        var newUrl = url.substring(url.indexOf("?"));
+    console.log(newUrl == url);
+        if(newUrl != url){
+    window.open("/print/users"+newUrl);
+        }
+    
+    }
+</script>
 
 
     <script type="text/javascript">

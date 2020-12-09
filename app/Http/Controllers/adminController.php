@@ -138,9 +138,39 @@ class adminController extends Controller
         if (Gate::denies('isAdmin')) {
             return redirect()->route('landing')->with('warning', 'Authorized person can only access this');;
         }
-        $reports = Report::orderBy('id', 'desc')->with('user')->paginate(5);
-        // dd($reports);
-        $paginate = Report::paginate(5);
+        elseif(request()->has('date')){
+            
+            $reports = Report::where('created_at','like',  '%'.request('date').'%')
+            ->orderBy('id', 'desc')
+            ->with('user')
+            ->paginate(5)
+            ->appends('date', request('date'));
+   
+            if($reports->count() == 0){
+                return redirect('/reports')->with('toast_error', 'No data found');
+            }
+           
+
+        }elseif(request()->has('type')){
+            if(request()->has('text')){
+
+
+                $reports = Report::where(request('type'),'like',  '%'.request('text').'%')
+                ->orderBy('id', 'desc')
+                ->with('user')
+                ->paginate(5)
+                ->appends('text', request('text'));
+                
+                if($reports->count() == 0){
+                    return redirect('/reports')->with('toast_error', 'No data found');
+                }
+            }
+
+
+        }else{
+            $reports = Report::orderBy('id', 'desc')->with('user')->paginate(5);
+        }
+    
         return view('admin.report.report')->with('reports', $reports);
     }
 

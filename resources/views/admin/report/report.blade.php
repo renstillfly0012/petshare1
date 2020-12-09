@@ -16,6 +16,39 @@
         <div class="card-body">
             <div id="example2_wrapper" class="dataTables_wrapper dt-bootstrap4">
                 <div class="row">
+                    <div class="col-md-12">
+                        <div class="float-left ">
+                            
+                            Filter By:
+                            <select  id="form" onchange="type = this.value;">
+                            <option value="/reports?type=name">Name</option>  
+                            <option value="/reports?type=email">Email</option> 
+                            <option value="/reports?type=mobile_number">Mobile Number</option> 
+                            <option value="/reports?all" >All</option> 
+                            <option value="/reports">Default</option>
+                            <option value="/reports" selected style="display: none"   ></option>
+                        </select>
+                    <div>
+                        <input input style="font-size:20px" id="selected_text" type="text" class="form-control mt-2" />
+                        <button class="btn btn-primary mt-2" id="submitText" onclick="filterByText()" target="_blank" >Filter</button>
+                        <br>
+                    </div>
+
+                        <button class="btn btn-warning mt-2 mb-5" id="printQuery" onclick="printByQuery()" target="_blank" >PRINT PDF</button>
+                        </div>
+                        {{-- onclick="print()" --}}
+           
+    
+                    
+                  
+                            <div class="float-right" id="datepicker">
+                                <input style="font-size:20px" id="select_date" type="date" class="form-control mb-2" >
+                                <button class="btn btn-primary mb-2 float-right" id="submitDate" href="" onclick="filterByDate()" >Filter By Date</button>
+                            </div>
+                          
+    
+                          
+                        </div>
                     <div class="col-sm-12 col-md-6"></div>
                     <div class="col-sm-12 col-md-6"></div>
                 </div>
@@ -100,6 +133,35 @@
 
 
 @section('report_modal_script')
+<script>
+
+   
+    function filterByText(){
+        var type = document.getElementById("form").value;
+        var text = document.getElementById("selected_text").value;
+        console.log(type+"&text="+text);
+        window.location.href = type+"&text="+text;
+
+    }
+
+    function filterByDate(){
+       
+        var date = document.getElementById("select_date").value;
+    window.location.href = "/reports?date="+date;
+   
+    }
+
+    function printByQuery(){
+        var url = window.location.href;
+        var newUrl = url.substring(url.indexOf("?"));
+    // console.log(newUrl == url);
+        if(newUrl != url){
+    window.open("/print/reports"+newUrl);
+        }
+    
+    }
+    
+    </script>
 
 
     <script type="text/javascript">

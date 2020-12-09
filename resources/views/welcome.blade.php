@@ -12,11 +12,11 @@
     
     <!-- Masthead-->
     <header class="masthead">
-        <div class="container">
-            <div class="masthead-heading">{{ $content[0]->content_text }}
+        <div class="container" >
+            <div class="masthead-heading" style="color:#ecb807">{{ $content[0]->content_text }}
               </div>
-            <div class="masthead-heading text-uppercase">{{ $content[1]->content_text }}</div>
-           <div class="masthead-subheading"> {{ $content[2]->content_text }}</div>
+            <div class="masthead-heading text-uppercase" style="color:#ecb807">{{ $content[1]->content_text }}</div>
+           <div class="masthead-subheading" style="color:#ecb807"> {{ $content[2]->content_text }}</div>
             <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"  data-toggle="modal" data-target="#modalDonation">DONATE NOW!</a>
 
             

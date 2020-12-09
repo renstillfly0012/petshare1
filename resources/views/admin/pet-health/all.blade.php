@@ -23,6 +23,26 @@
     <div class="card-body">
         <div id="example2_wrapper" class="dataTables_wrapper dt-bootstrap4">
             <div class="row">
+                <div class="col-md-12">
+                <div class="float-left ">
+                            
+                    Filter By:
+                    <select  id="form" onchange="type = this.value;">
+                    <option value="/pethealth/all?type=name">Name</option>  
+                    <option value="/pethealth/all?type=pet_id">Petcode</option>  
+                    <option value="/pethealth/all?all" >All</option> 
+                    <option value="/pethealth/all">Default</option>
+                    <option value="/pethealth" selected style="display: none"   ></option>
+                </select>
+            <div>
+                <input input style="font-size:20px" id="selected_text" type="text" class="form-control mt-2" />
+                <button class="btn btn-primary mt-2" id="submitText" onclick="filterByText()" target="_blank" >Filter</button>
+                <br>
+            </div>
+
+                <button class="btn btn-warning mt-2 mb-5" id="printQuery" onclick="printByQuery()" target="_blank" >PRINT PDF</button>
+                </div>
+            </div>
                 <div class="col-sm-12 col-md-6"></div>
                 <div class="col-sm-12 col-md-6"></div>
             </div>
@@ -94,3 +114,28 @@
 </div>
 
 @endsection
+
+
+<script>
+
+   
+    function filterByText(){
+        var type = document.getElementById("form").value;
+        var text = document.getElementById("selected_text").value;
+        console.log(type+"&text="+text);
+        window.location.href = type+"&text="+text;
+
+    }
+
+
+    function printByQuery(){
+        var url = window.location.href;
+        var newUrl = url.substring(url.indexOf("?"));
+    // console.log(newUrl == url);
+        if(newUrl != url){
+    window.open("/print/reports"+newUrl);
+        }
+    
+    }
+    
+    </script>

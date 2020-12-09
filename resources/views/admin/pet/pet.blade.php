@@ -25,18 +25,21 @@
         <div class="card-body">
             <div id="example2_wrapper" class="dataTables_wrapper dt-bootstrap4">
                 <div class="row ">
-                    <div class="text-right ml-3">
+                    <div class="text-right ml-3 mb-5">
                         Filter By:
                        
 
                         <select  name="form" onchange="location = this.value;">
                             <option value="/pets?breed=Aspin">Aspin</option>  
                             <option value="/pets?breed=Puskal">Puskal</option>   
+                            <option value="/pets?status=Available">Available</option>   
+                            <option value="/pets?status=Adopted">Adopted</option>   
                             <option value="/pets?all" >All</option> 
-                            <option value="/pets">Reset</option>
+                            <option value="/pets">Default</option>
                             <option value="/pets" selected style="display: none"   ></option>
                         </select>
-                        
+                        <br>
+                    <button class="btn btn-warning mt-2 float-left" id="printQuery" onclick="printByQuery()" target="_blank" >PRINT PDF</button>
                         </div>
                     <div class="col-sm-12 col-md-6"></div>
                     <div class="col-sm-12 col-md-6"></div>
@@ -94,11 +97,18 @@
                                         <td>{{ $pet->age }}</td>
                                         <td>{{ $pet->breed }}</td>
                                         <td>{{ $pet->description }}</td>
-                                        <td>{{ $pet->created_at->diffInDays(now(),false) }}</td>
+                                 
+                                        <td>
+                                            {{ $pet->status != 'Adopted' ? $pet->created_at->diffInDays(now(),false) : 'None' }}
+                                        </td>
+                                   
                                         <td>{{ $pet->status }}</td>
                                         <td>
+                                            @if( $pet->status != 'Adopted')
                                             <button class="btn btn-warning pr-4 editbtn">Edit</button><br>
-                                            <button class="btn btn-danger deletebtn">Delete</button>
+                                           
+                                            <button class="btn btn-danger deletebtn mt-2">Adopted</button>
+                                            @endif
                                         </td>
                                     </tr>
                                 @endforeach
@@ -423,7 +433,7 @@
 
                         </div>
 
-                        <div class="input-group mt-4">
+                        {{-- <div class="input-group mt-4">
                             <div class="input-group-prepend">
                                 <span style="color:#fdc370; background-color:#2d643b;"
                                     class="input-group-text">Status</span>
@@ -439,7 +449,7 @@
                             </span>
                             @enderror
 
-                        </div>
+                        </div> --}}
 
                         {{-- <div class="form-group">
                             <label>Custom Select</label>
@@ -493,6 +503,18 @@
 
 
 @section('pet_modal_script')
+<script>
+
+        function printByQuery(){
+            var url = window.location.href;
+            var newUrl = url.substring(url.indexOf("?"));
+        console.log(newUrl == url);
+            if(newUrl != url){
+        window.open("/print/pets"+newUrl);
+            }
+        
+        }
+    </script>
 
 
     <script type="text/javascript">
@@ -519,7 +541,7 @@
                 $('#edit_pet_age').val(data[3]);
                 $('#edit_pet_breed').val(data[4]);
                 $('#edit_pet_description').val(data[5]);
-                $('#edit_pet_status').val(data[6]);
+                // $('#edit_pet_status').val(data[7]);
                 $('#imageName').attr('value', imgstr);
                 $('#editForm').attr('action', '/pets/' + data[0]);
                 $('#editImageForm').attr('action', '/pets/' + data[0]);
@@ -559,7 +581,7 @@
                     allowOutsideClick: false,
                     confirmButtonColor: '#3085d6',
                     cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, delete it!'
+                    confirmButtonText: 'Yes, adopt it!'
                 }).then((result) => {
                     if (result.value) {
 
@@ -579,8 +601,8 @@
                         });
 
                         Swal.fire(
-                            'Deleted!',
-                            'Your file has been deleted.',
+                            'Success',
+                            'This pet has been adopted.',
                             'success'
                         ).then((result) => {
                             location.reload();

@@ -73,6 +73,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => $data['password'],
             'role_id' => '2',
+            'status' => 'Activated',
         ]);
 
         $role = Role::select('id')->where('name', 'foster')->first();

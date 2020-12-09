@@ -35,11 +35,11 @@
                         <option value="/pets-requests?status=Approved">Approved</option> 
                         <option value="/pets-requests?status=Declined">Declined</option> 
                         <option value="/pets-requests?all" >All</option> 
-                        <option value="/pets-requests">Reset</option>
+                        <option value="/pets-requests">Default</option>
                         <option value="/pets-requests" selected style="display: none"   ></option>
                     </select>
                     <br>
-                    <button class="btn btn-primary mt-2" id="printQuery" onclick="printByQuery()" target="_blank" >PRINT PDF</button>
+                    <button class="btn btn-warning mt-2" id="printQuery" onclick="printByQuery()" target="_blank" >PRINT PDF</button>
                     </div>
                     {{-- onclick="print()" --}}
        
@@ -141,6 +141,7 @@
 
 @section('pet_modal_script')
     <script>
+
         function filterByDate(){
            
             var date = document.getElementById("select_date").value;
@@ -151,8 +152,11 @@
         function printByQuery(){
             var url = window.location.href;
             var newUrl = url.substring(url.indexOf("?"));
-        console.log();
-            window.open("/print/appointments"+newUrl);
+        // console.log(newUrl == url);
+            if(newUrl != url){
+        window.open("/print/appointments"+newUrl);
+            }
+        
         }
         
         </script>

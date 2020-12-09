@@ -41,6 +41,14 @@ class petController extends Controller
             ->paginate(5)
             ->appends('breed', request('breed'));
 
+        }elseif(request()->has('status')){
+            
+            $pets = Pet::where('status', request('status'))
+            ->paginate(5)
+            ->appends('status', request('status'));
+
+        }elseif(request()->has('all')){
+           $pets = Pet::paginate(0);
         }else{
             $pets = Pet::paginate(5);
         }
@@ -194,10 +202,44 @@ class petController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
+    {   
         $pet = Pet::findorfail($id);
-        $pet->delete();
-        return redirect('/pets')->with('toast_success', 'PET ID:'.$id.' has been Deleted');
+        $pet->status = "Adopted";
+        $pet->save();
+        return redirect('/pets')->with('toast_success', 'PET ID:'.$id.' has been Adopted');
 
+    }
+
+    public function printPDF(){
+
+        if (Auth::check()) {
+            if (Gate::denies('isAdmin')) {
+                // dd(Auth::check());
+                return redirect()->route('landing')->with('warning', 'Authorized person can only access this');
+            }
+        }else{
+            return redirect()->route('landing')->with('warning', 'Kindly login first to view this page');
+        }
+
+        if(request()->has('breed')){
+            
+            $pets = Pet::where('breed', request('breed'))
+            ->paginate(5)
+            ->appends('breed', request('breed'));
+
+        }elseif(request()->has('status')){
+            
+            $pets = Pet::where('status', request('status'))
+            ->paginate(5)
+            ->appends('status', request('status'));
+
+        }elseif(request()->has('all')){
+           $pets = Pet::paginate(0);
+        }else{
+            $pets = Pet::paginate(5);
+        }
+       
+     
+        return view('admin.prints.pet')->with('pets', $pets);
     }
 }
