@@ -59,7 +59,10 @@ class donationController extends Controller
             }
            
 
-        }else{
+        }elseif(request()->has('all')){
+            $donations =  $donations = Donation::orderBy('id', 'desc')->paginate(0);
+        }
+        else{
             $donations = Donation::orderBy('id', 'desc')->paginate(5);
         }
  
