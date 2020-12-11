@@ -91,8 +91,14 @@
                                     <tr role="row" class="odd text-center">
                                         <td>{{ $appointment->id }}</td>
                                         <td>{{ $appointment->user_id != null ? $appointment->user->name : $appointment->name}}</td>
+                                        @if($appointment->appointment_type == 'Adoption')
                                         <td><img src="assets/images/pets/{{ $appointment->image }}" alt="Pet Image"
                                             class="rounded-circle" height="129" width="129"></td>
+                                        @else
+                                        <td><img src="assets/images/surrendered/{{ $appointment->image }}" alt="Pet Image"
+                                            class="rounded-circle" height="129" width="129"></td>
+                                        @endif
+
                                         <td>{{ $appointment->requested_pet_id != null ? $appointment->pet->name : "None"}}</td>
                                         <td>{{ $appointment->requested_date }}</td>
                                         <td>{{ $appointment->appointment_type }}</td>

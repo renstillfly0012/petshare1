@@ -177,7 +177,7 @@
                     </div>
 
                     <?php
-                    $date = new DateTime();
+                    $date = new DateTime('Asia/Singapore');
                     $date->modify('+7 day');
                     $dt= $date->format('Y-m-d\TH:i:s'); 
                     ?>
