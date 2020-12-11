@@ -201,6 +201,8 @@ class ReportController extends Controller
             }
 
 
+        }elseif(request()->has('all')){
+            $reports = Report::orderBy('id', 'desc')->with('user')->paginate(0);
         }else{
             $reports = Report::orderBy('id', 'desc')->with('user')->paginate(5);
         }
