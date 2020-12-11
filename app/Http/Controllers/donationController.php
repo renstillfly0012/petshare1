@@ -36,7 +36,7 @@ class donationController extends Controller
            
 
         }elseif(request()->has('order')){
-            $donations = Donation::orderBy('id', request('order'))
+            $donations = Donation::orderBy('donation_amount', request('order'))
             ->paginate(5)
             ->appends('order', request('order'));
             // dd($donations);
