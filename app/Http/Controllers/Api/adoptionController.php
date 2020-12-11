@@ -77,7 +77,22 @@ class adoptionController extends Controller
      */
     public function show($id)
     {
-        //
+
+        try{
+        $appointment = Appointment::where('user_id', $id)
+        ->get();
+
+        
+        
+
+        return response()->json($appointment, 200);
+    
+
+        }catch(\Exception $error){
+               return response()->json($error, 400);
+        }
+
+     
     }
 
     /**
