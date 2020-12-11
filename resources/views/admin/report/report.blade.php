@@ -140,7 +140,9 @@
         var type = document.getElementById("form").value;
         var text = document.getElementById("selected_text").value;
         console.log(type+"&text="+text);
+        if(text !== null && text !== ''){
         window.location.href = type+"&text="+text;
+        }
 
     }
 

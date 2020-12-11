@@ -24,42 +24,52 @@ class petInfoController extends Controller
       
             // dd(request('type'),request('text'));
             if(request('type') == 'name'){
-                $user = User::where(request('type'),'like',  '%'.request('text').'%')
-                ->pluck('id')
-                ->first();
+                if(request('text') == 'None'){
+                    $petinfos = Pet_Info::where('pet_owner_id', Null)
+                    ->orderBy('id', 'desc')
+                   ->with('user')
+                   ->paginate(5); 
+                }else{
+                    $user = User::where(request('type'),'like',  '%'.request('text').'%')
+                    ->pluck('id');
+
+                $petinfos = Pet_Info::whereIn('pet_owner_id', $user)
+                ->orderBy('id', 'desc')
+               ->with('user')
+               ->paginate(5); 
+                }
+               
                 
              
-                // dd($user);
-
-
-               $petinfos = Pet_Info::where('pet_owner_id', $user)
-               ->orderBy('id', 'desc')
-               ->with('user')
-               ->paginate(5);
-
-
-            //    dd($petinfos);
-               
+                // dd($petinfos);
+                
+                
+              
+            //    dd($user,$petinfos);
+            
             }else{
-                $pet = Pet::where('name','like',  '%'.request('text').'%')
-                ->pluck('id')
-                ->all();
-                dd($pet);
 
-                $petinfos = Pet_Info::where(request('type'), $pet)
+                $pet = Pet::where('name','like',  '%'.request('text').'%')
+                ->pluck('id');
+
+                $petinfos = Pet_Info::whereIn(request('type'), $pet)
                ->orderBy('id', 'desc')
-               ->with('pets')
+               ->with('pets','user')
                ->paginate(5);
 
-                   dd($petinfos);
+               
+
+                // dd($pet,$petinfos);
             }
            
-            
+        
             if($petinfos->count() == 0){
-                return redirect('/pethealth')->with('toast_error', 'No data found');
+                return redirect('/pethealth/all')->with('toast_error', 'No data found');
             }
         
 
+        }elseif(request()->has('all') && request()->has('text')){
+            $petinfos = Pet_Info::paginate(0);
         }else{
             $petinfos = Pet_Info::paginate(5);
         }
@@ -147,5 +157,66 @@ class petInfoController extends Controller
     public function destroy(PetInfo $petInfo)
     {
         //
+    }
+
+    public function printPDF(){
+
+        if(request()->has('type') && request()->has('text')){
+      
+            // dd(request('type'),request('text'));
+            if(request('type') == 'name'){
+                if(request('text') == 'None'){
+                    $petinfos = Pet_Info::where('pet_owner_id', Null)
+                    ->orderBy('id', 'desc')
+                   ->with('user')
+                   ->paginate(5); 
+                }else{
+                    $user = User::where(request('type'),'like',  '%'.request('text').'%')
+                    ->pluck('id');
+
+                $petinfos = Pet_Info::whereIn('pet_owner_id', $user)
+                ->orderBy('id', 'desc')
+               ->with('user')
+               ->paginate(5); 
+                }
+               
+                
+             
+                // dd($petinfos);
+                
+                
+              
+            //    dd($user,$petinfos);
+            
+            }else{
+
+                $pet = Pet::where('name','like',  '%'.request('text').'%')
+                ->pluck('id');
+
+                $petinfos = Pet_Info::whereIn(request('type'), $pet)
+               ->orderBy('id', 'desc')
+               ->with('pets','user')
+               ->paginate(5);
+
+               
+
+                // dd($pet,$petinfos);
+            }
+           
+            
+            if($petinfos->count() == 0){
+                return redirect('/pethealth')->with('toast_error', 'No data found');
+            }
+        
+
+        }elseif(request()->has('all') && request()->has('text')){
+            $petinfos = Pet_Info::paginate(0);
+        }else{
+            $petinfos = Pet_Info::paginate(5);
+        }
+    
+        // dd($petinfos[0]->users->name);
+        return view('admin.prints.pethealth')->with('petinfos', $petinfos);
+
     }
 }
