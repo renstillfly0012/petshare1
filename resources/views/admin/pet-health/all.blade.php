@@ -122,10 +122,20 @@
     function filterByText(){
         var type = document.getElementById("form").value;
         var text = document.getElementById("selected_text").value;
-        console.log(type+"&text="+text);
+        // console.log(type+"&text="+text);
         if(text !== null && text !== ''){
         window.location.href = type+"&text="+text;
         }
+        if(type === '/pethealth/all?all'){
+            console.log(type);
+            window.location.href = type;
+        }
+        if(type === '/pethealth/all'){
+            console.log(type);
+            window.location.href = type;
+        }
+
+        
       
     }
 

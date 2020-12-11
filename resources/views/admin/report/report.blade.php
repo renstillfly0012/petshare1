@@ -142,6 +142,13 @@
         console.log(type+"&text="+text);
         if(text !== null && text !== ''){
         window.location.href = type+"&text="+text;
+        }if(type === '/reports?all'){
+            console.log(type);
+            window.location.href = type;
+        }
+        if(type === '/reports'){
+            console.log(type);
+            window.location.href = type;
         }
 
     }

@@ -68,7 +68,7 @@ class petInfoController extends Controller
             }
         
 
-        }elseif(request()->has('all') && request()->has('text')){
+        }elseif(request()->has('all')){
             $petinfos = Pet_Info::paginate(0);
         }else{
             $petinfos = Pet_Info::paginate(5);
@@ -209,7 +209,7 @@ class petInfoController extends Controller
             }
         
 
-        }elseif(request()->has('all') && request()->has('text')){
+        }elseif(request()->has('all')){
             $petinfos = Pet_Info::paginate(0);
         }else{
             $petinfos = Pet_Info::paginate(5);
