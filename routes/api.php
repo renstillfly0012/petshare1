@@ -27,8 +27,9 @@ Route::prefix('guest')->group(function() {
 Route::prefix('user')->group(function(){
     route::get('/viewallpets', 'Api\petController@index');
     route::get('/view-pet/{pet}', 'Api\petController@show');
+    //---
     route::post('/adoptPet', 'Api\adoptionController@store');
-    route::get('/allrequests', 'Api\adoptionController@index');
+    route::get('/appointments/{id}', 'Api\adoptionController@show');
 
     Route::prefix('donation')->group(function(){
         route::post('/create', 'Api\donationController@storeDonation');
@@ -58,7 +59,12 @@ Route::prefix('admin')->group(function(){
         route::put('/edit/{id}', 'Api\petController@update');
         route::delete('/delete/{id}', 'Api\petController@destroy');
     });
-    
+
+
+     Route::prefix('appointments')->group(function(){
+        route::get('/all', 'Api\adoptionController@index');
+
+     });
 
     Route::prefix('pethealth')->group(function(){
         route::get('/all', 'Api\petInfoController@index');
