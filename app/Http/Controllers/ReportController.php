@@ -12,6 +12,7 @@ use App\Notifications\ReportDeclined;
 use App\Events\ReportCreated;
 use Notification;
 use App\Notifications\newReportNotification;
+use Gate;
 
 class ReportController extends Controller
 {
@@ -165,5 +166,45 @@ class ReportController extends Controller
         return redirect('/incident')->with('success', 'Report Changes '.$id.' was Saved');
         
        
+    }
+
+    public function printPDF(){
+        if (Gate::denies('isAdmin')) {
+            return redirect()->route('landing')->with('warning', 'Authorized person can only access this');;
+        }
+        elseif(request()->has('date')){
+            
+            $reports = Report::where('created_at','like',  '%'.request('date').'%')
+            ->orderBy('id', 'desc')
+            ->with('user')
+            ->paginate(5)
+            ->appends('date', request('date'));
+   
+            if($reports->count() == 0){
+                return redirect('/reports')->with('toast_error', 'No data found');
+            }
+           
+
+        }elseif(request()->has('type')){
+            if(request()->has('text')){
+
+
+                $reports = Report::where(request('type'),'like',  '%'.request('text').'%')
+                ->orderBy('id', 'desc')
+                ->with('user')
+                ->paginate(5)
+                ->appends('text', request('text'));
+                
+                if($reports->count() == 0){
+                    return redirect('/reports')->with('toast_error', 'No data found');
+                }
+            }
+
+
+        }else{
+            $reports = Report::orderBy('id', 'desc')->with('user')->paginate(5);
+        }
+    
+        return view('admin.prints.report')->with('reports', $reports);
     }
 }

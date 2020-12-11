@@ -67,7 +67,8 @@ class HomeController extends Controller
                   ->appends('breed', request('breed'));
       
               }else{
-                $pets = Pet::paginate(4);
+                $pets = Pet::where('status', 'Available')
+                ->paginate(4);
               }
                 
                 return view('viewallpets')->with('pets', $pets);

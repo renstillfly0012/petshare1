@@ -82,9 +82,6 @@ class adoptionController extends Controller
         $appointment = Appointment::where('user_id', $id)
         ->get();
 
-        
-        
-
         return response()->json($appointment, 200);
     
 

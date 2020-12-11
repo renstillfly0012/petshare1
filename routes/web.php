@@ -91,6 +91,7 @@ route::get('/appointments', 'adoptionController@printPDF');
 route::get('/pets', 'petController@printPDF');
 route::get('/users', 'UserController@printPDF');
 route::get('/donations', 'donationController@printPDF');
+route::get('/reports', 'ReportController@printPDF');
 });
 
 
