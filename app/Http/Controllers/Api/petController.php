@@ -18,7 +18,8 @@ class petController extends Controller
      */
     public function index()
     {
-        $pets = Pet::all();
+        $pets = Pet::where('status', 'Available')
+        ->get();
 
         return response()->json($pets, 200);
     }
