@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+
 class PetRequest extends FormRequest
 {
     /**
@@ -29,6 +30,7 @@ class PetRequest extends FormRequest
              'pet_breed' => 'required', 'string', 'max: 20',
              'pet_description' => 'required', 'string', 'max:255',
              'pet_image' => 'required|image|mimes:jpeg,jpg,png,gif', 'max:25000',
+        
         ];
         
     }
@@ -42,4 +44,6 @@ class PetRequest extends FormRequest
             'image' => 'pet_image',
         ];
     }
+
+  
 }

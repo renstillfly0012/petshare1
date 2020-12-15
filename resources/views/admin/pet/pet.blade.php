@@ -25,7 +25,9 @@
         <div class="card-body">
             <div id="example2_wrapper" class="dataTables_wrapper dt-bootstrap4">
                 <div class="row ">
-                    <div class="text-right ml-3 mb-5">
+                   
+                    <div class="col-sm-12 col-md-6 mb-5">
+
                         Filter By:
                        
 
@@ -40,8 +42,8 @@
                         </select>
                         <br>
                     <button class="btn btn-warning mt-2 float-left" id="printQuery" onclick="printByQuery()" target="_blank" >PRINT PDF</button>
-                        </div>
-                    <div class="col-sm-12 col-md-6"></div>
+                      
+                    </div>
                     <div class="col-sm-12 col-md-6"></div>
                 </div>
                 <div class="row">

@@ -14,7 +14,8 @@ use App\Mail\VerificationMail;
 use Illuminate\Support\Facades\Notification;
 use App\Notifications\AppointmentApproved;
 use App\Notifications\AppointmentDeclined;
-
+use App\Http\Requests\adoptRequest;
+use App\Rules\Recaptcha;
 
 
 
@@ -104,14 +105,17 @@ class adoptionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(adoptRequest $request)
     {
-        //
-        $validator = Validator::make($request->all(),[
-            'show_user_id' => ['required', 'integer', 'max:255'],
-            'show_pet_id' => ['required', 'integer', 'max:255'],
-            'show_requested_date' => 'required|date',
-         ]);
+        
+        // $validator = Validator::make($request->all(),[
+        //     'show_user_id' => ['required', 'integer', 'max:255'],
+        //     'show_pet_id' => ['required', 'integer', 'max:255'],
+        //     'show_requested_date' => 'required|date',
+        //     'g_recaptcha-response' => 'required', new Recaptcha(),
+        //  ]);
+        // $validated = $request->validated();
+        //  dd($request->all(),  $validated);
          
         
          $userName = User::where('id', $request->show_user_id)
@@ -120,8 +124,8 @@ class adoptionController extends Controller
 
          $appointment = new Appointment;
          $appointment->name = $userName;
-         $appointment->user_id = $request->input('show_user_id');
-         $appointment->requested_pet_id = $request->input('show_pet_id');
+         $appointment->user_id = $request->show_user_id;
+         $appointment->requested_pet_id = $request->show_pet_id;
          $petImage = Pet::where('id', $request->show_pet_id)
          ->pluck('image')
          ->first();    

@@ -20,13 +20,9 @@
             <div id="example2_wrapper" class="dataTables_wrapper dt-bootstrap4">
                 <div class="row">
                     
-                    <div class="col-sm-12 col-md-6"></div>
-                    <div class="col-sm-12 col-md-6"></div>
-                </div>
-                <div class="row ">
-                    <div class="col-md-12">
-                    <div class="float-left ">
-                        
+                    <div class="col-sm-12 col-md-6">
+
+                              
                         Filter By:
                         <select  name="form" onchange="location = this.value;">
                         <option value="/pets-requests?type=Adoption">Adoption</option>  
@@ -40,23 +36,17 @@
                     </select>
                     <br>
                     <button class="btn btn-warning mt-2" id="printQuery" onclick="printByQuery()" target="_blank" >PRINT PDF</button>
+                   
                     </div>
-                    {{-- onclick="print()" --}}
-       
+                    <div class="col-sm-12 col-md-6">
 
-                
-              
                         <div class="float-right" id="datepicker">
                             <input style="font-size:20px" id="select_date" type="date" class="form-control mb-2" >
                             <button class="btn btn-primary mb-2 float-right" id="submitDate" href="" onclick="filterByDate()" >Filter By Date</button>
                         </div>
-                      
-
-                      
                     </div>
-                     
-
-
+                </div>
+                <div class="row ">
                     <div class="col-sm-12 table-responsive">
                         <table id="example2" class="table table-bordered table-hover dataTable table-responsive-md"
                             role="grid" aria-describedby="example2_info">

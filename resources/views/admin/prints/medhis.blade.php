@@ -24,26 +24,10 @@
             <div class="row">
 
                 
-                <div class="col-sm-12 col-md-6">
-                    Filter By:
-                    <select  name="form" onchange="location = this.value;">
-                    <option value="/pethealth/view/{{ $medinfos[0]->pet_id }}?all" >All</option> 
-                    <option value="/pethealth/view/{{ $medinfos[0]->pet_id }}">default</option>
-                    <option value="/pethealth/view/{{ $medinfos[0]->pet_id }}" selected style="display: none"   ></option>
-                </select>
-                    <br>
-                    <button class="btn btn-warning mt-2" id="printQuery" onclick="printByQuery()" target="_blank" >PRINT PDF</button>
-                </div>
-                <div class="col-sm-12 col-md-6">
-                    <div class="float-right" id="datepicker">
-                        Filter By:
-                        <input style="font-size:20px" id="select_date" type="date" class="form-control mb-2" >
-                        <button class="btn btn-primary mb-2 float-right" id="submitDate" href="" onclick="filterByDate()" >Filter By Date</button>
-                    </div>
-                </div>
+               
             </div>
             <div class="row">
-                <div class="col-sm-12 table-responsive">
+                <div class="col-sm-12">
                     <table id="example2" class="table table-bordered table-hover dataTable" role="grid"
                         aria-describedby="example2_info">
                         <thead>
@@ -88,9 +72,7 @@
                         </tbody>
 
                     </table>
-                    <button type="button" class="btn btn-warning float-right rounded-circle" data-toggle="modal"
-                    data-target="#staticBackdrop">
-                    <i class="fas fa-plus"></i>
+                  
                 </button>
                 </div>
             </div>
@@ -299,25 +281,11 @@
 
 
 
-<script>
-    var pet_id = document.getElementById("pet_id").value;
-    function filterByDate(){
-    //    console.log(pet_id);
-        var date = document.getElementById("select_date").value;
-    window.location.href = "/pethealth/view/"+pet_id+"?date="+date;
-   
-    }
+<script type="text/javascript">
+    window.onload = function() { window.print(); }
+    window.onafterprint = function(){
+        window.close();
+  // console.log("Printing completed...");
+}
 
-    function printByQuery(){
-            var url = window.location.href;
-            var newUrl = url.substring(url.indexOf("?"));
-            console.log(url);
-            console.log(newUrl == url);
-            if(newUrl != url){
-            window.open("/print/pethealth/view/"+pet_id+""+newUrl);
-            }
-        }
-
-    
-    
-    </script>
+</script>

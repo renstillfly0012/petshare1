@@ -93,6 +93,7 @@ route::get('/users', 'UserController@printPDF');
 route::get('/donations', 'donationController@printPDF');
 route::get('/reports', 'ReportController@printPDF');
 route::get('/pethealth', 'petInfoController@printPDF');
+route::get('/pethealth/view/{id}', 'petInfoController@printPDFofMedhis');
 });
 
 

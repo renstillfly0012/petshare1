@@ -30,7 +30,7 @@
                         <option value="/donations" selected style="display: none"   ></option>
                     </select>
                     <br>
-                    <button class="btn btn-primary mt-2" id="printQuery" onclick="printByQuery()" target="_blank" >PRINT PDF</button>
+                    <button class="btn btn-warning mt-2" id="printQuery" onclick="printByQuery()" target="_blank" >PRINT PDF</button>
                     </div>
            
        

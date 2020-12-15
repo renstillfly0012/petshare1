@@ -23,9 +23,7 @@
     <div class="card-body">
         <div id="example2_wrapper" class="dataTables_wrapper dt-bootstrap4">
             <div class="row">
-                <div class="col-md-12">
-                <div class="float-left ">
-                            
+                <div class="col-sm-12 col-md-2">
                     Filter By:
                     <select  id="form" onchange="type = this.value;">
                     <option value="/pethealth/all?type=name">Name</option>  
@@ -34,17 +32,16 @@
                     <option value="/pethealth/all">Default</option>
                     <option value="/pethealth" selected style="display: none"   ></option>
                 </select>
-            <div>
-                <input input style="font-size:20px" id="selected_text" type="text" class="form-control mt-2" />
-                <button class="btn btn-primary mt-2" id="submitText" onclick="filterByText()" target="_blank" >Filter</button>
-                <br>
-            </div>
+                    <input input style="font-size:20px" id="selected_text" type="text" class="form-control mt-2" />
+                <button class="btn btn-primary mt-2 mb-5" id="submitText" onclick="filterByText()" target="_blank" >Filter</button>
 
-                <button class="btn btn-warning mt-2 mb-5" id="printQuery" onclick="printByQuery()" target="_blank" >PRINT PDF</button>
                 </div>
-            </div>
-                <div class="col-sm-12 col-md-6"></div>
-                <div class="col-sm-12 col-md-6"></div>
+                <div class="col-md-8"></div>
+                <div class="col-sm-12 col-md-2 ">
+                    <div class="float-right">
+                        <button class="btn btn-warning mt-2 mt-5" id="printQuery" onclick="printByQuery()" target="_blank" >PRINT PDF</button>
+                    </div>   
+                </div>
             </div>
             <div class="row">
                 <div class="col-sm-12 table-responsive">

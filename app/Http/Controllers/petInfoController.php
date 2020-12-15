@@ -120,7 +120,25 @@ class petInfoController extends Controller
      */
     public function show($id)
     {
-        $medinfos = Medical_Histories::where('pet_id',$id)->get();
+        if(request()->has('date')){
+            
+            $medinfos = Medical_Histories::where('pet_id',$id)
+            ->where('created_at','like',  '%'.request('date').'%')
+            ->orderBy('id', 'desc')
+            ->paginate(5)
+            ->appends('date', request('date'));
+            // dd($donations);
+            if($medinfos->count() == 0){
+                return redirect('/pethealth/view/'.$id)->with('toast_error', 'No data found');
+            }
+           
+
+        }else{
+            $medinfos = Medical_Histories::where('pet_id',$id)
+            ->orderBy('id', 'desc')
+            ->paginate(5);
+        }
+   
         // dd($medinfos[0]->pets);
         return view('admin.pet-health.view')->with('medinfos', $medinfos);
     }
@@ -219,4 +237,36 @@ class petInfoController extends Controller
         return view('admin.prints.pethealth')->with('petinfos', $petinfos);
 
     }
+
+    public function printPDFofMedhis($id)
+    {
+      
+        if(request()->has('date')){
+            
+            $medinfos = Medical_Histories::where('pet_id',$id)
+            ->where('created_at','like',  '%'.request('date').'%')
+            ->orderBy('id', 'desc')
+            ->paginate(5)
+            ->appends('date', request('date'));
+            
+            if($medinfos->count() == 0){
+                return redirect('/pethealth/view/'.$id)->with('toast_error', 'No data found');
+            }
+           
+
+        }elseif(request()->has('all')){
+            $medinfos = Medical_Histories::where('pet_id',$id)
+            ->orderBy('id', 'desc')
+            ->paginate(0);
+        }else{
+            $medinfos = Medical_Histories::where('pet_id',$id)
+            ->orderBy('id', 'desc')
+            ->paginate(5);
+        }
+   
+        // dd($medinfos[0]->pets);
+        return view('admin.prints.medhis')->with('medinfos', $medinfos);
+
+    }
+
 }

@@ -16,9 +16,9 @@ class surrenderController extends Controller
 
     public function store(surrenderPostRequest $request){
 
-        
+        // dd($request->all());
         $validated = $request->validated();
-        // dd($validated);
+        // dd($request->all(), $validated);
         if($request->hasFile('image') == true){
             // $user->image = $request->edit_image->getClientOriginalName();
            

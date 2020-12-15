@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg  fixed-top" id="mainNav" style="background:#17321E;">
     <div class="container">
         
-        <a class="navbar-brand js-scroll-trigger" href="/#page-top"><img src="assets/images/contents/pspcalogo.png" alt="" /></a>
+        <a class="navbar-brand nav-link js-scroll-trigger" href="/#page-top"><img src="assets/images/contents/pspcalogo.png" alt="" /></a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             Menu
             <i class="fas fa-bars ml-1"></i>
@@ -17,8 +17,8 @@
                     href="{{ route('incident') }}">{{ __('Report An Incident') }}</a>
                 </li>
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/#about">Events</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/#team">Team</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/#client">About</a></li>
+                {{-- <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/#team">Team</a></li> --}}
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/#team">About</a></li>
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/#contact">Contact</a></li>
                 <li class="nav-item">
                     <a class="nav-link" id="nav-link" href="{{ route('login') }}">{{ __('Sign In') }}</a>

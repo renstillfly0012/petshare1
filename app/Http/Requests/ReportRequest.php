@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Validator;
+use App\Rules\Recaptcha;
 
 class ReportRequest extends FormRequest
 {
@@ -35,6 +36,7 @@ class ReportRequest extends FormRequest
             'email' => 'required', 'string', 'email', 'max:255',
             'mobile_number' => ['required','regex:/^(09|\+639)\d{9}$/'],
             'report_type' => 'required',
+            'g-recaptcha-response' => 'required', new Recaptcha()
         ];
     }
 
@@ -53,8 +55,12 @@ class ReportRequest extends FormRequest
 
     public function messages(){
         return[
-          'address_lat' => 'Zero results on Google maps please refresh and try again.',
-          'address_lng' => 'Zero results on Google maps please refresh and try again.',
+          
+          'image.required' => 'Image: You forgot to attach an image.',
+          'address_lat.required' => 'Address Field: Please enter a valid addres that will make the map appear',
+          'address_lng.required' => '',
+          'message.required' => 'Report Descrition: You forgot to add a report description.',
+          'g-recaptcha-response.required' => 'Captcha Required: Please check the box to confirm you are a real person.',
         ];
     }
 }

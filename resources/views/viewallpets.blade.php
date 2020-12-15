@@ -211,7 +211,7 @@
             
             <div class="form-group row">
                 <div class="col-md-6 offset-md-4">
-                    <div class="g-recaptcha" data-sitekey="6LfQJPkZAAAAABIM-1Bom813BLOTg_dcKLVytD5B" ></div>
+                    <div class="g-recaptcha" id="g-recaptcha" name="g-recaptcha" data-sitekey="6LfQJPkZAAAAABIM-1Bom813BLOTg_dcKLVytD5B" ></div>
                 </div>
             </div>
         
@@ -287,65 +287,7 @@
 
         });
 
-        $(document).ready(function() {
-
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-
-            $('.deletebtn').on('click', function(e) {
-                e.preventDefault();
-
-                $tr = $(this).closest('tr');
-
-                var data = $tr.children("td").map(function() {
-                    return $(this).text();
-                }).get();
-
-                var del_id = data[0];
-
-                Swal.fire({
-                    title: 'Are you sure?',
-                    text: "You won't be able to revert this!",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    allowOutsideClick: false,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, delete it!'
-                }).then((result) => {
-                    if (result.value) {
-
-
-                        var data = {
-                            "token": $('input style="font-size:20px"[name=_token]').val(),
-                            "id": del_id,
-                        };
-
-                        $.ajax({
-                            type: "DELETE",
-                            url: 'pets/' + del_id,
-                            data: data,
-                            success: function(response) {
-
-                            }
-                        });
-
-                        Swal.fire(
-                            'Deleted!',
-                            'Your file has been deleted.',
-                            'success'
-                        ).then((result) => {
-                            location.reload();
-                        });
-
-
-                    }
-                })
-            });
-        });
+       
 
     </script>
 @endsection
