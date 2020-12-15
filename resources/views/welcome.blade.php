@@ -249,9 +249,9 @@
                         <p class="text-muted"> The PSPCA, founded in 1904 by Ms. Annalde, daughter of former governer general during
                             the American Regime and was enforced through Commonwealth ACt 1285 in January 19. 1905.
                             PSPCA is the oldest animal welfare in the Philippines.    </p>
-                        <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-linkedin-in"></i></a>
+                        <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter" target="_blank"></i></a>
+                        <a class="btn btn-dark btn-social mx-2" href="https://www.facebook.com/PSPCAph" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-linkedin-in" target="_blank"></i></a>
                     </div>
                 </div>
                 <div class="col-lg-4">

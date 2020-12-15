@@ -175,6 +175,7 @@
 
                        </div>
                     </div>
+                   
 
                     <?php
                     $date = new DateTime('Asia/Singapore');
@@ -196,38 +197,36 @@
                             <label for="date" class="mt-3">{{ __('Date') }}</label>
                         </div>
                     </div>
-            </div>
-
-            
-            <div class="col-md-10 offset-md-1 ">
-                <div class="alert alert-warning" role="alert">
-                    <strong> <p>Note: Always advanced a week for the date of the appointment.
-                    Ex: today is Jan 1,2020 (monday) select Jan 8,2020 (monday)</p>
-                    <br>
-                    <p>Upon the reservation of the appointment, all the appointments will be subjected to evaluation. 
-                        Once validated, the administrator will send a notice.<p></strong>
-                  </div>
-            </div>
-            
-            <div class="form-group row">
-                <div class="col-md-6 offset-md-4">
-                    <div class="g-recaptcha" id="g-recaptcha" name="g-recaptcha" data-sitekey="6LfQJPkZAAAAABIM-1Bom813BLOTg_dcKLVytD5B" ></div>
-                </div>
-            </div>
+                    
+                    <div class="col-md-10 offset-md-1 ">
+                        <div class="alert alert-warning" role="alert">
+                            <strong> <p>Note: Always advanced a week for the date of the appointment.
+                            Ex: today is Jan 1,2020 (monday) select Jan 8,2020 (monday)</p>
+                            <br>
+                            <p>Upon the reservation of the appointment, all the appointments will be subjected to evaluation. 
+                                Once validated, the administrator will send a notice.<p></strong>
+                          </div>
+                    </div>
+                    
+                   
+                    <div class="form-group row">
+                        <div class="col-md-6 offset-md-4">
+                            <div class="g-recaptcha" id="g-recaptcha" name="g-recaptcha" data-sitekey="6LfQJPkZAAAAABIM-1Bom813BLOTg_dcKLVytD5B" ></div>
+                        </div>
+                    </div>
         
+            </div>
             <div class="modal-footer justify-content-between">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 <button type="submit" class="btn btn-primary" style="color:black;">Adopt</button>
-                </form>
             </div>
+        </form>
         </div>
+   
         <!-- /.modal-content -->
     </div>
     <!-- /.modal-dialog -->
 </div>
-
-
-
 
 
 @section('pet_modal_script')
