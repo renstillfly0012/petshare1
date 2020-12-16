@@ -76,6 +76,31 @@ class MedHistoryTableSeeder extends Seeder
             'comments' => 'NA',
         ]);
 
+        $medhis = Medical_Histories::create([
+            'pet_info_id' => 6,
+            'pet_id' => 6,
+        ]);
+        
+        $medhis = Medical_Histories::create([
+            'pet_info_id' => 7,
+            'pet_id' => 7,
+        ]);
+
+        $medhis = Medical_Histories::create([
+            'pet_info_id' => 8,
+            'pet_id' => 8,
+        ]);
+
+        $medhis = Medical_Histories::create([
+            'pet_info_id' => 9,
+            'pet_id' => 9,
+        ]);
+
+        $medhis = Medical_Histories::create([
+            'pet_info_id' => 10,
+            'pet_id' => 10,
+        ]);
+
 
     }
 }

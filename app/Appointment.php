@@ -19,7 +19,7 @@ class Appointment extends Model
         'user_id','requested_pet_id','requested_date','appointment_type','name','message','image'
     ];
 
-    // protected static $logAttributes = ['name', 'age', 'breed','description','image'];
+    protected static $logAttributes = ['user_id', 'requested_date', 'appointment_type','appointment_status'];
 
     protected static $logName = 'Appointment';
     protected static $recordEvents = ['updated'];

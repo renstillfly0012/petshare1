@@ -19,14 +19,14 @@ class CreateMedicalHistories extends Migration
             $table->foreign('pet_info_id')->references('id')->on('pet_health_infos')->onDelete('cascade');
             $table->unsignedBigInteger('pet_id')->nullable();
             $table->foreign('pet_id')->references('id')->on('pets')->onDelete('cascade');
-            $table->string('date');
-            $table->string('description');
-            $table->string('diagnosis');
-            $table->string('test_performed');
-            $table->string('test_results');
-            $table->string('action');
-            $table->string('medications');
-            $table->string('comments');
+            $table->string('date')->nullable();
+            $table->string('description')->nullable();
+            $table->string('diagnosis')->nullable();
+            $table->string('test_performed')->nullable();
+            $table->string('test_results')->nullable();
+            $table->string('action')->nullable();
+            $table->string('medications')->nullable();
+            $table->string('comments')->nullable();
             $table->timestamps();
         });
     }

@@ -9,6 +9,8 @@ use App\Pet;
 use Illuminate\Support\Facades\Auth;
 use Validator;
 use QRCode;
+use App\Pet_Info;
+use App\Medical_Histories;
 
 
 class petController extends Controller
@@ -86,11 +88,11 @@ class petController extends Controller
  
         $pet = new Pet;
         $pet->name = "PETCODE-".$new_pet_id;
-        $pet->age = $request->input('pet_age');
-        $pet->breed = $request->input('pet_breed');
-        $pet->description = $request->input('pet_description');
+        $pet->age = $request->pet_age;
+        $pet->breed = $request->pet_breed;
+        $pet->description = $request->pet_description;
 
-      
+            // dd($pet);
             
             $file = $request->pet_image;
             $extension = $file->getClientOriginalExtension();
@@ -122,6 +124,19 @@ class petController extends Controller
         // if($newQrcode){
           //save data to database.
           $pet->save();
+
+        $petinfo = new Pet_Info;
+        $petinfo->pet_id = $new_pet_id;
+        $petinfo->pet_allergies = "None";
+        $petinfo->pet_existing_conditions = "None";
+        $petinfo->save();
+ 
+        $medhis = new Medical_Histories;
+        $medhis->pet_info_id = $petinfo->id;
+        $medhis->pet_id = $petinfo->pet_id;
+        $medhis->save();
+
+
           return redirect('/pets')->with('toast_success', 'New Data has been Saved');
         // }
  

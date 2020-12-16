@@ -6,6 +6,7 @@ use App\Pet_Info;
 use Illuminate\Http\Request;
 use App\Medical_Histories;
 use App\Http\Requests\medhisPostRequest;
+use App\Http\Requests\petInfoEditRequest;
 use App\User;
 use App\Pet;
 
@@ -73,9 +74,11 @@ class petInfoController extends Controller
         }else{
             $petinfos = Pet_Info::paginate(5);
         }
+
+        $users = User::all();
     
         // dd($petinfos[0]->users->name);
-        return view('admin.pet-health.all')->with('petinfos', $petinfos);
+        return view('admin.pet-health.all', compact('petinfos','users'));
     }
 
     /**
@@ -139,7 +142,7 @@ class petInfoController extends Controller
             ->paginate(5);
         }
    
-        // dd($medinfos[0]->pets);
+        // dd($medinfos);
         return view('admin.pet-health.view')->with('medinfos', $medinfos);
     }
 
@@ -161,9 +164,19 @@ class petInfoController extends Controller
      * @param  \App\PetInfo  $petInfo
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, PetInfo $petInfo)
+    public function update(petInfoEditRequest $request, $id)
     {
-        //
+        $petInfo = Pet_Info::findorfail($id);
+        if($request->pet_owner_id == "null"){
+            $request->pet_owner_id = null;
+        }
+        $petInfo->pet_owner_id = $request->pet_owner_id;
+        $petInfo->pet_allergies = $request->pet_allergies;
+        $petInfo->pet_existing_conditions = $request->pet_existing_conditions;
+        // dd($petInfo, $request->validated());
+        $petInfo->save();
+       
+        return redirect('/pethealth/all')->with('toast_success', 'New Medical Record has been Edited');
     }
 
     /**

@@ -41,7 +41,7 @@
                             <option value="/pets" selected style="display: none"   ></option>
                         </select>
                         <br>
-                    <button class="btn btn-warning mt-2 float-left" id="printQuery" onclick="printByQuery()" target="_blank" >PRINT PDF</button>
+                    <button class="btn bg-maroon btn-flat mt-2 float-left" id="printQuery" onclick="printByQuery()" target="_blank" >PRINT PDF</button>
                       
                     </div>
                     <div class="col-sm-12 col-md-6"></div>

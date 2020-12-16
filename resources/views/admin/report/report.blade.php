@@ -30,11 +30,11 @@
                         </select>
                     <div>
                         <input input style="font-size:20px" id="selected_text" type="text" class="form-control mt-2" />
-                        <button class="btn btn-primary mt-2" id="submitText" onclick="filterByText()" target="_blank" >Filter</button>
+                        <button class="btn bg-navy btn-flat mt-2" id="submitText" onclick="filterByText()" target="_blank" >Filter</button>
                         <br>
                     </div>
 
-                        <button class="btn btn-warning mt-2 mb-5" id="printQuery" onclick="printByQuery()" target="_blank" >PRINT PDF</button>
+                        <button class="btn bg-maroon btn-flat mt-2 mb-5" id="printQuery" onclick="printByQuery()" target="_blank" >PRINT PDF</button>
                         </div>
                         {{-- onclick="print()" --}}
            
@@ -43,7 +43,7 @@
                   
                             <div class="float-right" id="datepicker">
                                 <input style="font-size:20px" id="select_date" type="date" class="form-control mb-2" >
-                                <button class="btn btn-primary mb-2 float-right" id="submitDate" href="" onclick="filterByDate()" >Filter By Date</button>
+                                <button class="btn bg-navy btn-flat mb-2 float-right" id="submitDate" href="" onclick="filterByDate()" >Filter By Date</button>
                             </div>
                           
     

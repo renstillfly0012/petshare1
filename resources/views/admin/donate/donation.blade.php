@@ -30,7 +30,7 @@
                         <option value="/donations" selected style="display: none"   ></option>
                     </select>
                     <br>
-                    <button class="btn btn-warning mt-2" id="printQuery" onclick="printByQuery()" target="_blank" >PRINT PDF</button>
+                    <button class="btn bg-maroon btn-flat mt-2" id="printQuery" onclick="printByQuery()" target="_blank" >PRINT PDF</button>
                     </div>
            
        
@@ -40,7 +40,7 @@
                         <div class="float-right" id="datepicker">
                             Filter By:
                             <input style="font-size:20px" id="select_date" type="date" class="form-control mb-2" >
-                            <button class="btn btn-primary mb-2 float-right" id="submitDate" href="" onclick="filterByDate()" >Filter By Date</button>
+                            <button class="btn bg-navy btn-flat mb-2 float-right" id="submitDate" href="" onclick="filterByDate()" >Filter By Date</button>
                         </div>
                       
 
