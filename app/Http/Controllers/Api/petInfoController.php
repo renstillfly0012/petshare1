@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Medical_Histories;
 use App\Http\Requests\medhisPostRequest;
 use App\Pet_Info;
+use App\Pet;
 
 class petInfoController extends Controller
 {
@@ -109,8 +110,21 @@ class petInfoController extends Controller
         ->where('pet_owner_id',$id)
         ->get()
         ->first();
-        // dd($petinfos);
-        return response()->json($petinfos, 200);
+
+        $pet = Pet::select('name','qrcodePath')
+        ->where('id', $petinfos->pet_id)
+        ->get()
+        ->first();
+
+        $datasForMyPet = ([
+            'user_id' => $petinfos->pet_owner_id,
+            'pet_id' => $petinfos->pet_id,
+            'pet_name' => $pet->name,
+            'pet_qrCode' => $pet->qrcodePath,
+        ]);
+        
+        // dd($petinfos, $pet, $datasForMyPet);
+        return response()->json($datasForMyPet, 200);
 
         }catch(\Exception $error){
             return response()->json($error, 400);
