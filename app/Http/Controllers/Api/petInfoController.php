@@ -102,4 +102,12 @@ class petInfoController extends Controller
     {
         //
     }
+
+    public function viewPet($id){
+        $petinfos = Pet_info::select('pet_owner_id', 'pet_id')
+        ->where('pet_owner_id',$id)
+        ->get()
+        ->first();
+        dd($petinfos);
+    }
 }
