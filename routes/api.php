@@ -30,14 +30,19 @@ Route::prefix('user')->group(function(){
     //---
     route::post('/adoptPet', 'Api\adoptionController@store');
     route::get('/appointments/{id}', 'Api\adoptionController@show');
+    route::get('/myPet/{id}', 'Api\petInfoController@viewPet');
+
 
     Route::prefix('donation')->group(function(){
         route::post('/create', 'Api\donationController@storeDonation');
+     
     });
 
     Route::prefix('reports')->group(function(){
         route::post('/create', 'Api\reportController@store');
     });
+
+    
     
 });
 

@@ -104,10 +104,16 @@ class petInfoController extends Controller
     }
 
     public function viewPet($id){
+        try{
         $petinfos = Pet_info::select('pet_owner_id', 'pet_id')
         ->where('pet_owner_id',$id)
         ->get()
         ->first();
-        dd($petinfos);
+        // dd($petinfos);
+        return response()->json($petinfos, 200);
+
+        }catch(\Exception $error){
+            return response()->json($error, 400);
+        }
     }
 }
