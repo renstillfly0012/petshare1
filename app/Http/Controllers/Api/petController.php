@@ -24,6 +24,12 @@ class petController extends Controller
         return response()->json($pets, 200);
     }
 
+    public function ManagePets(){
+        $pets = Pet::all();
+
+        return response()->json($pets, 200);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

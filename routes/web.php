@@ -60,14 +60,14 @@ Route::get('/map', function(){
     ->with(compact('location'));
 });
 
-Route::resource('/incident', 'ReportController')->names([
-    'index' => 'incident',
-    
-]);
 
 
 Route::group(['middleware' => ['verified', 'status']], function () {
 
+    Route::resource('/incident', 'ReportController')->names([
+        'index' => 'incident',
+        
+    ]);
 
 Route::get('/viewProfile/{user}/show', 'UserController@show')->name('viewProfile');
 Route::get('/editProfile/{user}/edit', 'UserController@edit')->name('editProfile');

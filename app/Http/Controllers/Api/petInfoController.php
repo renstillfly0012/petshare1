@@ -18,7 +18,7 @@ class petInfoController extends Controller
      */
     public function index()
     {
-        $petinfos = Pet_Info::paginate(5);
+        $petinfos = Pet_Info::paginate(0);
         return response()->json($petinfos, 200);
     }
 

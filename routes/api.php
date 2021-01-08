@@ -58,7 +58,7 @@ Route::prefix('admin')->group(function(){
     });
 
     Route::prefix('pets')->group(function(){
-        route::get('/all', 'Api\petController@index');
+        route::get('/all', 'Api\petController@managePets');
         route::get('/view-pet/{id}', 'Api\petController@show');
         route::post('/create','Api\petController@store');
         route::put('/edit/{id}', 'Api\petController@update');
