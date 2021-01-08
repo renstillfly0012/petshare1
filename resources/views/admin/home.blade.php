@@ -105,7 +105,7 @@
                     <div class="col-md-6">
                         <div class="card">
                             <div class="card-header"> <h3>Report</h3>
-                                <p>December 2020</p>
+                                <p>January 2021</p>
                             </div>
                             <!-- /.card-header -->
                          
@@ -151,7 +151,7 @@
                         <div class="card">
                             <div class="card-header"> 
                                 <h3>Appointments</h3>
-                                <p>December 2020</p>
+                                <p>January 2021</p>
                             </div>
                             <!-- /.card-header -->
                                
@@ -169,7 +169,7 @@
                     <div class="col-md-6">
                             <div class="card">
                                 <div class="card-header"> <h3>Users</h3>
-                                <p>Year 2020</p>
+                                <p>Year 2021</p>
                             </div>
     
                                 <div id="chart" style="height: 300px;"></div>
