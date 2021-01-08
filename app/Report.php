@@ -18,9 +18,9 @@ class Report extends Model
         'user_id','address', 'description','image','email','mobile_number','report_type','name'
     ];
 
-    protected $hidden = [
-        'address'
-    ];
+    // protected $hidden = [
+    //     'address'
+    // ];
 
     protected static $logName = 'Report';
     protected static $recordEvents = ['updated'];

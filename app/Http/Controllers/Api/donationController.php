@@ -13,7 +13,7 @@ class donationController extends Controller
 
     public function getAllDonations(){
         try{
-        $donations = Donation::paginate(5);
+        $donations = Donation::paginate(0);
         return response()->json($donations, 200);
 
         }catch(\Exception $error){

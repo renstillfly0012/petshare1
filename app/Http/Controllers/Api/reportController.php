@@ -24,7 +24,7 @@ class reportController extends Controller
     public function index()
     {
         try{
-            $reports = Report::paginate(5);
+            $reports = Report::paginate(0);
             return response()->json($reports, 200);
     
             }catch(\Exception $error){
